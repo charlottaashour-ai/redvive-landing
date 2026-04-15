@@ -1,227 +1,104 @@
-/**
+/*
  * REDVIVE Footer
- * Deep oxblood background — clean, minimal, premium
+ * Style: Dark #0A0303 background, minimal, brand-compliant
  */
+
+import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer style={{ backgroundColor: "#1a0102", borderTop: "1px solid rgba(255,222,205,0.08)" }}>
-      <div className="container" style={{ padding: "4rem 0 3rem" }}>
-        {/* Top row */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-12 mb-16">
+    <footer style={{ backgroundColor: "#0A0303", borderTop: "1px solid rgba(255,249,249,0.06)" }}>
+      <div className="container py-16">
+        <div className="grid md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
-          <div className="md:max-w-xs">
-            <a
-              href="#"
-              className="font-display block mb-4"
-              style={{
-                color: "#FFDECD",
-                fontSize: "1.5rem",
-                letterSpacing: "0.2em",
-                fontWeight: 500,
-                fontStyle: "italic",
-              }}
-            >
-              Redvive
-            </a>
+          <div>
+            <Link href="/">
+              <span
+                className="font-bold text-xl text-white mb-3 block cursor-pointer"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+              >
+                redvive
+              </span>
+            </Link>
             <p
-              className="font-body"
-              style={{
-                color: "rgba(255,222,205,0.45)",
-                fontSize: "0.85rem",
-                fontWeight: 300,
-                lineHeight: 1.8,
-              }}
+              className="text-xs leading-relaxed"
+              style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
             >
-              A premium intimate wellness ritual for women who want to feel more alive, 
-              more confident, and more deeply themselves.
+              light is the medicine.<br />
+              Born in Finland. Built on science.
             </p>
           </div>
 
-          {/* Nav columns */}
-          <div className="flex flex-wrap gap-12">
-            <div>
-              <p
-                className="font-body mb-5"
-                style={{
-                  color: "rgba(255,222,205,0.35)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  fontWeight: 400,
-                }}
-              >
-                Product
-              </p>
-              <div className="flex flex-col gap-3">
-                {["The Formula", "The Ritual", "Ingredients", "FAQ"].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="font-body"
-                    style={{
-                      color: "rgba(255,222,205,0.55)",
-                      fontSize: "0.82rem",
-                      fontWeight: 300,
-                      transition: "color 0.25s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "#FFDECD";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "rgba(255,222,205,0.55)";
-                    }}
+          {/* Navigation */}
+          <div>
+            <p
+              className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
+              style={{ color: "#C01A07", fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Navigate
+            </p>
+            <nav className="flex flex-col gap-3">
+              {[
+                { href: "/", label: "Home" },
+                { href: "/science", label: "The Science" },
+                { href: "/experience", label: "The Experience" },
+                { href: "/faq", label: "FAQ" },
+              ].map(({ href, label }) => (
+                <Link key={href} href={href}>
+                  <span
+                    className="text-sm transition-colors duration-200 hover:text-white cursor-pointer"
+                    style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif" }}
                   >
-                    {link}
-                  </a>
-                ))}
-              </div>
-            </div>
+                    {label}
+                  </span>
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-            <div>
-              <p
-                className="font-body mb-5"
-                style={{
-                  color: "rgba(255,222,205,0.35)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  fontWeight: 400,
-                }}
-              >
-                Brand
-              </p>
-              <div className="flex flex-col gap-3">
-                {["Our Story", "Press", "Stockists", "Careers"].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="font-body"
-                    style={{
-                      color: "rgba(255,222,205,0.55)",
-                      fontSize: "0.82rem",
-                      fontWeight: 300,
-                      transition: "color 0.25s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "#FFDECD";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "rgba(255,222,205,0.55)";
-                    }}
-                  >
-                    {link}
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <p
-                className="font-body mb-5"
-                style={{
-                  color: "rgba(255,222,205,0.35)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  fontWeight: 400,
-                }}
-              >
-                Support
-              </p>
-              <div className="flex flex-col gap-3">
-                {["Contact", "Shipping", "Returns", "Privacy"].map((link) => (
-                  <a
-                    key={link}
-                    href="#"
-                    className="font-body"
-                    style={{
-                      color: "rgba(255,222,205,0.55)",
-                      fontSize: "0.82rem",
-                      fontWeight: 300,
-                      transition: "color 0.25s ease",
-                    }}
-                    onMouseEnter={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "#FFDECD";
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.currentTarget as HTMLElement).style.color = "rgba(255,222,205,0.55)";
-                    }}
-                  >
-                    {link}
-                  </a>
-                ))}
-              </div>
-            </div>
+          {/* CTA */}
+          <div>
+            <p
+              className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
+              style={{ color: "#C01A07", fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Opening 2026
+            </p>
+            <p
+              className="text-sm mb-6"
+              style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}
+            >
+              Helsinki, Punavuori.<br />
+              Join the waitlist for priority access.
+            </p>
+            <a href="/#waitlist">
+              <button className="btn-primary text-xs">
+                Join the Waitlist
+              </button>
+            </a>
           </div>
         </div>
 
-        {/* Thin rule */}
-        <div className="rule-warm mb-8" />
-
-        {/* Bottom row */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        {/* Bottom bar */}
+        <div
+          className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+          style={{ borderTop: "1px solid rgba(255,249,249,0.06)" }}
+        >
           <p
-            className="font-body"
-            style={{
-              color: "rgba(255,222,205,0.3)",
-              fontSize: "0.72rem",
-              fontWeight: 300,
-              letterSpacing: "0.06em",
-            }}
+            className="text-xs"
+            style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
           >
-            © 2025 Redvive. All rights reserved.
+            © 2026 Redvive. Born in Finland.
           </p>
-
-          <div className="flex items-center gap-6">
-            {["Terms", "Privacy", "Cookies"].map((link) => (
-              <a
-                key={link}
-                href="#"
-                className="font-body"
-                style={{
-                  color: "rgba(255,222,205,0.3)",
-                  fontSize: "0.72rem",
-                  fontWeight: 300,
-                  letterSpacing: "0.06em",
-                  transition: "color 0.25s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = "rgba(255,222,205,0.65)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = "rgba(255,222,205,0.3)";
-                }}
+          <div className="flex gap-6">
+            {["Privacy Policy", "Terms of Service", "Instagram", "TikTok"].map((item) => (
+              <span
+                key={item}
+                className="text-xs cursor-pointer transition-colors hover:text-white/50"
+                style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
               >
-                {link}
-              </a>
-            ))}
-          </div>
-
-          {/* Social icons */}
-          <div className="flex items-center gap-4">
-            {["Instagram", "TikTok"].map((social) => (
-              <a
-                key={social}
-                href="#"
-                className="font-body"
-                style={{
-                  color: "rgba(255,222,205,0.35)",
-                  fontSize: "0.65rem",
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  fontWeight: 400,
-                  transition: "color 0.25s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = "#FA8743";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.color = "rgba(255,222,205,0.35)";
-                }}
-              >
-                {social}
-              </a>
+                {item}
+              </span>
             ))}
           </div>
         </div>

@@ -1,14 +1,15 @@
+/*
+ * REDVIVE — Design System
+ * Philosophy: Finnish minimalism meets scientific precision.
+ * Base: Soft rose white (#FFF9F9). Gradient as hero accent only.
+ * Red (crimson) reserved for CTAs and key actions ONLY.
+ * Typography: DM Sans (body/UI) + Fraunces (display/taglines)
+ */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
-
-/* ============================================================
-   REDVIVE — WARM LACQUER DESIGN SYSTEM
-   Design Movement: Japanese Minimalism meets Parisian Luxury Beauty
-   Typography: Playfair Display (italic serif) + Jost (geometric sans)
-   Palette: Oxblood #7E0306 | Tia Maria #D53E0F | Crusta #FA8743 | Koromiko #FCAF67 | Tuft Bush #FFDECD
-   ============================================================ */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -34,37 +35,52 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  --color-brand-oxblood: var(--brand-oxblood);
+  --color-brand-crimson: var(--brand-crimson);
+  --color-brand-vermillion: var(--brand-vermillion);
+  --color-brand-crusta: var(--brand-crusta);
 }
 
 :root {
-  /* Redvive Brand Palette */
-  --redvive-oxblood: #7E0306;
-  --redvive-tia-maria: #D53E0F;
-  --redvive-crusta: #FA8743;
-  --redvive-koromiko: #FCAF67;
-  --redvive-tuft-bush: #FFDECD;
+  /* Brand palette */
+  --brand-oxblood: #7E0306;
+  --brand-crimson: #C01A07;
+  --brand-vermillion: #D53E0F;
+  --brand-crusta: #FA8743;
+  --brand-rose-white: #FFF9F9;
+  --brand-rose-tint: #FFF0EE;
 
-  /* System Colors */
-  --radius: 0.375rem;
-  --background: oklch(0.98 0.012 50);
-  --foreground: oklch(0.18 0.035 30);
-  --card: oklch(1 0.005 50);
-  --card-foreground: oklch(0.18 0.035 30);
-  --popover: oklch(1 0.005 50);
-  --popover-foreground: oklch(0.18 0.035 30);
-  --primary: oklch(0.28 0.14 22);
-  --primary-foreground: oklch(0.98 0.012 50);
-  --secondary: oklch(0.95 0.02 50);
-  --secondary-foreground: oklch(0.28 0.14 22);
-  --muted: oklch(0.94 0.015 50);
-  --muted-foreground: oklch(0.5 0.04 30);
-  --accent: oklch(0.92 0.025 50);
-  --accent-foreground: oklch(0.28 0.14 22);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.88 0.02 50);
-  --input: oklch(0.88 0.02 50);
-  --ring: oklch(0.5 0.14 22);
+  /* Semantic tokens */
+  --radius: 0.25rem;
+  --background: #FFF9F9;
+  --foreground: #1A1008;
+  --card: #FFFFFF;
+  --card-foreground: #1A1008;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1008;
+  --primary: #C01A07;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F5EDEB;
+  --secondary-foreground: #3D1A14;
+  --muted: #F0E8E6;
+  --muted-foreground: #7A5A54;
+  --accent: #FFF0EE;
+  --accent-foreground: #7E0306;
+  --destructive: #C01A07;
+  --destructive-foreground: #FFFFFF;
+  --border: #E8D8D4;
+  --input: #E8D8D4;
+  --ring: #C01A07;
+
+  /* Sidebar (unused but required) */
+  --sidebar: #FFF9F9;
+  --sidebar-foreground: #1A1008;
+  --sidebar-primary: #C01A07;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #FFF0EE;
+  --sidebar-accent-foreground: #7E0306;
+  --sidebar-border: #E8D8D4;
+  --sidebar-ring: #C01A07;
 }
 
 @layer base {
@@ -76,8 +92,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
+    font-family: 'DM Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -85,12 +100,17 @@
   [role="button"]:not([aria-disabled="true"]),
   [type="button"]:not(:disabled),
   [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
   a[href],
   select:not(:disabled),
   input[type="checkbox"]:not(:disabled),
   input[type="radio"]:not(:disabled) {
     @apply cursor-pointer;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -99,8 +119,8 @@
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .flex {
@@ -123,165 +143,108 @@
     }
   }
 
-  /* Redvive Typography */
-  .font-display {
-    font-family: 'Playfair Display', Georgia, serif;
+  /* Brand gradient — left to right: oxblood → crimson → vermillion → crusta */
+  .brand-gradient {
+    background: linear-gradient(135deg, #7E0306 0%, #C01A07 35%, #D53E0F 65%, #FA8743 100%);
   }
 
-  .font-body {
-    font-family: 'Jost', sans-serif;
+  .brand-gradient-text {
+    background: linear-gradient(90deg, #C01A07 0%, #D53E0F 50%, #FA8743 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Redvive Color Utilities */
-  .bg-oxblood { background-color: #7E0306; }
-  .bg-tia-maria { background-color: #D53E0F; }
-  .bg-crusta { background-color: #FA8743; }
-  .bg-koromiko { background-color: #FCAF67; }
-  .bg-tuft-bush { background-color: #FFDECD; }
-  .text-oxblood { color: #7E0306; }
-  .text-tia-maria { color: #D53E0F; }
-  .text-crusta { color: #FA8743; }
-  .text-koromiko { color: #FCAF67; }
-  .text-tuft-bush { color: #FFDECD; }
-  .border-oxblood { border-color: #7E0306; }
-  .border-tuft-bush { border-color: #FFDECD; }
-
-  /* Warm gradient */
-  .gradient-warm {
-    background: linear-gradient(135deg, #FA8743 0%, #FCAF67 100%);
+  /* CTA button — crimson only */
+  .btn-primary {
+    background-color: #C01A07;
+    color: #FFFFFF;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.875rem 2rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .btn-primary:hover {
+    background-color: #7E0306;
+    transform: translateY(-1px);
   }
 
-  .gradient-brand {
-    background: linear-gradient(135deg, #7E0306 0%, #D53E0F 60%, #FA8743 100%);
+  .btn-ghost {
+    background-color: transparent;
+    color: #1A1008;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #E8D8D4;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .btn-ghost:hover {
+    border-color: #C01A07;
+    color: #C01A07;
   }
 
-  /* Scroll reveal animation */
+  /* Section label — small caps, crimson */
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C01A07;
+  }
+
+  /* Tagline — italic serif */
+  .tagline {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  /* Divider line — crimson */
+  .brand-rule {
+    width: 2.5rem;
+    height: 2px;
+    background-color: #C01A07;
+    display: block;
+  }
+
+  /* Reveal animation */
   .reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
   }
-
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
   }
 
-  /* Thin rule */
-  .rule-warm {
-    border: none;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #FA8743, transparent);
-  }
-
-  /* CTA button base */
-  .btn-primary {
-    background-color: #D53E0F;
-    color: #FFDECD;
-    font-family: 'Jost', sans-serif;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    padding: 1rem 2.5rem;
-    border: none;
-    transition: background-color 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease;
-    display: inline-block;
-  }
-
-  .btn-primary:hover {
-    background-color: #7E0306;
-    box-shadow: 0 8px 32px rgba(126, 3, 6, 0.35);
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    background-color: transparent;
-    color: #FFDECD;
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    padding: 0.9rem 2.5rem;
-    border: 1px solid rgba(255, 222, 205, 0.5);
-    transition: border-color 0.35s ease, background-color 0.35s ease;
-    display: inline-block;
-  }
-
-  .btn-outline:hover {
-    border-color: #FFDECD;
-    background-color: rgba(255, 222, 205, 0.08);
-  }
-
-  .btn-outline-dark {
-    background-color: transparent;
-    color: #7E0306;
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    padding: 0.9rem 2.5rem;
-    border: 1px solid #7E0306;
-    transition: border-color 0.35s ease, background-color 0.35s ease, color 0.35s ease;
-    display: inline-block;
-  }
-
-  .btn-outline-dark:hover {
-    background-color: #7E0306;
-    color: #FFDECD;
-  }
-
-  /* Testimonial card */
-  .testimonial-card {
-    background: rgba(255, 222, 205, 0.35);
-    border: 1px solid rgba(250, 135, 67, 0.2);
-    padding: 2.5rem;
-    position: relative;
-  }
-
-  /* Section label */
-  .section-label {
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    color: #FA8743;
-  }
-
-  /* Ingredient pill */
-  .ingredient-pill {
-    background: rgba(252, 175, 103, 0.15);
-    border: 1px solid rgba(252, 175, 103, 0.35);
-    color: #7E0306;
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    font-size: 0.75rem;
-    padding: 0.4rem 1rem;
-    text-transform: uppercase;
-  }
-
   /* Nav link */
   .nav-link {
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
+    font-size: 0.8rem;
+    font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-size: 0.7rem;
-    transition: color 0.25s ease;
+    color: #1A1008;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    position: relative;
   }
-}
-
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: #FFDECD;
-}
-::-webkit-scrollbar-thumb {
-  background: #D53E0F;
+  .nav-link:hover {
+    color: #C01A07;
+  }
+  .nav-link.active {
+    color: #C01A07;
+  }
 }
