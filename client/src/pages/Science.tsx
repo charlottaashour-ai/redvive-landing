@@ -1,7 +1,8 @@
 /*
  * REDVIVE — The Science Page
- * Design: Abstract blur hero, science explained simply for Sara (optimiser) + Joonas (athlete)
- * Tone: Direct, calm, evidence-based — not clinical, not corporate
+ * Design: No images. Pure typography + solid color blocks that flow seamlessly.
+ * Palette flow: #0A0303 hero → #FFF9F9 intro → #F5EDEB wavelengths → #1A1008 mechanism → #F5EDEB benefits → #FFF9F9 CTA
+ * Tone: Direct, evidence-based, calm — not clinical, not corporate
  */
 
 import { useEffect } from "react";
@@ -10,8 +11,6 @@ import Footer from "@/components/Footer";
 import { Link } from "wouter";
 
 const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
-const SCIENCE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-portrait_be8a22ef.png";
-const PANEL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-panel_586d0319.png";
 const BLUR_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
 
 function useReveal() {
@@ -32,7 +31,7 @@ export default function Science() {
     <div className="min-h-screen" style={{ backgroundColor: "#FFF9F9" }}>
       <Navbar />
 
-      {/* ── PAGE HERO ── */}
+      {/* ── PAGE HERO — dark video ── */}
       <section
         className="relative min-h-[70vh] flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
@@ -74,13 +73,13 @@ export default function Science() {
         </div>
       </section>
 
-      {/* Seamless transition */}
+      {/* Seamless: dark → rose-white */}
       <div style={{ height: "100px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
-      {/* ── INTRO ── */}
+      {/* ── INTRO — rose-white ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container">
-          <div className="max-w-3xl reveal">
+          <div className="max-w-3xl mx-auto reveal">
             <p
               className="text-2xl md:text-3xl leading-relaxed font-light"
               style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A1008", letterSpacing: "-0.01em" }}
@@ -91,14 +90,17 @@ export default function Science() {
         </div>
       </section>
 
-      {/* ── WAVELENGTHS ── */}
+      {/* Seamless: rose-white → blush */}
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 100%)" }} />
+
+      {/* ── WAVELENGTHS — blush ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#F5EDEB" }}>
         <div className="container">
-          <div className="reveal mb-16">
+          <div className="reveal mb-16 max-w-3xl mx-auto">
             <span className="section-label block mb-4">Two Wavelengths. One Protocol.</span>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
+          <div className="grid md:grid-cols-2 gap-px max-w-4xl mx-auto" style={{ backgroundColor: "#E8D8D4" }}>
             {/* 660nm */}
             <div className="reveal bg-[#FFF9F9] p-10 lg:p-14">
               <div className="flex items-start gap-4 mb-6">
@@ -170,23 +172,17 @@ export default function Science() {
         </div>
       </section>
 
-      {/* ── PANEL IMAGE FULL-BLEED ── */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#0A0303" }}>
-        <div className="grid lg:grid-cols-2 min-h-[600px]">
-          <div
-            className="relative min-h-[400px] lg:min-h-[600px] bg-cover bg-center"
-            style={{ backgroundImage: `url(${PANEL_IMAGE})`, backgroundSize: "cover", backgroundPosition: "center" }}
-          >
-            <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, rgba(10,3,3,0) 50%, #0A0303 100%)" }}
-            />
-          </div>
-          <div className="flex flex-col justify-center px-8 lg:px-16 py-20">
-            <div className="reveal max-w-md">
+      {/* Seamless: blush → near-black */}
+      <div style={{ height: "80px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
+
+      {/* ── THE MECHANISM — near-black ── */}
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            <div className="reveal mb-12">
               <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Mechanism</span>
               <h2
-                className="text-3xl md:text-4xl font-bold leading-[1.1] mb-6 text-white"
+                className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Your mitochondria<br />
@@ -194,35 +190,104 @@ export default function Science() {
                   do the work.
                 </em>
               </h2>
-              <span className="brand-rule mb-6" style={{ backgroundColor: "#FA8743" }} />
-              <p className="text-white/60 text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <span className="brand-rule mb-8" style={{ backgroundColor: "#FA8743" }} />
+            </div>
+            <div className="reveal grid md:grid-cols-2 gap-12">
+              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 Photobiomodulation (PBM) is the mechanism behind red light therapy. When specific wavelengths of light hit your cells, they trigger a photochemical reaction in the mitochondria — increasing ATP synthesis, reducing oxidative stress, and activating repair pathways.
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                This is not heat therapy. It's not UV. It's a precise, non-invasive signal that tells your cells to do what they were designed to do — just faster.
+                This is not heat therapy. It's not UV. It's a precise, non-invasive signal that tells your cells to do what they were designed to do — just faster. The same mechanism studied in over 5,000 peer-reviewed papers.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── PORTRAIT IMAGE ── */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#FFF9F9" }}>
-        <div className="grid lg:grid-cols-2 min-h-[500px]">
-          <div className="flex flex-col justify-center px-8 lg:px-16 py-20 order-2 lg:order-1">
-            <div className="reveal max-w-md">
-              <span className="section-label block mb-6">The Result</span>
+      {/* Seamless: near-black → blush */}
+      <div style={{ height: "80px", background: "linear-gradient(to bottom, #1A1008 0%, #F5EDEB 100%)" }} />
+
+      {/* ── BENEFITS BY CATEGORY — blush ── */}
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5EDEB" }}>
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="reveal mb-16">
+              <span className="section-label block mb-4">What It Does For You</span>
               <h2
-                className="text-3xl md:text-4xl font-bold leading-[1.1] mb-6 text-[#1A1008]"
+                className="text-3xl md:text-5xl font-bold text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Visible from<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
-                  session one.
+                660nm for skin.<br />
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#C01A07" }}>
+                  850nm for everything beneath it.
                 </em>
               </h2>
-              <span className="brand-rule mb-6" />
-              <p className="text-[#7A5A54] text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
+              {[
+                {
+                  category: "Recovery",
+                  items: ["Reduces DOMS by up to 50%", "Accelerates muscle repair", "Decreases joint inflammation", "Improves range of motion"],
+                },
+                {
+                  category: "Skin & Longevity",
+                  items: ["Stimulates collagen synthesis", "Reduces fine lines & wrinkles", "Improves skin tone & texture", "Accelerates wound healing"],
+                },
+                {
+                  category: "Performance & Energy",
+                  items: ["Increases mitochondrial ATP output", "Improves sleep quality", "Reduces systemic inflammation", "Supports hormonal balance"],
+                },
+              ].map((group, i) => (
+                <div
+                  key={i}
+                  className="reveal bg-[#FFF9F9] p-10"
+                  style={{ transitionDelay: `${i * 100}ms` }}
+                >
+                  <p
+                    className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-4"
+                    style={{ color: "#C01A07", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {group.category}
+                  </p>
+                  <span className="brand-rule mb-6" />
+                  <ul className="flex flex-col gap-3">
+                    {group.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-3">
+                        <span className="text-[#C01A07] mt-0.5 text-xs">—</span>
+                        <span className="text-[#7A5A54] text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                          {item}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Seamless: blush → rose-white */}
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #F5EDEB 0%, #FFF9F9 100%)" }} />
+
+      {/* ── THE RESULT — rose-white ── */}
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+        <div className="container">
+          <div className="max-w-3xl mx-auto reveal">
+            <span className="section-label block mb-6">The Result</span>
+            <h2
+              className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-[#1A1008]"
+              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+            >
+              Visible from<br />
+              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                session one.
+              </em>
+            </h2>
+            <span className="brand-rule mb-8" />
+            <div className="grid md:grid-cols-2 gap-12">
+              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 Most people notice improved skin tone and reduced puffiness after their first session. Within 2–4 weeks of consistent use, the deeper effects — better sleep, faster recovery, reduced inflammation — become unmistakable.
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -230,81 +295,13 @@ export default function Science() {
               </p>
             </div>
           </div>
-          <div
-            className="relative min-h-[400px] lg:min-h-[500px] bg-cover bg-center order-1 lg:order-2"
-            style={{ backgroundImage: `url(${SCIENCE_IMAGE})`, backgroundPosition: "center top" }}
-          >
-            <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to left, rgba(255,249,249,0) 50%, #FFF9F9 100%)" }}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ── BENEFITS BY PERSONA ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
-        <div className="container">
-          <div className="reveal mb-16">
-            <span className="section-label block mb-4" style={{ color: "#FA8743" }}>What It Does For You</span>
-            <h2
-              className="text-3xl md:text-5xl font-bold text-white"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
-            >
-              660nm for skin.<br />
-              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
-                850nm for everything beneath it.
-              </em>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                category: "Recovery",
-                items: ["Reduces DOMS by up to 50%", "Accelerates muscle repair", "Decreases joint inflammation", "Improves range of motion"],
-              },
-              {
-                category: "Skin & Longevity",
-                items: ["Stimulates collagen synthesis", "Reduces fine lines & wrinkles", "Improves skin tone & texture", "Accelerates wound healing"],
-              },
-              {
-                category: "Performance & Energy",
-                items: ["Increases mitochondrial ATP output", "Improves sleep quality", "Reduces systemic inflammation", "Supports hormonal balance"],
-              },
-            ].map((group, i) => (
-              <div
-                key={i}
-                className="reveal"
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <p
-                  className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-4"
-                  style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {group.category}
-                </p>
-                <span className="brand-rule mb-6" style={{ backgroundColor: "#FA8743" }} />
-                <ul className="flex flex-col gap-3">
-                  {group.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-3">
-                      <span className="text-[#C01A07] mt-0.5 text-xs">—</span>
-                      <span className="text-white/70 text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5EDEB" }}>
         <div className="container">
-          <div className="reveal max-w-xl">
+          <div className="reveal max-w-xl mx-auto text-center">
             <h2
               className="text-3xl md:text-5xl font-bold leading-[1.1] mb-8 text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
@@ -314,7 +311,7 @@ export default function Science() {
                 for yourself?
               </em>
             </h2>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/#waitlist">
                 <button className="btn-primary">Join the Waitlist</button>
               </a>

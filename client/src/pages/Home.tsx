@@ -1,9 +1,9 @@
 /*
  * REDVIVE — Home Page
- * Design: Abstract motion blur hero (full-bleed), text floating over image
- * Sections blend seamlessly — no hard section breaks
- * Background: #FFF9F9 for content sections
- * CTA: crimson only
+ * Design: Abstract motion blur hero (full-bleed), text floating over video
+ * Palette: #0A0303 dark / #FFF9F9 rose-white / #F5EDEB blush / #1A1008 near-black
+ * Sections flow seamlessly — no hard breaks
+ * Mobile-first, editorial, centered
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -13,16 +13,13 @@ import Footer from "@/components/Footer";
 
 const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-wide-N5NgJYxPYnXhAzQvc6Zd6b.webp";
-const STUDIO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-studio-v2-7fNysUT8ocQeYm6pNnpWxS.webp";
 
 function useReveal() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            e.target.classList.add("visible");
-          }
+          if (e.isIntersecting) e.target.classList.add("visible");
         });
       },
       { threshold: 0.12 }
@@ -69,8 +66,8 @@ function WaitlistForm() {
         style={{ fontFamily: "'DM Sans', sans-serif", color: interest ? "white" : "rgba(255,255,255,0.4)" }}
       >
         <option value="" disabled style={{ color: "#1A1008" }}>What brings you here?</option>
-        <option value="recovery" style={{ color: "#1A1008" }}>Recovery & Performance</option>
-        <option value="skin" style={{ color: "#1A1008" }}>Skin & Longevity</option>
+        <option value="recovery" style={{ color: "#1A1008" }}>Recovery &amp; Performance</option>
+        <option value="skin" style={{ color: "#1A1008" }}>Skin &amp; Longevity</option>
         <option value="wellness" style={{ color: "#1A1008" }}>General Wellness</option>
         <option value="science" style={{ color: "#1A1008" }}>I want the science</option>
       </select>
@@ -81,6 +78,135 @@ function WaitlistForm() {
     </form>
   );
 }
+
+/* ── Stats carousel data ── */
+const STATS = [
+  {
+    stat: "5,000+",
+    label: "Peer-reviewed studies",
+    body: "The most researched wavelengths in photomedicine. Not a trend — a body of evidence.",
+  },
+  {
+    stat: "660nm",
+    label: "Red Light",
+    body: "Penetrates the skin's surface. Stimulates collagen, reduces inflammation, accelerates healing.",
+  },
+  {
+    stat: "850nm",
+    label: "Near-Infrared",
+    body: "Reaches 5–10cm into tissue. Activates mitochondria, accelerates muscle recovery, reduces joint pain.",
+  },
+  {
+    stat: "10 min",
+    label: "Per session",
+    body: "A single session is all it takes. Consistent weekly use compounds the results.",
+  },
+  {
+    stat: "ATP+",
+    label: "Cellular energy output",
+    body: "Photobiomodulation increases ATP synthesis — your cells' fuel — directly at the mitochondrial level.",
+  },
+];
+
+function StatsCarousel() {
+  const [active, setActive] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startAuto = () => {
+    intervalRef.current = setInterval(() => {
+      setActive((prev) => (prev + 1) % STATS.length);
+    }, 3500);
+  };
+
+  useEffect(() => {
+    startAuto();
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, []);
+
+  const handleDot = (i: number) => {
+    setActive(i);
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    startAuto();
+  };
+
+  const item = STATS[active];
+
+  return (
+    <div className="reveal">
+      {/* Stat display */}
+      <div
+        className="py-16 md:py-20 px-8 md:px-16 text-center"
+        style={{ backgroundColor: "#1A1008", minHeight: "320px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
+      >
+        <p
+          className="text-6xl md:text-8xl font-bold mb-2 transition-all duration-500"
+          style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FA8743" }}
+          key={`stat-${active}`}
+        >
+          {item.stat}
+        </p>
+        <p
+          className="text-xs font-semibold tracking-[0.18em] uppercase mb-6"
+          style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+        >
+          {item.label}
+        </p>
+        <div className="w-8 h-px mb-6" style={{ backgroundColor: "#C01A07" }} />
+        <p
+          className="text-white/60 text-sm leading-relaxed max-w-sm mx-auto"
+          style={{ fontFamily: "'DM Sans', sans-serif" }}
+          key={`body-${active}`}
+        >
+          {item.body}
+        </p>
+      </div>
+
+      {/* Dot navigation */}
+      <div
+        className="flex items-center justify-center gap-3 py-6"
+        style={{ backgroundColor: "#1A1008", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+      >
+        {STATS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => handleDot(i)}
+            className="transition-all duration-300"
+            style={{
+              width: i === active ? "24px" : "6px",
+              height: "6px",
+              borderRadius: "3px",
+              backgroundColor: i === active ? "#C01A07" : "rgba(255,255,255,0.2)",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+            }}
+            aria-label={`Stat ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Science CTA */}
+      <div
+        className="flex justify-center py-8 px-8"
+        style={{ backgroundColor: "#1A1008" }}
+      >
+        <Link href="/science">
+          <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>
+            Understand the science →
+          </button>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/* ── Pricing comparison cards ── */
+const PRICING_ROWS = [
+  { option: "Clinic / physio", cost: "€80–€150", label: "per session", note: "1–2 sessions max", highlight: false },
+  { option: "Home device", cost: "€500–€3,000", label: "one-time", note: "High upfront, no guidance", highlight: false },
+  { option: "Competitor studio", cost: "€60–€120", label: "per month", note: "4–8 sessions included", highlight: false },
+  { option: "Redvive — Founding Member", cost: "€25", label: "per month", note: "Unlimited · locked in forever", highlight: true },
+];
 
 export default function Home() {
   useReveal();
@@ -94,7 +220,6 @@ export default function Home() {
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        {/* Background video — looping, muted, with static image fallback */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src={HERO_VIDEO}
@@ -105,7 +230,6 @@ export default function Home() {
           poster={HERO_IMAGE}
           style={{ opacity: 0.55 }}
         />
-        {/* Gradient overlay — dark at top for nav, lighter at bottom for text */}
         <div
           className="absolute inset-0"
           style={{
@@ -113,8 +237,6 @@ export default function Home() {
               "linear-gradient(to bottom, rgba(10,3,3,0.72) 0%, rgba(10,3,3,0.35) 40%, rgba(10,3,3,0.75) 75%, rgba(10,3,3,0.92) 100%)",
           }}
         />
-
-        {/* Hero content */}
         <div className="relative z-10 container pb-20 pt-32">
           <div className="max-w-2xl">
             <p
@@ -142,7 +264,6 @@ export default function Home() {
             <WaitlistForm />
           </div>
         </div>
-
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
           <span className="text-white/30 text-[0.6rem] tracking-[0.2em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -158,12 +279,7 @@ export default function Home() {
       </section>
 
       {/* ── SEAMLESS TRANSITION: dark → light ── */}
-      <div
-        style={{
-          height: "120px",
-          background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)",
-        }}
-      />
+      <div style={{ height: "120px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── MANIFESTO ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -176,9 +292,7 @@ export default function Home() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
               >
                 light is<br />
-                <em
-                  style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}
-                >
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
                   the medicine.
                 </em>
               </h2>
@@ -211,26 +325,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
             {[
-              {
-                num: "01",
-                title: "Autonomous",
-                body: "Book on your phone. Walk in. The technology does everything — 24/7.",
-              },
-              {
-                num: "02",
-                title: "Accessible",
-                body: "€25/month for founding members. Locked in for life. No commitment traps.",
-              },
-              {
-                num: "03",
-                title: "Science-Backed",
-                body: "660nm + 850nm. Over 5,000 peer-reviewed studies. Clinically calibrated.",
-              },
-              {
-                num: "04",
-                title: "Finnish-Built",
-                body: "Designed with Nordic precision. Private rooms. No excess. Just light.",
-              },
+              { num: "01", title: "Autonomous", body: "Book on your phone. Walk in. The technology does everything — 24/7." },
+              { num: "02", title: "Accessible", body: "€25/month for founding members. Locked in for life. No commitment traps." },
+              { num: "03", title: "Science-Backed", body: "660nm + 850nm. Over 5,000 peer-reviewed studies. Clinically calibrated." },
+              { num: "04", title: "Finnish-Built", body: "Designed with Nordic precision. Private rooms. No excess. Just light." },
             ].map((pillar, i) => (
               <div
                 key={i}
@@ -256,80 +354,130 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Science CTA under pillars — blush background, left-aligned */}
+          <div className="reveal mt-12">
+            <Link href="/science">
+              <button className="btn-ghost">
+                Understand the science →
+              </button>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ── STUDIO IMAGE + SCIENCE TEASER ── */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#FFF9F9" }}>
-        <div className="grid lg:grid-cols-2 min-h-[600px]">
-          {/* Image */}
-          <div
-            className="relative min-h-[400px] lg:min-h-[600px] bg-cover bg-center"
-            style={{ backgroundImage: `url(${STUDIO_IMAGE})` }}
-          >
-            <div
-              className="absolute inset-0"
-              style={{
-                background: "linear-gradient(to right, rgba(10,3,3,0) 60%, #FFF9F9 100%)",
-              }}
-            />
-          </div>
-          {/* Text */}
-          <div className="flex flex-col justify-center px-8 lg:px-16 py-20">
-            <div className="reveal max-w-md">
-              <span className="section-label block mb-6">The Science</span>
+      {/* ── STATS CAROUSEL (replaces studio image + old science teaser) ── */}
+      {/* Seamless transition blush → dark */}
+      <div style={{ height: "80px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
+      <StatsCarousel />
+      {/* Seamless transition dark → rose-white */}
+      <div style={{ height: "80px", background: "linear-gradient(to bottom, #1A1008 0%, #FFF9F9 100%)" }} />
+
+      {/* ── FOUNDING MEMBER PRICING ── */}
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+        <div className="container">
+          <div className="max-w-2xl mx-auto">
+            <div className="reveal mb-4">
+              <span className="section-label block mb-4">Founding Member Pricing</span>
               <h2
-                className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
+                className="text-3xl md:text-5xl font-bold text-[#1A1008] mb-4"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                10 minutes.<br />
+                €25 / month.<br />
                 <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
-                  feel it.
+                  Locked in for life.
                 </em>
               </h2>
-              <span className="brand-rule mb-6" />
-              <p className="text-[#7A5A54] text-sm leading-relaxed mb-8" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                At 660nm, red light penetrates the skin and activates collagen production. At 850nm, near-infrared reaches deep into muscle and joint tissue, accelerating recovery and reducing inflammation. Your mitochondria do the rest.
+              <p className="text-[#7A5A54] text-base max-w-xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                This is the founding member rate — available only to waitlist members before we open. Once claimed, it's yours forever. No price increases. No conditions.
               </p>
-              <Link href="/science">
-                <button className="btn-ghost">
-                  Understand the science →
-                </button>
-              </Link>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── NUMBERS ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
-        <div className="container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            {[
-              { stat: "5,000+", label: "Peer-reviewed studies" },
-              { stat: "660nm", label: "Red light wavelength" },
-              { stat: "850nm", label: "Near-infrared wavelength" },
-              { stat: "10 min", label: "Per session" },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="reveal text-center"
-                style={{ transitionDelay: `${i * 100}ms` }}
-              >
-                <p
-                  className="text-4xl md:text-5xl font-bold mb-2"
-                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "#FA8743" }}
+            {/* Stacked comparison cards */}
+            <div className="reveal flex flex-col gap-3 mt-12 mb-12">
+              {PRICING_ROWS.map((row, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-between gap-4 px-6 py-5"
+                  style={{
+                    backgroundColor: row.highlight ? "#C01A07" : "#F5EDEB",
+                    borderLeft: row.highlight ? "4px solid #FA8743" : "4px solid transparent",
+                  }}
                 >
-                  {item.stat}
-                </p>
-                <p
-                  className="text-xs tracking-[0.12em] uppercase"
-                  style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+                  <div className="flex flex-col gap-1 min-w-0">
+                    {row.highlight && (
+                      <span
+                        className="text-[0.6rem] font-bold tracking-[0.18em] uppercase mb-0.5"
+                        style={{ color: "#FFCAB0", fontFamily: "'DM Sans', sans-serif" }}
+                      >
+                        You
+                      </span>
+                    )}
+                    <span
+                      className="text-sm font-semibold leading-snug"
+                      style={{ color: row.highlight ? "white" : "#1A1008", fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                      {row.option}
+                    </span>
+                    <span
+                      className="text-xs"
+                      style={{ color: row.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                      {row.note}
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-end flex-shrink-0">
+                    <span
+                      className="text-2xl font-bold leading-none"
+                      style={{ color: row.highlight ? "white" : "#1A1008", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+                    >
+                      {row.cost}
+                    </span>
+                    <span
+                      className="text-xs mt-0.5"
+                      style={{ color: row.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                      {row.label}
+                    </span>
+                  </div>
+                </div>
+              ))}
+              <p className="text-[#7A5A54] text-xs mt-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                * Final session structure confirmed at launch. Founding rate locked in for life.
+              </p>
+            </div>
+
+            {/* Value pillars */}
+            <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px mb-12" style={{ backgroundColor: "#E8D8D4" }}>
+              {[
+                { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
+                { stat: "10×", label: "cheaper than a clinic", body: "One clinic session = one month at Redvive." },
+                { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className="bg-[#FFF9F9] p-8 flex flex-col gap-3 text-center"
+                  style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  {item.label}
-                </p>
-              </div>
-            ))}
+                  <p
+                    className="text-4xl font-bold"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#C01A07" }}
+                  >
+                    {item.stat}
+                  </p>
+                  <p
+                    className="text-xs font-semibold tracking-[0.14em] uppercase"
+                    style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {item.label}
+                  </p>
+                  <span className="brand-rule mx-auto" />
+                  <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -369,9 +517,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Seamless transition to footer */}
       <div style={{ height: "2px", backgroundColor: "#1A1008" }} />
-
       <Footer />
 
       <style>{`
