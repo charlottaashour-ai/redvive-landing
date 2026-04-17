@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
 const BLUR_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
 
 function useReveal() {
@@ -35,11 +36,11 @@ const faqs = [
       },
       {
         q: "How long is a session?",
-        a: "10 minutes. That's it. Full-body exposure at clinical-grade output. Research shows that 10 minutes at the correct wavelength and irradiance delivers the full therapeutic dose — more time does not mean more benefit.",
+        a: "10 minutes. Full-body exposure at clinical-grade output. Research shows that 10 minutes at the correct wavelength and irradiance delivers the full therapeutic dose — more time does not mean more benefit.",
       },
       {
         q: "How often should I come?",
-        a: "Most people see results with 2–4 sessions per week. For recovery and performance, 3× weekly is optimal. For skin and longevity, 2× weekly is sufficient. Consistency matters more than frequency — a weekly habit beats an occasional intensive.",
+        a: "Most people see results with 2–4 sessions per week. For recovery and performance, 3× weekly is optimal. For skin and longevity, 2× weekly is sufficient. Consistency matters more than frequency.",
       },
     ],
   },
@@ -48,7 +49,7 @@ const faqs = [
     items: [
       {
         q: "Do I need to undress?",
-        a: "Light cannot penetrate clothing, so the more skin exposed, the more effective the session. Most people remove their clothes entirely. Your cabin is completely private — no staff, no cameras, no windows. You are alone.",
+        a: "Light cannot penetrate clothing, so the more skin exposed, the more effective the session. Most people remove their clothes entirely. Your cabin is completely private — no cameras, no windows. You are alone.",
       },
       {
         q: "Is it safe for my eyes?",
@@ -60,7 +61,7 @@ const faqs = [
       },
       {
         q: "Are there any contraindications?",
-        a: "Red light therapy is safe for the vast majority of people. We recommend consulting your doctor if you are pregnant, have active cancer, are taking photosensitising medications, or have a condition that affects light sensitivity. If in doubt, ask your physician first.",
+        a: "Red light therapy is safe for the vast majority of people. We recommend consulting your doctor if you are pregnant, have active cancer, are taking photosensitising medications, or have a condition that affects light sensitivity.",
       },
     ],
   },
@@ -69,15 +70,15 @@ const faqs = [
     items: [
       {
         q: "How does the autonomous studio work?",
-        a: "You book via the Redvive app. At your reserved time, your phone unlocks the studio door and your cabin door. The session starts automatically. When it ends, you walk out. No staff, no check-in, no checkout. The technology handles everything.",
+        a: "You book via the Redvive app. At your reserved time, your phone unlocks the studio door and your cabin door. The session starts automatically. When it ends, you walk out. Fully autonomous — the technology handles everything.",
       },
       {
         q: "What if something goes wrong during my session?",
-        a: "Every cabin has an emergency stop button and a direct line to our support team. The studio is monitored remotely 24/7. You are never truly alone — just undisturbed.",
+        a: "Every cabin has an emergency stop button and a direct line to our support team, available 24/7. You are never truly alone — just undisturbed.",
       },
       {
         q: "Where is the first studio?",
-        a: "Helsinki, Punavuori neighbourhood. Opening 2026. A second location in Kallio follows within 12 months. Join the waitlist to get priority access and the founding member rate.",
+        a: "Helsinki, opening in 2026. Join the waitlist to get priority access and the founding member rate.",
       },
     ],
   },
@@ -86,19 +87,23 @@ const faqs = [
     items: [
       {
         q: "How much does it cost?",
-        a: "A single session is €29. A monthly subscription (4 sessions) is €79. Founding members — those who join the waitlist before launch — will receive a locked-in founding rate that stays with them for life.",
+        a: "The founding member rate is €25 per month — available exclusively to waitlist members before we open. Once claimed, it is locked in for life. No price increases, ever.",
+      },
+      {
+        q: "What does €25/month include?",
+        a: "Unlimited sessions per month at the founding price. Final session structure will be confirmed at launch, but founding members will always pay €25/month — regardless of how pricing evolves.",
+      },
+      {
+        q: "What happens to my price when you expand?",
+        a: "Nothing. Your founding member rate never changes. Not when we open a second location, not when we raise standard pricing, not ever. That is the founding member promise.",
       },
       {
         q: "Can I cancel my subscription?",
         a: "Yes, at any time. No notice period, no cancellation fees. We don't believe in commitment traps.",
       },
       {
-        q: "What is the founding member rate?",
-        a: "We haven't announced it yet — it will be revealed to waitlist members first, before the public launch. What we can say: it will be meaningfully lower than the standard monthly rate, and it locks in for life.",
-      },
-      {
         q: "Is the waitlist free?",
-        a: "Yes. No cost, no commitment. You're simply reserving your place in line for priority booking and the founding member rate.",
+        a: "Yes. No cost, no commitment. You are simply reserving your place in line for priority booking and the €25/month founding rate.",
       },
     ],
   },
@@ -160,14 +165,20 @@ export default function FAQ() {
         className="relative min-h-[60vh] flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${BLUR_IMAGE})`, backgroundPosition: "center 70%" }}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={HERO_VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={BLUR_IMAGE}
+          style={{ opacity: 0.5 }}
         />
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(10,3,3,0.5) 0%, rgba(10,3,3,0.1) 40%, rgba(10,3,3,0.9) 100%)",
+            background: "linear-gradient(to bottom, rgba(10,3,3,0.72) 0%, rgba(10,3,3,0.35) 40%, rgba(10,3,3,0.92) 100%)",
           }}
         />
         <div className="relative z-10 container pb-20 pt-32">
@@ -225,11 +236,17 @@ export default function FAQ() {
         className="relative py-32 md:py-40 overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-30"
-          style={{ backgroundImage: `url(${BLUR_IMAGE})` }}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={HERO_VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={BLUR_IMAGE}
+          style={{ opacity: 0.25 }}
         />
-        <div className="absolute inset-0" style={{ background: "rgba(10,3,3,0.7)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(10,3,3,0.75)" }} />
         <div className="relative z-10 container">
           <div className="max-w-lg mx-auto text-center reveal">
             <span
@@ -251,7 +268,7 @@ export default function FAQ() {
               className="text-white/50 text-sm mb-10 leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Join the waitlist. When we open, founding members get the first 48 hours — exclusive access before anyone else.
+              Join the waitlist. Founding members get the first 48 hours — exclusive access before anyone else. At €25/month, locked in for life.
             </p>
             <a href="/#waitlist">
               <button className="btn-primary mx-auto">

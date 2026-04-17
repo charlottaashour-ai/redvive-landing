@@ -68,7 +68,7 @@ export default function Footer() {
               className="text-sm mb-6"
               style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}
             >
-              Helsinki, Punavuori.<br />
+              Helsinki, opening 2026.<br />
               Join the waitlist for priority access.
             </p>
             <a href="/#waitlist">

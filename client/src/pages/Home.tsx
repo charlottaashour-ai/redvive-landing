@@ -11,6 +11,7 @@ import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
+const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-wide-N5NgJYxPYnXhAzQvc6Zd6b.webp";
 const STUDIO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-studio-v2-7fNysUT8ocQeYm6pNnpWxS.webp";
 
@@ -93,21 +94,23 @@ export default function Home() {
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        {/* Background image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${HERO_IMAGE})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center 40%",
-          }}
+        {/* Background video — looping, muted, with static image fallback */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={HERO_VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={HERO_IMAGE}
+          style={{ opacity: 0.55 }}
         />
         {/* Gradient overlay — dark at top for nav, lighter at bottom for text */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(10,3,3,0.55) 0%, rgba(10,3,3,0.1) 40%, rgba(10,3,3,0.65) 75%, rgba(10,3,3,0.88) 100%)",
+              "linear-gradient(to bottom, rgba(10,3,3,0.72) 0%, rgba(10,3,3,0.35) 40%, rgba(10,3,3,0.75) 75%, rgba(10,3,3,0.92) 100%)",
           }}
         />
 
@@ -133,8 +136,8 @@ export default function Home() {
               className="text-white/60 text-sm mt-6 mb-10 max-w-sm leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              10 minutes. Clinically calibrated red light. No staff, no appointments.
-              Helsinki's first fully autonomous light therapy studio.
+              10 minutes. Clinically calibrated red light. Fully autonomous — no appointments, no friction.
+              Helsinki's first autonomous light therapy studio.
             </p>
             <WaitlistForm />
           </div>
@@ -186,7 +189,7 @@ export default function Home() {
                 Finland knows light. We live by its presence in summer, and its absence in winter shapes how we feel, recover, and think. Red light therapy is science that Finns understand intuitively — light as medicine, warmth as restoration, stillness as strength.
               </p>
               <p className="text-[#7A5A54] leading-relaxed text-base" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Redvive was built at the intersection of technology and wellness. Fully autonomous studios — no staff, no appointments, no friction. Book on your phone, walk in, and let clinically calibrated light do the work. 10 minutes. Science-backed. Your weekly reset.
+                Redvive was built at the intersection of technology and wellness. Fully autonomous studios — no appointments, no friction. Book on your phone, walk in, and let clinically calibrated light do the work. 10 minutes. Science-backed. Your weekly reset.
               </p>
             </div>
           </div>
@@ -211,12 +214,12 @@ export default function Home() {
               {
                 num: "01",
                 title: "Autonomous",
-                body: "No staff. Book on your phone. Walk in. The technology does everything.",
+                body: "Book on your phone. Walk in. The technology does everything — 24/7.",
               },
               {
                 num: "02",
                 title: "Accessible",
-                body: "Under €30 per session. Monthly subscription. No commitment traps.",
+                body: "€25/month for founding members. Locked in for life. No commitment traps.",
               },
               {
                 num: "03",

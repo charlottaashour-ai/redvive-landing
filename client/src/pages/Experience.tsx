@@ -10,8 +10,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 
+const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
-const CABIN_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-rlt-3N7CHHjmS72r5k4pWAgZwJ.webp";
+const STUDIO_BLUR_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-studio-blur-Pq3aZTAAiRMjG62Mvq7BTZ.webp";
 const PANEL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-panel_586d0319.png";
 
 function useReveal() {
@@ -37,14 +38,20 @@ export default function Experience() {
         className="relative min-h-[70vh] flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${HERO_IMAGE})`, backgroundPosition: "center 60%" }}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={HERO_VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={HERO_IMAGE}
+          style={{ opacity: 0.5 }}
         />
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(10,3,3,0.5) 0%, rgba(10,3,3,0.1) 40%, rgba(10,3,3,0.88) 100%)",
+            background: "linear-gradient(to bottom, rgba(10,3,3,0.72) 0%, rgba(10,3,3,0.35) 40%, rgba(10,3,3,0.92) 100%)",
           }}
         />
         <div className="relative z-10 container pb-20 pt-32">
@@ -79,7 +86,7 @@ export default function Experience() {
               className="text-2xl md:text-3xl leading-relaxed font-light text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
             >
-              redvive is 10 minutes of doing nothing — so your cells can do everything. No staff. No appointments. No friction.
+              redvive is 10 minutes of doing nothing — so your cells can do everything. Fully autonomous. No appointments. No friction.
             </p>
           </div>
         </div>
@@ -107,13 +114,13 @@ export default function Experience() {
                 step: "01",
                 title: "Book on your phone",
                 body: "Open the app. Pick a time. Your cabin is reserved. No calls, no waiting lists, no front desk.",
-                detail: "Available 6am – 10pm, 7 days a week.",
+                detail: "24/7, 7 days a week.",
               },
               {
                 step: "02",
                 title: "Walk in",
                 body: "Your phone unlocks the door. Your private cabin is ready. Hang your clothes, lie down, close your eyes.",
-                detail: "Full-body panels. Private room. No staff.",
+                detail: "Full-body panels. Private room.",
               },
               {
                 step: "03",
@@ -160,7 +167,7 @@ export default function Experience() {
         <div className="grid lg:grid-cols-2 min-h-[600px]">
           <div
             className="relative min-h-[400px] lg:min-h-[600px] bg-cover bg-center"
-            style={{ backgroundImage: `url(${CABIN_IMAGE})` }}
+            style={{ backgroundImage: `url(${STUDIO_BLUR_IMAGE})` }}
           >
             <div
               className="absolute inset-0"
@@ -184,7 +191,7 @@ export default function Experience() {
                 Every Redvive studio is designed around one principle: remove everything that isn't the light. Full-body LED panels calibrated to clinical-grade output. A private room. Nothing else.
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                No mirrors. No music unless you bring your own. No staff watching through a window. Just you and 10 minutes of the most researched wavelengths in photomedicine.
+                No mirrors. No music unless you bring your own. Just you and 10 minutes of the most researched wavelengths in photomedicine.
               </p>
             </div>
           </div>
@@ -211,7 +218,7 @@ export default function Experience() {
                 Redvive uses medical-grade full-body LED panels delivering 660nm red light and 850nm near-infrared simultaneously. The same technology used in clinical settings — now available to you in 10 minutes, at a fraction of the cost.
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Opening in Helsinki's Punavuori neighbourhood in 2026.
+                Opening in Helsinki in 2026.
               </p>
             </div>
           </div>
@@ -246,66 +253,62 @@ export default function Experience() {
             </p>
           </div>
 
-          {/* Value comparison table */}
-          <div className="reveal mt-16 mb-16 overflow-x-auto">
-            <table className="w-full max-w-3xl text-sm" style={{ fontFamily: "'DM Sans', sans-serif", borderCollapse: "collapse" }}>
-              <thead>
-                <tr style={{ borderBottom: "1px solid #E8D8D4" }}>
-                  <th className="text-left py-4 pr-8 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Option</th>
-                  <th className="text-right py-4 px-4 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Cost</th>
-                  <th className="text-right py-4 px-4 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Sessions / mo</th>
-                  <th className="text-right py-4 pl-4 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Per session</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { option: "Clinic / physio session", cost: "€80–€150", sessions: "1–2", per: "€80–€150", highlight: false },
-                  { option: "Home device (one-time)", cost: "€500–€3,000", sessions: "Unlimited", per: "High upfront", highlight: false },
-                  { option: "Competitor studio", cost: "€60–€120 / mo", sessions: "4–8", per: "€15–€30", highlight: false },
-                  { option: "Redvive — Founding Member", cost: "€25 / mo", sessions: "Unlimited*", per: "< €1 / day", highlight: true },
-                ].map((row, i) => (
-                  <tr
-                    key={i}
-                    style={{
-                      borderBottom: "1px solid #E8D8D4",
-                      backgroundColor: row.highlight ? "#C01A07" : "transparent",
-                    }}
+          {/* Value comparison — mobile-first stacked cards */}
+          <div className="reveal mt-12 mb-16 flex flex-col gap-3 max-w-2xl">
+            {[
+              { option: "Clinic / physio", cost: "€80–€150", label: "per session", note: "1–2 sessions max", highlight: false },
+              { option: "Home device", cost: "€500–€3,000", label: "one-time", note: "High upfront, no guidance", highlight: false },
+              { option: "Competitor studio", cost: "€60–€120", label: "per month", note: "4–8 sessions included", highlight: false },
+              { option: "Redvive — Founding Member", cost: "€25", label: "per month", note: "Unlimited · locked in forever", highlight: true },
+            ].map((row, i) => (
+              <div
+                key={i}
+                className="flex items-center justify-between gap-4 px-6 py-5 rounded-none"
+                style={{
+                  backgroundColor: row.highlight ? "#C01A07" : "#F5EDEB",
+                  borderLeft: row.highlight ? "4px solid #FA8743" : "4px solid transparent",
+                }}
+              >
+                <div className="flex flex-col gap-1 min-w-0">
+                  {row.highlight && (
+                    <span
+                      className="text-[0.6rem] font-bold tracking-[0.18em] uppercase mb-0.5"
+                      style={{ color: "#FFCAB0", fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                      You
+                    </span>
+                  )}
+                  <span
+                    className="text-sm font-semibold leading-snug"
+                    style={{ color: row.highlight ? "white" : "#1A1008", fontFamily: "'DM Sans', sans-serif" }}
                   >
-                    <td
-                      className="py-4 pr-8 font-medium"
-                      style={{ color: row.highlight ? "white" : "#1A1008" }}
-                    >
-                      {row.highlight && (
-                        <span className="inline-block text-[0.6rem] font-bold tracking-[0.15em] uppercase mr-2 px-1.5 py-0.5" style={{ backgroundColor: "rgba(255,255,255,0.2)", color: "white" }}>
-                          YOU
-                        </span>
-                      )}
-                      {row.option}
-                    </td>
-                    <td
-                      className="text-right py-4 px-4 font-bold"
-                      style={{ color: row.highlight ? "white" : "#1A1008" }}
-                    >
-                      {row.cost}
-                    </td>
-                    <td
-                      className="text-right py-4 px-4"
-                      style={{ color: row.highlight ? "rgba(255,255,255,0.8)" : "#7A5A54" }}
-                    >
-                      {row.sessions}
-                    </td>
-                    <td
-                      className="text-right py-4 pl-4 font-semibold"
-                      style={{ color: row.highlight ? "#FFCAB0" : "#7A5A54" }}
-                    >
-                      {row.per}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <p className="text-[#7A5A54] text-xs mt-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              * Founding member rate includes unlimited sessions per month at the founding price. Final session structure confirmed at launch.
+                    {row.option}
+                  </span>
+                  <span
+                    className="text-xs"
+                    style={{ color: row.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {row.note}
+                  </span>
+                </div>
+                <div className="flex flex-col items-end flex-shrink-0">
+                  <span
+                    className="text-2xl font-bold leading-none"
+                    style={{ color: row.highlight ? "white" : "#1A1008", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+                  >
+                    {row.cost}
+                  </span>
+                  <span
+                    className="text-xs mt-0.5"
+                    style={{ color: row.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {row.label}
+                  </span>
+                </div>
+              </div>
+            ))}
+            <p className="text-[#7A5A54] text-xs mt-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              * Final session structure confirmed at launch. Founding rate locked in for life.
             </p>
           </div>
 
