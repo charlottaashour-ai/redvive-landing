@@ -165,80 +165,57 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Seamless: blush → rose-white */}
-      <div style={{ height: "60px", background: "linear-gradient(to bottom, #F5EDEB 0%, #FFF9F9 100%)" }} />
+      {/* Seamless: blush → near-black */}
+      <div style={{ height: "80px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
 
-      {/* ── THE STUDIO — rose-white with abstract blur image ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-            <div className="reveal mb-12">
-              <span className="section-label block mb-4">The Studio</span>
-              <h2
-                className="text-3xl md:text-5xl font-bold leading-[1.1] text-[#1A1008]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
-              >
-                Nordic precision.<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
-                  Private rooms. Just light.
-                </em>
-              </h2>
-            </div>
-
-            {/* Abstract studio image — full width, dimmed */}
-            <div
-              className="reveal relative w-full overflow-hidden mb-12"
-              style={{ height: "400px", borderRadius: "0" }}
-            >
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${STUDIO_BLUR_IMAGE})`, filter: "brightness(0.85)" }}
-              />
-              <div
-                className="absolute inset-0"
-                style={{ background: "linear-gradient(to bottom, rgba(255,249,249,0.15) 0%, rgba(255,249,249,0.45) 100%)" }}
-              />
-            </div>
-
-            <div className="reveal grid md:grid-cols-2 gap-12">
-              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Every Redvive studio is designed around one principle: remove everything that isn't the light. Full-body LED panels calibrated to clinical-grade output. A private room. Nothing else.
-              </p>
-              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                No mirrors. No music unless you bring your own. Just you and 10 minutes of the most researched wavelengths in photomedicine.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Seamless: rose-white → near-black */}
-      <div style={{ height: "80px", background: "linear-gradient(to bottom, #FFF9F9 0%, #1A1008 100%)" }} />
-
-      {/* ── THE TECHNOLOGY — near-black ── */}
+      {/* ── THE STUDIO — fused dark section (Technology color scheme + Studio content) ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <div className="reveal mb-12">
-              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Technology</span>
+              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Studio</span>
               <h2
                 className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Clinical-grade.<br />
                 <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
-                  Full-body coverage.
+                  Private rooms. Just light.
                 </em>
               </h2>
               <span className="brand-rule mb-8" style={{ backgroundColor: "#FA8743" }} />
             </div>
-            <div className="reveal grid md:grid-cols-2 gap-12">
+            <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 Redvive uses medical-grade full-body LED panels delivering 660nm red light and 850nm near-infrared simultaneously. The same technology used in clinical settings — now available to you in 10 minutes, at a fraction of the cost.
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Fully autonomous operation means the technology is always calibrated, always consistent, always ready. No human error. No variation. Just the protocol — every time.
+                Every studio is designed around one principle: remove everything that isn't the light. A private room. Full-body panels. Fully autonomous — always calibrated, always consistent, always ready.
               </p>
+            </div>
+            {/* Spec pills */}
+            <div className="reveal grid grid-cols-2 md:grid-cols-4 gap-px" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+              {[
+                { value: "660nm", label: "Red light" },
+                { value: "850nm", label: "Near-infrared" },
+                { value: "10 min", label: "Per session" },
+                { value: "24/7", label: "Always open" },
+              ].map((spec, i) => (
+                <div key={i} className="flex flex-col items-center justify-center text-center py-8 px-4" style={{ backgroundColor: "#1A1008" }}>
+                  <p
+                    className="text-2xl font-bold mb-1"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "#FA8743" }}
+                  >
+                    {spec.value}
+                  </p>
+                  <p
+                    className="text-[0.6rem] font-semibold tracking-[0.15em] uppercase"
+                    style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {spec.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

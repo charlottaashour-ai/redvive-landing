@@ -6,7 +6,7 @@
  * Mobile-first, editorial, centered
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -109,86 +109,61 @@ const STATS = [
 ];
 
 function StatsCarousel() {
-  const [active, setActive] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const startAuto = () => {
-    intervalRef.current = setInterval(() => {
-      setActive((prev) => (prev + 1) % STATS.length);
-    }, 3500);
-  };
-
-  useEffect(() => {
-    startAuto();
-    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, []);
-
-  const handleDot = (i: number) => {
-    setActive(i);
-    if (intervalRef.current) clearInterval(intervalRef.current);
-    startAuto();
-  };
-
-  const item = STATS[active];
+  // Duplicate items so the loop is seamless
+  const items = [...STATS, ...STATS, ...STATS];
 
   return (
-    <div className="reveal">
-      {/* Stat display */}
-      <div
-        className="py-16 md:py-20 px-8 md:px-16 text-center"
-        style={{ backgroundColor: "#1A1008", minHeight: "320px", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}
-      >
-        <p
-          className="text-6xl md:text-8xl font-bold mb-2 transition-all duration-500"
-          style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FA8743" }}
-          key={`stat-${active}`}
+    <div className="reveal" style={{ backgroundColor: "#1A1008", overflow: "hidden" }}>
+      {/* Continuous horizontal ticker */}
+      <div className="relative py-16 md:py-20" style={{ overflow: "hidden" }}>
+        <div
+          className="flex"
+          style={{
+            animation: "statsScroll 22s linear infinite",
+            width: "max-content",
+          }}
         >
-          {item.stat}
-        </p>
-        <p
-          className="text-xs font-semibold tracking-[0.18em] uppercase mb-6"
-          style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif" }}
-        >
-          {item.label}
-        </p>
-        <div className="w-8 h-px mb-6" style={{ backgroundColor: "#C01A07" }} />
-        <p
-          className="text-white/60 text-sm leading-relaxed max-w-sm mx-auto"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
-          key={`body-${active}`}
-        >
-          {item.body}
-        </p>
-      </div>
-
-      {/* Dot navigation */}
-      <div
-        className="flex items-center justify-center gap-3 py-6"
-        style={{ backgroundColor: "#1A1008", borderTop: "1px solid rgba(255,255,255,0.06)" }}
-      >
-        {STATS.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => handleDot(i)}
-            className="transition-all duration-300"
-            style={{
-              width: i === active ? "24px" : "6px",
-              height: "6px",
-              borderRadius: "3px",
-              backgroundColor: i === active ? "#C01A07" : "rgba(255,255,255,0.2)",
-              border: "none",
-              padding: 0,
-              cursor: "pointer",
-            }}
-            aria-label={`Stat ${i + 1}`}
-          />
-        ))}
+          {items.map((item, i) => (
+            <div
+              key={i}
+              className="flex-shrink-0 flex flex-col items-center justify-center text-center px-10 md:px-14"
+              style={{
+                width: "280px",
+                borderRight: "1px solid rgba(255,255,255,0.07)",
+              }}
+            >
+              <p
+                className="text-5xl md:text-6xl font-bold mb-1 whitespace-nowrap"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FA8743" }}
+              >
+                {item.stat}
+              </p>
+              <p
+                className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4 whitespace-nowrap"
+                style={{ color: "rgba(255,249,249,0.4)", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                {item.label}
+              </p>
+              <div className="w-6 h-px mb-4" style={{ backgroundColor: "#C01A07" }} />
+              <p
+                className="text-white/50 text-xs leading-relaxed"
+                style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}
+              >
+                {item.body}
+              </p>
+            </div>
+          ))}
+        </div>
+        {/* Left fade */}
+        <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #1A1008 0%, transparent 100%)" }} />
+        {/* Right fade */}
+        <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #1A1008 0%, transparent 100%)" }} />
       </div>
 
       {/* Science CTA */}
       <div
         className="flex justify-center py-8 px-8"
-        style={{ backgroundColor: "#1A1008" }}
+        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
       >
         <Link href="/science">
           <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>
@@ -451,7 +426,7 @@ export default function Home() {
             <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px mb-12" style={{ backgroundColor: "#E8D8D4" }}>
               {[
                 { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
-                { stat: "10×", label: "cheaper than a clinic", body: "One clinic session = one month at Redvive." },
+                { stat: "10×", label: "vs. clinic", body: "One clinic session = one month at Redvive." },
                 { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
               ].map((item, i) => (
                 <div
@@ -460,13 +435,13 @@ export default function Home() {
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
                   <p
-                    className="text-4xl font-bold"
+                    className="text-4xl font-bold whitespace-nowrap"
                     style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#C01A07" }}
                   >
                     {item.stat}
                   </p>
                   <p
-                    className="text-xs font-semibold tracking-[0.14em] uppercase"
+                    className="text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap"
                     style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {item.label}
@@ -525,6 +500,10 @@ export default function Home() {
           0% { transform: translateY(-100%); opacity: 0; }
           30% { opacity: 1; }
           100% { transform: translateY(250%); opacity: 0; }
+        }
+        @keyframes statsScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-280px * 5)); }
         }
       `}</style>
     </div>
