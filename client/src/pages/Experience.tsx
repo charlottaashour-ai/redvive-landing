@@ -1,7 +1,8 @@
 /*
  * REDVIVE — The Experience Page
  * Design: Abstract blur hero, step-by-step session flow, studio imagery
- * Tone: Direct, calm — targets Mikael (recovering pro) + Laura (longevity seeker)
+ * Tone: Direct, calm — targets Mikael (recovering pro) + Sara (optimiser)
+ * Pricing: €25/month founding member only — aggressive value comparison
  */
 
 import { useEffect } from "react";
@@ -11,7 +12,7 @@ import { Link } from "wouter";
 
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
 const CABIN_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-rlt-3N7CHHjmS72r5k4pWAgZwJ.webp";
-const STUDIO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-studio-v2-7fNysUT8ocQeYm6pNnpWxS.webp";
+const PANEL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-panel_586d0319.png";
 
 function useReveal() {
   useEffect(() => {
@@ -180,7 +181,7 @@ export default function Experience() {
               </h2>
               <span className="brand-rule mb-6" />
               <p className="text-[#7A5A54] text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Every Redvive studio is designed around one principle: remove everything that isn't the light. Dark slatted wood. A single bench. Full-body LED panels calibrated to clinical-grade output.
+                Every Redvive studio is designed around one principle: remove everything that isn't the light. Full-body LED panels calibrated to clinical-grade output. A private room. Nothing else.
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 No mirrors. No music unless you bring your own. No staff watching through a window. Just you and 10 minutes of the most researched wavelengths in photomedicine.
@@ -190,128 +191,179 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* ── STUDIO INTERIOR ── */}
-      <section className="relative overflow-hidden" style={{ backgroundColor: "#1A1008" }}>
+      {/* ── PANEL IMAGE ── */}
+      <section className="relative overflow-hidden" style={{ backgroundColor: "#0A0303" }}>
         <div className="grid lg:grid-cols-2 min-h-[500px]">
           <div className="flex flex-col justify-center px-8 lg:px-16 py-20">
             <div className="reveal max-w-md">
-              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Space</span>
+              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Technology</span>
               <h2
                 className="text-3xl md:text-4xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Designed like<br />
+                Clinical-grade.<br />
                 <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
-                  a Finnish sauna.
+                  Full-body coverage.
                 </em>
               </h2>
               <span className="brand-rule mb-6" style={{ backgroundColor: "#FA8743" }} />
               <p className="text-white/60 text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                The sauna is Finland's most trusted wellness ritual — private, silent, restorative. Redvive takes that same philosophy and applies it to red light therapy.
+                Redvive uses medical-grade full-body LED panels delivering 660nm red light and 850nm near-infrared simultaneously. The same technology used in clinical settings — now available to you in 10 minutes, at a fraction of the cost.
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Opening in Helsinki's Punavuori neighbourhood in 2026. A second location in Kallio follows within 12 months.
+                Opening in Helsinki's Punavuori neighbourhood in 2026.
               </p>
             </div>
           </div>
           <div
             className="relative min-h-[400px] lg:min-h-[500px] bg-cover bg-center"
-            style={{ backgroundImage: `url(${STUDIO_IMAGE})` }}
+            style={{ backgroundImage: `url(${PANEL_IMAGE})`, backgroundPosition: "center" }}
           >
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, #1A1008 0%, rgba(26,16,8,0) 40%)" }}
+              style={{ background: "linear-gradient(to right, #0A0303 0%, rgba(10,3,3,0) 40%)" }}
             />
           </div>
         </div>
       </section>
 
-      {/* ── PRICING TEASER ── */}
+      {/* ── PRICING — FOUNDING MEMBER ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container">
-          <div className="reveal mb-16">
-            <span className="section-label block mb-4">Pricing</span>
+          <div className="reveal mb-6">
+            <span className="section-label block mb-4">Founding Member Pricing</span>
             <h2
-              className="text-3xl md:text-5xl font-bold text-[#1A1008]"
+              className="text-3xl md:text-5xl font-bold text-[#1A1008] mb-4"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
-              Under €30.<br />
+              €25 / month.<br />
               <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
-                No commitment traps.
+                Locked in for life.
               </em>
             </h2>
+            <p className="text-[#7A5A54] text-base max-w-xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              This is the founding member rate — available only to waitlist members before we open. Once claimed, it's yours forever. No price increases. No conditions.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-px max-w-3xl" style={{ backgroundColor: "#E8D8D4" }}>
+          {/* Value comparison table */}
+          <div className="reveal mt-16 mb-16 overflow-x-auto">
+            <table className="w-full max-w-3xl text-sm" style={{ fontFamily: "'DM Sans', sans-serif", borderCollapse: "collapse" }}>
+              <thead>
+                <tr style={{ borderBottom: "1px solid #E8D8D4" }}>
+                  <th className="text-left py-4 pr-8 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Option</th>
+                  <th className="text-right py-4 px-4 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Cost</th>
+                  <th className="text-right py-4 px-4 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Sessions / mo</th>
+                  <th className="text-right py-4 pl-4 text-[#1A1008] font-semibold text-xs tracking-[0.12em] uppercase">Per session</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { option: "Clinic / physio session", cost: "€80–€150", sessions: "1–2", per: "€80–€150", highlight: false },
+                  { option: "Home device (one-time)", cost: "€500–€3,000", sessions: "Unlimited", per: "High upfront", highlight: false },
+                  { option: "Competitor studio", cost: "€60–€120 / mo", sessions: "4–8", per: "€15–€30", highlight: false },
+                  { option: "Redvive — Founding Member", cost: "€25 / mo", sessions: "Unlimited*", per: "< €1 / day", highlight: true },
+                ].map((row, i) => (
+                  <tr
+                    key={i}
+                    style={{
+                      borderBottom: "1px solid #E8D8D4",
+                      backgroundColor: row.highlight ? "#C01A07" : "transparent",
+                    }}
+                  >
+                    <td
+                      className="py-4 pr-8 font-medium"
+                      style={{ color: row.highlight ? "white" : "#1A1008" }}
+                    >
+                      {row.highlight && (
+                        <span className="inline-block text-[0.6rem] font-bold tracking-[0.15em] uppercase mr-2 px-1.5 py-0.5" style={{ backgroundColor: "rgba(255,255,255,0.2)", color: "white" }}>
+                          YOU
+                        </span>
+                      )}
+                      {row.option}
+                    </td>
+                    <td
+                      className="text-right py-4 px-4 font-bold"
+                      style={{ color: row.highlight ? "white" : "#1A1008" }}
+                    >
+                      {row.cost}
+                    </td>
+                    <td
+                      className="text-right py-4 px-4"
+                      style={{ color: row.highlight ? "rgba(255,255,255,0.8)" : "#7A5A54" }}
+                    >
+                      {row.sessions}
+                    </td>
+                    <td
+                      className="text-right py-4 pl-4 font-semibold"
+                      style={{ color: row.highlight ? "#FFCAB0" : "#7A5A54" }}
+                    >
+                      {row.per}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p className="text-[#7A5A54] text-xs mt-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              * Founding member rate includes unlimited sessions per month at the founding price. Final session structure confirmed at launch.
+            </p>
+          </div>
+
+          {/* Value pillars */}
+          <div className="reveal grid md:grid-cols-3 gap-px mb-16" style={{ backgroundColor: "#E8D8D4" }}>
             {[
               {
-                plan: "Single Session",
-                price: "€29",
-                note: "Pay as you go",
-                features: ["1 × 10-minute session", "Full-body panels", "Private cabin", "Book same-day"],
+                stat: "< €1",
+                label: "per day",
+                body: "Less than a coffee. Every single day. For clinically calibrated red light therapy.",
               },
               {
-                plan: "Monthly",
-                price: "€79",
-                note: "4 sessions / month",
-                features: ["4 × 10-minute sessions", "Priority booking", "Founding member rate", "Cancel anytime"],
-                highlight: true,
+                stat: "10×",
+                label: "cheaper than a clinic",
+                body: "A single physio or clinic session costs what Redvive costs for an entire month.",
               },
               {
-                plan: "Founding Member",
-                price: "TBA",
-                note: "Waitlist only",
-                features: ["Locked-in founding rate", "First access to new studios", "Exclusive founding perks", "Join the waitlist now"],
+                stat: "Forever",
+                label: "locked in",
+                body: "This price never increases for founding members. Not next year. Not when we expand. Never.",
               },
-            ].map((tier, i) => (
+            ].map((item, i) => (
               <div
                 key={i}
-                className="reveal p-10 flex flex-col gap-4"
-                style={{
-                  backgroundColor: tier.highlight ? "#C01A07" : "#FFF9F9",
-                  transitionDelay: `${i * 100}ms`,
-                }}
+                className="bg-[#FFF9F9] p-10 lg:p-12 flex flex-col gap-3"
+                style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <p
-                  className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
-                  style={{ color: tier.highlight ? "rgba(255,255,255,0.7)" : "#C01A07", fontFamily: "'DM Sans', sans-serif" }}
+                  className="text-5xl font-bold"
+                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#C01A07" }}
                 >
-                  {tier.plan}
+                  {item.stat}
                 </p>
                 <p
-                  className="text-4xl font-bold"
-                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: tier.highlight ? "white" : "#1A1008" }}
+                  className="text-xs font-semibold tracking-[0.14em] uppercase"
+                  style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  {tier.price}
+                  {item.label}
                 </p>
-                <p
-                  className="text-xs"
-                  style={{ color: tier.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {tier.note}
+                <span className="brand-rule" />
+                <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {item.body}
                 </p>
-                <span
-                  className="brand-rule"
-                  style={{ backgroundColor: tier.highlight ? "rgba(255,255,255,0.4)" : "#C01A07" }}
-                />
-                <ul className="flex flex-col gap-2 mt-2">
-                  {tier.features.map((f, j) => (
-                    <li key={j} className="flex items-start gap-2">
-                      <span style={{ color: tier.highlight ? "rgba(255,255,255,0.5)" : "#C01A07" }} className="text-xs mt-0.5">—</span>
-                      <span
-                        className="text-sm"
-                        style={{ color: tier.highlight ? "rgba(255,255,255,0.85)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        {f}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             ))}
           </div>
 
-          <div className="reveal mt-12">
+          {/* CTA */}
+          <div className="reveal">
+            <p
+              className="text-lg font-semibold text-[#1A1008] mb-2"
+              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
+            >
+              Claim your founding member rate before we open.
+            </p>
+            <p className="text-[#7A5A54] text-sm mb-8" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              No payment now. No commitment. Just your spot at €25/month — locked in for life.
+            </p>
             <a href="/#waitlist">
               <button className="btn-primary">Join the Waitlist — It's Free</button>
             </a>

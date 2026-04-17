@@ -9,7 +9,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 
-const SCIENCE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-science-SEBbCHLuyae7ivpPJh5G4q.webp";
+const SCIENCE_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-portrait_be8a22ef.png";
+const PANEL_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-panel_586d0319.png";
 const BLUR_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
 
 function useReveal() {
@@ -162,33 +163,69 @@ export default function Science() {
         </div>
       </section>
 
-      {/* ── CELLULAR MECHANISM IMAGE ── */}
+      {/* ── PANEL IMAGE FULL-BLEED ── */}
+      <section className="relative overflow-hidden" style={{ backgroundColor: "#0A0303" }}>
+        <div className="grid lg:grid-cols-2 min-h-[600px]">
+          <div
+            className="relative min-h-[400px] lg:min-h-[600px] bg-cover bg-center"
+            style={{ backgroundImage: `url(${PANEL_IMAGE})`, backgroundSize: "cover", backgroundPosition: "center" }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to right, rgba(10,3,3,0) 50%, #0A0303 100%)" }}
+            />
+          </div>
+          <div className="flex flex-col justify-center px-8 lg:px-16 py-20">
+            <div className="reveal max-w-md">
+              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Mechanism</span>
+              <h2
+                className="text-3xl md:text-4xl font-bold leading-[1.1] mb-6 text-white"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+              >
+                Your mitochondria<br />
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
+                  do the work.
+                </em>
+              </h2>
+              <span className="brand-rule mb-6" style={{ backgroundColor: "#FA8743" }} />
+              <p className="text-white/60 text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                Photobiomodulation (PBM) is the mechanism behind red light therapy. When specific wavelengths of light hit your cells, they trigger a photochemical reaction in the mitochondria — increasing ATP synthesis, reducing oxidative stress, and activating repair pathways.
+              </p>
+              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                This is not heat therapy. It's not UV. It's a precise, non-invasive signal that tells your cells to do what they were designed to do — just faster.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PORTRAIT IMAGE ── */}
       <section className="relative overflow-hidden" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="grid lg:grid-cols-2 min-h-[500px]">
           <div className="flex flex-col justify-center px-8 lg:px-16 py-20 order-2 lg:order-1">
             <div className="reveal max-w-md">
-              <span className="section-label block mb-6">The Mechanism</span>
+              <span className="section-label block mb-6">The Result</span>
               <h2
                 className="text-3xl md:text-4xl font-bold leading-[1.1] mb-6 text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Your mitochondria<br />
+                Visible from<br />
                 <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
-                  do the work.
+                  session one.
                 </em>
               </h2>
               <span className="brand-rule mb-6" />
               <p className="text-[#7A5A54] text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Photobiomodulation (PBM) is the mechanism behind red light therapy. When specific wavelengths of light hit your cells, they trigger a photochemical reaction in the mitochondria — increasing ATP synthesis, reducing oxidative stress, and activating repair pathways.
+                Most people notice improved skin tone and reduced puffiness after their first session. Within 2–4 weeks of consistent use, the deeper effects — better sleep, faster recovery, reduced inflammation — become unmistakable.
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                This is not heat therapy. It's not UV. It's a precise, non-invasive signal that tells your cells to do what they were designed to do — just faster.
+                5,000+ peer-reviewed studies. One 10-minute session. The science is settled — the only question is when you start.
               </p>
             </div>
           </div>
           <div
             className="relative min-h-[400px] lg:min-h-[500px] bg-cover bg-center order-1 lg:order-2"
-            style={{ backgroundImage: `url(${SCIENCE_IMAGE})` }}
+            style={{ backgroundImage: `url(${SCIENCE_IMAGE})`, backgroundPosition: "center top" }}
           >
             <div
               className="absolute inset-0"
