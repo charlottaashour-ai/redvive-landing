@@ -144,32 +144,55 @@ function StatsCarousel() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="flex-shrink-0 flex flex-col items-center justify-center text-center px-10 md:px-14"
+              className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
               style={{
                 width: "280px",
                 borderRight: "1px solid rgba(255,255,255,0.07)",
-
               }}
             >
-              <p
-                className="text-5xl md:text-6xl font-bold mb-1 whitespace-nowrap"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
+              {/* Heading — fixed height so all cards align */}
+              <div
+                className="flex items-end justify-center"
+                style={{ height: "80px", flexShrink: 0 }}
               >
-                {item.stat}
-              </p>
-              <p
-                className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4 whitespace-nowrap"
-                style={{ color: "rgba(255,249,249,0.4)", fontFamily: "'DM Sans', sans-serif" }}
+                <p
+                  className="font-bold leading-none"
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "3rem",
+                    letterSpacing: "-0.04em",
+                    color: "#D53E0F",
+                  }}
+                >
+                  {item.stat}
+                </p>
+              </div>
+              {/* Subheading — fixed height */}
+              <div
+                className="flex items-center justify-center"
+                style={{ height: "32px", flexShrink: 0 }}
               >
-                {item.label}
-              </p>
-              <div className="w-6 h-px mb-4" style={{ backgroundColor: "#D53E0F" }} />
-              <p
-                className="text-white/50 text-xs leading-relaxed"
-                style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}
+                <p
+                  className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase"
+                  style={{ color: "rgba(255,249,249,0.4)", fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  {item.label}
+                </p>
+              </div>
+              {/* Divider — fixed position */}
+              <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+              {/* Body — fixed height, top-aligned */}
+              <div
+                className="flex items-start justify-center"
+                style={{ height: "80px", flexShrink: 0 }}
               >
-                {item.body}
-              </p>
+                <p
+                  className="text-white/50 text-xs leading-relaxed"
+                  style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}
+                >
+                  {item.body}
+                </p>
+              </div>
             </div>
           ))}
         </div>
