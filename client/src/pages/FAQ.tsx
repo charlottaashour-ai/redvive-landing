@@ -38,7 +38,7 @@ const faqs = [
     items: [
       {
         q: "What is red light therapy?",
-        a: "Red light therapy (also called photobiomodulation or PBM) uses specific wavelengths of red and near-infrared light to stimulate cellular function. At 660nm, red light activates collagen production and surface-level healing. At 850nm, near-infrared penetrates deep into muscle and joint tissue, accelerating recovery and reducing inflammation. Over 5,000 peer-reviewed studies support its efficacy.",
+        a: "Red light therapy uses specific wavelengths of red and near-infrared light to support the body at a cellular level. At 660nm, red light supports the skin — stimulating collagen, reducing surface inflammation, and improving tone. At 850nm, near-infrared reaches deeper tissue to support recovery, energy and sleep. Backed by thousands of peer-reviewed studies.",
       },
       {
         q: "Is it the same as a tanning bed or UV light?",
@@ -46,11 +46,11 @@ const faqs = [
       },
       {
         q: "How long is a session?",
-        a: "10 minutes. Full-body exposure at clinical-grade output. Research shows that 10 minutes at the correct wavelength and irradiance delivers the full therapeutic dose — more time does not mean more benefit.",
+        a: "10 minutes. Full-body exposure at clinically calibrated output. Research shows that 10 minutes at the correct wavelength and irradiance delivers the full therapeutic dose. More time does not mean more benefit.",
       },
       {
         q: "How often should I come?",
-        a: "Most people see results with 2–4 sessions per week. For recovery and performance, 3× weekly is optimal. For skin and longevity, 2× weekly is sufficient. Consistency matters more than frequency.",
+        a: "Most people see results with 2–4 sessions per week. For skin support, 2× weekly is a good starting point. For recovery and energy, 3× weekly works well. Consistency matters more than frequency — the point is to make it a habit.",
       },
     ],
   },
@@ -59,7 +59,7 @@ const faqs = [
     items: [
       {
         q: "Do I need to undress?",
-        a: "Light cannot penetrate clothing, so the more skin exposed, the more effective the session. Most people remove their clothes entirely. Your cabin is completely private — no cameras, no windows. You are alone.",
+        a: "Light cannot penetrate clothing, so the more skin exposed, the more effective the session. Most people remove their clothes entirely. Your room is completely private — no cameras, no windows, no staff. You are alone.",
       },
       {
         q: "Is it safe for my eyes?",
@@ -67,7 +67,7 @@ const faqs = [
       },
       {
         q: "Will I feel anything during the session?",
-        a: "You may feel a gentle warmth. There is no pain, no burning, no tingling. Most people describe it as deeply relaxing. Some notice improved energy within hours of their first session; others see cumulative effects over 2–4 weeks.",
+        a: "You may feel a gentle warmth. There is no pain, no burning, no tingling. Most people describe it as calm and meditative. Some notice a difference in skin tone or energy within the first few sessions. Deeper effects — better recovery, improved sleep, a calmer baseline — build over 2–4 weeks of consistent use.",
       },
       {
         q: "Are there any contraindications?",
@@ -80,7 +80,7 @@ const faqs = [
     items: [
       {
         q: "How does the autonomous studio work?",
-        a: "You book via the Redvive app. At your reserved time, your phone unlocks the studio door and your cabin door. The session starts automatically. When it ends, you walk out. Fully autonomous — the technology handles everything.",
+        a: "You book on your phone. At your reserved time, your phone unlocks the door. Your private room is ready. The session starts automatically. When it ends, you walk out. No staff, no check-in, no complexity.",
       },
       {
         q: "What if something goes wrong during my session?",
@@ -113,7 +113,7 @@ const faqs = [
       },
       {
         q: "Is the waitlist free?",
-        a: "Yes. No cost, no commitment. You are simply reserving your place in line for priority booking and the €25/month founding rate.",
+        a: "Yes. No payment, no commitment. You are simply reserving your place for priority booking and the €25/month founding rate.",
       },
     ],
   },
@@ -293,7 +293,7 @@ export default function FAQ() {
               className="text-white/50 text-sm mb-10 leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Join the waitlist. Founding members get the first 48 hours — exclusive access before anyone else. At €25/month, locked in for life.
+              Join the waitlist for first access to Redvive studios in the capital region. Be first to hear about opening dates, founding rates and early access. No payment. No commitment.
             </p>
             <a href="/#waitlist">
               <button className="btn-primary mx-auto">

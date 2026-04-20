@@ -111,7 +111,7 @@ export default function Experience() {
               className="text-2xl md:text-3xl leading-relaxed font-light text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
             >
-              10 minutes of doing nothing — so your cells can do everything. Fully autonomous. No appointments. No friction.
+              Book on your phone. Walk in. Close the door. Begin. A private 10-minute full-body red light session — no staff, no small talk, no waiting around.
             </p>
           </div>
         </div>
@@ -141,19 +141,19 @@ export default function Experience() {
               {
                 step: "01",
                 title: "Book on your phone",
-                body: "Open the app. Pick a time. Your cabin is reserved. No calls, no waiting lists.",
+                body: "Open the app. Pick a time. Your private room is reserved. No calls, no waiting lists, no staff to coordinate with.",
                 detail: "24/7, 7 days a week.",
               },
               {
                 step: "02",
                 title: "Walk in",
-                body: "Your phone unlocks the door. Your private cabin is ready. Lie down, close your eyes.",
+                body: "Your phone unlocks the door. Your private room is ready. No staff in the room. No small talk. Just light.",
                 detail: "Full-body panels. Private room.",
               },
               {
                 step: "03",
                 title: "10 minutes",
-                body: "The session runs automatically. When it ends, you're done. Walk out. No checkout, no upsell.",
+                body: "The session runs automatically. When it ends, you're done. Walk out. No checkout, no upsell, no wellness theatre.",
                 detail: "660nm + 850nm. Clinically calibrated.",
               },
             ].map((step, i) => (
@@ -212,10 +212,10 @@ export default function Experience() {
             </div>
             <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Redvive uses medical-grade full-body LED panels delivering 660nm red light and 850nm near-infrared simultaneously. The same technology used in clinical settings — now available to you in 10 minutes, at a fraction of the cost.
+              Private full-body red light therapy. Clinically calibrated 660nm and 850nm wavelengths — the same protocol used in clinical settings, now available in 10 minutes, at a fraction of the cost.
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Every studio is designed around one principle: remove everything that isn't the light. A private room. Full-body panels. Fully autonomous — always calibrated, always consistent, always ready.
+              Every studio is designed around one principle: remove everything that is not the light. A private room. Full-body panels. Fully autonomous — always calibrated, always consistent, always ready.
               </p>
             </div>
             {/* Spec pills */}
@@ -269,14 +269,14 @@ export default function Experience() {
             <div className="grid md:grid-cols-2 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
               {[
                 {
-                  label: "The Optimiser",
-                  title: "You track everything. You want results.",
-                  body: "You've read the studies. You know what 660nm and 850nm do. You want the protocol — consistent, clinical-grade, without the clinic price tag or the clinic schedule.",
+                  label: "For your skin",
+                  title: "A clearer, more supported glow.",
+                  body: "Use it when your skin looks tired, your complexion feels dull, or you want a simple weekly habit that supports skin from the inside out. 10 minutes. Private. No appointments.",
                 },
                 {
-                  label: "The Performer",
-                  title: "Recovery is part of your training.",
-                  body: "You push hard. Your body needs to recover harder. Redvive is the 10-minute protocol that reduces DOMS, accelerates muscle repair, and keeps you consistent — week after week.",
+                  label: "For your body",
+                  title: "Recovery, energy, and a calmer week.",
+                  body: "Use it after training, between workdays, or whenever your body needs a reset. Redvive supports recovery, reduces heaviness, and helps you maintain a better baseline through the week."
                 },
               ].map((persona, i) => (
                 <div

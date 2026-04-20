@@ -91,15 +91,16 @@ function WaitlistForm() {
         style={{ fontFamily: "'DM Sans', sans-serif", color: interest ? "white" : "rgba(255,255,255,0.4)" }}
       >
         <option value="" disabled style={{ color: "#1A1008" }}>What brings you here?</option>
+        <option value="skin" style={{ color: "#1A1008" }}>Skin &amp; Glow</option>
         <option value="recovery" style={{ color: "#1A1008" }}>Recovery &amp; Performance</option>
-        <option value="skin" style={{ color: "#1A1008" }}>Skin &amp; Longevity</option>
+        <option value="energy" style={{ color: "#1A1008" }}>Energy &amp; Weekly Balance</option>
         <option value="wellness" style={{ color: "#1A1008" }}>General Wellness</option>
         <option value="science" style={{ color: "#1A1008" }}>I want the science</option>
       </select>
       <button type="submit" className="btn-primary justify-center w-full">
         Join the Waitlist
       </button>
-      <p className="text-white/40 text-xs text-center">No cost. No commitment.</p>
+      <p className="text-white/40 text-xs text-center">No payment. No commitment.</p>
     </form>
   );
 }
@@ -109,27 +110,27 @@ const STATS = [
   {
     stat: "5,000+",
     label: "Peer-reviewed studies",
-    body: "The most researched wavelengths in photomedicine. Not a trend — a body of evidence.",
+    body: "Clinically calibrated 660nm and 850nm wavelengths. Backed by thousands of studies. Simple to use. Precise where it matters.",
   },
   {
     stat: "660nm",
     label: "Red Light",
-    body: "Penetrates the skin's surface. Stimulates collagen, reduces inflammation, accelerates healing.",
+    body: "Supports the skin. Stimulates collagen, reduces surface inflammation, and promotes a clearer, more even tone.",
   },
   {
     stat: "850nm",
     label: "Near-Infrared",
-    body: "Reaches 5–10cm into tissue. Activates mitochondria, accelerates muscle recovery, reduces joint pain.",
+    body: "Reaches deeper tissue. Supports recovery, reduces heaviness, and helps your body switch gears after a long day.",
   },
   {
     stat: "10 min",
     label: "Per session",
-    body: "A single session is all it takes. Consistent weekly use compounds the results.",
+    body: "Fast enough for a weekday. Consistent enough to become a habit. The point is not perfection — it is repetition.",
   },
   {
     stat: "ATP+",
     label: "Cellular energy output",
-    body: "Photobiomodulation increases ATP synthesis — your cells' fuel — directly at the mitochondrial level.",
+    body: "Red light stimulates mitochondrial activity, increasing your cells' natural energy output from the inside out.",
   },
 ];
 
@@ -277,8 +278,7 @@ export default function Home() {
               className="text-white/60 text-sm mt-6 mb-10 max-w-sm leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              10 minutes. Clinically calibrated red light. Fully autonomous — no appointments, no friction.
-              Helsinki's first autonomous light therapy studio.
+              For skin, recovery and energy. A private 10-minute red light session, fully autonomous — no staff, no appointments, no friction.
             </motion.p>
 
             {/* Waitlist form */}
@@ -325,9 +325,11 @@ export default function Home() {
             <div className="reveal grid md:grid-cols-2 gap-12 mt-12">
               <p className="text-[#7A5A54] leading-relaxed text-base" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 Finland knows light. We live by its presence in summer, and its absence in winter shapes how we feel, recover, and think. Red light therapy is science that Finns understand intuitively — light as medicine, warmth as restoration, stillness as strength.
+
+              Redvive is a new kind of wellness studio built around full-body red light therapy. Book on your phone, walk into your private room, and spend 10 minutes in clinically calibrated light designed to support skin, recovery, energy and better weekly balance.
               </p>
               <p className="text-[#7A5A54] leading-relaxed text-base" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Redvive was built at the intersection of technology and wellness. Fully autonomous studios — no appointments, no friction. Book on your phone, walk in, and let clinically calibrated light do the work. 10 minutes. Science-backed. Your weekly reset.
+              No staff. No complexity. Just light, privacy and consistency. Use it when your skin looks tired, your body feels heavy, or your week has taken too much out of you. 10 minutes. Private. Science-backed.
               </p>
             </div>
           </div>
@@ -349,10 +351,10 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
             {[
-              { num: "01", title: "Autonomous", body: "Book on your phone. Walk in. The technology does everything — 24/7." },
-              { num: "02", title: "Accessible", body: "€25/month for founding members. Locked in for life. No commitment traps." },
-              { num: "03", title: "Science-Backed", body: "660nm + 850nm. Over 5,000 peer-reviewed studies. Clinically calibrated." },
-              { num: "04", title: "Finnish-Built", body: "Designed with Nordic precision. Private rooms. No excess. Just light." },
+              { num: "01", title: "Autonomous", body: "Book on your phone. Walk in. Close the door. Begin. No staff in the room. No small talk. No waiting around." },
+              { num: "02", title: "Accessible", body: "€25/month for founding members. Locked in for life. Fast enough for a weekday. Calm enough to become a habit." },
+              { num: "03", title: "Science-Backed", body: "Clinically calibrated 660nm and 850nm wavelengths. Backed by thousands of peer-reviewed studies." },
+              { num: "04", title: "Finnish-Built", body: "Designed with Nordic precision. Private rooms. No excess. Just light, privacy and consistency." },
             ].map((pillar, i) => (
               <div
                 key={i}
@@ -411,7 +413,7 @@ export default function Home() {
                 </em>
               </h2>
               <p className="text-[#7A5A54] text-base max-w-xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                This is the founding member rate — available only to waitlist members before we open. Once claimed, it's yours forever. No price increases. No conditions.
+                Redvive is built for repeat use. This is the founding member rate — available only to waitlist members before we open. Once claimed, it's yours forever. No price increases. No conditions.
               </p>
             </div>
 
@@ -529,7 +531,7 @@ export default function Home() {
                 </em>
               </h2>
               <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Founding members get priority booking and the founding member rate — locked in for life.
+                Join the waitlist for first access to Redvive studios in the capital region. Be first to hear about opening dates, founding rates and early access.
               </p>
               <WaitlistForm />
             </div>

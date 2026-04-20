@@ -109,7 +109,7 @@ export default function Science() {
               className="text-2xl md:text-3xl leading-relaxed font-light"
               style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A1008", letterSpacing: "-0.01em" }}
             >
-              Over 5,000 peer-reviewed studies confirm what we know instinctively. The right wavelengths of light — 660nm and 850nm — restore what modern life depletes.
+              Redvive uses clinically calibrated 660nm and 850nm light — the wavelengths most commonly associated with skin support and deeper tissue recovery. The science is serious. The experience is simple.
             </p>
           </div>
         </div>
@@ -150,13 +150,13 @@ export default function Science() {
                 className="text-xl font-bold mb-4 text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
               >
-                Skin. Collagen. Surface recovery.
+                Skin first.
               </h3>
               <p className="text-[#7A5A54] text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Red light at 660nm penetrates the skin's surface layers, stimulating fibroblasts to produce collagen and elastin. The result: improved skin tone, reduced fine lines, and accelerated wound healing.
+                Red light at 660nm supports the skin. It stimulates collagen production, reduces surface inflammation, and promotes a clearer, more even tone over time.
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                It also reduces inflammation at the surface level — useful for acne, rosacea, and post-workout skin stress.
+                Skin comes first, but the effect starts here — at the surface, where most people notice results earliest.
               </p>
             </div>
 
@@ -184,13 +184,13 @@ export default function Science() {
                 className="text-xl font-bold mb-4 text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
               >
-                Muscle. Joint. Deep tissue recovery.
+                Then everything beneath it.
               </h3>
               <p className="text-[#7A5A54] text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Near-infrared at 850nm penetrates 5–10cm into the body, reaching muscle tissue, joints, and even bone. It activates cytochrome c oxidase in the mitochondria — your cells' energy engines — increasing ATP production.
+                Near-infrared at 850nm reaches deeper tissue — muscles, joints, and connective tissue. It activates the mitochondria, increasing your cells' natural energy output and supporting faster recovery.
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                The result: faster muscle recovery, reduced joint pain, improved sleep quality, and systemic anti-inflammatory effects.
+                The result: less heaviness, better recovery, improved sleep quality, and a calmer baseline through the week.
               </p>
             </div>
           </div>
@@ -219,10 +219,10 @@ export default function Science() {
             </div>
             <div className="reveal grid md:grid-cols-2 gap-12">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Photobiomodulation (PBM) is the mechanism behind red light therapy. When specific wavelengths of light hit your cells, they trigger a photochemical reaction in the mitochondria — increasing ATP synthesis, reducing oxidative stress, and activating repair pathways.
+                Photobiomodulation is the mechanism behind red light therapy. When specific wavelengths of light reach your cells, they trigger a reaction in the mitochondria — increasing energy output, reducing oxidative stress, and activating natural repair pathways.
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                This is not heat therapy. It's not UV. It's a precise, non-invasive signal that tells your cells to do what they were designed to do — just faster. The same mechanism studied in over 5,000 peer-reviewed papers.
+                This is not heat therapy. It is not UV. It is a precise, non-invasive signal that tells your cells to do what they were designed to do — just more efficiently. Backed by thousands of peer-reviewed studies.
               </p>
             </div>
           </div>
@@ -252,16 +252,16 @@ export default function Science() {
             <div className="grid md:grid-cols-3 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
               {[
                 {
+                  category: "Skin",
+                  items: ["A clearer, more supported glow", "Stimulates collagen production", "Reduces surface inflammation", "Supports skin tone and texture"],
+                },
+                {
                   category: "Recovery",
-                  items: ["Reduces DOMS by up to 50%", "Accelerates muscle repair", "Decreases joint inflammation", "Improves range of motion"],
+                  items: ["Less heaviness, more ease", "Faster muscle repair", "Reduced joint discomfort", "Improved range of motion"],
                 },
                 {
-                  category: "Skin & Longevity",
-                  items: ["Stimulates collagen synthesis", "Reduces fine lines & wrinkles", "Improves skin tone & texture", "Accelerates wound healing"],
-                },
-                {
-                  category: "Performance & Energy",
-                  items: ["Increases mitochondrial ATP output", "Improves sleep quality", "Reduces systemic inflammation", "Supports hormonal balance"],
+                  category: "Energy & Sleep",
+                  items: ["A better baseline through the week", "Improved sleep quality", "Reduced systemic inflammation", "A moment that helps your body switch gears"],
                 },
               ].map((group, i) => (
                 <div
@@ -313,10 +313,10 @@ export default function Science() {
             <span className="brand-rule mb-8" />
             <div className="grid md:grid-cols-2 gap-12">
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Most people notice improved skin tone and reduced puffiness after their first session. Within 2–4 weeks of consistent use, the deeper effects — better sleep, faster recovery, reduced inflammation — become unmistakable.
+                Most people notice a difference in skin tone and how their body feels after the first few sessions. Within 2–4 weeks of consistent use, the deeper effects — better sleep, faster recovery, a calmer baseline — become part of how your week feels.
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                5,000+ peer-reviewed studies. One 10-minute session. The science is settled — the only question is when you start.
+                Backed by thousands of peer-reviewed studies. Simple to use. Precise where it matters. The science is serious — the experience is just 10 minutes.
               </p>
             </div>
           </div>
