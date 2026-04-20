@@ -309,7 +309,7 @@ export default function Experience() {
       <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #EDE3DF 30%, #E8DCDA 60%, #FFF9F9 100%)" }} />
 
       {/* ── CTA — rose-white ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+      <section className="py-24 md:py-32" style={{ background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 35%, #EDE3DF 65%, #E4D8D4 100%)" }}>
         <div className="container">
           <div className="reveal max-w-xl mx-auto text-center">
             <h2

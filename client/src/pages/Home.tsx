@@ -569,16 +569,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: blush → rose-white ── */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #EDE3DF 30%, #E8DCDA 60%, #FFF9F9 100%)" }} />
+      {/* ── FEATHERED TRANSITION: rose-white → deep dark ── */}
+      <div style={{ height: "280px", background: "linear-gradient(to bottom, #FFF9F9 0%, #EDE3DF 15%, #C9A89E 35%, #7A4A42 55%, #3D1A14 75%, #1A1008 90%, #0A0303 100%)" }} />
 
       {/* ── WAITLIST CTA ── */}
       <section
         id="waitlist"
         className="relative py-32 md:py-40 overflow-hidden"
-        style={{ backgroundColor: "#0A0303" }}
+        style={{ background: "linear-gradient(to bottom, #0A0303 0%, #0D0404 50%, #0A0303 100%)" }}
       >
-        <div className="absolute inset-0" style={{ background: "rgba(10,3,3,0.85)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(61,26,20,0.18) 0%, transparent 70%)" }} />
         <div className="relative z-10 container">
           <div className="max-w-lg mx-auto text-center">
             <div className="reveal">

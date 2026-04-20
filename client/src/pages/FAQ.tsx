@@ -257,7 +257,7 @@ export default function FAQ() {
       {/* ── FINAL CTA ── */}
       <section
         className="relative py-32 md:py-40 overflow-hidden"
-        style={{ backgroundColor: "#0A0303" }}
+        style={{ background: "linear-gradient(to bottom, #FFF9F9 0%, #EDE3DF 8%, #C9A89E 22%, #7A4A42 42%, #3D1A14 62%, #1A1008 80%, #0A0303 100%)" }}
       >
         <video
           className="absolute inset-0 w-full h-full object-cover"
@@ -266,9 +266,9 @@ export default function FAQ() {
           muted
           loop
           playsInline
-          style={{ opacity: 0.25 }}
+          style={{ opacity: 0.12 }}
         />
-        <div className="absolute inset-0" style={{ background: "rgba(10,3,3,0.75)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 30%, rgba(61,26,20,0.22) 0%, transparent 65%)" }} />
         <div className="relative z-10 container">
           <div className="max-w-lg mx-auto text-center reveal">
             <span
