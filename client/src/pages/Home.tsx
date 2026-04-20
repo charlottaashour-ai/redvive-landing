@@ -471,14 +471,16 @@ export default function Home() {
       {/* ── FEATHERED TRANSITION: dark → rose-white (via blush mid-tones) ── */}
       <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
 
-      {/* ── MANIFESTO ── */}
+      {/* ── WHAT WE STAND FOR — editorial rows ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container">
           <div className="max-w-4xl mx-auto">
-            <div className="reveal">
-              <span className="section-label block mb-6">The Belief</span>
+
+            {/* Section header */}
+            <div className="reveal mb-16">
+              <span className="section-label block mb-6">What We Stand For</span>
               <h2
-                className="text-4xl md:text-6xl font-bold leading-[1.05] mb-6"
+                className="text-4xl md:text-6xl font-bold leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
               >
                 light is<br />
@@ -486,73 +488,83 @@ export default function Home() {
                   the medicine.
                 </em>
               </h2>
-              <span className="brand-rule mb-8" />
             </div>
-            <div className="reveal grid md:grid-cols-2 gap-12 mt-12">
-              <p className="text-[#7A5A54] leading-relaxed text-base" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Finland knows light. We live by its presence in summer, and its absence in winter shapes how we feel, recover, and think. Red light therapy is science that Finns understand intuitively — light as medicine, warmth as restoration, stillness as strength.
 
-              Redvive is a new kind of wellness studio built around full-body red light therapy. Book on your phone, walk into your private room, and spend 10 minutes in clinically calibrated light designed to support skin, recovery, energy and better weekly balance.
-              </p>
-              <p className="text-[#7A5A54] leading-relaxed text-base" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              No staff. No complexity. Just light, privacy and consistency. Use it when your skin looks tired, your body feels heavy, or your week has taken too much out of you. 10 minutes. Private. Science-backed.
-              </p>
+            {/* Editorial rows */}
+            <div className="flex flex-col">
+              {[
+                {
+                  num: "01",
+                  title: "Autonomous",
+                  headline: "No staff. No small talk. Just light.",
+                  body: "Book on your phone. Walk in. Close the door. Begin. Your private room is ready. No check-in, no upsell, no wellness theatre.",
+                },
+                {
+                  num: "02",
+                  title: "Accessible",
+                  headline: "Fast enough for a weekday.",
+                  body: "€25/month for founding members. Locked in for life. Less than a coffee a day — calm enough to become a habit, affordable enough to stay one.",
+                },
+                {
+                  num: "03",
+                  title: "Science-Backed",
+                  headline: "Clinically calibrated. Peer-reviewed.",
+                  body: "660nm and 850nm wavelengths — the same protocol used in clinical settings. Backed by thousands of peer-reviewed studies. Precise where it matters.",
+                },
+                {
+                  num: "04",
+                  title: "Finnish-Built",
+                  headline: "Nordic precision. No excess.",
+                  body: "Designed in Helsinki. Private rooms. No noise, no complexity. Just light, privacy and consistency — the way Finland has always understood wellness.",
+                },
+              ].map((pillar, i) => (
+                <div
+                  key={i}
+                  className="reveal"
+                  style={{
+                    borderTop: "1px solid rgba(26,16,8,0.1)",
+                    paddingTop: "2.75rem",
+                    paddingBottom: "2.75rem",
+                    transitionDelay: `${i * 80}ms`,
+                  }}
+                >
+                  <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 items-start">
+                    {/* Left: number + title + headline */}
+                    <div>
+                      <p
+                        className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-2"
+                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                      >
+                        {pillar.num} — {pillar.title}
+                      </p>
+                      <p
+                        className="text-lg font-bold leading-snug text-[#1A1008]"
+                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                      >
+                        {pillar.headline}
+                      </p>
+                    </div>
+                    {/* Right: body copy */}
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                      {pillar.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              {/* Closing rule */}
+              <div style={{ borderTop: "1px solid rgba(26,16,8,0.1)" }} />
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ── FOUR PILLARS ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#F5EDEB" }}>
-        <div className="container">
-          <div className="reveal mb-16">
-            <span className="section-label block mb-4">What We Stand For</span>
-            <h2
-              className="text-3xl md:text-5xl font-bold"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
-            >
-              Built differently.
-            </h2>
-          </div>
+            {/* Science CTA */}
+            <div className="reveal mt-14">
+              <Link href="/science">
+                <button className="btn-ghost">Understand the science →</button>
+              </Link>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
-            {[
-              { num: "01", title: "Autonomous", body: "Book on your phone. Walk in. Close the door. Begin. No staff in the room. No small talk. No waiting around." },
-              { num: "02", title: "Accessible", body: "€25/month for founding members. Locked in for life. Fast enough for a weekday. Calm enough to become a habit." },
-              { num: "03", title: "Science-Backed", body: "Clinically calibrated 660nm and 850nm wavelengths. Backed by thousands of peer-reviewed studies." },
-              { num: "04", title: "Finnish-Built", body: "Designed with Nordic precision. Private rooms. No excess. Just light, privacy and consistency." },
-            ].map((pillar, i) => (
-              <div
-                key={i}
-                className="reveal bg-[#FFF9F9] p-8 lg:p-10 flex flex-col gap-4"
-                style={{ transitionDelay: `${i * 80}ms` }}
-              >
-                <span
-                  className="text-[0.65rem] font-semibold tracking-[0.18em]"
-                  style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {pillar.num}
-                </span>
-                <h3
-                  className="text-lg font-bold text-[#1A1008]"
-                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
-                >
-                  {pillar.title}
-                </h3>
-                <span className="brand-rule" />
-                <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  {pillar.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="reveal mt-12">
-            <Link href="/science">
-              <button className="btn-ghost">
-                Understand the science →
-              </button>
-            </Link>
           </div>
         </div>
       </section>
