@@ -108,29 +108,24 @@ function WaitlistForm() {
 /* ── Stats carousel data ── */
 const STATS = [
   {
-    stat: "5,000+",
-    label: "Peer-reviewed studies",
-    body: "Clinically calibrated 660nm and 850nm wavelengths. Backed by thousands of studies. Simple to use. Precise where it matters.",
+    stat: "Skin",
+    label: "Clarity & Glow",
+    body: "Full-body red light to support calmer, clearer, more resilient skin in 10 minutes.",
   },
   {
-    stat: "660nm",
-    label: "Red Light",
-    body: "Supports the skin. Stimulates collagen, reduces surface inflammation, and promotes a clearer, more even tone.",
+    stat: "Recovery",
+    label: "Body Reset",
+    body: "When training or work leaves you heavy, 10 minutes of light helps your body bounce back.",
   },
   {
-    stat: "850nm",
-    label: "Near-Infrared",
-    body: "Reaches deeper tissue. Supports recovery, reduces heaviness, and helps your body switch gears after a long day.",
+    stat: "Hair",
+    label: "Scalp Support",
+    body: "Targeted red light to support scalp circulation for people who take thinning hair seriously.",
   },
   {
-    stat: "10 min",
-    label: "Per session",
-    body: "Fast enough for a weekday. Consistent enough to become a habit. The point is not perfection — it is repetition.",
-  },
-  {
-    stat: "ATP+",
-    label: "Cellular energy output",
-    body: "Red light stimulates mitochondrial activity, increasing your cells' natural energy output from the inside out.",
+    stat: "Sleep",
+    label: "Evening Wind-Down",
+    body: "An evening 10-minute session to help your body slow down and make mornings feel less brutal.",
   },
 ];
 
@@ -412,8 +407,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: rose-white → blush ── */}
-      <div style={{ height: "100px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 100%)" }} />
+      {/* ── FEATHERED TRANSITION: rose-white → dark ── */}
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #FFF9F9 0%, #1A1008 100%)" }} />
+      <StatsCarousel />
+      {/* ── FEATHERED TRANSITION: dark → blush ── */}
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #1A1008 0%, #F5EDEB 100%)" }} />
 
       {/* ── MANIFESTO ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -501,11 +499,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: blush → dark ── */}
-      <div style={{ height: "130px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
-      <StatsCarousel />
-      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
-      <div style={{ height: "130px", background: "linear-gradient(to bottom, #1A1008 0%, #FFF9F9 100%)" }} />
+      {/* ── FEATHERED TRANSITION: blush → rose-white ── */}
+      <div style={{ height: "100px", background: "linear-gradient(to bottom, #F5EDEB 0%, #FFF9F9 100%)" }} />
 
       {/* ── WAITLIST CTA ── */}
       <section
