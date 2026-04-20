@@ -211,9 +211,15 @@ export default function Home() {
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${HERO_IMAGE})`, opacity: 0.85 }}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src={HERO_VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={HERO_IMAGE}
+          style={{ opacity: 0.45 }}
         />
         <div
           className="absolute inset-0"
