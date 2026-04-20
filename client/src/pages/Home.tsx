@@ -243,7 +243,7 @@ export default function Home() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
               style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Born in Finland · Opening 2026
+              Born in Helsinki. Opening in Fall of 2026
             </motion.p>
 
             {/* Headline line 1 */}
@@ -518,7 +518,7 @@ export default function Home() {
           <div className="max-w-lg mx-auto text-center">
             <div className="reveal">
               <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>
-                Helsinki · Opening 2026
+                Born in Helsinki. Opening in Fall of 2026
               </span>
               <h2
                 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"

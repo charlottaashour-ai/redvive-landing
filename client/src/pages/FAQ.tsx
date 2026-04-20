@@ -278,7 +278,7 @@ export default function FAQ() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
               style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Helsinki · Opening 2026
+              Born in Helsinki. Opening in Fall of 2026
             </span>
             <h2
               className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"

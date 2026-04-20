@@ -30,7 +30,7 @@ export default function Footer() {
               style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
             >
               light is the medicine.<br />
-              Born in Finland. Built on science.
+              Born in Helsinki. Built on science.
             </p>
           </div>
 
@@ -67,13 +67,13 @@ export default function Footer() {
               className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
               style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Opening 2026
+              Opening Fall 2026
             </p>
             <p
               className="text-sm mb-6"
               style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}
             >
-              Helsinki, opening 2026.<br />
+              Helsinki, opening Fall 2026.<br />
               Join the waitlist for priority access.
             </p>
             <a href="/#waitlist">
@@ -93,7 +93,7 @@ export default function Footer() {
             className="text-xs"
             style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
           >
-            © 2026 Redvive. Born in Finland.
+            © 2026 Redvive. Born in Helsinki.
           </p>
           <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Instagram", "TikTok"].map((item) => (
