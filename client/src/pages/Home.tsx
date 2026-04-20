@@ -241,7 +241,7 @@ export default function Home() {
             <motion.p
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
-              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               Born in Helsinki. Opening in Fall of 2026
             </motion.p>
