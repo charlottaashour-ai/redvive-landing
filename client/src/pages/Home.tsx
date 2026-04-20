@@ -133,7 +133,7 @@ function StatsCarousel() {
   const items = [...STATS, ...STATS, ...STATS];
 
   return (
-    <div className="reveal" style={{ backgroundColor: "#1A1008", overflow: "hidden" }}>
+    <div style={{ backgroundColor: "#1A1008", overflow: "hidden" }}>
       <div className="relative py-16 md:py-20" style={{ overflow: "hidden" }}>
         <div
           className="flex"
@@ -149,8 +149,7 @@ function StatsCarousel() {
               style={{
                 width: "280px",
                 borderRight: "1px solid rgba(255,255,255,0.07)",
-                animation: `carouselItemFade 0.6s ease both`,
-                animationDelay: `${(i % 4) * 0.12}s`,
+
               }}
             >
               <p
