@@ -196,7 +196,7 @@ const PRICING_ROWS = [
   { option: "Clinic / physio", cost: "€80–€150", label: "per session", note: "1–2 sessions max", highlight: false },
   { option: "Home device", cost: "€500–€3,000", label: "one-time", note: "High upfront, no guidance", highlight: false },
   { option: "Competitor studio", cost: "€60–€120", label: "per month", note: "4–8 sessions included", highlight: false },
-  { option: "Redvive — Founding Member", cost: "€25", label: "per month", note: "Unlimited · locked in forever", highlight: true },
+  { option: "Redvive — Founding Member", cost: "€25", label: "per month", note: "", highlight: true },
 ];
 
 export default function Home() {
