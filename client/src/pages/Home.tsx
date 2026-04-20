@@ -300,133 +300,111 @@ export default function Home() {
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
 
       {/* ── FOUNDING MEMBER PRICING ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container">
-          <div className="max-w-2xl mx-auto">
-            <div className="reveal mb-4">
-              <span className="section-label block mb-4">Founding Member Pricing</span>
-              <h2
-                className="text-3xl md:text-5xl font-bold text-[#1A1008] mb-4"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+
+          {/* Scarcity pill */}
+          <div className="reveal flex justify-center mb-10">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2"
+              style={{ backgroundColor: "#D53E0F" }}
+            >
+              <span
+                className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                €25 / month.<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  Locked in for life.
-                </em>
-              </h2>
-              <p className="text-[#7A5A54] text-base max-w-xl" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Redvive is built for repeat use. This is the founding member rate — available only to waitlist members before we open. Once claimed, it's yours forever. No price increases. No conditions.
-              </p>
-            </div>
-
-            {/* Urgency badge */}
-            <div className="reveal flex items-center gap-3 mt-12 mb-4">
-              <div
-                className="inline-flex items-center gap-2 px-3 py-1.5"
-                style={{ backgroundColor: "#D53E0F" }}
-              >
-                <span
-                  className="text-[0.6rem] font-bold tracking-[0.18em] uppercase text-white"
-                  style={{ fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  Founding Member — Limited to 300 Spots
-                </span>
-              </div>
-              <div className="h-px flex-1" style={{ backgroundColor: "#E8D8D4" }} />
-            </div>
-
-            <div className="reveal flex flex-col gap-3 mb-12">
-              {PRICING_ROWS.map((row, i) => (
-                <div
-                  key={i}
-                  className="flex items-center justify-between gap-4 px-6 py-5"
-                  style={{
-                    backgroundColor: row.highlight ? "#D53E0F" : "#F5EDEB",
-                    borderLeft: row.highlight ? "4px solid #D53E0F" : "4px solid transparent",
-                  }}
-                >
-                  <div className="flex flex-col gap-1 min-w-0">
-                    {row.highlight && (
-                      <span
-                        className="text-[0.6rem] font-bold tracking-[0.18em] uppercase mb-0.5"
-                        style={{ color: "#FFCAB0", fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        You
-                      </span>
-                    )}
-                    <span
-                      className="text-sm font-semibold leading-snug"
-                      style={{ color: row.highlight ? "white" : "#1A1008", fontFamily: "'DM Sans', sans-serif" }}
-                    >
-                      {row.option}
-                    </span>
-                    <span
-                      className="text-xs"
-                      style={{ color: row.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
-                    >
-                      {row.note}
-                    {row.highlight && (
-                      <span
-                        className="text-[0.6rem] font-semibold tracking-[0.12em] uppercase mt-1"
-                        style={{ color: "rgba(255,255,255,0.75)", fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        First 300 members only — after that, €35/month
-                      </span>
-                    )}
-                    </span>
-                  </div>
-                  <div className="flex flex-col items-end flex-shrink-0">
-                    <span
-                      className="text-2xl font-bold leading-none"
-                      style={{ color: row.highlight ? "white" : "#1A1008", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
-                    >
-                      {row.cost}
-                    </span>
-                    <span
-                      className="text-xs mt-0.5"
-                      style={{ color: row.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
-                    >
-                      {row.label}
-                    </span>
-                  </div>
-                </div>
-              ))}
-              <p className="text-[#7A5A54] text-xs mt-1" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                * Final session structure confirmed at launch. Founding rate locked in for life.
-              </p>
-            </div>
-
-            <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px mb-12" style={{ backgroundColor: "#E8D8D4" }}>
-              {[
-                { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
-                { stat: "10×", label: "vs. clinic", body: "One clinic session = one month at Redvive." },
-                { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-[#FFF9F9] p-8 flex flex-col gap-3 text-center"
-                  style={{ transitionDelay: `${i * 100}ms` }}
-                >
-                  <p
-                    className="text-4xl font-bold whitespace-nowrap"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
-                  >
-                    {item.stat}
-                  </p>
-                  <p
-                    className="text-xs font-semibold tracking-[0.14em] uppercase whitespace-nowrap"
-                    style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
-                  >
-                    {item.label}
-                  </p>
-                  <span className="brand-rule mx-auto" />
-                  <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                    {item.body}
-                  </p>
-                </div>
-              ))}
+                Founding Member — Limited to 300 Spots
+              </span>
             </div>
           </div>
+
+          {/* Section label */}
+          <div className="reveal text-center mb-6">
+            <span className="section-label">Founding Member Pricing</span>
+          </div>
+
+          {/* Monument price */}
+          <div className="reveal text-center mb-6">
+            <div className="flex items-baseline justify-center gap-3 md:gap-5 flex-wrap">
+              <span
+                className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] font-bold leading-none text-[#1A1008]"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em" }}
+              >
+                €25
+              </span>
+              <span
+                className="text-xl sm:text-2xl md:text-3xl font-normal text-[#7A5A54] self-end pb-3 md:pb-6"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                / month.
+              </span>
+            </div>
+          </div>
+
+          {/* Serif sub-headline */}
+          <div className="reveal text-center mb-6">
+            <p
+              className="text-2xl sm:text-3xl md:text-4xl text-[#1A1008]"
+              style={{ fontFamily: "'Lora', serif", fontWeight: 400 }}
+            >
+              Locked in for life.
+            </p>
+          </div>
+
+          {/* Body copy */}
+          <div className="reveal text-center mb-16">
+            <p
+              className="text-[#7A5A54] text-sm md:text-base leading-relaxed max-w-lg mx-auto"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Available only to waitlist members before we open. Once claimed, it's yours forever. No price increases. No conditions.
+            </p>
+          </div>
+
+          {/* Thin rule */}
+          <div className="reveal max-w-2xl mx-auto mb-16">
+            <div className="h-px w-full" style={{ backgroundColor: "#E8D8D4" }} />
+          </div>
+
+          {/* Three value facts */}
+          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px max-w-3xl mx-auto" style={{ backgroundColor: "#E8D8D4" }}>
+            {[
+              { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
+              { stat: "10×", label: "vs. clinic", body: "One clinic session = one month at Redvive." },
+              { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-[#FFF9F9] px-6 py-10 flex flex-col gap-3 text-center"
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <p
+                  className="text-4xl md:text-5xl font-bold"
+                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                >
+                  {item.stat}
+                </p>
+                <p
+                  className="text-xs font-semibold tracking-[0.14em] uppercase"
+                  style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  {item.label}
+                </p>
+                <span className="brand-rule mx-auto" />
+                <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Footnote */}
+          <div className="reveal text-center mt-8">
+            <p className="text-[#B89490] text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              * Final session structure confirmed at launch. Founding rate locked in for life.
+            </p>
+          </div>
+
         </div>
       </section>
 
