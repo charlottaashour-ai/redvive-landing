@@ -412,8 +412,8 @@ export default function Home() {
       {/* ── FEATHERED TRANSITION: rose-white → dark ── */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
       <StatsCarousel />
-      {/* ── FEATHERED TRANSITION: dark → blush ── */}
-      <div style={{ height: "220px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 20%, #8B5E56 50%, #C9A89E 75%, #F5EDEB 100%)" }} />
+      {/* ── FEATHERED TRANSITION: dark → rose-white (via blush mid-tones) ── */}
+      <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
 
       {/* ── MANIFESTO ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
