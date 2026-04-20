@@ -313,7 +313,7 @@ export default function Home() {
                 className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                Founding Member — Limited to 300 Spots
+                Limited to 300 Spots
               </span>
             </div>
           </div>
