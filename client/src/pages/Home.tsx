@@ -278,7 +278,7 @@ export default function Home() {
               className="text-white/60 text-sm mt-6 mb-10 max-w-sm leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              For skin, recovery and energy. A private 10-minute red light session, fully autonomous — no staff, no appointments, no friction.
+              For skin, recovery and energy. A private 10-minute red light session — your wellbeing, on your own time.
             </motion.p>
 
             {/* Waitlist form */}
