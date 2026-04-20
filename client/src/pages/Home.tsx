@@ -74,7 +74,7 @@ function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md mx-auto md:mx-0">
       <input
         type="email"
         required
