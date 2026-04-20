@@ -22,8 +22,7 @@ const heroItem = {
 };
 
 const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
-const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
-const STUDIO_BLUR_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-studio-blur-Pq3aZTAAiRMjG62Mvq7BTZ.webp";
+
 
 function useReveal() {
   useEffect(() => {
@@ -55,7 +54,6 @@ export default function Experience() {
           muted
           loop
           playsInline
-          poster={HERO_IMAGE}
           style={{ opacity: 0.45 }}
         />
         <div

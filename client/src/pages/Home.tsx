@@ -566,11 +566,7 @@ export default function Home() {
         className="relative py-32 md:py-40 overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-40"
-          style={{ backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp)` }}
-        />
-        <div className="absolute inset-0" style={{ background: "rgba(10,3,3,0.6)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(10,3,3,0.85)" }} />
         <div className="relative z-10 container">
           <div className="max-w-lg mx-auto text-center">
             <div className="reveal">

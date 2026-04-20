@@ -24,7 +24,7 @@ const heroItem = {
 };
 
 const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
-const BLUR_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
+
 
 function useReveal() {
   useEffect(() => {
@@ -89,7 +89,6 @@ export default function Science() {
           muted
           loop
           playsInline
-          poster={BLUR_IMAGE}
           style={{ opacity: 0.45 }}
         />
         <div
