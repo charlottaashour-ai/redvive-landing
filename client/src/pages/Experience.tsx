@@ -91,7 +91,7 @@ export default function Experience() {
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                   for yourself.
                 </em>
               </h1>
@@ -130,7 +130,7 @@ export default function Experience() {
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
               Three steps.<br />
-              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                 That's it.
               </em>
             </h2>
@@ -204,7 +204,7 @@ export default function Experience() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Clinical-grade.<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
                   Private rooms. Just light.
                 </em>
               </h2>
@@ -260,7 +260,7 @@ export default function Experience() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Built for people who<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
                   take their health seriously.
                 </em>
               </h2>
@@ -319,7 +319,7 @@ export default function Experience() {
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
               Ready to start?<br />
-              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                 €25/month. Locked in forever.
               </em>
             </h2>

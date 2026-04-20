@@ -218,7 +218,7 @@ export default function FAQ() {
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                   answers.
                 </em>
               </h1>
@@ -285,7 +285,7 @@ export default function FAQ() {
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
             >
               Still unsure?<br />
-              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                 Try it first.
               </em>
             </h2>

@@ -89,7 +89,7 @@ export default function Science() {
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                   the medicine.
                 </em>
               </h1>
@@ -211,7 +211,7 @@ export default function Science() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Your mitochondria<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
                   do the work.
                 </em>
               </h2>
@@ -243,7 +243,7 @@ export default function Science() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 660nm for skin.<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
                   850nm for everything beneath it.
                 </em>
               </h2>
@@ -306,7 +306,7 @@ export default function Science() {
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
               Visible from<br />
-              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                 session one.
               </em>
             </h2>
@@ -332,7 +332,7 @@ export default function Science() {
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
               Ready to feel it<br />
-              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                 for yourself?
               </em>
             </h2>

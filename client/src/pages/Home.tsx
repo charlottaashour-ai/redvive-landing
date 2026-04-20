@@ -262,7 +262,7 @@ export default function Home() {
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] mb-4"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                <span style={{ fontStyle: "italic", fontWeight: 300, fontFamily: "'Fraunces', serif" }}>
+                <span style={{ fontWeight: 400, fontStyle: "normal", fontFamily: "'Lora', serif" }}>
                   simplified.
                 </span>
               </h1>
@@ -312,7 +312,7 @@ export default function Home() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 €25 / month.<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                   Locked in for life.
                 </em>
               </h2>
@@ -425,7 +425,7 @@ export default function Home() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
               >
                 light is<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                   the medicine.
                 </em>
               </h2>
@@ -525,7 +525,7 @@ export default function Home() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
                 Be first<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
                   through the door.
                 </em>
               </h2>
