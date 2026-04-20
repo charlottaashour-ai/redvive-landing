@@ -310,6 +310,15 @@ export default function Home() {
               style={{ backgroundColor: "#D53E0F" }}
             >
               <span
+                className="block rounded-full flex-shrink-0"
+                style={{
+                  width: "5px",
+                  height: "5px",
+                  backgroundColor: "white",
+                  animation: "dotBlink 2s ease-in-out infinite",
+                }}
+              />
+              <span
                 className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
@@ -554,6 +563,10 @@ export default function Home() {
         @keyframes carouselItemFade {
           0% { opacity: 0; transform: translateY(10px); }
           100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes dotBlink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.15; }
         }
       `}</style>
     </div>
