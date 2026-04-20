@@ -228,7 +228,7 @@ export default function FAQ() {
       </section>
 
       {/* Feathered: dark → rose-white */}
-      <div style={{ height: "130px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
+      <div style={{ height: "220px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
 
       {/* ── FAQ CONTENT ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>
