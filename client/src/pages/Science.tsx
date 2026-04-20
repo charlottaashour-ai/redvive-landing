@@ -1,8 +1,11 @@
 /*
  * REDVIVE — The Science Page
  * Design: No images. Pure typography + solid color blocks that flow seamlessly.
- * Palette flow: #0A0303 hero → #FFF9F9 intro → #F5EDEB wavelengths → #1A1008 mechanism → #F5EDEB benefits → #FFF9F9 CTA
+ * Palette flow: #0A0303 hero → #FFF9F9 intro → #1A1008 mechanism → #F5EDEB benefits → #FFF9F9 result → #F5EDEB CTA
  * Tone: Direct, evidence-based, calm — not clinical, not corporate
+ *
+ * Structure (revised):
+ *   Hero → Intro → Mechanism (expanded, replaces wavelength section) → What It Does For You (editorial rows) → The Result → CTA
  */
 
 import { useEffect } from "react";
@@ -33,6 +36,39 @@ function useReveal() {
     return () => observer.disconnect();
   }, []);
 }
+
+const BENEFITS = [
+  {
+    category: "Skin",
+    headline: "Clearer. Calmer. More resilient.",
+    items: [
+      "Stimulates collagen production",
+      "Reduces surface inflammation",
+      "Supports skin tone and texture",
+      "A clearer, more supported glow",
+    ],
+  },
+  {
+    category: "Recovery",
+    headline: "Less heaviness. More ease.",
+    items: [
+      "Faster muscle repair",
+      "Reduced joint discomfort",
+      "Improved range of motion",
+      "Supports connective tissue recovery",
+    ],
+  },
+  {
+    category: "Energy & Sleep",
+    headline: "A better baseline through the week.",
+    items: [
+      "Improved sleep quality",
+      "Reduced systemic inflammation",
+      "Supports cellular energy output",
+      "A moment that helps your body switch gears",
+    ],
+  },
+];
 
 export default function Science() {
   useReveal();
@@ -115,96 +151,16 @@ export default function Science() {
         </div>
       </section>
 
-      {/* Feathered: rose-white → blush */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #FFF9F9 0%, #EDE3DF 40%, #E8DCDA 70%, #F5EDEB 100%)" }} />
+      {/* Feathered: rose-white → near-black */}
+      <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 20%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
 
-      {/* ── WAVELENGTHS — blush ── */}
-      <section className="py-16 md:py-24" style={{ backgroundColor: "#F5EDEB" }}>
-        <div className="container">
-          <div className="reveal mb-16 max-w-3xl mx-auto">
-            <span className="section-label block mb-4">Two Wavelengths. One Protocol.</span>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-px max-w-4xl mx-auto" style={{ backgroundColor: "#E8D8D4" }}>
-            {/* 660nm */}
-            <div className="reveal bg-[#FFF9F9] p-10 lg:p-14">
-              <div className="flex items-start gap-4 mb-6">
-                <div
-                  className="w-3 h-3 rounded-full mt-1.5 flex-shrink-0"
-                  style={{ backgroundColor: "#D53E0F", boxShadow: "0 0 12px rgba(213,62,15,0.5)" }}
-                />
-                <div>
-                  <p
-                    className="text-4xl font-bold mb-1"
-                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
-                  >
-                    660nm
-                  </p>
-                  <p className="text-xs font-semibold tracking-[0.14em] uppercase text-[#7A5A54]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                    Red Light
-                  </p>
-                </div>
-              </div>
-              <span className="brand-rule mb-6" />
-              <h3
-                className="text-xl font-bold mb-4 text-[#1A1008]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
-              >
-                Skin first.
-              </h3>
-              <p className="text-[#7A5A54] text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Red light at 660nm supports the skin. It stimulates collagen production, reduces surface inflammation, and promotes a clearer, more even tone over time.
-              </p>
-              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Skin comes first, but the effect starts here — at the surface, where most people notice results earliest.
-              </p>
-            </div>
-
-            {/* 850nm */}
-            <div className="reveal bg-[#FFF9F9] p-10 lg:p-14" style={{ transitionDelay: "100ms" }}>
-              <div className="flex items-start gap-4 mb-6">
-                <div
-                  className="w-3 h-3 rounded-full mt-1.5 flex-shrink-0"
-                  style={{ backgroundColor: "#D53E0F", boxShadow: "0 0 12px rgba(213,62,15,0.4)" }}
-                />
-                <div>
-                  <p
-                    className="text-4xl font-bold mb-1"
-                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
-                  >
-                    850nm
-                  </p>
-                  <p className="text-xs font-semibold tracking-[0.14em] uppercase text-[#7A5A54]" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                    Near-Infrared Light
-                  </p>
-                </div>
-              </div>
-              <span className="brand-rule mb-6" style={{ backgroundColor: "#D53E0F" }} />
-              <h3
-                className="text-xl font-bold mb-4 text-[#1A1008]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
-              >
-                Then everything beneath it.
-              </h3>
-              <p className="text-[#7A5A54] text-sm leading-relaxed mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Near-infrared at 850nm reaches deeper tissue — muscles, joints, and connective tissue. It activates the mitochondria, increasing your cells' natural energy output and supporting faster recovery.
-              </p>
-              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                The result: less heaviness, better recovery, improved sleep quality, and a calmer baseline through the week.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Feathered: blush → near-black */}
-      <div style={{ height: "220px", background: "linear-gradient(to bottom, #F5EDEB 0%, #C9A89E 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
-
-      {/* ── THE MECHANISM — near-black ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
+      {/* ── THE MECHANISM — near-black (expanded) ── */}
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
         <div className="container">
           <div className="max-w-3xl mx-auto">
-            <div className="reveal mb-12">
+
+            {/* Label + headline */}
+            <div className="reveal mb-14">
               <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>The Mechanism</span>
               <h2
                 className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
@@ -217,7 +173,9 @@ export default function Science() {
               </h2>
               <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
             </div>
-            <div className="reveal grid md:grid-cols-2 gap-12">
+
+            {/* Two-column explanation */}
+            <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 Photobiomodulation is the mechanism behind red light therapy. When specific wavelengths of light reach your cells, they trigger a reaction in the mitochondria — increasing energy output, reducing oxidative stress, and activating natural repair pathways.
               </p>
@@ -225,6 +183,51 @@ export default function Science() {
                 This is not heat therapy. It is not UV. It is a precise, non-invasive signal that tells your cells to do what they were designed to do — just more efficiently. Backed by thousands of peer-reviewed studies.
               </p>
             </div>
+
+            {/* Wavelength callouts — inline, not a separate section */}
+            <div
+              className="reveal grid md:grid-cols-2 gap-px"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "3rem" }}
+            >
+              <div className="pr-0 md:pr-12 pb-10 md:pb-0">
+                <p
+                  className="text-3xl font-bold mb-2"
+                  style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
+                >
+                  660nm
+                </p>
+                <p
+                  className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4"
+                  style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  Red Light — Surface
+                </p>
+                <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  Targets the skin directly. Stimulates collagen, calms inflammation, and supports a clearer, more even tone — where most people notice results first.
+                </p>
+              </div>
+              <div
+                className="pt-10 md:pt-0 md:pl-12"
+                style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
+              >
+                <p
+                  className="text-3xl font-bold mb-2"
+                  style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
+                >
+                  850nm
+                </p>
+                <p
+                  className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4"
+                  style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  Near-Infrared — Depth
+                </p>
+                <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  Reaches deeper tissue — muscles, joints, connective tissue. Activates mitochondria, accelerates recovery, and supports better sleep and a calmer baseline.
+                </p>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -232,63 +235,87 @@ export default function Science() {
       {/* Feathered: near-black → blush */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 20%, #8B5E56 50%, #C9A89E 75%, #F5EDEB 100%)" }} />
 
-      {/* ── BENEFITS BY CATEGORY — blush ── */}
+      {/* ── WHAT IT DOES FOR YOU — blush, editorial rows ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#F5EDEB" }}>
         <div className="container">
           <div className="max-w-4xl mx-auto">
+
+            {/* Section header */}
             <div className="reveal mb-16">
               <span className="section-label block mb-4">What It Does For You</span>
               <h2
-                className="text-3xl md:text-5xl font-bold text-[#1A1008]"
+                className="text-3xl md:text-5xl font-bold text-[#1A1008] leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                660nm for skin.<br />
+                Ten minutes.<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
-                  850nm for everything beneath it.
+                  Three systems.
                 </em>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
-              {[
-                {
-                  category: "Skin",
-                  items: ["A clearer, more supported glow", "Stimulates collagen production", "Reduces surface inflammation", "Supports skin tone and texture"],
-                },
-                {
-                  category: "Recovery",
-                  items: ["Less heaviness, more ease", "Faster muscle repair", "Reduced joint discomfort", "Improved range of motion"],
-                },
-                {
-                  category: "Energy & Sleep",
-                  items: ["A better baseline through the week", "Improved sleep quality", "Reduced systemic inflammation", "A moment that helps your body switch gears"],
-                },
-              ].map((group, i) => (
+            {/* Editorial benefit rows */}
+            <div className="flex flex-col">
+              {BENEFITS.map((group, i) => (
                 <div
                   key={i}
-                  className="reveal bg-[#FFF9F9] p-10"
-                  style={{ transitionDelay: `${i * 100}ms` }}
+                  className="reveal"
+                  style={{
+                    borderTop: "1px solid rgba(26,16,8,0.12)",
+                    paddingTop: "3rem",
+                    paddingBottom: "3rem",
+                    transitionDelay: `${i * 80}ms`,
+                  }}
                 >
-                  <p
-                    className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-4"
-                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                  >
-                    {group.category}
-                  </p>
-                  <span className="brand-rule mb-6" />
-                  <ul className="flex flex-col gap-3">
-                    {group.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-3">
-                        <span className="text-[#D53E0F] mt-0.5 text-xs">—</span>
-                        <span className="text-[#7A5A54] text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 items-start">
+
+                    {/* Left: category + headline */}
+                    <div>
+                      <p
+                        className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
+                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                      >
+                        {group.category}
+                      </p>
+                      <p
+                        className="text-lg font-bold leading-snug text-[#1A1008]"
+                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                      >
+                        {group.headline}
+                      </p>
+                    </div>
+
+                    {/* Right: benefit list as flowing prose-style items */}
+                    <div className="grid sm:grid-cols-2 gap-x-10 gap-y-3">
+                      {group.items.map((item, j) => (
+                        <div key={j} className="flex items-start gap-3">
+                          <span
+                            className="flex-shrink-0 mt-1"
+                            style={{
+                              width: "4px",
+                              height: "4px",
+                              borderRadius: "50%",
+                              backgroundColor: "#D53E0F",
+                              marginTop: "7px",
+                            }}
+                          />
+                          <span
+                            className="text-sm leading-relaxed"
+                            style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                          >
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                  </div>
                 </div>
               ))}
+              {/* Closing rule */}
+              <div style={{ borderTop: "1px solid rgba(26,16,8,0.12)" }} />
             </div>
+
           </div>
         </div>
       </section>
