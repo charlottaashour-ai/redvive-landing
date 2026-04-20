@@ -149,6 +149,8 @@ function StatsCarousel() {
               style={{
                 width: "280px",
                 borderRight: "1px solid rgba(255,255,255,0.07)",
+                animation: `carouselItemFade 0.6s ease both`,
+                animationDelay: `${(i % 4) * 0.12}s`,
               }}
             >
               <p
@@ -548,7 +550,11 @@ export default function Home() {
         }
         @keyframes statsScroll {
           0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-280px * 5)); }
+          100% { transform: translateX(calc(-280px * 4)); }
+        }
+        @keyframes carouselItemFade {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
         }
       `}</style>
     </div>
