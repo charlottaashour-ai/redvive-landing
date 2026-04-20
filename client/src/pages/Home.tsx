@@ -5,18 +5,39 @@
  * Sections flow seamlessly — no hard breaks
  * Mobile-first, editorial, centered
  *
- * Transitions: increased height to 160–200px for feathered blends (no hard color clashes)
- * Hero overlay: video opacity 0.45 (was 0.55), gradient alpha reduced ~10%
- * Scroll indicator: moved below form with pb-40 on hero, indicator at bottom-10
+ * Hero animation: Framer Motion staggered fade-up on page load
+ *   — eyebrow label → headline word 1 → headline word 2 (italic) → sub-copy → form
+ *   — each element fades in from y:20 with 150ms stagger
  */
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
 const HERO_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-wide-N5NgJYxPYnXhAzQvc6Zd6b.webp";
+
+/* ── Animation variants ── */
+const heroContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.15 as number,
+      delayChildren: 0.3 as number,
+    },
+  },
+} as const;
+
+const heroItem = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75, type: "tween" as const },
+  },
+};
 
 function useReveal() {
   useEffect(() => {
@@ -113,12 +134,10 @@ const STATS = [
 ];
 
 function StatsCarousel() {
-  // Duplicate items so the loop is seamless
   const items = [...STATS, ...STATS, ...STATS];
 
   return (
     <div className="reveal" style={{ backgroundColor: "#1A1008", overflow: "hidden" }}>
-      {/* Continuous horizontal ticker */}
       <div className="relative py-16 md:py-20" style={{ overflow: "hidden" }}>
         <div
           className="flex"
@@ -158,13 +177,10 @@ function StatsCarousel() {
             </div>
           ))}
         </div>
-        {/* Left fade */}
         <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #1A1008 0%, transparent 100%)" }} />
-        {/* Right fade */}
         <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #1A1008 0%, transparent 100%)" }} />
       </div>
 
-      {/* Science CTA */}
       <div
         className="flex justify-center py-8 px-8"
         style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
@@ -179,7 +195,6 @@ function StatsCarousel() {
   );
 }
 
-/* ── Pricing comparison cards ── */
 const PRICING_ROWS = [
   { option: "Clinic / physio", cost: "€80–€150", label: "per session", note: "1–2 sessions max", highlight: false },
   { option: "Home device", cost: "€500–€3,000", label: "one-time", note: "High upfront, no guidance", highlight: false },
@@ -199,7 +214,6 @@ export default function Home() {
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        {/* Video: opacity reduced from 0.55 → 0.45 */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src={HERO_VIDEO}
@@ -210,7 +224,6 @@ export default function Home() {
           poster={HERO_IMAGE}
           style={{ opacity: 0.45 }}
         />
-        {/* Overlay: alpha values reduced ~10% for less darkness */}
         <div
           className="absolute inset-0"
           style={{
@@ -218,35 +231,64 @@ export default function Home() {
               "linear-gradient(to bottom, rgba(10,3,3,0.62) 0%, rgba(10,3,3,0.28) 40%, rgba(10,3,3,0.68) 75%, rgba(10,3,3,0.88) 100%)",
           }}
         />
-        {/* Content: pb-40 ensures scroll indicator has room below the form */}
-        <div className="relative z-10 container pb-40 pt-32">
+
+        {/* Staggered hero content */}
+        <motion.div
+          className="relative z-10 container pb-40 pt-32"
+          variants={heroContainer}
+          initial="hidden"
+          animate="show"
+        >
           <div className="max-w-2xl">
-            <p
+            {/* Eyebrow */}
+            <motion.p
+              variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
               style={{ color: "rgba(250,135,67,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               Born in Finland · Opening 2026
-            </p>
-            <h1
-              className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] mb-4"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
-            >
-              wellness,<br />
-              <span style={{ fontStyle: "italic", fontWeight: 300, fontFamily: "'Fraunces', serif" }}>
-                simplified.
-              </span>
-            </h1>
-            <p
+            </motion.p>
+
+            {/* Headline line 1 */}
+            <motion.div variants={heroItem}>
+              <h1
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95]"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+              >
+                wellness,
+              </h1>
+            </motion.div>
+
+            {/* Headline line 2 — italic serif */}
+            <motion.div variants={heroItem}>
+              <h1
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] mb-4"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+              >
+                <span style={{ fontStyle: "italic", fontWeight: 300, fontFamily: "'Fraunces', serif" }}>
+                  simplified.
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Sub-copy */}
+            <motion.p
+              variants={heroItem}
               className="text-white/60 text-sm mt-6 mb-10 max-w-sm leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
               10 minutes. Clinically calibrated red light. Fully autonomous — no appointments, no friction.
               Helsinki's first autonomous light therapy studio.
-            </p>
-            <WaitlistForm />
+            </motion.p>
+
+            {/* Waitlist form */}
+            <motion.div variants={heroItem}>
+              <WaitlistForm />
+            </motion.div>
           </div>
-        </div>
-        {/* Scroll indicator: positioned at bottom-10, centered, well clear of form */}
+        </motion.div>
+
+        {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
           <span className="text-white/30 text-[0.6rem] tracking-[0.2em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             Scroll
@@ -260,7 +302,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: dark → light (200px for gradual blend) ── */}
+      {/* ── FEATHERED TRANSITION: dark → light ── */}
       <div style={{ height: "200px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── MANIFESTO ── */}
@@ -337,7 +379,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Science CTA under pillars */}
           <div className="reveal mt-12">
             <Link href="/science">
               <button className="btn-ghost">
@@ -348,10 +389,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: blush → dark (160px) ── */}
+      {/* ── FEATHERED TRANSITION: blush → dark ── */}
       <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
       <StatsCarousel />
-      {/* ── FEATHERED TRANSITION: dark → rose-white (160px) ── */}
+      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
       <div style={{ height: "160px", background: "linear-gradient(to bottom, #1A1008 0%, #FFF9F9 100%)" }} />
 
       {/* ── FOUNDING MEMBER PRICING ── */}
@@ -374,7 +415,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Stacked comparison cards */}
             <div className="reveal flex flex-col gap-3 mt-12 mb-12">
               {PRICING_ROWS.map((row, i) => (
                 <div
@@ -428,7 +468,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Value pillars */}
             <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px mb-12" style={{ backgroundColor: "#E8D8D4" }}>
               {[
                 { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },

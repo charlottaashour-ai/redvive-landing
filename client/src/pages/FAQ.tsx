@@ -5,8 +5,18 @@
  */
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+const heroContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15, delayChildren: 0.3 } },
+};
+const heroItem = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.75, type: "tween" as const } },
+};
 
 const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
 const BLUR_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-blur-UeKLjdfFrjE973hKCs9uGR.webp";
@@ -181,25 +191,40 @@ export default function FAQ() {
             background: "linear-gradient(to bottom, rgba(10,3,3,0.62) 0%, rgba(10,3,3,0.28) 40%, rgba(10,3,3,0.88) 100%)",
           }}
         />
-        <div className="relative z-10 container pb-20 pt-32">
+        <motion.div
+          className="relative z-10 container pb-20 pt-32"
+          variants={heroContainer}
+          initial="hidden"
+          animate="show"
+        >
           <div className="max-w-2xl">
-            <span
+            <motion.span
+              variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
               style={{ color: "rgba(250,135,67,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               FAQ
-            </span>
-            <h1
-              className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
-            >
-              direct<br />
-              <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
-                answers.
-              </em>
-            </h1>
+            </motion.span>
+            <motion.div variants={heroItem}>
+              <h1
+                className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+              >
+                direct
+              </h1>
+            </motion.div>
+            <motion.div variants={heroItem}>
+              <h1
+                className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+              >
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic" }}>
+                  answers.
+                </em>
+              </h1>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* Feathered: dark → rose-white */}
