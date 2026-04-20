@@ -321,7 +321,23 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="reveal flex flex-col gap-3 mt-12 mb-12">
+            {/* Urgency badge */}
+            <div className="reveal flex items-center gap-3 mt-12 mb-4">
+              <div
+                className="inline-flex items-center gap-2 px-3 py-1.5"
+                style={{ backgroundColor: "#D53E0F" }}
+              >
+                <span
+                  className="text-[0.6rem] font-bold tracking-[0.18em] uppercase text-white"
+                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  Founding Member — Limited to 300 Spots
+                </span>
+              </div>
+              <div className="h-px flex-1" style={{ backgroundColor: "#E8D8D4" }} />
+            </div>
+
+            <div className="reveal flex flex-col gap-3 mb-12">
               {PRICING_ROWS.map((row, i) => (
                 <div
                   key={i}
@@ -351,6 +367,14 @@ export default function Home() {
                       style={{ color: row.highlight ? "rgba(255,255,255,0.6)" : "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
                     >
                       {row.note}
+                    {row.highlight && (
+                      <span
+                        className="text-[0.6rem] font-semibold tracking-[0.12em] uppercase mt-1"
+                        style={{ color: "rgba(255,255,255,0.75)", fontFamily: "'DM Sans', sans-serif" }}
+                      >
+                        First 300 members only — after that, €35/month
+                      </span>
+                    )}
                     </span>
                   </div>
                   <div className="flex flex-col items-end flex-shrink-0">
