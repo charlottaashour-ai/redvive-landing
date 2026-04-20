@@ -168,7 +168,7 @@ function StatsCarousel() {
               >
                 {item.label}
               </p>
-              <div className="w-6 h-px mb-4" style={{ backgroundColor: "#C01A07" }} />
+              <div className="w-6 h-px mb-4" style={{ backgroundColor: "#FA8743" }} />
               <p
                 className="text-white/50 text-xs leading-relaxed"
                 style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}
@@ -303,7 +303,7 @@ export default function Home() {
       </section>
 
       {/* ── FEATHERED TRANSITION: dark → light ── */}
-      <div style={{ height: "200px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── MANIFESTO ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -363,7 +363,7 @@ export default function Home() {
               >
                 <span
                   className="text-[0.65rem] font-semibold tracking-[0.18em]"
-                  style={{ color: "#C01A07", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {pillar.num}
                 </span>
@@ -392,10 +392,10 @@ export default function Home() {
       </section>
 
       {/* ── FEATHERED TRANSITION: blush → dark ── */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
       <StatsCarousel />
       {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #1A1008 0%, #FFF9F9 100%)" }} />
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #1A1008 0%, #FFF9F9 100%)" }} />
 
       {/* ── FOUNDING MEMBER PRICING ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -423,7 +423,7 @@ export default function Home() {
                   key={i}
                   className="flex items-center justify-between gap-4 px-6 py-5"
                   style={{
-                    backgroundColor: row.highlight ? "#C01A07" : "#F5EDEB",
+                    backgroundColor: row.highlight ? "#FA8743" : "#F5EDEB",
                     borderLeft: row.highlight ? "4px solid #FA8743" : "4px solid transparent",
                   }}
                 >
@@ -483,7 +483,7 @@ export default function Home() {
                 >
                   <p
                     className="text-4xl font-bold whitespace-nowrap"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#C01A07" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FA8743" }}
                   >
                     {item.stat}
                   </p>

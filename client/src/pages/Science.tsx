@@ -99,7 +99,7 @@ export default function Science() {
       </section>
 
       {/* Feathered: dark → rose-white */}
-      <div style={{ height: "200px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── INTRO — rose-white ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>
@@ -116,7 +116,7 @@ export default function Science() {
       </section>
 
       {/* Feathered: rose-white → blush */}
-      <div style={{ height: "120px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 100%)" }} />
+      <div style={{ height: "100px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 100%)" }} />
 
       {/* ── WAVELENGTHS — blush ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#F5EDEB" }}>
@@ -131,12 +131,12 @@ export default function Science() {
               <div className="flex items-start gap-4 mb-6">
                 <div
                   className="w-3 h-3 rounded-full mt-1.5 flex-shrink-0"
-                  style={{ backgroundColor: "#C01A07", boxShadow: "0 0 12px rgba(192,26,7,0.5)" }}
+                  style={{ backgroundColor: "#FA8743", boxShadow: "0 0 12px rgba(250,135,67,0.5)" }}
                 />
                 <div>
                   <p
                     className="text-4xl font-bold mb-1"
-                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#C01A07", letterSpacing: "-0.03em" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#FA8743", letterSpacing: "-0.03em" }}
                   >
                     660nm
                   </p>
@@ -198,7 +198,7 @@ export default function Science() {
       </section>
 
       {/* Feathered: blush → near-black */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
 
       {/* ── THE MECHANISM — near-black ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
@@ -230,7 +230,7 @@ export default function Science() {
       </section>
 
       {/* Feathered: near-black → blush */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #1A1008 0%, #F5EDEB 100%)" }} />
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #1A1008 0%, #F5EDEB 100%)" }} />
 
       {/* ── BENEFITS BY CATEGORY — blush ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#F5EDEB" }}>
@@ -243,7 +243,7 @@ export default function Science() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 660nm for skin.<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#C01A07" }}>
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
                   850nm for everything beneath it.
                 </em>
               </h2>
@@ -271,7 +271,7 @@ export default function Science() {
                 >
                   <p
                     className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-4"
-                    style={{ color: "#C01A07", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {group.category}
                   </p>
@@ -279,7 +279,7 @@ export default function Science() {
                   <ul className="flex flex-col gap-3">
                     {group.items.map((item, j) => (
                       <li key={j} className="flex items-start gap-3">
-                        <span className="text-[#C01A07] mt-0.5 text-xs">—</span>
+                        <span className="text-[#FA8743] mt-0.5 text-xs">—</span>
                         <span className="text-[#7A5A54] text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                           {item}
                         </span>
@@ -294,7 +294,7 @@ export default function Science() {
       </section>
 
       {/* Feathered: blush → rose-white */}
-      <div style={{ height: "120px", background: "linear-gradient(to bottom, #F5EDEB 0%, #FFF9F9 100%)" }} />
+      <div style={{ height: "100px", background: "linear-gradient(to bottom, #F5EDEB 0%, #FFF9F9 100%)" }} />
 
       {/* ── THE RESULT — rose-white ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>

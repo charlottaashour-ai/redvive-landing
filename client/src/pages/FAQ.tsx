@@ -139,7 +139,7 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
         <span
           className="flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-200"
           style={{
-            color: "#C01A07",
+            color: "#FA8743",
             transform: open ? "rotate(45deg)" : "rotate(0deg)",
             fontSize: "1.2rem",
             lineHeight: 1,
@@ -228,7 +228,7 @@ export default function FAQ() {
       </section>
 
       {/* Feathered: dark → rose-white */}
-      <div style={{ height: "200px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
+      <div style={{ height: "130px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── FAQ CONTENT ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>
@@ -239,7 +239,7 @@ export default function FAQ() {
                 <div className="flex items-center gap-4 mb-8">
                   <span
                     className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
-                    style={{ color: "#C01A07", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {group.category}
                   </span>
