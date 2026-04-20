@@ -250,7 +250,7 @@ export default function Home() {
                 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                wellness,
+                Light,
               </h1>
             </motion.div>
 
@@ -261,7 +261,7 @@ export default function Home() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
                 <span style={{ fontWeight: 400, fontStyle: "normal", fontFamily: "'Lora', serif" }}>
-                  simplified.
+                  daily.
                 </span>
               </h1>
             </motion.div>
