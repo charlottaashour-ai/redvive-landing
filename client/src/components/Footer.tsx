@@ -95,8 +95,16 @@ export default function Footer() {
           >
             © 2026 Redvive. Born in Helsinki.
           </p>
-          <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "Instagram", "TikTok"].map((item) => (
+          <div className="flex gap-6 flex-wrap">
+            <Link href="/privacy">
+              <span
+                className="text-xs cursor-pointer transition-colors hover:text-white/50"
+                style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Privacy Policy
+              </span>
+            </Link>
+            {["Instagram", "TikTok"].map((item) => (
               <span
                 key={item}
                 className="text-xs cursor-pointer transition-colors hover:text-white/50"

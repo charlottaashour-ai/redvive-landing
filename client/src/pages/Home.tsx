@@ -56,11 +56,12 @@ function useReveal() {
 function WaitlistForm() {
   const [email, setEmail] = useState("");
   const [interest, setInterest] = useState("");
+  const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (email && consent) setSubmitted(true);
   };
 
   if (submitted) {
@@ -96,7 +97,31 @@ function WaitlistForm() {
         <option value="wellness" style={{ color: "#1A1008" }}>General Wellness</option>
         <option value="science" style={{ color: "#1A1008" }}>I want the science</option>
       </select>
-      <button type="submit" className="btn-primary justify-center w-full">
+      {/* GDPR consent checkbox */}
+      <label className="flex items-start gap-3 cursor-pointer group">
+        <input
+          type="checkbox"
+          required
+          checked={consent}
+          onChange={(e) => setConsent(e.target.checked)}
+          className="mt-0.5 flex-shrink-0 accent-[#D53E0F] w-3.5 h-3.5 cursor-pointer"
+        />
+        <span
+          className="text-[0.65rem] leading-relaxed"
+          style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+        >
+          I agree to receive launch updates and founding member information from Redvive. See our{" "}
+          <a
+            href="/privacy"
+            className="underline underline-offset-2 hover:opacity-80 transition-opacity"
+            style={{ color: "rgba(255,255,255,0.45)" }}
+          >
+            Privacy Policy
+          </a>
+          .
+        </span>
+      </label>
+      <button type="submit" className="btn-primary justify-center w-full" disabled={!consent} style={{ opacity: consent ? 1 : 0.5, transition: "opacity 0.2s" }}>
         Join the Waitlist
       </button>
       <p className="text-white/40 text-xs text-center">No payment. No commitment.</p>
