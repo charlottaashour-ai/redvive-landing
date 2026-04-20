@@ -173,12 +173,12 @@ export default function FAQ() {
           loop
           playsInline
           poster={BLUR_IMAGE}
-          style={{ opacity: 0.5 }}
+          style={{ opacity: 0.45 }}
         />
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(10,3,3,0.72) 0%, rgba(10,3,3,0.35) 40%, rgba(10,3,3,0.92) 100%)",
+            background: "linear-gradient(to bottom, rgba(10,3,3,0.62) 0%, rgba(10,3,3,0.28) 40%, rgba(10,3,3,0.88) 100%)",
           }}
         />
         <div className="relative z-10 container pb-20 pt-32">
@@ -202,8 +202,8 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* Seamless transition */}
-      <div style={{ height: "100px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
+      {/* Feathered: dark → rose-white */}
+      <div style={{ height: "200px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── FAQ CONTENT ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>

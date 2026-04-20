@@ -4,6 +4,10 @@
  * Palette: #0A0303 dark / #FFF9F9 rose-white / #F5EDEB blush / #1A1008 near-black
  * Sections flow seamlessly — no hard breaks
  * Mobile-first, editorial, centered
+ *
+ * Transitions: increased height to 160–200px for feathered blends (no hard color clashes)
+ * Hero overlay: video opacity 0.45 (was 0.55), gradient alpha reduced ~10%
+ * Scroll indicator: moved below form with pb-40 on hero, indicator at bottom-10
  */
 
 import { useEffect, useState } from "react";
@@ -195,6 +199,7 @@ export default function Home() {
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
+        {/* Video: opacity reduced from 0.55 → 0.45 */}
         <video
           className="absolute inset-0 w-full h-full object-cover"
           src={HERO_VIDEO}
@@ -203,16 +208,18 @@ export default function Home() {
           loop
           playsInline
           poster={HERO_IMAGE}
-          style={{ opacity: 0.55 }}
+          style={{ opacity: 0.45 }}
         />
+        {/* Overlay: alpha values reduced ~10% for less darkness */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(10,3,3,0.72) 0%, rgba(10,3,3,0.35) 40%, rgba(10,3,3,0.75) 75%, rgba(10,3,3,0.92) 100%)",
+              "linear-gradient(to bottom, rgba(10,3,3,0.62) 0%, rgba(10,3,3,0.28) 40%, rgba(10,3,3,0.68) 75%, rgba(10,3,3,0.88) 100%)",
           }}
         />
-        <div className="relative z-10 container pb-20 pt-32">
+        {/* Content: pb-40 ensures scroll indicator has room below the form */}
+        <div className="relative z-10 container pb-40 pt-32">
           <div className="max-w-2xl">
             <p
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
@@ -239,8 +246,8 @@ export default function Home() {
             <WaitlistForm />
           </div>
         </div>
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
+        {/* Scroll indicator: positioned at bottom-10, centered, well clear of form */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
           <span className="text-white/30 text-[0.6rem] tracking-[0.2em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             Scroll
           </span>
@@ -253,8 +260,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SEAMLESS TRANSITION: dark → light ── */}
-      <div style={{ height: "120px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
+      {/* ── FEATHERED TRANSITION: dark → light (200px for gradual blend) ── */}
+      <div style={{ height: "200px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── MANIFESTO ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -263,7 +270,7 @@ export default function Home() {
             <div className="reveal">
               <span className="section-label block mb-6">The Belief</span>
               <h2
-                className="text-4xl md:text-6xl font-bold leading-[1.05] mb-8"
+                className="text-4xl md:text-6xl font-bold leading-[1.05] mb-6"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
               >
                 light is<br />
@@ -330,7 +337,7 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Science CTA under pillars — blush background, left-aligned */}
+          {/* Science CTA under pillars */}
           <div className="reveal mt-12">
             <Link href="/science">
               <button className="btn-ghost">
@@ -341,12 +348,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATS CAROUSEL (replaces studio image + old science teaser) ── */}
-      {/* Seamless transition blush → dark */}
-      <div style={{ height: "80px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
+      {/* ── FEATHERED TRANSITION: blush → dark (160px) ── */}
+      <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
       <StatsCarousel />
-      {/* Seamless transition dark → rose-white */}
-      <div style={{ height: "80px", background: "linear-gradient(to bottom, #1A1008 0%, #FFF9F9 100%)" }} />
+      {/* ── FEATHERED TRANSITION: dark → rose-white (160px) ── */}
+      <div style={{ height: "160px", background: "linear-gradient(to bottom, #1A1008 0%, #FFF9F9 100%)" }} />
 
       {/* ── FOUNDING MEMBER PRICING ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>

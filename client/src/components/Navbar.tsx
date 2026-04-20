@@ -1,13 +1,16 @@
 /*
  * REDVIVE Navbar
  * Style: Fixed top, transparent on hero → solid rose-white on scroll
- * Logo: "redvive" lowercase, DM Sans bold
+ * Logo: White PNG wordmark on transparent bg (CDN), switches to dark-bg version on light navbar
  * Links: small caps, DM Sans
  * CTA: crimson button only
  */
 
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
+
+const LOGO_WHITE =
+  "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-logo-white_320ba7bd.png";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -39,13 +42,18 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/">
-            <span
-              className={`font-bold text-xl transition-colors duration-300 ${
-                isTransparent ? "text-white" : "text-[#1A1008]"
-              }`}
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
-            >
-              redvive
+            <span className="block cursor-pointer">
+              <img
+                src={LOGO_WHITE}
+                alt="Redvive"
+                className="h-6 w-auto transition-all duration-300"
+                style={{
+                  filter: isTransparent
+                    ? "none"
+                    : "brightness(0) saturate(100%)",
+                  // On light bg: invert white to black via CSS filter
+                }}
+              />
             </span>
           </Link>
 

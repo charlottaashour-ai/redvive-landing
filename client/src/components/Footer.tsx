@@ -1,9 +1,13 @@
 /*
  * REDVIVE Footer
  * Style: Dark #0A0303 background, minimal, brand-compliant
+ * Logo: White PNG wordmark (CDN) — works perfectly on dark bg
  */
 
 import { Link } from "wouter";
+
+const LOGO_WHITE =
+  "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-logo-white_320ba7bd.png";
 
 export default function Footer() {
   return (
@@ -13,11 +17,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/">
-              <span
-                className="font-bold text-xl text-white mb-3 block cursor-pointer"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
-              >
-                redvive
+              <span className="block mb-4 cursor-pointer">
+                <img
+                  src={LOGO_WHITE}
+                  alt="Redvive"
+                  className="h-6 w-auto"
+                />
               </span>
             </Link>
             <p

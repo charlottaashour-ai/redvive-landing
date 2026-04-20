@@ -46,12 +46,12 @@ export default function Experience() {
           loop
           playsInline
           poster={HERO_IMAGE}
-          style={{ opacity: 0.5 }}
+          style={{ opacity: 0.45 }}
         />
         <div
           className="absolute inset-0"
           style={{
-            background: "linear-gradient(to bottom, rgba(10,3,3,0.72) 0%, rgba(10,3,3,0.35) 40%, rgba(10,3,3,0.92) 100%)",
+            background: "linear-gradient(to bottom, rgba(10,3,3,0.62) 0%, rgba(10,3,3,0.28) 40%, rgba(10,3,3,0.88) 100%)",
           }}
         />
         <div className="relative z-10 container pb-20 pt-32">
@@ -75,8 +75,8 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Seamless: dark → rose-white */}
-      <div style={{ height: "100px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
+      {/* Feathered: dark → rose-white */}
+      <div style={{ height: "200px", background: "linear-gradient(to bottom, #0A0303 0%, #FFF9F9 100%)" }} />
 
       {/* ── INTRO — rose-white ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>
@@ -92,8 +92,8 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Seamless: rose-white → blush */}
-      <div style={{ height: "60px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 100%)" }} />
+      {/* Feathered: rose-white → blush */}
+      <div style={{ height: "120px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 100%)" }} />
 
       {/* ── HOW IT WORKS — STEPS — blush ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#F5EDEB" }}>
@@ -165,8 +165,8 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Seamless: blush → near-black */}
-      <div style={{ height: "80px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
+      {/* Feathered: blush → near-black */}
+      <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #1A1008 100%)" }} />
 
       {/* ── THE STUDIO — fused dark section (Technology color scheme + Studio content) ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
@@ -221,8 +221,8 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Seamless: near-black → blush */}
-      <div style={{ height: "80px", background: "linear-gradient(to bottom, #1A1008 0%, #F5EDEB 100%)" }} />
+      {/* Feathered: near-black → blush */}
+      <div style={{ height: "160px", background: "linear-gradient(to bottom, #1A1008 0%, #F5EDEB 100%)" }} />
 
       {/* ── WHO IT'S FOR — blush ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#F5EDEB" }}>
@@ -282,8 +282,8 @@ export default function Experience() {
         </div>
       </section>
 
-      {/* Seamless: blush → rose-white */}
-      <div style={{ height: "60px", background: "linear-gradient(to bottom, #F5EDEB 0%, #FFF9F9 100%)" }} />
+      {/* Feathered: blush → rose-white */}
+      <div style={{ height: "120px", background: "linear-gradient(to bottom, #F5EDEB 0%, #FFF9F9 100%)" }} />
 
       {/* ── CTA — rose-white ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
