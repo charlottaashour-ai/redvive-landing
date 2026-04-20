@@ -272,7 +272,7 @@ export default function Home() {
               className="text-white/60 text-sm mt-6 mb-10 max-w-sm leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              A fully autonomous private red light studio — built for people who choose themselves daily.
+              Redvive is a fully autonomous private red light studio — built for people who choose themselves daily.
             </motion.p>
 
             {/* Waitlist form */}
