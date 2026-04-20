@@ -61,7 +61,7 @@ export default function IngredientsSection() {
                   <span style={{ color: "#7E0306", fontWeight: 500 }}>{ing.name}</span>
                   <span
                     style={{
-                      color: "#FA8743",
+                      color: "#D53E0F",
                       marginLeft: "0.5rem",
                       fontSize: "0.65rem",
                       fontWeight: 300,
@@ -83,7 +83,7 @@ export default function IngredientsSection() {
                         width: "5px",
                         height: "5px",
                         borderRadius: "50%",
-                        backgroundColor: "#FA8743",
+                        backgroundColor: "#D53E0F",
                         flexShrink: 0,
                       }}
                     />

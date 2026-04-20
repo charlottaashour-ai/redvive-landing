@@ -72,7 +72,7 @@ export default function Science() {
             <motion.span
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "rgba(250,135,67,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               The Science
             </motion.span>
@@ -131,12 +131,12 @@ export default function Science() {
               <div className="flex items-start gap-4 mb-6">
                 <div
                   className="w-3 h-3 rounded-full mt-1.5 flex-shrink-0"
-                  style={{ backgroundColor: "#FA8743", boxShadow: "0 0 12px rgba(250,135,67,0.5)" }}
+                  style={{ backgroundColor: "#D53E0F", boxShadow: "0 0 12px rgba(213,62,15,0.5)" }}
                 />
                 <div>
                   <p
                     className="text-4xl font-bold mb-1"
-                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#FA8743", letterSpacing: "-0.03em" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
                   >
                     660nm
                   </p>
@@ -165,12 +165,12 @@ export default function Science() {
               <div className="flex items-start gap-4 mb-6">
                 <div
                   className="w-3 h-3 rounded-full mt-1.5 flex-shrink-0"
-                  style={{ backgroundColor: "#FA8743", boxShadow: "0 0 12px rgba(250,135,67,0.4)" }}
+                  style={{ backgroundColor: "#D53E0F", boxShadow: "0 0 12px rgba(213,62,15,0.4)" }}
                 />
                 <div>
                   <p
                     className="text-4xl font-bold mb-1"
-                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#FA8743", letterSpacing: "-0.03em" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
                   >
                     850nm
                   </p>
@@ -179,7 +179,7 @@ export default function Science() {
                   </p>
                 </div>
               </div>
-              <span className="brand-rule mb-6" style={{ backgroundColor: "#FA8743" }} />
+              <span className="brand-rule mb-6" style={{ backgroundColor: "#D53E0F" }} />
               <h3
                 className="text-xl font-bold mb-4 text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
@@ -205,17 +205,17 @@ export default function Science() {
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <div className="reveal mb-12">
-              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Mechanism</span>
+              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>The Mechanism</span>
               <h2
                 className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Your mitochondria<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
                   do the work.
                 </em>
               </h2>
-              <span className="brand-rule mb-8" style={{ backgroundColor: "#FA8743" }} />
+              <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
             </div>
             <div className="reveal grid md:grid-cols-2 gap-12">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -243,7 +243,7 @@ export default function Science() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 660nm for skin.<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
                   850nm for everything beneath it.
                 </em>
               </h2>
@@ -271,7 +271,7 @@ export default function Science() {
                 >
                   <p
                     className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-4"
-                    style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {group.category}
                   </p>
@@ -279,7 +279,7 @@ export default function Science() {
                   <ul className="flex flex-col gap-3">
                     {group.items.map((item, j) => (
                       <li key={j} className="flex items-start gap-3">
-                        <span className="text-[#FA8743] mt-0.5 text-xs">—</span>
+                        <span className="text-[#D53E0F] mt-0.5 text-xs">—</span>
                         <span className="text-[#7A5A54] text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                           {item}
                         </span>

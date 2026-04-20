@@ -158,7 +158,7 @@ function StatsCarousel() {
             >
               <p
                 className="text-5xl md:text-6xl font-bold mb-1 whitespace-nowrap"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FA8743" }}
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
               >
                 {item.stat}
               </p>
@@ -168,7 +168,7 @@ function StatsCarousel() {
               >
                 {item.label}
               </p>
-              <div className="w-6 h-px mb-4" style={{ backgroundColor: "#FA8743" }} />
+              <div className="w-6 h-px mb-4" style={{ backgroundColor: "#D53E0F" }} />
               <p
                 className="text-white/50 text-xs leading-relaxed"
                 style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}
@@ -245,7 +245,7 @@ export default function Home() {
             <motion.p
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
-              style={{ color: "rgba(250,135,67,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               Born in Finland · Opening 2026
             </motion.p>
@@ -363,7 +363,7 @@ export default function Home() {
               >
                 <span
                   className="text-[0.65rem] font-semibold tracking-[0.18em]"
-                  style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {pillar.num}
                 </span>
@@ -423,8 +423,8 @@ export default function Home() {
                   key={i}
                   className="flex items-center justify-between gap-4 px-6 py-5"
                   style={{
-                    backgroundColor: row.highlight ? "#FA8743" : "#F5EDEB",
-                    borderLeft: row.highlight ? "4px solid #FA8743" : "4px solid transparent",
+                    backgroundColor: row.highlight ? "#D53E0F" : "#F5EDEB",
+                    borderLeft: row.highlight ? "4px solid #D53E0F" : "4px solid transparent",
                   }}
                 >
                   <div className="flex flex-col gap-1 min-w-0">
@@ -483,7 +483,7 @@ export default function Home() {
                 >
                   <p
                     className="text-4xl font-bold whitespace-nowrap"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FA8743" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
                   >
                     {item.stat}
                   </p>
@@ -518,7 +518,7 @@ export default function Home() {
         <div className="relative z-10 container">
           <div className="max-w-lg mx-auto text-center">
             <div className="reveal">
-              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>
+              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>
                 Helsinki · Opening 2026
               </span>
               <h2

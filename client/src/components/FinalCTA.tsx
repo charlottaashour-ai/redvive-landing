@@ -125,7 +125,7 @@ export default function FinalCTA() {
               <div
                 className="font-display"
                 style={{
-                  color: "#FA8743",
+                  color: "#D53E0F",
                   fontSize: "clamp(1.2rem, 2.5vw, 1.8rem)",
                   fontStyle: "italic",
                   fontWeight: 500,

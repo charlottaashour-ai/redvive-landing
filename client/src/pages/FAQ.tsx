@@ -139,7 +139,7 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
         <span
           className="flex-shrink-0 w-5 h-5 flex items-center justify-center transition-transform duration-200"
           style={{
-            color: "#FA8743",
+            color: "#D53E0F",
             transform: open ? "rotate(45deg)" : "rotate(0deg)",
             fontSize: "1.2rem",
             lineHeight: 1,
@@ -201,7 +201,7 @@ export default function FAQ() {
             <motion.span
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "rgba(250,135,67,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               FAQ
             </motion.span>
@@ -239,7 +239,7 @@ export default function FAQ() {
                 <div className="flex items-center gap-4 mb-8">
                   <span
                     className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
-                    style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {group.category}
                   </span>
@@ -276,7 +276,7 @@ export default function FAQ() {
           <div className="max-w-lg mx-auto text-center reveal">
             <span
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
               Helsinki · Opening 2026
             </span>

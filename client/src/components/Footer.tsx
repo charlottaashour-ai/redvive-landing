@@ -38,7 +38,7 @@ export default function Footer() {
           <div>
             <p
               className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
-              style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
               Navigate
             </p>
@@ -65,7 +65,7 @@ export default function Footer() {
           <div>
             <p
               className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
-              style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
               Opening 2026
             </p>

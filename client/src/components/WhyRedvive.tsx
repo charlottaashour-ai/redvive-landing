@@ -69,7 +69,7 @@ export default function WhyRedvive() {
                     <span
                       className="font-display flex-shrink-0"
                       style={{
-                        color: "#FA8743",
+                        color: "#D53E0F",
                         fontSize: "0.75rem",
                         fontStyle: "italic",
                         fontWeight: 700,

@@ -68,10 +68,10 @@ export default function Navbar() {
                 <span
                   className={`text-[0.72rem] font-semibold tracking-[0.14em] uppercase transition-colors duration-300 ${
                     location === href
-                      ? "text-[#FA8743]"
+                      ? "text-[#D53E0F]"
                       : isTransparent
                       ? "text-white/75 hover:text-white"
-                      : "text-[#3D1A14]/70 hover:text-[#FA8743]"
+                      : "text-[#3D1A14]/70 hover:text-[#D53E0F]"
                   }`}
                   style={{ fontFamily: "'DM Sans', sans-serif" }}
                 >

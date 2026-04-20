@@ -74,7 +74,7 @@ export default function Experience() {
             <motion.span
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "rgba(250,135,67,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
               The Experience
             </motion.span>
@@ -164,7 +164,7 @@ export default function Experience() {
               >
                 <span
                   className="text-[0.65rem] font-semibold tracking-[0.18em]"
-                  style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {step.step}
                 </span>
@@ -180,7 +180,7 @@ export default function Experience() {
                 </p>
                 <p
                   className="text-xs font-semibold tracking-[0.1em] uppercase mt-auto"
-                  style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {step.detail}
                 </p>
@@ -198,17 +198,17 @@ export default function Experience() {
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <div className="reveal mb-12">
-              <span className="section-label block mb-6" style={{ color: "#FA8743" }}>The Studio</span>
+              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>The Studio</span>
               <h2
                 className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Clinical-grade.<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
                   Private rooms. Just light.
                 </em>
               </h2>
-              <span className="brand-rule mb-8" style={{ backgroundColor: "#FA8743" }} />
+              <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
             </div>
             <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -229,7 +229,7 @@ export default function Experience() {
                 <div key={i} className="flex flex-col items-center justify-center text-center py-8 px-4" style={{ backgroundColor: "#1A1008" }}>
                   <p
                     className="text-2xl font-bold mb-1"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "#FA8743" }}
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "#D53E0F" }}
                   >
                     {spec.value}
                   </p>
@@ -260,7 +260,7 @@ export default function Experience() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
                 Built for people who<br />
-                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#FA8743" }}>
+                <em style={{ fontFamily: "'Fraunces', serif", fontWeight: 300, fontStyle: "italic", color: "#D53E0F" }}>
                   take their health seriously.
                 </em>
               </h2>
@@ -286,7 +286,7 @@ export default function Experience() {
                 >
                   <p
                     className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
-                    style={{ color: "#FA8743", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {persona.label}
                   </p>

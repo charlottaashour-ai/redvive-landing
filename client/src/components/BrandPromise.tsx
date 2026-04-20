@@ -17,7 +17,7 @@ export default function BrandPromise() {
         style={{
           width: "50%",
           height: "60%",
-          background: "radial-gradient(ellipse at top right, rgba(250,135,67,0.12) 0%, transparent 70%)",
+          background: "radial-gradient(ellipse at top right, rgba(213,62,15,0.12) 0%, transparent 70%)",
         }}
       />
 
@@ -87,7 +87,7 @@ export default function BrandPromise() {
                     <p
                       className="font-display"
                       style={{
-                        color: "#FA8743",
+                        color: "#D53E0F",
                         fontSize: "clamp(1.8rem, 3vw, 2.5rem)",
                         fontWeight: 700,
                         lineHeight: 1,

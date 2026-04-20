@@ -44,9 +44,9 @@
 :root {
   /* Brand palette */
   --brand-oxblood: #7E0306;
-  --brand-crimson: #FA8743;
+  --brand-crimson: #D53E0F;
   --brand-vermillion: #D53E0F;
-  --brand-crusta: #FA8743;
+  --brand-crusta: #D53E0F;
   --brand-rose-white: #FFF9F9;
   --brand-rose-tint: #FFF0EE;
 
@@ -58,7 +58,7 @@
   --card-foreground: #1A1008;
   --popover: #FFFFFF;
   --popover-foreground: #1A1008;
-  --primary: #FA8743;
+  --primary: #D53E0F;
   --primary-foreground: #FFFFFF;
   --secondary: #F5EDEB;
   --secondary-foreground: #3D1A14;
@@ -66,21 +66,21 @@
   --muted-foreground: #7A5A54;
   --accent: #FFF0EE;
   --accent-foreground: #7E0306;
-  --destructive: #FA8743;
+  --destructive: #D53E0F;
   --destructive-foreground: #FFFFFF;
   --border: #E8D8D4;
   --input: #E8D8D4;
-  --ring: #FA8743;
+  --ring: #D53E0F;
 
   /* Sidebar (unused but required) */
   --sidebar: #FFF9F9;
   --sidebar-foreground: #1A1008;
-  --sidebar-primary: #FA8743;
+  --sidebar-primary: #D53E0F;
   --sidebar-primary-foreground: #FFFFFF;
   --sidebar-accent: #FFF0EE;
   --sidebar-accent-foreground: #7E0306;
   --sidebar-border: #E8D8D4;
-  --sidebar-ring: #FA8743;
+  --sidebar-ring: #D53E0F;
 }
 
 @layer base {
@@ -145,11 +145,11 @@
 
   /* Brand gradient — left to right: oxblood → crimson → vermillion → crusta */
   .brand-gradient {
-    background: linear-gradient(135deg, #7E0306 0%, #FA8743 35%, #D53E0F 65%, #FA8743 100%);
+    background: linear-gradient(135deg, #7E0306 0%, #D53E0F 35%, #D53E0F 65%, #D53E0F 100%);
   }
 
   .brand-gradient-text {
-    background: linear-gradient(90deg, #FA8743 0%, #D53E0F 50%, #FA8743 100%);
+    background: linear-gradient(90deg, #D53E0F 0%, #D53E0F 50%, #D53E0F 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -157,7 +157,7 @@
 
   /* CTA button — crimson only */
   .btn-primary {
-    background-color: #FA8743;
+    background-color: #D53E0F;
     color: #FFFFFF;
     font-family: 'DM Sans', sans-serif;
     font-weight: 600;
@@ -190,8 +190,8 @@
     transition: border-color 0.2s ease, color 0.2s ease;
   }
   .btn-ghost:hover {
-    border-color: #FA8743;
-    color: #FA8743;
+    border-color: #D53E0F;
+    color: #D53E0F;
   }
 
   /* Section label — small caps, crimson */
@@ -201,7 +201,7 @@
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #FA8743;
+    color: #D53E0F;
   }
 
   /* Tagline — italic serif */
@@ -215,7 +215,7 @@
   .brand-rule {
     width: 2.5rem;
     height: 2px;
-    background-color: #FA8743;
+    background-color: #D53E0F;
     display: block;
   }
 
@@ -242,9 +242,9 @@
     position: relative;
   }
   .nav-link:hover {
-    color: #FA8743;
+    color: #D53E0F;
   }
   .nav-link.active {
-    color: #FA8743;
+    color: #D53E0F;
   }
 }

@@ -17,7 +17,7 @@ const benefits = [
     title: "Confidence, Embodied",
     body:
       "Feel at home in your own skin again. Redvive supports the hormonal and emotional balance that makes you feel fully, powerfully yourself.",
-    accent: "#FA8743",
+    accent: "#D53E0F",
   },
   {
     number: "03",
@@ -31,7 +31,7 @@ const benefits = [
     title: "Intimate Wellbeing",
     body:
       "Formulated to support feminine health from within — gently, beautifully, and without compromise on elegance or efficacy.",
-    accent: "#FA8743",
+    accent: "#D53E0F",
   },
   {
     number: "05",
@@ -96,7 +96,7 @@ export default function BenefitsSection() {
               {/* Hover warm fill */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: "linear-gradient(135deg, rgba(250,135,67,0.06) 0%, transparent 60%)" }}
+                style={{ background: "linear-gradient(135deg, rgba(213,62,15,0.06) 0%, transparent 60%)" }}
               />
 
               <span
@@ -160,7 +160,7 @@ export default function BenefitsSection() {
               style={{
                 width: "70%",
                 height: "70%",
-                background: "radial-gradient(ellipse at top right, rgba(250,135,67,0.15) 0%, transparent 70%)",
+                background: "radial-gradient(ellipse at top right, rgba(213,62,15,0.15) 0%, transparent 70%)",
               }}
             />
             <p

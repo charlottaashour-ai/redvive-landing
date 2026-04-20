@@ -103,7 +103,7 @@ export default function RitualSection() {
                 <span
                   className="font-display flex-shrink-0"
                   style={{
-                    color: "#FA8743",
+                    color: "#D53E0F",
                     fontSize: "0.8rem",
                     fontStyle: "italic",
                     fontWeight: 700,

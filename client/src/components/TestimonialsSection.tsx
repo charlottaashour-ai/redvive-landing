@@ -61,7 +61,7 @@ export default function TestimonialsSection() {
               <svg key={s} width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path
                   d="M7 1L8.545 5.09H13L9.545 7.545L10.91 12L7 9.455L3.09 12L4.455 7.545L1 5.09H5.455L7 1Z"
-                  fill="#FA8743"
+                  fill="#D53E0F"
                 />
               </svg>
             ))}
@@ -90,14 +90,14 @@ export default function TestimonialsSection() {
               {/* Hover warm glow */}
               <div
                 className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{ background: "radial-gradient(ellipse at top left, rgba(250,135,67,0.08) 0%, transparent 70%)" }}
+                style={{ background: "radial-gradient(ellipse at top left, rgba(213,62,15,0.08) 0%, transparent 70%)" }}
               />
 
               {/* Large open quote */}
               <div
                 className="font-display mb-4"
                 style={{
-                  color: "#FA8743",
+                  color: "#D53E0F",
                   fontSize: "4rem",
                   lineHeight: 0.8,
                   opacity: 0.3,
