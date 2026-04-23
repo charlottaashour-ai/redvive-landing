@@ -558,10 +558,10 @@ export default function Home() {
               <div style={{ borderTop: "1px solid rgba(26,16,8,0.1)" }} />
             </div>
 
-            {/* Science CTA */}
+            {/* Experience CTA */}
             <div className="reveal mt-14">
-              <Link href="/science">
-                <button className="btn-ghost">Understand the science →</button>
+              <Link href="/experience">
+                <button className="btn-ghost">Understand the experience →</button>
               </Link>
             </div>
 
