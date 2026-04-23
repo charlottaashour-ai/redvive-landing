@@ -86,7 +86,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+          className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderTop: "1px solid rgba(255,249,249,0.06)" }}
         >
           <p
