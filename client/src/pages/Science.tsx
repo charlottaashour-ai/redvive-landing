@@ -322,8 +322,8 @@ export default function Science() {
       {/* Feathered: blush → rose-white */}
       <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #EDE3DF 30%, #E8DCDA 60%, #FFF9F9 100%)" }} />
 
-      {/* ── THE RESULT — rose-white ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+      {/* ── THE RESULT — rose-white, flows into CTA ── */}
+      <section className="py-24 md:py-32" style={{ background: "linear-gradient(to bottom, #FFF9F9 0%, #FFF9F9 60%, #F5EDEB 100%)" }}>
         <div className="container">
           <div className="max-w-3xl mx-auto reveal">
             <span className="section-label block mb-6">The Result</span>
@@ -350,7 +350,7 @@ export default function Science() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-24 md:py-32" style={{ background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 35%, #EDE3DF 65%, #E4D8D4 100%)" }}>
+      <section className="py-24 md:py-32" style={{ background: "linear-gradient(to bottom, #F5EDEB 0%, #EDE3DF 35%, #E4D8D4 65%, #DDD0CC 100%)" }}>
         <div className="container">
           <div className="reveal max-w-xl mx-auto text-center">
             <h2
