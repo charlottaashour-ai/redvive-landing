@@ -157,27 +157,36 @@ export default function Experience() {
             ].map((step, i) => (
               <div
                 key={i}
-                className="reveal bg-[#FFF9F9] p-10 lg:p-14 flex flex-col gap-4"
+                className="reveal bg-[#FFF9F9] p-10 lg:p-14 flex flex-col"
                 style={{ transitionDelay: `${i * 100}ms` }}
               >
-                <span
-                  className="text-[0.65rem] font-semibold tracking-[0.18em]"
-                  style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {step.step}
-                </span>
-                <h3
-                  className="text-xl font-bold text-[#1A1008]"
-                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
-                >
-                  {step.title}
-                </h3>
-                <span className="brand-rule" />
-                <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                {/* Number — fixed height so row 1 aligns */}
+                <div style={{ minHeight: "2rem", marginBottom: "1.25rem" }}>
+                  <span
+                    className="text-[0.65rem] font-semibold tracking-[0.18em]"
+                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {step.step}
+                  </span>
+                </div>
+                {/* Headline — fixed height so brand-rule aligns */}
+                <div style={{ minHeight: "4rem", marginBottom: "1rem" }}>
+                  <h3
+                    className="text-xl font-bold text-[#1A1008]"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em", lineHeight: 1.25 }}
+                  >
+                    {step.title}
+                  </h3>
+                </div>
+                {/* Brand rule — always at same position */}
+                <span className="brand-rule" style={{ marginBottom: "1.25rem" }} />
+                {/* Body — grows to fill space, pushing detail to bottom */}
+                <p className="text-[#7A5A54] text-sm leading-relaxed flex-1" style={{ fontFamily: "'DM Sans', sans-serif", marginBottom: "1.5rem" }}>
                   {step.body}
                 </p>
+                {/* Detail — always pinned to bottom */}
                 <p
-                  className="text-xs font-semibold tracking-[0.1em] uppercase mt-auto"
+                  className="text-xs font-semibold tracking-[0.1em] uppercase"
                   style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                 >
                   {step.detail}
