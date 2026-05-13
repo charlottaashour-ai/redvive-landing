@@ -41,16 +41,22 @@ const heroItem = {
 
 function useReveal() {
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) e.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.12 }
-    );
-    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add("visible")),
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      );
+      document.querySelectorAll(".reveal").forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 40) {
+          el.classList.add("visible");
+        } else {
+          observer.observe(el);
+        }
+      });
+      return () => observer.disconnect();
+    }, 80);
+    return () => clearTimeout(timer);
   }, []);
 }
 
@@ -184,7 +190,7 @@ export default function Home() {
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover hidden md:block"
-          style={{ opacity: 0.85 }}
+          style={{ opacity: 0.85, willChange: "transform", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         />
         {/* Mobile image: 9:16 with human */}
         <img
@@ -192,7 +198,7 @@ export default function Home() {
           alt=""
           aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover block md:hidden"
-          style={{ opacity: 0.85 }}
+          style={{ opacity: 0.85, willChange: "transform", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         />
         <div
           className="absolute inset-0"
