@@ -1,9 +1,10 @@
 /*
  * REDVIVE — The Experience Page
- * Design: Abstract blur hero, step-by-step session flow, no images except the studio blur
- * Palette flow: #0A0303 hero → #FFF9F9 intro → #F5EDEB steps → #1A1008 technology → #FFF9F9 CTA
- * Tone: Direct, calm — targets Mikael (recovering pro) + Sara (optimiser)
- * Pricing: Moved to Home page — not shown here
+ * Design: Abstract blur hero, step-by-step session flow
+ * Palette flow: #0A0303 hero → #FFF9F9 intro → #F5EDEB steps → #1A1008 technology → #F5EDEB who it's for → #FFF9F9 CTA
+ * Tone: Direct, calm — educates on red light therapy while describing the experience
+ * Every section earns its place: mechanism + sensory feeling, not just logistics
+ * No hyphens in copy.
  */
 
 import { useEffect } from "react";
@@ -22,7 +23,6 @@ const heroItem = {
 };
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-abstract-16x9_73a0681a.png";
-
 
 function useReveal() {
   useEffect(() => {
@@ -50,7 +50,7 @@ export default function Experience() {
       />
       <Navbar />
 
-      {/* ── PAGE HERO — dark video ── */}
+      {/* ── PAGE HERO ── */}
       <section
         className="relative min-h-[70vh] flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
@@ -87,17 +87,15 @@ export default function Experience() {
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                show up
+                Ten minutes. Private.
               </h1>
             </motion.div>
             <motion.div variants={heroItem}>
               <h1
-                className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+                className="text-5xl md:text-7xl leading-[0.95] mt-2"
+                style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
               >
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  for yourself.
-                </em>
+                No noise.
               </h1>
             </motion.div>
           </div>
@@ -107,15 +105,15 @@ export default function Experience() {
       {/* Feathered: dark → rose-white */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
 
-      {/* ── INTRO — rose-white ── */}
+      {/* ── INTRO — what red light therapy actually does ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container">
-          <div className="max-w-3xl mx-auto reveal">
+          <div className="max-w-3xl reveal">
             <p
               className="text-2xl md:text-3xl leading-relaxed font-light text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
             >
-              Book on your phone. Walk in. Close the door. Begin. A private 10-minute full-body red light session — no staff, no small talk, no waiting around.
+              Red light therapy works by delivering specific wavelengths of light — 660nm and 850nm — directly into your cells. Your mitochondria absorb the light and produce more energy. That energy is used for repair: muscle recovery, skin renewal, reduced inflammation, better sleep. The session is 10 minutes. The effects build over weeks. The room just makes it possible.
             </p>
           </div>
         </div>
@@ -124,81 +122,86 @@ export default function Experience() {
       {/* Feathered: rose-white → blush */}
       <div style={{ height: "160px", background: "linear-gradient(to bottom, #FFF9F9 0%, #EDE3DF 40%, #E8DCDA 70%, #F5EDEB 100%)" }} />
 
-      {/* ── HOW IT WORKS — STEPS — blush ── */}
+      {/* ── HOW IT WORKS — each step carries a benefit, not just a logistic ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#F5EDEB" }}>
         <div className="container">
-          <div className="reveal mb-16 max-w-4xl mx-auto">
-            <span className="section-label block mb-4">How It Works</span>
-            <h2
-              className="text-3xl md:text-5xl font-bold text-[#1A1008]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
-            >
-              Three steps.<br />
-              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                That's it.
-              </em>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-px max-w-4xl mx-auto" style={{ backgroundColor: "#E8D8D4" }}>
-            {[
-              {
-                step: "01",
-                title: "Book on your phone",
-                body: "Open the app. Pick a time. Your private room is reserved. No calls, no waiting lists, no staff to coordinate with.",
-                detail: "24/7, 7 days a week.",
-              },
-              {
-                step: "02",
-                title: "Walk in",
-                body: "Your phone unlocks the door. Your private room is ready. No staff in the room. No small talk. Just light.",
-                detail: "Full-body panels. Private room.",
-              },
-              {
-                step: "03",
-                title: "10 minutes",
-                body: "The session runs automatically. When it ends, you're done. Walk out. No checkout, no upsell, no wellness theatre.",
-                detail: "660nm + 850nm. Clinically calibrated.",
-              },
-            ].map((step, i) => (
-              <div
-                key={i}
-                className="reveal bg-[#FFF9F9] p-10 lg:p-14 flex flex-col"
-                style={{ transitionDelay: `${i * 100}ms` }}
+          <div className="max-w-4xl mx-auto">
+            <div className="reveal mb-16">
+              <span className="section-label block mb-4">How It Works</span>
+              <h2
+                className="text-3xl md:text-5xl font-bold text-[#1A1008]"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                {/* Number — fixed height so row 1 aligns */}
-                <div style={{ minHeight: "2rem", marginBottom: "1.25rem" }}>
-                  <span
-                    className="text-[0.65rem] font-semibold tracking-[0.18em]"
-                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                  >
-                    {step.step}
-                  </span>
-                </div>
-                {/* Headline — fixed height so brand-rule aligns */}
-                <div style={{ minHeight: "4rem", marginBottom: "1rem" }}>
-                  <h3
-                    className="text-xl font-bold text-[#1A1008]"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em", lineHeight: 1.25 }}
-                  >
-                    {step.title}
-                  </h3>
-                </div>
-                {/* Brand rule — always at same position */}
-                <span className="brand-rule" style={{ marginBottom: "1.25rem" }} />
-                {/* Body — grows to fill space, pushing detail to bottom */}
-                <p className="text-[#7A5A54] text-sm leading-relaxed flex-1" style={{ fontFamily: "'DM Sans', sans-serif", marginBottom: "1.5rem" }}>
-                  {step.body}
-                </p>
-                {/* Detail — always pinned to bottom */}
-                <p
-                  className="text-xs font-semibold tracking-[0.1em] uppercase"
-                  style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                Three steps.<br />
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                  That is it.
+                </em>
+              </h2>
+            </div>
+
+            <div className="flex flex-col">
+              {[
+                {
+                  num: "01",
+                  headline: "Book on your phone.",
+                  body: "Pick a time. Your private room is held the moment you confirm. Available any hour of the day, every day of the week. No calls, no staff, no waiting.",
+                  detail: "24/7 availability.",
+                },
+                {
+                  num: "02",
+                  headline: "Walk in. The light begins.",
+                  body: "Your phone unlocks the door. Full-body panels surround you — 660nm red light for skin, circulation, and surface-level repair; 850nm near-infrared for deeper tissue, muscle recovery, and inflammation. The session runs automatically. You do nothing except be there.",
+                  detail: "660nm + 850nm. Full body.",
+                },
+                {
+                  num: "03",
+                  headline: "Ten minutes. Done. The work continues.",
+                  body: "The session ends. You walk out. But the cellular response continues for hours — your body keeps producing ATP, repairing tissue, reducing cortisol. One session builds on the last. Most people notice a difference within two to four weeks of consistent use.",
+                  detail: "Effects compound over time.",
+                },
+              ].map((step, i) => (
+                <div
+                  key={i}
+                  className="reveal"
+                  style={{
+                    borderTop: "1px solid rgba(26,16,8,0.10)",
+                    paddingTop: "2.75rem",
+                    paddingBottom: "2.75rem",
+                    transitionDelay: `${i * 80}ms`,
+                  }}
                 >
-                  {step.detail}
-                </p>
-              </div>
-            ))}
+                  <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 items-start">
+                    <div>
+                      <p
+                        className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
+                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                      >
+                        {step.num}
+                      </p>
+                      <p
+                        className="text-lg font-bold leading-snug text-[#1A1008] mb-3"
+                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                      >
+                        {step.headline}
+                      </p>
+                      <p
+                        className="text-[0.6rem] font-semibold tracking-[0.12em] uppercase"
+                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                      >
+                        {step.detail}
+                      </p>
+                    </div>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                      {step.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+              <div style={{ borderTop: "1px solid rgba(26,16,8,0.10)" }} />
+            </div>
           </div>
         </div>
       </section>
@@ -206,7 +209,7 @@ export default function Experience() {
       {/* Feathered: blush → near-black */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #F5EDEB 0%, #C9A89E 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
 
-      {/* ── THE STUDIO — fused dark section (Technology color scheme + Studio content) ── */}
+      {/* ── THE STUDIO ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#1A1008" }}>
         <div className="container">
           <div className="max-w-3xl mx-auto">
@@ -216,7 +219,7 @@ export default function Experience() {
                 className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Clinical-grade.<br />
+                Clinical grade.<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
                   Private rooms. Just light.
                 </em>
@@ -225,10 +228,10 @@ export default function Experience() {
             </div>
             <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              Private full-body red light therapy. Clinically calibrated 660nm and 850nm wavelengths — the same protocol used in clinical settings, now available in 10 minutes, at a fraction of the cost.
+                Private full-body red light therapy. Clinically calibrated 660nm and 850nm wavelengths — the same protocol used in clinical settings, now available in 10 minutes, at a fraction of the cost.
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              Every studio is designed around one principle: remove everything that is not the light. A private room. Full-body panels. Fully autonomous — always calibrated, always consistent, always ready.
+                Every studio is designed around one principle: remove everything that is not the light. A private room. Full-body panels. Fully autonomous — always calibrated, always consistent, always ready.
               </p>
             </div>
             {/* Spec pills */}
@@ -262,12 +265,12 @@ export default function Experience() {
       {/* Feathered: near-black → blush */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 20%, #8B5E56 50%, #C9A89E 75%, #F5EDEB 100%)" }} />
 
-      {/* ── WHO IT'S FOR — blush ── */}
+      {/* ── WHO IT'S FOR — editorial rows, benefit-led ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#F5EDEB" }}>
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="reveal mb-16">
-              <span className="section-label block mb-4">Who It's For</span>
+              <span className="section-label block mb-4">Who It Is For</span>
               <h2
                 className="text-3xl md:text-5xl font-bold text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
@@ -279,69 +282,107 @@ export default function Experience() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-px" style={{ backgroundColor: "#E8D8D4" }}>
+            <div className="flex flex-col">
               {[
                 {
-                  label: "For your skin",
-                  title: "A clearer, more supported glow.",
-                  body: "Use it when your skin looks tired, your complexion feels dull, or you want a simple weekly habit that supports skin from the inside out. 10 minutes. Private. No appointments.",
+                  num: "01",
+                  headline: "Recovery.",
+                  body: "After training, long travel, or a week that left your body heavy. Red light at 850nm penetrates deep into muscle tissue — reducing inflammation, accelerating repair, and helping your nervous system settle faster than rest alone.",
                 },
                 {
-                  label: "For your body",
-                  title: "Recovery, energy, and a calmer week.",
-                  body: "Use it after training, between workdays, or whenever your body needs a reset. Redvive supports recovery, reduces heaviness, and helps you maintain a better baseline through the week."
+                  num: "02",
+                  headline: "Skin.",
+                  body: "660nm red light stimulates collagen production and supports cellular turnover. When your complexion looks tired, uneven, or older than it should — a consistent weekly session makes a measurable difference over time.",
                 },
-              ].map((persona, i) => (
+                {
+                  num: "03",
+                  headline: "Energy and sleep.",
+                  body: "Red light therapy reduces cortisol and supports melatonin regulation. An evening session helps your body wind down properly. A morning session helps you start without the heaviness. Both work. Pick what fits your week.",
+                },
+                {
+                  num: "04",
+                  headline: "The long game.",
+                  body: "For people who have read the evidence and want consistent access to the real thing. Not a home gadget. Not a clinic appointment. A 10-minute weekly habit with a compounding return.",
+                },
+              ].map((row, i) => (
                 <div
                   key={i}
-                  className="reveal bg-[#FFF9F9] p-10 lg:p-14 flex flex-col gap-4"
-                  style={{ transitionDelay: `${i * 100}ms` }}
+                  className="reveal"
+                  style={{
+                    borderTop: "1px solid rgba(26,16,8,0.10)",
+                    paddingTop: "2.75rem",
+                    paddingBottom: "2.75rem",
+                    transitionDelay: `${i * 70}ms`,
+                  }}
                 >
-                  <p
-                    className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
-                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                  >
-                    {persona.label}
-                  </p>
-                  <h3
-                    className="text-xl font-bold text-[#1A1008]"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
-                  >
-                    {persona.title}
-                  </h3>
-                  <span className="brand-rule" />
-                  <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                    {persona.body}
-                  </p>
+                  <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 items-start">
+                    <div>
+                      <p
+                        className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
+                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                      >
+                        {row.num}
+                      </p>
+                      <p
+                        className="text-lg font-bold leading-snug text-[#1A1008]"
+                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                      >
+                        {row.headline}
+                      </p>
+                    </div>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                    >
+                      {row.body}
+                    </p>
+                  </div>
                 </div>
               ))}
+              <div style={{ borderTop: "1px solid rgba(26,16,8,0.10)" }} />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Feathered: blush → rose-white */}
-      <div style={{ height: "160px", background: "linear-gradient(to bottom, #F5EDEB 0%, #EDE3DF 30%, #E8DCDA 60%, #FFF9F9 100%)" }} />
+      {/* Feathered: blush → deep dark */}
+      <div style={{ height: "220px", background: "linear-gradient(to bottom, #F5EDEB 0%, #C9A89E 25%, #8B5E56 50%, #3D1A14 80%, #0A0303 100%)" }} />
 
-      {/* ── CTA — rose-white ── */}
-      <section className="py-24 md:py-32" style={{ background: "linear-gradient(to bottom, #FFF9F9 0%, #F5EDEB 35%, #EDE3DF 65%, #E4D8D4 100%)" }}>
-        <div className="container">
-          <div className="reveal max-w-xl mx-auto text-center">
-            <h2
-              className="text-3xl md:text-5xl font-bold leading-[1.1] mb-8 text-[#1A1008]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+      {/* ── CTA ── */}
+      <section
+        className="relative py-32 md:py-40 overflow-hidden"
+        style={{ background: "linear-gradient(to bottom, #0A0303 0%, #0D0404 50%, #0A0303 100%)" }}
+      >
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(61,26,20,0.18) 0%, transparent 70%)" }} />
+        <div className="relative z-10 container">
+          <div className="reveal max-w-lg mx-auto text-center">
+            <span
+              className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
+              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Ready to start?<br />
+              Born in Helsinki. Opening in Fall of 2026
+            </span>
+            <h2
+              className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"
+              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+            >
+              Be first<br />
               <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                €25/month. Locked in forever.
+                through the door.
               </em>
             </h2>
+            <p
+              className="text-white/50 text-sm mb-10 leading-relaxed"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              300 founding spots. €25/month. Locked in for life. Once the spots are claimed, the rate goes up.
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/#waitlist">
-                <button className="btn-primary">Join the Waitlist</button>
+                <button className="btn-primary">Reserve my spot</button>
               </a>
               <Link href="/science">
-                <button className="btn-ghost">The Science →</button>
+                <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>The Science →</button>
               </Link>
             </div>
           </div>

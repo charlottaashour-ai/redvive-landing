@@ -270,42 +270,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROOF MICRO-BAR — anchored to dark hero base, above gradient ── */}
-      <div style={{ backgroundColor: "#0A0303", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
-        <div className="container py-8">
-          <div className="flex flex-row flex-wrap gap-y-4 gap-x-0 items-center">
-            {[
-              { label: "660nm + 850nm", detail: "Clinically calibrated panels" },
-              { label: "Private room", detail: "No staff. No shared space." },
-              { label: "300 founding spots", detail: "Limited. First come, first served." },
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-3 flex-1 min-w-[200px]"
-                style={{
-                  paddingLeft: i > 0 ? "1.5rem" : "0",
-                  borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.10)" : "none",
-                }}
-              >
-                <div className="flex flex-col gap-0.5">
-                  <p
-                    className="text-sm font-bold text-white leading-tight"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
-                  >
-                    {item.label}
-                  </p>
-                  <p
-                    className="text-xs leading-tight"
-                    style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif" }}
-                  >
-                    {item.detail}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
