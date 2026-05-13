@@ -128,6 +128,30 @@ function WaitlistForm() {
   );
 }
 
+/* ── Carousel data ── */
+const STATS = [
+  {
+    stat: "Skin",
+    label: "Clarity and Glow",
+    body: "Full body red light to support calmer, clearer, more resilient skin in 10 minutes.",
+  },
+  {
+    stat: "Recovery",
+    label: "Body Reset",
+    body: "When training or work leaves you heavy, 10 minutes of light helps your body bounce back.",
+  },
+  {
+    stat: "Hair",
+    label: "Scalp Support",
+    body: "Targeted red light to support scalp circulation for people who take thinning hair seriously.",
+  },
+  {
+    stat: "Sleep",
+    label: "Evening Wind Down",
+    body: "An evening 10 minute session to help your body slow down and make mornings feel less brutal.",
+  },
+];
+
 const PRICING_ROWS = [
   { option: "Clinic or physio", cost: "€80 to €150", label: "per session", note: "1 to 2 sessions max", highlight: false },
   { option: "Home device", cost: "€500 to €3,000", label: "one time", note: "High upfront, no guidance", highlight: false },
@@ -357,12 +381,68 @@ export default function Home() {
       {/* ── FEATHERED TRANSITION: rose-white → dark ── */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
 
+      {/* ── STATS CAROUSEL ── */}
+      <div style={{ backgroundColor: "#1A1008", overflow: "hidden" }}>
+        <div className="relative py-16 md:py-20" style={{ overflow: "hidden" }}>
+          <div
+            className="flex"
+            style={{
+              animation: "statsScroll 22s linear infinite",
+              width: "max-content",
+            }}
+          >
+            {[...STATS, ...STATS, ...STATS].map((item, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
+                style={{
+                  width: "280px",
+                  borderRight: "1px solid rgba(255,255,255,0.07)",
+                }}
+              >
+                <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                  <p
+                    className="font-bold leading-none"
+                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                  >
+                    {item.stat}
+                  </p>
+                </div>
+                <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
+                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(255,249,249,0.4)", fontFamily: "'DM Sans', sans-serif" }}>
+                    {item.label}
+                  </p>
+                </div>
+                <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+                <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                  <p className="text-white/50 text-xs leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #1A1008 0%, transparent 100%)" }} />
+          <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #1A1008 0%, transparent 100%)" }} />
+        </div>
+        <div className="flex justify-center py-8 px-8" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+          <Link href="/science">
+            <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>
+              Understand the science →
+            </button>
+          </Link>
+        </div>
+      </div>
+
+      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
+      <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
+
       {/* ── WHO IT IS FOR ── */}
       <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
         <div className="container">
-          <div className="max-w-4xl">
+          <div className="max-w-4xl mx-auto">
 
-            <div className="reveal mb-16">
+            <div className="reveal mb-16 text-center">
               <span
                 className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
                 style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
@@ -389,15 +469,15 @@ export default function Home() {
               ].map((line, i) => (
                 <div
                   key={i}
-                  className="reveal py-7"
+                  className="reveal py-7 text-center"
                   style={{
                     borderTop: "1px solid rgba(255,249,249,0.08)",
                     transitionDelay: `${i * 70}ms`,
                   }}
                 >
                   <p
-                    className="text-xl md:text-2xl font-bold text-white leading-snug"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                    className="text-xl md:text-2xl font-bold text-white leading-snug mx-auto"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em", maxWidth: "600px" }}
                   >
                     {line}
                   </p>
@@ -405,13 +485,9 @@ export default function Home() {
               ))}
               <div style={{ borderTop: "1px solid rgba(255,249,249,0.08)" }} />
             </div>
-
           </div>
         </div>
       </section>
-
-      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
-      <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
 
       {/* ── HOW IT WORKS ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -430,6 +506,7 @@ export default function Home() {
                 </em>
               </h2>
             </div>
+            {/* ── FEATHERED TRANSITION placeholder removed — section sits on rose-white ── */}
 
             <div className="flex flex-col">
               {[
@@ -539,6 +616,10 @@ export default function Home() {
           0% { transform: translateY(-100%); opacity: 0; }
           30% { opacity: 1; }
           100% { transform: translateY(250%); opacity: 0; }
+        }
+        @keyframes statsScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(calc(-280px * 4)); }
         }
         @keyframes dotBlink {
           0%, 100% { opacity: 1; }
