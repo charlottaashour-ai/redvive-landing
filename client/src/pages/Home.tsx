@@ -165,6 +165,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FFF9F9" }}>
+      {/* ── PAGE LOAD FADE: dark → transparent ── */}
+      <motion.div
+        className="fixed inset-0 z-[9999] pointer-events-none"
+        style={{ backgroundColor: "#0A0303" }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 1.4, ease: "easeOut", delay: 0.1 }}
+      />
       <Navbar />
 
       {/* ── HERO ── */}
@@ -213,36 +221,25 @@ export default function Home() {
               Born in Helsinki. Opening in Fall of 2026
             </motion.p>
 
-            {/* Headline line 1 */}
+            {/* Headline line 1 — DM Sans bold */}
             <motion.div variants={heroItem}>
               <h1
-                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]"
+                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
               >
-                Wellness,
+                Your body knows how to heal.
               </h1>
             </motion.div>
 
-            {/* Headline line 2 — italic serif */}
+            {/* Headline line 2 — Lora italic */}
             <motion.div variants={heroItem}>
               <h1
-                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-4"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
+                className="text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-10"
+                style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
               >
-                <span style={{ fontWeight: 400, fontStyle: "normal", fontFamily: "'Lora', serif" }}>
-                  simplified.
-                </span>
+                We just give it light.
               </h1>
             </motion.div>
-
-            {/* Sub-copy */}
-            <motion.p
-              variants={heroItem}
-              className="text-white/60 text-sm mt-6 mb-10 max-w-sm leading-relaxed"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-            >
-              Your body knows how to heal. We just give it light.
-            </motion.p>
 
             {/* Waitlist form */}
             <motion.div variants={heroItem}>
