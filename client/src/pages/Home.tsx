@@ -1,11 +1,12 @@
 /*
  * REDVIVE — Home Page
- * Design: Abstract motion blur hero (full-bleed), text floating over video
+ * Design: Abstract motion blur hero (full-bleed), text floating over image
  * Palette: #0A0303 dark / #FFF9F9 rose-white / #F5EDEB blush / #1A1008 near-black
  * Sections flow seamlessly — no hard breaks
  * Mobile-first, editorial, left-anchored
  *
- * Structure: Hero → Pricing → Who It Is For → How It Works → Waitlist CTA
+ * Structure (conversion-optimised):
+ *   Hero (headline + subline + form) → Proof micro-bar → How It Works → Pricing → What It Does → Who It Is For → Waitlist CTA
  * No hyphens anywhere in copy.
  */
 
@@ -53,7 +54,7 @@ function useReveal() {
   }, []);
 }
 
-function WaitlistForm() {
+function WaitlistForm({ dark = true }: { dark?: boolean }) {
   const [email, setEmail] = useState("");
   const [interest, setInterest] = useState("");
   const [consent, setConsent] = useState(false);
@@ -67,11 +68,15 @@ function WaitlistForm() {
   if (submitted) {
     return (
       <div className="text-center py-4">
-        <p className="text-white text-sm font-medium tracking-wide">You're on the list.</p>
-        <p className="text-white/60 text-xs mt-1">We'll be in touch before Helsinki opens.</p>
+        <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>You are on the list.</p>
+        <p className={`text-xs mt-1 ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>We will be in touch before Helsinki opens.</p>
       </div>
     );
   }
+
+  const inputClass = dark
+    ? "w-full bg-white/10 border border-white/20 text-white placeholder-white/40 px-4 py-3 text-sm focus:outline-none focus:border-white/50 transition-colors"
+    : "w-full bg-[#1A1008]/5 border border-[#1A1008]/15 text-[#1A1008] placeholder-[#7A5A54]/60 px-4 py-3 text-sm focus:outline-none focus:border-[#1A1008]/30 transition-colors";
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
@@ -81,14 +86,14 @@ function WaitlistForm() {
         placeholder="Your email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        className="w-full bg-white/10 border border-white/20 text-white placeholder-white/40 px-4 py-3 text-sm focus:outline-none focus:border-white/50 transition-colors"
+        className={inputClass}
         style={{ fontFamily: "'DM Sans', sans-serif" }}
       />
       <select
         value={interest}
         onChange={(e) => setInterest(e.target.value)}
-        className="w-full bg-white/10 border border-white/20 text-white px-4 py-3 text-sm focus:outline-none focus:border-white/50 transition-colors appearance-none"
-        style={{ fontFamily: "'DM Sans', sans-serif", color: interest ? "white" : "rgba(255,255,255,0.4)" }}
+        className={inputClass + " appearance-none"}
+        style={{ fontFamily: "'DM Sans', sans-serif", color: interest ? (dark ? "white" : "#1A1008") : (dark ? "rgba(255,255,255,0.4)" : "rgba(122,90,84,0.6)") }}
       >
         <option value="" disabled style={{ color: "#1A1008" }}>What brings you here?</option>
         <option value="skin" style={{ color: "#1A1008" }}>Skin and Glow</option>
@@ -108,13 +113,13 @@ function WaitlistForm() {
         />
         <span
           className="text-[0.65rem] leading-relaxed"
-          style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+          style={{ color: dark ? "rgba(255,255,255,0.35)" : "rgba(26,16,8,0.45)", fontFamily: "'DM Sans', sans-serif" }}
         >
           I agree to receive launch updates and founding member information from Redvive. See our{" "}
           <a
             href="/privacy"
             className="underline underline-offset-2 hover:opacity-80 transition-opacity"
-            style={{ color: "rgba(255,255,255,0.45)" }}
+            style={{ color: dark ? "rgba(255,255,255,0.45)" : "rgba(26,16,8,0.55)" }}
           >
             Privacy Policy
           </a>
@@ -122,9 +127,9 @@ function WaitlistForm() {
         </span>
       </label>
       <button type="submit" className="btn-primary justify-center w-full" disabled={!consent} style={{ opacity: consent ? 1 : 0.5, transition: "opacity 0.2s" }}>
-        Join the Waitlist
+        Reserve my spot
       </button>
-      <p className="text-white/40 text-xs text-center">No payment. No commitment.</p>
+      <p className={`text-xs text-center ${dark ? "text-white/40" : "text-[#7A5A54]/60"}`}>No payment. No commitment.</p>
     </form>
   );
 }
@@ -151,13 +156,6 @@ const STATS = [
     label: "Evening Wind Down",
     body: "An evening 10 minute session to help your body slow down and make mornings feel less brutal.",
   },
-];
-
-const PRICING_ROWS = [
-  { option: "Clinic or physio", cost: "€80 to €150", label: "per session", note: "1 to 2 sessions max", highlight: false },
-  { option: "Home device", cost: "€500 to €3,000", label: "one time", note: "High upfront, no guidance", highlight: false },
-  { option: "Competitor studio", cost: "€60 to €120", label: "per month", note: "4 to 8 sessions included", highlight: false },
-  { option: "Redvive Founding Member", cost: "€25", label: "per month", note: "", highlight: true },
 ];
 
 export default function Home() {
@@ -234,16 +232,26 @@ export default function Home() {
             {/* Headline line 2 — Lora italic */}
             <motion.div variants={heroItem}>
               <h1
-                className="text-[42px] md:text-[72px] leading-[1.05] mb-10"
+                className="text-[42px] md:text-[72px] leading-[1.05] mb-6"
                 style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
               >
                 We just give it <span style={{color:"rgba(255,255,255,1)"}}>light.</span>
               </h1>
             </motion.div>
 
+            {/* Hero subheadline — what is Redvive */}
+            <motion.div variants={heroItem}>
+              <p
+                className="text-sm md:text-base leading-relaxed mb-10"
+                style={{ color: "rgba(255,255,255,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
+              >
+                A private red light therapy studio in Helsinki. Book, walk in, and leave in 10 minutes. No staff. No waiting. Opening Fall 2026.
+              </p>
+            </motion.div>
+
             {/* Waitlist form */}
             <motion.div variants={heroItem} className="max-w-md">
-              <WaitlistForm />
+              <WaitlistForm dark={true} />
             </motion.div>
           </div>
         </motion.div>
@@ -262,237 +270,37 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
-      <div style={{ height: "220px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
-
-      {/* ── FOUNDING MEMBER PRICING ── */}
-      <section className="py-24 md:py-36" style={{ backgroundColor: "#FFF9F9" }}>
-        <div className="container">
-
-          {/* Scarcity pill */}
-          <div className="reveal flex justify-center mb-10">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2"
-              style={{ backgroundColor: "#D53E0F" }}
-            >
-              <span
-                className="block rounded-full flex-shrink-0"
-                style={{
-                  width: "5px",
-                  height: "5px",
-                  backgroundColor: "white",
-                  animation: "dotBlink 2s ease-in-out infinite",
-                }}
-              />
-              <span
-                className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
-                Limited to 300 Spots
-              </span>
-            </div>
-          </div>
-
-          {/* Section label */}
-          <div className="reveal text-center mb-6">
-            <span className="section-label">Founding Member Pricing</span>
-          </div>
-
-          {/* Monument price */}
-          <div className="reveal text-center mb-6">
-            <div className="flex items-baseline justify-center gap-3 md:gap-5 flex-wrap">
-              <span
-                className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] font-bold leading-none text-[#1A1008]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em" }}
-              >
-                €25
-              </span>
-              <span
-                className="text-xl sm:text-2xl md:text-3xl font-normal text-[#7A5A54] self-end pb-3 md:pb-6"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
-                / month.
-              </span>
-            </div>
-          </div>
-
-          {/* Serif sub-headline */}
-          <div className="reveal text-center mb-6">
-            <p
-              className="text-2xl sm:text-3xl md:text-4xl text-[#1A1008]"
-              style={{ fontFamily: "'Lora', serif", fontWeight: 400 }}
-            >
-              Locked in for life.
-            </p>
-          </div>
-
-          {/* Body copy */}
-          <div className="reveal text-center mb-16">
-            <p
-              className="text-[#7A5A54] text-sm md:text-base leading-relaxed max-w-lg mx-auto"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-            >
-              Available only to waitlist members before we open. Once claimed, it is yours forever. No price increases. No conditions.
-            </p>
-          </div>
-
-          {/* Thin rule */}
-          <div className="reveal max-w-2xl mx-auto mb-16">
-            <div className="h-px w-full" style={{ backgroundColor: "#E8D8D4" }} />
-          </div>
-
-          {/* Three value facts */}
-          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px max-w-3xl mx-auto" style={{ backgroundColor: "#E8D8D4" }}>
+      {/* ── PROOF MICRO-BAR — sits inside the dark-to-light gradient ── */}
+      <div style={{ background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 30%, #8B5E56 60%, #D4B8B4 80%, #FFF9F9 100%)" }}>
+        <div className="container py-16 md:py-20">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-0 max-w-3xl">
             {[
-              { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
-              { stat: "10×", label: "vs. clinic", body: "One clinic session equals one month at Redvive." },
-              { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
+              { label: "660nm + 850nm", detail: "Clinically calibrated panels" },
+              { label: "Private room", detail: "No staff. No shared space." },
+              { label: "300 founding spots", detail: "Limited. First come, first served." },
             ].map((item, i) => (
               <div
                 key={i}
-                className="bg-[#FFF9F9] px-6 py-10 flex flex-col gap-3 text-center"
-                style={{ transitionDelay: `${i * 100}ms` }}
+                className="flex flex-col gap-1 md:pr-10"
+                style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.10)" : "none" }}
               >
                 <p
-                  className="text-4xl md:text-5xl font-bold"
-                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
-                >
-                  {item.stat}
-                </p>
-                <p
-                  className="text-xs font-semibold tracking-[0.14em] uppercase"
-                  style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                  className="text-sm font-bold text-white"
+                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
                 >
                   {item.label}
                 </p>
-                <span className="brand-rule mx-auto" />
-                <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  {item.body}
+                <p
+                  className="text-xs"
+                  style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  {item.detail}
                 </p>
               </div>
             ))}
           </div>
-
-          {/* Footnote */}
-          <div className="reveal text-center mt-8">
-            <p className="text-[#B89490] text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              Final session structure confirmed at launch. Founding rate locked in for life.
-            </p>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ── FEATHERED TRANSITION: rose-white → dark ── */}
-      <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
-
-      {/* ── STATS CAROUSEL ── */}
-      <div style={{ backgroundColor: "#1A1008", overflow: "hidden" }}>
-        <div className="relative py-16 md:py-20" style={{ overflow: "hidden" }}>
-          <div
-            className="flex"
-            style={{
-              animation: "statsScroll 22s linear infinite",
-              width: "max-content",
-            }}
-          >
-            {[...STATS, ...STATS, ...STATS].map((item, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
-                style={{
-                  width: "280px",
-                  borderRight: "1px solid rgba(255,255,255,0.07)",
-                }}
-              >
-                <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
-                  <p
-                    className="font-bold leading-none"
-                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
-                  >
-                    {item.stat}
-                  </p>
-                </div>
-                <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
-                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(255,249,249,0.4)", fontFamily: "'DM Sans', sans-serif" }}>
-                    {item.label}
-                  </p>
-                </div>
-                <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
-                <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
-                  <p className="text-white/50 text-xs leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
-                    {item.body}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #1A1008 0%, transparent 100%)" }} />
-          <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #1A1008 0%, transparent 100%)" }} />
-        </div>
-        <div className="flex justify-center py-8 px-8" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-          <Link href="/science">
-            <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>
-              Understand the science →
-            </button>
-          </Link>
         </div>
       </div>
-
-      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
-      <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
-
-      {/* ── WHO IT IS FOR ── */}
-      <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
-        <div className="container">
-          <div className="max-w-4xl mx-auto">
-
-            <div className="reveal mb-16 text-center">
-              <span
-                className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
-                style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                Who It Is For
-              </span>
-              <h2
-                className="text-4xl md:text-6xl font-bold leading-[1.05] text-white"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
-              >
-                Built for people<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  who want results.
-                </em>
-              </h2>
-            </div>
-
-            <div className="flex flex-col">
-              {[
-                "You want results, not rituals.",
-                "You have tried the gym, the supplements, the sleep apps.",
-                "You want something that works in 10 minutes and fits a Tuesday.",
-                "You do not need a wellness experience. You need a tool.",
-              ].map((line, i) => (
-                <div
-                  key={i}
-                  className="reveal py-7 text-center"
-                  style={{
-                    borderTop: "1px solid rgba(255,249,249,0.08)",
-                    transitionDelay: `${i * 70}ms`,
-                  }}
-                >
-                  <p
-                    className="text-xl md:text-2xl font-bold text-white leading-snug mx-auto"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em", maxWidth: "600px" }}
-                  >
-                    {line}
-                  </p>
-                </div>
-              ))}
-              <div style={{ borderTop: "1px solid rgba(255,249,249,0.08)" }} />
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ── HOW IT WORKS ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -511,7 +319,6 @@ export default function Home() {
                 </em>
               </h2>
             </div>
-            {/* ── FEATHERED TRANSITION placeholder removed — section sits on rose-white ── */}
 
             <div className="flex flex-col">
               {[
@@ -580,7 +387,244 @@ export default function Home() {
       </section>
 
       {/* ── FEATHERED TRANSITION: rose-white → deep dark ── */}
+      <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
+
+      {/* ── FOUNDING MEMBER PRICING ── */}
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
+        <div className="container">
+
+          {/* Scarcity pill */}
+          <div className="reveal flex justify-center mb-10">
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2"
+              style={{ backgroundColor: "#D53E0F" }}
+            >
+              <span
+                className="block rounded-full flex-shrink-0"
+                style={{
+                  width: "5px",
+                  height: "5px",
+                  backgroundColor: "white",
+                  animation: "dotBlink 2s ease-in-out infinite",
+                }}
+              />
+              <span
+                className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Limited to 300 Spots
+              </span>
+            </div>
+          </div>
+
+          {/* Section label */}
+          <div className="reveal text-center mb-6">
+            <span className="section-label">Founding Member Pricing</span>
+          </div>
+
+          {/* Monument price */}
+          <div className="reveal text-center mb-6">
+            <div className="flex items-baseline justify-center gap-3 md:gap-5 flex-wrap">
+              <span
+                className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] font-bold leading-none"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FFF9F9" }}
+              >
+                €25
+              </span>
+              <span
+                className="text-xl sm:text-2xl md:text-3xl font-normal self-end pb-3 md:pb-6"
+                style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,249,249,0.5)" }}
+              >
+                / month.
+              </span>
+            </div>
+          </div>
+
+          {/* Serif sub-headline */}
+          <div className="reveal text-center mb-6">
+            <p
+              className="text-2xl sm:text-3xl md:text-4xl"
+              style={{ fontFamily: "'Lora', serif", fontWeight: 400, color: "#FFF9F9" }}
+            >
+              Locked in for life.
+            </p>
+          </div>
+
+          {/* Body copy */}
+          <div className="reveal text-center mb-16">
+            <p
+              className="text-sm md:text-base leading-relaxed max-w-lg mx-auto"
+              style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,249,249,0.55)" }}
+            >
+              Available only to waitlist members before we open. Once claimed, it is yours forever. No price increases. No conditions.
+            </p>
+          </div>
+
+          {/* Thin rule */}
+          <div className="reveal max-w-2xl mx-auto mb-16">
+            <div className="h-px w-full" style={{ backgroundColor: "rgba(255,249,249,0.10)" }} />
+          </div>
+
+          {/* Three value facts */}
+          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px max-w-3xl mx-auto" style={{ backgroundColor: "rgba(255,249,249,0.08)" }}>
+            {[
+              { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
+              { stat: "10×", label: "vs. clinic", body: "One clinic session equals one month at Redvive." },
+              { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="px-6 py-10 flex flex-col gap-3 text-center"
+                style={{ backgroundColor: "#1A1008", transitionDelay: `${i * 100}ms` }}
+              >
+                <p
+                  className="text-4xl md:text-5xl font-bold"
+                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                >
+                  {item.stat}
+                </p>
+                <p
+                  className="text-xs font-semibold tracking-[0.14em] uppercase"
+                  style={{ color: "rgba(255,249,249,0.40)", fontFamily: "'DM Sans', sans-serif" }}
+                >
+                  {item.label}
+                </p>
+                <span className="brand-rule mx-auto" />
+                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,249,249,0.55)", fontFamily: "'DM Sans', sans-serif" }}>
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Footnote */}
+          <div className="reveal text-center mt-8">
+            <p className="text-xs" style={{ color: "rgba(255,249,249,0.25)", fontFamily: "'DM Sans', sans-serif" }}>
+              Final session structure confirmed at launch. Founding rate locked in for life.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
+      <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
+
+      {/* ── WHAT IT DOES (CAROUSEL) ── */}
+      <div style={{ backgroundColor: "#FFF9F9" }}>
+        <div className="container pb-4">
+          <div className="reveal mb-2">
+            <span className="section-label">What It Does For You</span>
+          </div>
+        </div>
+      </div>
+      <div style={{ backgroundColor: "#FFF9F9", overflow: "hidden" }}>
+        <div className="relative py-10 md:py-14" style={{ overflow: "hidden" }}>
+          <div
+            className="flex"
+            style={{
+              animation: "statsScroll 22s linear infinite",
+              width: "max-content",
+            }}
+          >
+            {[...STATS, ...STATS, ...STATS].map((item, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
+                style={{
+                  width: "280px",
+                  borderRight: "1px solid rgba(26,16,8,0.07)",
+                }}
+              >
+                <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                  <p
+                    className="font-bold leading-none"
+                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                  >
+                    {item.stat}
+                  </p>
+                </div>
+                <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
+                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>
+                    {item.label}
+                  </p>
+                </div>
+                <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+                <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #FFF9F9 0%, transparent 100%)" }} />
+          <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #FFF9F9 0%, transparent 100%)" }} />
+        </div>
+        <div className="flex justify-center py-8 px-8" style={{ borderTop: "1px solid rgba(26,16,8,0.07)" }}>
+          <Link href="/science">
+            <button className="btn-ghost">Understand the science →</button>
+          </Link>
+        </div>
+      </div>
+
+      {/* ── FEATHERED TRANSITION: rose-white → dark ── */}
       <div style={{ height: "280px", background: "linear-gradient(to bottom, #FFF9F9 0%, #EDE3DF 15%, #C9A89E 35%, #7A4A42 55%, #3D1A14 75%, #1A1008 90%, #0A0303 100%)" }} />
+
+      {/* ── WHO IT IS FOR ── */}
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#0A0303" }}>
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+
+            <div className="reveal mb-16 text-center">
+              <span
+                className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
+                style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Who It Is For
+              </span>
+              <h2
+                className="text-4xl md:text-6xl font-bold leading-[1.05] text-white"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+              >
+                Built for people<br />
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                  who want results.
+                </em>
+              </h2>
+            </div>
+
+            <div className="flex flex-col">
+              {[
+                "People who train and want their body to recover properly.",
+                "People who have noticed their skin is not what it was.",
+                "People who are tired after work and want something that actually helps.",
+                "People who have read the studies and want access to the real thing, not a consumer gadget.",
+              ].map((line, i) => (
+                <div
+                  key={i}
+                  className="reveal py-7 text-center"
+                  style={{
+                    borderTop: "1px solid rgba(255,249,249,0.08)",
+                    transitionDelay: `${i * 70}ms`,
+                  }}
+                >
+                  <p
+                    className="text-xl md:text-2xl font-bold text-white leading-snug mx-auto"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em", maxWidth: "600px" }}
+                  >
+                    {line}
+                  </p>
+                </div>
+              ))}
+              <div style={{ borderTop: "1px solid rgba(255,249,249,0.08)" }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATHERED TRANSITION: deep dark → dark ── */}
+      <div style={{ height: "2px", backgroundColor: "#0A0303" }} />
 
       {/* ── WAITLIST CTA ── */}
       <section
@@ -605,9 +649,9 @@ export default function Home() {
                 </em>
               </h2>
               <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Join the waitlist for first access to Redvive studios in the capital region. Be first to hear about opening dates, founding rates and early access.
+                We are opening with 300 founding spots. The €25/month rate is locked in for life — but only for the people on this list. Once the spots are claimed, the rate goes up.
               </p>
-              <WaitlistForm />
+              <WaitlistForm dark={true} />
             </div>
           </div>
         </div>
