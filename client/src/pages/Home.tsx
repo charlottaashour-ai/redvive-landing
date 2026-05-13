@@ -3,11 +3,10 @@
  * Design: Abstract motion blur hero (full-bleed), text floating over video
  * Palette: #0A0303 dark / #FFF9F9 rose-white / #F5EDEB blush / #1A1008 near-black
  * Sections flow seamlessly — no hard breaks
- * Mobile-first, editorial, centered
+ * Mobile-first, editorial, left-anchored
  *
- * Hero animation: Framer Motion staggered fade-up on page load
- *   — eyebrow label → headline word 1 → headline word 2 (italic) → sub-copy → form
- *   — each element fades in from y:20 with 150ms stagger
+ * Structure: Hero → Pricing → Who It Is For → How It Works → Waitlist CTA
+ * No hyphens anywhere in copy.
  */
 
 import { useEffect, useState } from "react";
@@ -91,9 +90,9 @@ function WaitlistForm() {
         style={{ fontFamily: "'DM Sans', sans-serif", color: interest ? "white" : "rgba(255,255,255,0.4)" }}
       >
         <option value="" disabled style={{ color: "#1A1008" }}>What brings you here?</option>
-        <option value="skin" style={{ color: "#1A1008" }}>Skin &amp; Glow</option>
-        <option value="recovery" style={{ color: "#1A1008" }}>Recovery &amp; Performance</option>
-        <option value="energy" style={{ color: "#1A1008" }}>Energy &amp; Weekly Balance</option>
+        <option value="skin" style={{ color: "#1A1008" }}>Skin and Glow</option>
+        <option value="recovery" style={{ color: "#1A1008" }}>Recovery and Performance</option>
+        <option value="energy" style={{ color: "#1A1008" }}>Energy and Weekly Balance</option>
         <option value="wellness" style={{ color: "#1A1008" }}>General Wellness</option>
         <option value="science" style={{ color: "#1A1008" }}>I want the science</option>
       </select>
@@ -129,121 +128,11 @@ function WaitlistForm() {
   );
 }
 
-/* ── Stats carousel data ── */
-const STATS = [
-  {
-    stat: "Skin",
-    label: "Clarity & Glow",
-    body: "Full-body red light to support calmer, clearer, more resilient skin in 10 minutes.",
-  },
-  {
-    stat: "Recovery",
-    label: "Body Reset",
-    body: "When training or work leaves you heavy, 10 minutes of light helps your body bounce back.",
-  },
-  {
-    stat: "Hair",
-    label: "Scalp Support",
-    body: "Targeted red light to support scalp circulation for people who take thinning hair seriously.",
-  },
-  {
-    stat: "Sleep",
-    label: "Evening Wind-Down",
-    body: "An evening 10-minute session to help your body slow down and make mornings feel less brutal.",
-  },
-];
-
-function StatsCarousel() {
-  const items = [...STATS, ...STATS, ...STATS];
-
-  return (
-    <div style={{ backgroundColor: "#1A1008", overflow: "hidden" }}>
-      <div className="relative py-16 md:py-20" style={{ overflow: "hidden" }}>
-        <div
-          className="flex"
-          style={{
-            animation: "statsScroll 22s linear infinite",
-            width: "max-content",
-          }}
-        >
-          {items.map((item, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
-              style={{
-                width: "280px",
-                borderRight: "1px solid rgba(255,255,255,0.07)",
-              }}
-            >
-              {/* Heading — fixed height so all cards align */}
-              <div
-                className="flex items-end justify-center"
-                style={{ height: "80px", flexShrink: 0 }}
-              >
-                <p
-                  className="font-bold leading-none"
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontSize: "3rem",
-                    letterSpacing: "-0.04em",
-                    color: "#D53E0F",
-                  }}
-                >
-                  {item.stat}
-                </p>
-              </div>
-              {/* Subheading — fixed height */}
-              <div
-                className="flex items-center justify-center"
-                style={{ height: "32px", flexShrink: 0 }}
-              >
-                <p
-                  className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase"
-                  style={{ color: "rgba(255,249,249,0.4)", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {item.label}
-                </p>
-              </div>
-              {/* Divider — fixed position */}
-              <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
-              {/* Body — fixed height, top-aligned */}
-              <div
-                className="flex items-start justify-center"
-                style={{ height: "80px", flexShrink: 0 }}
-              >
-                <p
-                  className="text-white/50 text-xs leading-relaxed"
-                  style={{ fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}
-                >
-                  {item.body}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #1A1008 0%, transparent 100%)" }} />
-        <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #1A1008 0%, transparent 100%)" }} />
-      </div>
-
-      <div
-        className="flex justify-center py-8 px-8"
-        style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
-      >
-        <Link href="/science">
-          <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>
-            Understand the science →
-          </button>
-        </Link>
-      </div>
-    </div>
-  );
-}
-
 const PRICING_ROWS = [
-  { option: "Clinic / physio", cost: "€80–€150", label: "per session", note: "1–2 sessions max", highlight: false },
-  { option: "Home device", cost: "€500–€3,000", label: "one-time", note: "High upfront, no guidance", highlight: false },
-  { option: "Competitor studio", cost: "€60–€120", label: "per month", note: "4–8 sessions included", highlight: false },
-  { option: "Redvive — Founding Member", cost: "€25", label: "per month", note: "", highlight: true },
+  { option: "Clinic or physio", cost: "€80 to €150", label: "per session", note: "1 to 2 sessions max", highlight: false },
+  { option: "Home device", cost: "€500 to €3,000", label: "one time", note: "High upfront, no guidance", highlight: false },
+  { option: "Competitor studio", cost: "€60 to €120", label: "per month", note: "4 to 8 sessions included", highlight: false },
+  { option: "Redvive Founding Member", cost: "€25", label: "per month", note: "", highlight: true },
 ];
 
 export default function Home() {
@@ -282,7 +171,7 @@ export default function Home() {
           initial="hidden"
           animate="show"
         >
-          <div className="max-w-2xl">
+          <div className="max-w-xl">
             {/* Eyebrow */}
             <motion.p
               variants={heroItem}
@@ -320,7 +209,7 @@ export default function Home() {
               className="text-white/60 text-sm mt-6 mb-10 max-w-sm leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Redvive is a fully autonomous private red light studio — built for people who choose themselves daily.
+              Your body knows how to heal. We just give it light.
             </motion.p>
 
             {/* Waitlist form */}
@@ -414,7 +303,7 @@ export default function Home() {
               className="text-[#7A5A54] text-sm md:text-base leading-relaxed max-w-lg mx-auto"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Available only to waitlist members before we open. Once claimed, it's yours forever. No price increases. No conditions.
+              Available only to waitlist members before we open. Once claimed, it is yours forever. No price increases. No conditions.
             </p>
           </div>
 
@@ -427,7 +316,7 @@ export default function Home() {
           <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px max-w-3xl mx-auto" style={{ backgroundColor: "#E8D8D4" }}>
             {[
               { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
-              { stat: "10×", label: "vs. clinic", body: "One clinic session = one month at Redvive." },
+              { stat: "10×", label: "vs. clinic", body: "One clinic session equals one month at Redvive." },
               { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
             ].map((item, i) => (
               <div
@@ -458,7 +347,7 @@ export default function Home() {
           {/* Footnote */}
           <div className="reveal text-center mt-8">
             <p className="text-[#B89490] text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              * Final session structure confirmed at launch. Founding rate locked in for life.
+              Final session structure confirmed at launch. Founding rate locked in for life.
             </p>
           </div>
 
@@ -467,57 +356,99 @@ export default function Home() {
 
       {/* ── FEATHERED TRANSITION: rose-white → dark ── */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
-      <StatsCarousel />
-      {/* ── FEATHERED TRANSITION: dark → rose-white (via blush mid-tones) ── */}
-      <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
 
-      {/* ── WHAT WE STAND FOR — editorial rows ── */}
-      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+      {/* ── WHO IT IS FOR ── */}
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
         <div className="container">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl">
 
-            {/* Section header */}
             <div className="reveal mb-16">
-              <span className="section-label block mb-6">What We Stand For</span>
-              <h2
-                className="text-4xl md:text-6xl font-bold leading-[1.05]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
+              <span
+                className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
+                style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
               >
-                light is<br />
+                Who It Is For
+              </span>
+              <h2
+                className="text-4xl md:text-6xl font-bold leading-[1.05] text-white"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+              >
+                Built for people<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  the medicine.
+                  who want results.
                 </em>
               </h2>
             </div>
 
-            {/* Editorial rows */}
+            <div className="flex flex-col">
+              {[
+                "You want results, not rituals.",
+                "You have tried the gym, the supplements, the sleep apps.",
+                "You want something that works in 10 minutes and fits a Tuesday.",
+                "You do not need a wellness experience. You need a tool.",
+              ].map((line, i) => (
+                <div
+                  key={i}
+                  className="reveal py-7"
+                  style={{
+                    borderTop: "1px solid rgba(255,249,249,0.08)",
+                    transitionDelay: `${i * 70}ms`,
+                  }}
+                >
+                  <p
+                    className="text-xl md:text-2xl font-bold text-white leading-snug"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                  >
+                    {line}
+                  </p>
+                </div>
+              ))}
+              <div style={{ borderTop: "1px solid rgba(255,249,249,0.08)" }} />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
+      <div style={{ height: "280px", background: "linear-gradient(to bottom, #1A1008 0%, #3D1A14 15%, #7A4A42 35%, #B89490 55%, #E0D0CC 75%, #F5EDEB 88%, #FFF9F9 100%)" }} />
+
+      {/* ── HOW IT WORKS ── */}
+      <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+
+            <div className="reveal mb-16">
+              <span className="section-label block mb-6">How It Works</span>
+              <h2
+                className="text-4xl md:text-6xl font-bold leading-[1.05]"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
+              >
+                Three steps.<br />
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                  That is it.
+                </em>
+              </h2>
+            </div>
+
             <div className="flex flex-col">
               {[
                 {
                   num: "01",
-                  title: "Autonomous",
-                  headline: "No staff. No small talk. Just light.",
-                  body: "Book on your phone. Walk in. Close the door. Begin. Your private room is ready. No check-in, no upsell, no wellness theatre.",
+                  headline: "Book on your phone.",
+                  body: "Open the app. Pick a time. Your private room is reserved. No calls, no waiting lists, no staff to coordinate with. Available 24 hours a day, 7 days a week.",
                 },
                 {
                   num: "02",
-                  title: "Accessible",
-                  headline: "Fast enough for a weekday.",
-                  body: "€25/month for founding members. Locked in for life. Less than a coffee a day — calm enough to become a habit, affordable enough to stay one.",
+                  headline: "Walk in.",
+                  body: "Your phone unlocks the door. Your private room is ready. No staff in the room. No small talk. Just light.",
                 },
                 {
                   num: "03",
-                  title: "Science-Backed",
-                  headline: "Clinically calibrated. Peer-reviewed.",
-                  body: "660nm and 850nm wavelengths — the same protocol used in clinical settings. Backed by thousands of peer-reviewed studies. Precise where it matters.",
+                  headline: "10 minutes. Done.",
+                  body: "The session runs automatically. When it ends, you are done. Walk out. No checkout, no upsell, no wellness theatre. Full body panels. Clinically calibrated.",
                 },
-                {
-                  num: "04",
-                  title: "Finnish-Built",
-                  headline: "Nordic precision. No excess.",
-                  body: "Designed in Helsinki. Private rooms. No noise, no complexity. Just light, privacy and consistency — the way Finland has always understood wellness.",
-                },
-              ].map((pillar, i) => (
+              ].map((step, i) => (
                 <div
                   key={i}
                   className="reveal"
@@ -529,32 +460,29 @@ export default function Home() {
                   }}
                 >
                   <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 items-start">
-                    {/* Left: number + title + headline */}
                     <div>
                       <p
-                        className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-2"
+                        className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
                         style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
                       >
-                        {pillar.num} — {pillar.title}
+                        {step.num}
                       </p>
                       <p
                         className="text-lg font-bold leading-snug text-[#1A1008]"
                         style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
                       >
-                        {pillar.headline}
+                        {step.headline}
                       </p>
                     </div>
-                    {/* Right: body copy */}
                     <p
                       className="text-sm leading-relaxed"
                       style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
                     >
-                      {pillar.body}
+                      {step.body}
                     </p>
                   </div>
                 </div>
               ))}
-              {/* Closing rule */}
               <div style={{ borderTop: "1px solid rgba(26,16,8,0.1)" }} />
             </div>
 
@@ -611,14 +539,6 @@ export default function Home() {
           0% { transform: translateY(-100%); opacity: 0; }
           30% { opacity: 1; }
           100% { transform: translateY(250%); opacity: 0; }
-        }
-        @keyframes statsScroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(calc(-280px * 4)); }
-        }
-        @keyframes carouselItemFade {
-          0% { opacity: 0; transform: translateY(10px); }
-          100% { opacity: 1; transform: translateY(0); }
         }
         @keyframes dotBlink {
           0%, 100% { opacity: 1; }
