@@ -270,10 +270,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROOF MICRO-BAR — sits inside the dark-to-light gradient ── */}
-      <div style={{ background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 30%, #8B5E56 60%, #D4B8B4 80%, #FFF9F9 100%)" }}>
-        <div className="container py-16 md:py-20">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-0 max-w-3xl">
+      {/* ── PROOF MICRO-BAR — anchored to dark hero base, above gradient ── */}
+      <div style={{ backgroundColor: "#0A0303", borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+        <div className="container py-8">
+          <div className="flex flex-row flex-wrap gap-y-4 gap-x-0 items-center">
             {[
               { label: "660nm + 850nm", detail: "Clinically calibrated panels" },
               { label: "Private room", detail: "No staff. No shared space." },
@@ -281,26 +281,34 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="flex flex-col gap-1 md:pr-10"
-                style={{ borderRight: i < 2 ? "1px solid rgba(255,255,255,0.10)" : "none" }}
+                className="flex items-center gap-3 flex-1 min-w-[200px]"
+                style={{
+                  paddingLeft: i > 0 ? "1.5rem" : "0",
+                  borderLeft: i > 0 ? "1px solid rgba(255,255,255,0.10)" : "none",
+                }}
               >
-                <p
-                  className="text-sm font-bold text-white"
-                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
-                >
-                  {item.label}
-                </p>
-                <p
-                  className="text-xs"
-                  style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {item.detail}
-                </p>
+                <div className="flex flex-col gap-0.5">
+                  <p
+                    className="text-sm font-bold text-white leading-tight"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
+                  >
+                    {item.label}
+                  </p>
+                  <p
+                    className="text-xs leading-tight"
+                    style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {item.detail}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
+      <div style={{ height: "220px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
 
       {/* ── HOW IT WORKS ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
