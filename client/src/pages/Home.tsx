@@ -224,7 +224,7 @@ export default function Home() {
             {/* Headline line 1 — DM Sans bold */}
             <motion.div variants={heroItem}>
               <h1
-                className="text-4xl md:text-[72px] font-bold leading-[1.05]"
+                className="text-5xl md:text-[72px] font-bold leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
               >
                 Your body knows how to <span style={{color:"rgba(255,255,255,1)"}}>heal.</span>
@@ -234,7 +234,7 @@ export default function Home() {
             {/* Headline line 2 — Lora italic */}
             <motion.div variants={heroItem}>
               <h1
-                className="text-4xl md:text-[72px] leading-[1.05] mb-10"
+                className="text-5xl md:text-[72px] leading-[1.05] mb-10"
                 style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
               >
                 We just give it <span style={{color:"rgba(255,255,255,1)"}}>light.</span>
