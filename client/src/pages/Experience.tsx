@@ -69,7 +69,7 @@ export default function Experience() {
           }}
         />
         <motion.div
-          className="relative z-10 container pb-20 pt-32"
+          className="relative z-10 container pb-40 pt-32"
           variants={heroContainer}
           initial="hidden"
           animate="show"
