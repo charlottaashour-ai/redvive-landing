@@ -74,7 +74,7 @@ function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md mx-auto">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
       <input
         type="email"
         required
@@ -242,7 +242,7 @@ export default function Home() {
             </motion.div>
 
             {/* Waitlist form */}
-            <motion.div variants={heroItem}>
+            <motion.div variants={heroItem} className="max-w-md">
               <WaitlistForm />
             </motion.div>
           </div>
