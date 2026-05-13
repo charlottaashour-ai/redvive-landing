@@ -52,7 +52,7 @@ export default function Experience() {
 
       {/* ── PAGE HERO ── */}
       <section
-        className="relative min-h-[70vh] flex flex-col justify-end overflow-hidden"
+        className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
         <img
@@ -108,7 +108,7 @@ export default function Experience() {
       {/* ── INTRO — what red light therapy actually does ── */}
       <section className="py-16 md:py-24" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container">
-          <div className="max-w-3xl reveal">
+          <div className="max-w-3xl mx-auto reveal text-center">
             <p
               className="text-2xl md:text-3xl leading-relaxed font-light text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}

@@ -595,14 +595,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: deep dark → dark ── */}
-      <div style={{ height: "2px", backgroundColor: "#0A0303" }} />
-
-      {/* ── WAITLIST CTA ── */}
+      {/* ── WAITLIST CTA — continues seamlessly from #0A0303 Who It Is For section ── */}
       <section
         id="waitlist"
         className="relative py-32 md:py-40 overflow-hidden"
-        style={{ background: "linear-gradient(to bottom, #0A0303 0%, #0D0404 50%, #0A0303 100%)" }}
+        style={{ backgroundColor: "#0A0303" }}
       >
         <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(61,26,20,0.18) 0%, transparent 70%)" }} />
         <div className="relative z-10 container">
