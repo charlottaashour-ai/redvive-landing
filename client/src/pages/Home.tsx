@@ -171,7 +171,7 @@ export default function Home() {
         style={{ backgroundColor: "#0A0303" }}
         initial={{ opacity: 1 }}
         animate={{ opacity: 0 }}
-        transition={{ duration: 1.4, ease: "easeOut", delay: 0.1 }}
+        transition={{ duration: 1.68, ease: "easeOut", delay: 0.1 }}
       />
       <Navbar />
 
