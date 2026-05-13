@@ -70,7 +70,7 @@ export default function Navbar() {
                     location === href
                       ? "text-[#D53E0F]"
                       : isTransparent
-                      ? "text-white/75 hover:text-white"
+                      ? "text-white/50 hover:text-white/80"
                       : "text-[#3D1A14]/70 hover:text-[#D53E0F]"
                   }`}
                   style={{ fontFamily: "'DM Sans', sans-serif" }}

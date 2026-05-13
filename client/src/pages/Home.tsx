@@ -208,7 +208,7 @@ export default function Home() {
             <motion.p
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
-              style={{ color: "rgba(255,255,255,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(255,255,255,0.60)", fontFamily: "'DM Sans', sans-serif" }}
             >
               Born in Helsinki. Opening in Fall of 2026
             </motion.p>
@@ -216,8 +216,8 @@ export default function Home() {
             {/* Headline line 1 */}
             <motion.div variants={heroItem}>
               <h1
-                className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95]"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
               >
                 Wellness,
               </h1>
@@ -226,8 +226,8 @@ export default function Home() {
             {/* Headline line 2 — italic serif */}
             <motion.div variants={heroItem}>
               <h1
-                className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] mb-4"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+                className="text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.95] mb-4"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
               >
                 <span style={{ fontWeight: 400, fontStyle: "normal", fontFamily: "'Lora', serif" }}>
                   simplified.
