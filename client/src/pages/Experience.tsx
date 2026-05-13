@@ -21,7 +21,7 @@ const heroItem = {
   show: { opacity: 1, y: 0, transition: { duration: 0.75, type: "tween" as const } },
 };
 
-const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
+const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-abstract-16x9_73a0681a.png";
 
 
 function useReveal() {
@@ -47,14 +47,12 @@ export default function Experience() {
         className="relative min-h-[70vh] flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        <video
+        <img
+          src={HERO_IMG}
+          alt=""
+          aria-hidden="true"
           className="absolute inset-0 w-full h-full object-cover"
-          src={HERO_VIDEO}
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{ opacity: 0.45 }}
+          style={{ opacity: 0.85 }}
         />
         <div
           className="absolute inset-0"

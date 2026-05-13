@@ -15,7 +15,8 @@ import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const HERO_VIDEO = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-hero-web_da16b644.mp4";
+const HERO_IMG_DESKTOP = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-human-16x9_1529508d.png";
+const HERO_IMG_MOBILE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-human-9x16_06880601.png";
 
 /* ── Animation variants ── */
 const heroContainer = {
@@ -171,14 +172,21 @@ export default function Home() {
         className="relative min-h-screen flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src={HERO_VIDEO}
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{ opacity: 0.45 }}
+        {/* Desktop image: 16:9 with human */}
+        <img
+          src={HERO_IMG_DESKTOP}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover hidden md:block"
+          style={{ opacity: 0.85 }}
+        />
+        {/* Mobile image: 9:16 with human */}
+        <img
+          src={HERO_IMG_MOBILE}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 w-full h-full object-cover block md:hidden"
+          style={{ opacity: 0.85 }}
         />
         <div
           className="absolute inset-0"
