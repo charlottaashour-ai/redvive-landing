@@ -74,7 +74,7 @@ function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md mx-auto md:mx-0">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full max-w-md mx-auto">
       <input
         type="email"
         required
@@ -98,7 +98,7 @@ function WaitlistForm() {
         <option value="science" style={{ color: "#1A1008" }}>I want the science</option>
       </select>
       {/* GDPR consent checkbox */}
-      <label className="flex items-start gap-3 cursor-pointer group">
+      <label className="flex items-start gap-3 cursor-pointer group text-left">
         <input
           type="checkbox"
           required
