@@ -75,6 +75,14 @@ export default function Science() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FFF9F9" }}>
+      {/* ── PAGE LOAD FADE: dark → transparent ── */}
+      <motion.div
+        className="fixed inset-0 z-[9999] pointer-events-none"
+        style={{ backgroundColor: "#0A0303" }}
+        initial={{ opacity: 1 }}
+        animate={{ opacity: 0 }}
+        transition={{ duration: 1.68, ease: "easeOut", delay: 0.1 }}
+      />
       <Navbar />
 
       {/* ── PAGE HERO — dark video ── */}
