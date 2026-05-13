@@ -1,9 +1,10 @@
 /*
  * REDVIVE Navbar
- * Style: Fixed top, transparent on hero → solid rose-white on scroll
- * Logo: White PNG wordmark on transparent bg (CDN), switches to dark-bg version on light navbar
- * Links: small caps, DM Sans
- * CTA: crimson button only
+ * Style: Fixed top, fully transparent over hero → dark frosted bar on scroll
+ * At page top (hero pages): bg transparent, logo white, links at 50% white opacity
+ * On scroll (>60px): smooth 0.35s ease to #0A0303 with backdrop-blur, links full white
+ * Non-hero pages: always dark frosted bar
+ * Logo: White PNG wordmark — always white (dark bg in both states)
  */
 
 import { useEffect, useState } from "react";
@@ -18,7 +19,9 @@ export default function Navbar() {
   const [location] = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 40);
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    // Set initial state in case page loads mid-scroll
+    handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -28,30 +31,33 @@ export default function Navbar() {
   }, [location]);
 
   const isHeroPage = location === "/";
-  const isTransparent = !scrolled && !menuOpen && isHeroPage;
+  // Transparent only when: hero page, not scrolled, menu closed
+  const isTransparent = isHeroPage && !scrolled && !menuOpen;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || menuOpen || !isHeroPage
-          ? "bg-[#FFF9F9] border-b border-[#E8D8D4]"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        backgroundColor: isTransparent ? "transparent" : "rgba(10,3,3,0.88)",
+        backdropFilter: isTransparent ? "none" : "blur(12px)",
+        WebkitBackdropFilter: isTransparent ? "none" : "blur(12px)",
+        borderBottom: isTransparent ? "none" : "1px solid rgba(255,255,255,0.06)",
+        transition: "background-color 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease",
+      }}
     >
       <div className="container">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
+
+          {/* Logo — always white */}
           <Link href="/">
             <span className="block cursor-pointer">
               <img
                 src={LOGO_WHITE}
                 alt="Redvive"
-                className="h-6 w-auto transition-all duration-300"
+                className="h-6 w-auto"
                 style={{
-                  filter: isTransparent
-                    ? "none"
-                    : "brightness(0) saturate(100%)",
-                  // On light bg: invert white to black via CSS filter
+                  opacity: isTransparent ? 0.9 : 1,
+                  transition: "opacity 0.35s ease",
                 }}
               />
             </span>
@@ -66,14 +72,29 @@ export default function Navbar() {
             ].map(({ href, label }) => (
               <Link key={href} href={href}>
                 <span
-                  className={`text-[0.72rem] font-semibold tracking-[0.14em] uppercase transition-colors duration-300 ${
-                    location === href
-                      ? "text-[#D53E0F]"
-                      : isTransparent
-                      ? "text-white/50 hover:text-white/80"
-                      : "text-[#3D1A14]/70 hover:text-[#D53E0F]"
-                  }`}
-                  style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase cursor-pointer"
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    color:
+                      location === href
+                        ? "#D53E0F"
+                        : isTransparent
+                        ? "rgba(255,255,255,0.50)"
+                        : "rgba(255,255,255,0.80)",
+                    transition: "color 0.35s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    if (location !== href) {
+                      (e.currentTarget as HTMLElement).style.color = "#D53E0F";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (location !== href) {
+                      (e.currentTarget as HTMLElement).style.color = isTransparent
+                        ? "rgba(255,255,255,0.50)"
+                        : "rgba(255,255,255,0.80)";
+                    }
+                  }}
                 >
                   {label}
                 </span>
@@ -81,7 +102,7 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA */}
+          {/* CTA button */}
           <div className="hidden md:block">
             <a href="/#waitlist">
               <button className="btn-primary text-xs">
@@ -92,40 +113,45 @@ export default function Navbar() {
 
           {/* Mobile hamburger */}
           <button
-            className={`md:hidden flex flex-col gap-1.5 p-2 transition-colors ${
-              isTransparent ? "text-white" : "text-[#1A1008]"
-            }`}
+            className="md:hidden flex flex-col gap-1.5 p-2"
+            style={{ color: "rgba(255,255,255,0.90)" }}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-current transition-all duration-200 origin-center ${
-                menuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
+              className="block w-6 h-0.5 bg-current transition-all duration-200 origin-center"
+              style={{ transform: menuOpen ? "rotate(45deg) translateY(8px)" : "none" }}
             />
             <span
-              className={`block w-6 h-0.5 bg-current transition-opacity duration-200 ${
-                menuOpen ? "opacity-0" : ""
-              }`}
+              className="block w-6 h-0.5 bg-current transition-opacity duration-200"
+              style={{ opacity: menuOpen ? 0 : 1 }}
             />
             <span
-              className={`block w-6 h-0.5 bg-current transition-all duration-200 origin-center ${
-                menuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
+              className="block w-6 h-0.5 bg-current transition-all duration-200 origin-center"
+              style={{ transform: menuOpen ? "rotate(-45deg) translateY(-8px)" : "none" }}
             />
           </button>
         </div>
 
-        {/* Mobile menu */}
+        {/* Mobile menu — always dark */}
         {menuOpen && (
-          <div className="md:hidden border-t border-[#E8D8D4] py-6 flex flex-col gap-4">
+          <div
+            className="md:hidden py-6 flex flex-col gap-4"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.10)" }}
+          >
             {[
               { href: "/science", label: "The Science" },
               { href: "/experience", label: "The Experience" },
               { href: "/faq", label: "FAQ" },
             ].map(({ href, label }) => (
               <Link key={href} href={href}>
-                <span className="block text-xs font-semibold tracking-[0.14em] uppercase text-[#3D1A14] py-1.5">
+                <span
+                  className="block text-xs font-semibold tracking-[0.14em] uppercase py-1.5"
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    color: location === href ? "#D53E0F" : "rgba(255,255,255,0.80)",
+                  }}
+                >
                   {label}
                 </span>
               </Link>
