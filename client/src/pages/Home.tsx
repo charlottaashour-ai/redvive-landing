@@ -251,7 +251,7 @@ export default function Home() {
                 className="text-sm md:text-base leading-relaxed mb-10"
                 style={{ color: "rgba(255,255,255,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
               >
-                A private red light therapy studio in Helsinki. Book, walk in, and leave in 10 minutes. No staff. No waiting. Opening Fall 2026.
+                A private autonomous red light therapy studio in Helsinki. Opening Fall 2026.
               </p>
             </motion.div>
 
