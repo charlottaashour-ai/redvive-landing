@@ -98,7 +98,7 @@ export default function Experience() {
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                Ten minutes. Private.
+                show up
               </h1>
             </motion.div>
             <motion.div variants={heroItem}>
@@ -106,7 +106,7 @@ export default function Experience() {
                 className="text-5xl md:text-7xl leading-[0.95] mt-2"
                 style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
               >
-                No noise.
+                for yourself.
               </h1>
             </motion.div>
           </div>
