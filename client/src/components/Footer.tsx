@@ -74,11 +74,11 @@ export default function Footer() {
               style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}
             >
               Helsinki, opening Fall 2026.<br />
-              Join the waitlist for priority access.
+              Reserve your spot for priority access.
             </p>
             <a href="/#waitlist">
               <button className="btn-primary text-xs">
-                Join the Waitlist
+                Reserve My Spot
               </button>
             </a>
           </div>

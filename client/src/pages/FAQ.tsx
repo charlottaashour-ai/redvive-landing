@@ -97,7 +97,7 @@ const faqs = [
       },
       {
         q: "Where is the first studio?",
-        a: "Helsinki, opening in 2026. Join the waitlist to get priority access and the founding member rate.",
+        a: "Helsinki, opening in 2026. Reserve your spot to get priority access and the founding member rate.",
       },
     ],
   },
@@ -304,11 +304,11 @@ export default function FAQ() {
               className="text-white/50 text-sm mb-10 leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Join the waitlist for first access to Redvive studios in the capital region. Be first to hear about opening dates, founding rates and early access. No payment. No commitment.
+              Reserve your spot for first access to Redvive studios in the capital region. Be first to hear about opening dates, founding rates and early access. No payment. No commitment.
             </p>
             <a href="/#waitlist">
               <button className="btn-primary mx-auto">
-                Join the Waitlist — No Cost
+                Reserve My Spot — No Cost
               </button>
             </a>
           </div>

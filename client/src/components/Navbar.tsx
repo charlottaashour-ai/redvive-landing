@@ -106,7 +106,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <a href="/#waitlist">
               <button className="btn-primary text-xs">
-                Join the Waitlist
+                Reserve My Spot
               </button>
             </a>
           </div>
@@ -158,7 +158,7 @@ export default function Navbar() {
             ))}
             <a href="/#waitlist">
               <button className="btn-primary w-full mt-2 justify-center">
-                Join the Waitlist
+                Reserve My Spot
               </button>
             </a>
           </div>

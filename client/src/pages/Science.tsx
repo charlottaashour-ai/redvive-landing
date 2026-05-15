@@ -380,7 +380,7 @@ export default function Science() {
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/#waitlist">
-                <button className="btn-primary">Join the Waitlist</button>
+                <button className="btn-primary">Reserve My Spot</button>
               </a>
               <Link href="/experience">
                 <button className="btn-ghost">See the Experience →</button>
