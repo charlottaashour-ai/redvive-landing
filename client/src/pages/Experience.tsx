@@ -63,7 +63,7 @@ export default function Experience() {
 
       {/* ── PAGE HERO ── */}
       <section
-        className="relative min-h-screen flex flex-col justify-end overflow-hidden"
+        className="relative min-h-[70vh] flex flex-col justify-end overflow-hidden"
         style={{ backgroundColor: "#0A0303" }}
       >
         <img
@@ -80,7 +80,7 @@ export default function Experience() {
           }}
         />
         <motion.div
-          className="relative z-10 container pb-40 pt-32"
+          className="relative z-10 container pb-20 pt-32"
           variants={heroContainer}
           initial="hidden"
           animate="show"
