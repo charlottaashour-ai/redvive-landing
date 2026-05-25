@@ -104,15 +104,24 @@ export default function Footer() {
                 Privacy Policy
               </span>
             </Link>
-            {["Instagram", "TikTok"].map((item) => (
-              <span
-                key={item}
-                className="text-xs cursor-pointer transition-colors hover:text-white/50"
-                style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                {item}
-              </span>
-            ))}
+            <a
+              href="https://www.instagram.com/redlighthelsinki"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs transition-colors hover:text-white/50"
+              style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Instagram
+            </a>
+            <a
+              href="https://www.tiktok.com/@redlighthelsinki"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs transition-colors hover:text-white/50"
+              style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
+            >
+              TikTok
+            </a>
           </div>
         </div>
       </div>
