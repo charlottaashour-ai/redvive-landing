@@ -23,7 +23,8 @@ const heroItem = {
   show: { opacity: 1, y: 0, transition: { duration: 0.75, type: "tween" as const } },
 };
 
-const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-abstract-16x9_73a0681a.png";
+const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-abstract-desktop_afb796a6.webp";
+const HERO_IMG_MOBILE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-abstract-mobile_6f56db7e.webp";
 
 
 function useReveal() {
@@ -102,8 +103,14 @@ export default function Science() {
       >
         <img
           src={HERO_IMG}
+          srcSet={`${HERO_IMG_MOBILE} 768w, ${HERO_IMG} 1920w`}
+          sizes="100vw"
           alt=""
           aria-hidden="true"
+          width="1672"
+          height="941"
+          loading="eager"
+          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: 0.85, willChange: "transform", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         />

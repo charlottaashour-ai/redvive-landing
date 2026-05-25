@@ -189,6 +189,10 @@ export default function Home() {
           src={HERO_IMG_DESKTOP}
           alt=""
           aria-hidden="true"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover hidden md:block"
           style={{ opacity: 0.85, willChange: "transform", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         />
@@ -197,6 +201,10 @@ export default function Home() {
           src={HERO_IMG_MOBILE}
           alt=""
           aria-hidden="true"
+          width="1080"
+          height="1920"
+          loading="eager"
+          fetchPriority="high"
           className="absolute inset-0 w-full h-full object-cover block md:hidden"
           style={{ opacity: 0.85, willChange: "transform", transform: "translateZ(0)", backfaceVisibility: "hidden" }}
         />
