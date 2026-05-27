@@ -2,12 +2,14 @@
  * REDVIVE — FAQ Page
  * Design: Clean, direct, objection-handling
  * Tone: Calm, reassuring, direct — never defensive
+ * i18n: useTranslation() for all copy
  */
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/lib/translations";
 
 const heroContainer = {
   hidden: {},
@@ -41,93 +43,6 @@ function useReveal() {
     return () => clearTimeout(timer);
   }, []);
 }
-
-const faqs = [
-  {
-    category: "The Basics",
-    items: [
-      {
-        q: "What is red light therapy?",
-        a: "Red light therapy uses specific wavelengths of red and near-infrared light to support the body at a cellular level. At 660nm, red light supports the skin — stimulating collagen, reducing surface inflammation, and improving tone. At 850nm, near-infrared reaches deeper tissue to support recovery, energy and sleep. Backed by thousands of peer-reviewed studies.",
-      },
-      {
-        q: "Is it the same as a tanning bed or UV light?",
-        a: "No. Red light therapy uses visible red and near-infrared wavelengths — not UV. It does not tan your skin, does not cause sunburn, and carries none of the risks associated with UV exposure. It is a completely different technology.",
-      },
-      {
-        q: "How long is a session?",
-        a: "10 minutes. Full-body exposure at clinically calibrated output. Research shows that 10 minutes at the correct wavelength and irradiance delivers the full therapeutic dose. More time does not mean more benefit.",
-      },
-      {
-        q: "How often should I come?",
-        a: "Most people see results with 2–4 sessions per week. For skin support, 2× weekly is a good starting point. For recovery and energy, 3× weekly works well. Consistency matters more than frequency — the point is to make it a habit.",
-      },
-    ],
-  },
-  {
-    category: "The Session",
-    items: [
-      {
-        q: "Do I need to undress?",
-        a: "Light cannot penetrate clothing, so the more skin exposed, the more effective the session. Most people remove their clothes entirely. Your room is completely private — no cameras, no windows, no staff. You are alone.",
-      },
-      {
-        q: "Is it safe for my eyes?",
-        a: "The panels emit bright red light that can be uncomfortable to look at directly. We provide eye protection in every cabin. You can also simply close your eyes — many people find the session meditative.",
-      },
-      {
-        q: "Will I feel anything during the session?",
-        a: "You may feel a gentle warmth. There is no pain, no burning, no tingling. Most people describe it as calm and meditative. Some notice a difference in skin tone or energy within the first few sessions. Deeper effects — better recovery, improved sleep, a calmer baseline — build over 2–4 weeks of consistent use.",
-      },
-      {
-        q: "Are there any contraindications?",
-        a: "Red light therapy is safe for the vast majority of people. We recommend consulting your doctor if you are pregnant, have active cancer, are taking photosensitising medications, or have a condition that affects light sensitivity.",
-      },
-    ],
-  },
-  {
-    category: "The Studio",
-    items: [
-      {
-        q: "How does the autonomous studio work?",
-        a: "You book on your phone. At your reserved time, your phone unlocks the door. Your private room is ready. The session starts automatically. When it ends, you walk out. No staff, no check-in, no complexity.",
-      },
-      {
-        q: "What if something goes wrong during my session?",
-        a: "Every cabin has an emergency stop button and a direct line to our support team, available 24/7. You are never truly alone — just undisturbed.",
-      },
-      {
-        q: "Where is the first studio?",
-        a: "Helsinki, opening in 2026. Reserve your spot to get priority access and the founding member rate.",
-      },
-    ],
-  },
-  {
-    category: "Membership & Pricing",
-    items: [
-      {
-        q: "How much does it cost?",
-        a: "The founding member rate is €25 per month — available exclusively to waitlist members before we open. Once claimed, it is locked in for life. No price increases, ever.",
-      },
-      {
-        q: "What does €25/month include?",
-        a: "Unlimited sessions per month at the founding price. Final session structure will be confirmed at launch, but founding members will always pay €25/month — regardless of how pricing evolves.",
-      },
-      {
-        q: "What happens to my price when you expand?",
-        a: "Nothing. Your founding member rate never changes. Not when we open a second location, not when we raise standard pricing, not ever. That is the founding member promise.",
-      },
-      {
-        q: "Can I cancel my subscription?",
-        a: "Yes, at any time. No notice period, no cancellation fees. We don't believe in commitment traps.",
-      },
-      {
-        q: "Is the waitlist free?",
-        a: "Yes. No payment, no commitment. You are simply reserving your place for priority booking and the €25/month founding rate.",
-      },
-    ],
-  },
-];
 
 function AccordionItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -175,6 +90,46 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   useReveal();
+  const t = useTranslation();
+
+  const faqs = [
+    {
+      category: t("faq.cat1"),
+      items: [
+        { q: t("faq.q1"), a: t("faq.a1") },
+        { q: t("faq.q2"), a: t("faq.a2") },
+        { q: t("faq.q3"), a: t("faq.a3") },
+        { q: t("faq.q4"), a: t("faq.a4") },
+      ],
+    },
+    {
+      category: t("faq.cat2"),
+      items: [
+        { q: t("faq.q5"), a: t("faq.a5") },
+        { q: t("faq.q6"), a: t("faq.a6") },
+        { q: t("faq.q7"), a: t("faq.a7") },
+        { q: t("faq.q8"), a: t("faq.a8") },
+      ],
+    },
+    {
+      category: t("faq.cat3"),
+      items: [
+        { q: t("faq.q9"), a: t("faq.a9") },
+        { q: t("faq.q10"), a: t("faq.a10") },
+        { q: t("faq.q11"), a: t("faq.a11") },
+      ],
+    },
+    {
+      category: t("faq.cat4"),
+      items: [
+        { q: t("faq.q12"), a: t("faq.a12") },
+        { q: t("faq.q13"), a: t("faq.a13") },
+        { q: t("faq.q14"), a: t("faq.a14") },
+        { q: t("faq.q15"), a: t("faq.a15") },
+        { q: t("faq.q16"), a: t("faq.a16") },
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FFF9F9" }}>
@@ -224,14 +179,14 @@ export default function FAQ() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
               style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
-              FAQ
+              {t("faq.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
               <h1
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                direct
+                {t("faq.hero1")}
               </h1>
             </motion.div>
             <motion.div variants={heroItem}>
@@ -240,7 +195,7 @@ export default function FAQ() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  answers.
+                  {t("faq.hero2")}
                 </em>
               </h1>
             </motion.div>
@@ -301,26 +256,26 @@ export default function FAQ() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
               style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Born in Helsinki. Opening in Fall of 2026
+              {t("faq.cta.eyebrow")}
             </span>
             <h2
               className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
             >
-              Still unsure?<br />
+              {t("faq.cta.headline1")}<br />
               <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                Try it first.
+                {t("faq.cta.headline2")}
               </em>
             </h2>
             <p
               className="text-white/50 text-sm mb-10 leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              Reserve your spot for first access to Redvive studios in the capital region. Be first to hear about opening dates, founding rates and early access. No payment. No commitment.
+              {t("faq.cta.body")}
             </p>
             <a href="/#waitlist">
               <button className="btn-primary mx-auto">
-                Reserve My Spot — No Cost
+                {t("faq.cta.btn")}
               </button>
             </a>
           </div>

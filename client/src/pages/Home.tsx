@@ -8,6 +8,7 @@
  * Structure (conversion-optimised):
  *   Hero (headline + subline + form) → Proof micro-bar → How It Works → Pricing → What It Does → Who It Is For → Waitlist CTA
  * No hyphens anywhere in copy.
+ * i18n: useTranslation() + useLanguage() for all copy and form language routing
  */
 
 import { useEffect, useState } from "react";
@@ -15,6 +16,8 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useTranslation } from "@/lib/translations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const HERO_IMG_DESKTOP = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-desktop_07a3adf7.webp";
 const HERO_IMG_MOBILE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-mobile_16619120.webp";
@@ -61,9 +64,8 @@ function useReveal() {
 }
 
 function WaitlistForm({ dark = true }: { dark?: boolean }) {
-  // Derive language from browser locale — 'fi' for Finnish users, 'en' for everyone else.
-  // This is the source of truth for Flodesk segment routing (EN vs FI waitlist).
-  const currentLanguage = typeof navigator !== "undefined" && navigator.language?.startsWith("fi") ? "fi" : "en";
+  const t = useTranslation();
+  const { language } = useLanguage();
 
   const [email, setEmail] = useState("");
   const [interest, setInterest] = useState("");
@@ -77,11 +79,11 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
     setError(null);
 
     if (!email) {
-      setError("Please enter a valid email.");
+      setError(t("form.err.email"));
       return;
     }
     if (!consent) {
-      setError("Please agree to receive updates to continue.");
+      setError(t("form.err.consent"));
       return;
     }
 
@@ -93,7 +95,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         body: JSON.stringify({
           email,
           firstName: "",
-          language: currentLanguage,
+          language,
           consent: true,
           reason: interest,
         }),
@@ -109,12 +111,12 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
 
       if (res.status === 400) {
         const data = await res.json().catch(() => ({}));
-        setError(data.error || "Please enter a valid email.");
+        setError(data.error || t("form.err.email"));
       } else {
-        setError("Something went wrong. Please try again in a moment.");
+        setError(t("form.err.generic"));
       }
     } catch {
-      setError("Something went wrong. Please try again in a moment.");
+      setError(t("form.err.generic"));
     } finally {
       setLoading(false);
     }
@@ -123,8 +125,8 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
   if (submitted) {
     return (
       <div className="text-center py-4">
-        <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>You are on the waitlist.</p>
-        <p className={`text-xs mt-1 ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>Check your inbox for a welcome email.</p>
+        <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>{t("form.success_title")}</p>
+        <p className={`text-xs mt-1 ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>{t("form.success_sub")}</p>
       </div>
     );
   }
@@ -138,7 +140,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
       <input
         type="email"
         required
-        placeholder="Your email"
+        placeholder={t("form.email")}
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className={inputClass}
@@ -150,12 +152,12 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         className={inputClass + " appearance-none"}
         style={{ fontFamily: "'DM Sans', sans-serif", color: interest ? (dark ? "white" : "#1A1008") : (dark ? "rgba(255,255,255,0.4)" : "rgba(122,90,84,0.6)") }}
       >
-        <option value="" disabled style={{ color: "#1A1008" }}>What brings you here?</option>
-        <option value="skin" style={{ color: "#1A1008" }}>Skin and Glow</option>
-        <option value="recovery" style={{ color: "#1A1008" }}>Recovery and Performance</option>
-        <option value="energy" style={{ color: "#1A1008" }}>Energy and Weekly Balance</option>
-        <option value="wellness" style={{ color: "#1A1008" }}>General Wellness</option>
-        <option value="science" style={{ color: "#1A1008" }}>I want the science</option>
+        <option value="" disabled style={{ color: "#1A1008" }}>{t("form.interest")}</option>
+        <option value="skin" style={{ color: "#1A1008" }}>{t("form.opt.skin")}</option>
+        <option value="recovery" style={{ color: "#1A1008" }}>{t("form.opt.recovery")}</option>
+        <option value="energy" style={{ color: "#1A1008" }}>{t("form.opt.energy")}</option>
+        <option value="wellness" style={{ color: "#1A1008" }}>{t("form.opt.wellness")}</option>
+        <option value="science" style={{ color: "#1A1008" }}>{t("form.opt.science")}</option>
       </select>
       {/* GDPR consent checkbox */}
       <label className="flex items-start gap-3 cursor-pointer group text-left">
@@ -170,13 +172,13 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
           className="text-[0.65rem] leading-relaxed"
           style={{ color: dark ? "rgba(255,255,255,0.35)" : "rgba(26,16,8,0.45)", fontFamily: "'DM Sans', sans-serif" }}
         >
-          I agree to receive launch updates and founding member information from Redvive. See our{" "}
+          {t("form.consent")}{" "}
           <a
-            href="/privacy"
+            href={t("footer.privacy_path")}
             className="underline underline-offset-2 hover:opacity-80 transition-opacity"
             style={{ color: dark ? "rgba(255,255,255,0.45)" : "rgba(26,16,8,0.55)" }}
           >
-            Privacy Policy
+            {t("form.consent_link")}
           </a>
           .
         </span>
@@ -190,39 +192,36 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         disabled={loading || !consent}
         style={{ opacity: (loading || !consent) ? 0.5 : 1, transition: "opacity 0.2s" }}
       >
-        {loading ? "Sending..." : "Reserve my spot"}
+        {loading ? t("form.sending") : t("form.submit")}
       </button>
-      <p className={`text-xs text-center ${dark ? "text-white/40" : "text-[#7A5A54]/60"}`}>No payment. No commitment.</p>
+      <p className={`text-xs text-center ${dark ? "text-white/40" : "text-[#7A5A54]/60"}`}>{t("form.no_payment")}</p>
     </form>
   );
 }
 
-/* ── Carousel data ── */
-const STATS = [
-  {
-    stat: "Skin",
-    label: "Clarity and Glow",
-    body: "Full body red light to support calmer, clearer, more resilient skin in 10 minutes.",
-  },
-  {
-    stat: "Recovery",
-    label: "Body Reset",
-    body: "When training or work leaves you heavy, 10 minutes of light helps your body bounce back.",
-  },
-  {
-    stat: "Hair",
-    label: "Scalp Support",
-    body: "Targeted red light to support scalp circulation for people who take thinning hair seriously.",
-  },
-  {
-    stat: "Sleep",
-    label: "Evening Wind Down",
-    body: "An evening 10 minute session to help your body slow down and make mornings feel less brutal.",
-  },
-];
-
 export default function Home() {
   useReveal();
+  const t = useTranslation();
+
+  const steps = [
+    { num: "01", headline: t("hiw.step1.title"), body: t("hiw.step1.body") },
+    { num: "02", headline: t("hiw.step2.title"), body: t("hiw.step2.body") },
+    { num: "03", headline: t("hiw.step3.title"), body: t("hiw.step3.body") },
+  ];
+
+  const STATS = [
+    { stat: t("carousel.skin"), label: t("carousel.skin_sub"), body: t("carousel.skin_body") },
+    { stat: t("carousel.recovery"), label: t("carousel.recovery_sub"), body: t("carousel.recovery_body") },
+    { stat: t("carousel.hair"), label: t("carousel.hair_sub"), body: t("carousel.hair_body") },
+    { stat: t("carousel.sleep"), label: t("carousel.sleep_sub"), body: t("carousel.sleep_body") },
+  ];
+
+  const whoLines = [
+    t("who.1"),
+    t("who.2"),
+    t("who.3"),
+    t("who.4"),
+  ];
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FFF9F9" }}>
@@ -287,7 +286,7 @@ export default function Home() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
               style={{ color: "rgba(255,255,255,0.60)", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Born in Helsinki. Opening in Fall of 2026
+              {t("home.hero.eyebrow")}
             </motion.p>
 
             {/* Headline line 1 — DM Sans bold */}
@@ -296,7 +295,10 @@ export default function Home() {
                 className="text-[42px] md:text-[72px] font-bold leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
               >
-                Your body knows how to <span style={{color:"rgba(255,255,255,1)"}}>heal.</span>
+                {t("home.hero.line1").replace(/heal\.$/, "")}
+                <span style={{ color: "rgba(255,255,255,1)" }}>
+                  {t("home.hero.line1").match(/\w+\.$/)?.[0] ?? ""}
+                </span>
               </h1>
             </motion.div>
 
@@ -306,7 +308,10 @@ export default function Home() {
                 className="text-[42px] md:text-[72px] leading-[1.05] mb-6"
                 style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
               >
-                We just give it <span style={{color:"rgba(255,255,255,1)"}}>light.</span>
+                {t("home.hero.line2").replace(/light\.$/, "")}
+                <span style={{ color: "rgba(255,255,255,1)" }}>
+                  {t("home.hero.line2").match(/\w+\.$/)?.[0] ?? ""}
+                </span>
               </h1>
             </motion.div>
 
@@ -316,7 +321,7 @@ export default function Home() {
                 className="text-sm md:text-base leading-relaxed mb-10"
                 style={{ color: "rgba(255,255,255,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
               >
-                A private autonomous red light therapy studio in Helsinki. Opening Fall 2026.
+                {t("home.hero.sub")}
               </p>
             </motion.div>
 
@@ -330,7 +335,7 @@ export default function Home() {
         {/* Scroll indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
           <span className="text-white/30 text-[0.6rem] tracking-[0.2em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            Scroll
+            {t("home.hero.scroll")}
           </span>
           <div className="w-px h-8 bg-white/20 relative overflow-hidden">
             <div
@@ -351,36 +356,20 @@ export default function Home() {
           <div className="max-w-4xl mx-auto">
 
             <div className="reveal mb-16">
-              <span className="section-label block mb-6">How It Works</span>
+              <span className="section-label block mb-6">{t("hiw.label")}</span>
               <h2
                 className="text-4xl md:text-6xl font-bold leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
               >
-                Three steps.<br />
+                {t("hiw.sub").split(".")[0]}.<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  That is it.
+                  {t("hiw.sub").split(". ")[1] ?? ""}
                 </em>
               </h2>
             </div>
 
             <div className="flex flex-col">
-              {[
-                {
-                  num: "01",
-                  headline: "Book on your phone.",
-                  body: "Open the app. Pick a time. Your private room is reserved. No calls, no waiting lists, no staff to coordinate with. Available 24 hours a day, 7 days a week.",
-                },
-                {
-                  num: "02",
-                  headline: "Walk in.",
-                  body: "Your phone unlocks the door. Your private room is ready. No staff in the room. No small talk. Just light.",
-                },
-                {
-                  num: "03",
-                  headline: "10 minutes. Done.",
-                  body: "The session runs automatically. When it ends, you are done. Walk out. No checkout, no upsell, no wellness theatre. Full body panels. Clinically calibrated.",
-                },
-              ].map((step, i) => (
+              {steps.map((step, i) => (
                 <div
                   key={i}
                   className="reveal"
@@ -421,7 +410,7 @@ export default function Home() {
             {/* Experience CTA */}
             <div className="reveal mt-14">
               <Link href="/experience">
-                <button className="btn-ghost">Understand the experience →</button>
+                <button className="btn-ghost">{t("hiw.cta")}</button>
               </Link>
             </div>
 
@@ -455,14 +444,14 @@ export default function Home() {
                 className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                Limited to 300 Spots
+                {t("pricing.label")}
               </span>
             </div>
           </div>
 
           {/* Section label */}
           <div className="reveal text-center mb-6">
-            <span className="section-label">Founding Member Pricing</span>
+            <span className="section-label">{t("pricing.title")}</span>
           </div>
 
           {/* Monument price */}
@@ -472,7 +461,7 @@ export default function Home() {
                 className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] font-bold leading-none"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FFF9F9" }}
               >
-                €25
+                €29
               </span>
               <span
                 className="text-xl sm:text-2xl md:text-3xl font-normal self-end pb-3 md:pb-6"
@@ -489,7 +478,7 @@ export default function Home() {
               className="text-2xl sm:text-3xl md:text-4xl"
               style={{ fontFamily: "'Lora', serif", fontWeight: 400, color: "#FFF9F9" }}
             >
-              Locked in for life.
+              {t("pricing.locked")}
             </p>
           </div>
 
@@ -499,7 +488,7 @@ export default function Home() {
               className="text-sm md:text-base leading-relaxed max-w-lg mx-auto"
               style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,249,249,0.55)" }}
             >
-              Available only to waitlist members before we open. Once claimed, it is yours forever. No price increases. No conditions.
+              {t("pricing.body")}
             </p>
           </div>
 
@@ -508,12 +497,11 @@ export default function Home() {
             <div className="h-px w-full" style={{ backgroundColor: "rgba(255,249,249,0.10)" }} />
           </div>
 
-          {/* Three value facts */}
-          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px max-w-3xl mx-auto" style={{ backgroundColor: "rgba(255,249,249,0.08)" }}>
+          {/* Two value facts */}
+          <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-px max-w-2xl mx-auto" style={{ backgroundColor: "rgba(255,249,249,0.08)" }}>
             {[
-              { stat: "< €1", label: "per day", body: "Less than a coffee. Every single day." },
-              { stat: "10×", label: "vs. clinic", body: "One clinic session equals one month at Redvive." },
-              { stat: "Forever", label: "locked in", body: "This price never increases. Not ever." },
+              { stat: t("pricing.stat1_num"), label: t("pricing.stat1_label"), body: t("pricing.stat1_body") },
+              { stat: t("pricing.stat2_num"), label: "", body: t("pricing.stat2_body") },
             ].map((item, i) => (
               <div
                 key={i}
@@ -526,12 +514,14 @@ export default function Home() {
                 >
                   {item.stat}
                 </p>
-                <p
-                  className="text-xs font-semibold tracking-[0.14em] uppercase"
-                  style={{ color: "rgba(255,249,249,0.40)", fontFamily: "'DM Sans', sans-serif" }}
-                >
-                  {item.label}
-                </p>
+                {item.label && (
+                  <p
+                    className="text-xs font-semibold tracking-[0.14em] uppercase"
+                    style={{ color: "rgba(255,249,249,0.40)", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {item.label}
+                  </p>
+                )}
                 <span className="brand-rule mx-auto" />
                 <p className="text-sm leading-relaxed" style={{ color: "rgba(255,249,249,0.55)", fontFamily: "'DM Sans', sans-serif" }}>
                   {item.body}
@@ -543,7 +533,7 @@ export default function Home() {
           {/* Footnote */}
           <div className="reveal text-center mt-8">
             <p className="text-xs" style={{ color: "rgba(255,249,249,0.25)", fontFamily: "'DM Sans', sans-serif" }}>
-              Final session structure confirmed at launch. Founding rate locked in for life.
+              {t("pricing.footnote")}
             </p>
           </div>
 
@@ -557,7 +547,7 @@ export default function Home() {
       <div style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container pb-4">
           <div className="reveal mb-2">
-            <span className="section-label">What It Does For You</span>
+            <span className="section-label">{t("carousel.label")}</span>
           </div>
         </div>
       </div>
@@ -606,7 +596,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center py-8 px-8" style={{ borderTop: "1px solid rgba(26,16,8,0.07)" }}>
           <Link href="/science">
-            <button className="btn-ghost">Understand the science →</button>
+            <button className="btn-ghost">{t("carousel.cta")}</button>
           </Link>
         </div>
       </div>
@@ -624,26 +614,21 @@ export default function Home() {
                 className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
                 style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
               >
-                Who It Is For
+                {t("who.label")}
               </span>
               <h2
                 className="text-4xl md:text-6xl font-bold leading-[1.05] text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Built for people<br />
+                {t("who.sub").split(" who ")[0]}<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  who want results.
+                  {t("who.sub").includes(" who ") ? "who " + t("who.sub").split(" who ")[1] : ""}
                 </em>
               </h2>
             </div>
 
             <div className="flex flex-col">
-              {[
-                "People who train and want their body to recover properly.",
-                "People who have noticed their skin is not what it was.",
-                "People who are tired after work and want something that actually helps.",
-                "People who have read the studies and want access to the real thing, not a consumer gadget.",
-              ].map((line, i) => (
+              {whoLines.map((line, i) => (
                 <div
                   key={i}
                   className="reveal py-7 text-center"
@@ -677,19 +662,19 @@ export default function Home() {
           <div className="max-w-lg mx-auto text-center">
             <div className="reveal">
               <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>
-                Born in Helsinki. Opening in Fall of 2026
+                {t("home.hero.eyebrow")}
               </span>
               <h2
                 className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                Be first<br />
+                {t("cta.headline1")}<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  through the door.
+                  {t("cta.headline2")}
                 </em>
               </h2>
               <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                We are opening with 300 founding spots. The €25/month rate is locked in for life — but only for the people on this list. Once the spots are claimed, the rate goes up.
+                {t("cta.body")}
               </p>
               <WaitlistForm dark={true} />
             </div>

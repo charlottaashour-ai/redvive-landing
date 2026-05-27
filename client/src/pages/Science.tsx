@@ -6,6 +6,7 @@
  *
  * Structure (revised):
  *   Hero → Intro → Mechanism (expanded, replaces wavelength section) → What It Does For You (editorial rows) → The Result → CTA
+ * i18n: useTranslation() for all copy
  */
 
 import { useEffect } from "react";
@@ -13,6 +14,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
+import { useTranslation } from "@/lib/translations";
 
 const heroContainer = {
   hidden: {},
@@ -48,41 +50,42 @@ function useReveal() {
   }, []);
 }
 
-const BENEFITS = [
-  {
-    category: "Skin",
-    headline: "Clearer. Calmer. More resilient.",
-    items: [
-      "Stimulates collagen production",
-      "Reduces surface inflammation",
-      "Supports skin tone and texture",
-      "A clearer, more supported glow",
-    ],
-  },
-  {
-    category: "Recovery",
-    headline: "Less heaviness. More ease.",
-    items: [
-      "Faster muscle repair",
-      "Reduced joint discomfort",
-      "Improved range of motion",
-      "Supports connective tissue recovery",
-    ],
-  },
-  {
-    category: "Energy & Sleep",
-    headline: "A better baseline through the week.",
-    items: [
-      "Improved sleep quality",
-      "Reduced systemic inflammation",
-      "Supports cellular energy output",
-      "A moment that helps your body switch gears",
-    ],
-  },
-];
-
 export default function Science() {
   useReveal();
+  const t = useTranslation();
+
+  const BENEFITS = [
+    {
+      category: t("carousel.skin"),
+      headline: t("science.result.title"),
+      items: [
+        t("science.skin.b1"),
+        t("science.skin.b2"),
+        t("science.skin.b3"),
+        t("science.skin.b4"),
+      ],
+    },
+    {
+      category: t("carousel.recovery"),
+      headline: t("science.recovery.title"),
+      items: [
+        t("science.recovery.b1"),
+        t("science.recovery.b2"),
+        t("science.recovery.b3"),
+        t("science.recovery.b4"),
+      ],
+    },
+    {
+      category: t("science.energy.title"),
+      headline: t("science.energy.sub"),
+      items: [
+        t("science.energy.b1"),
+        t("science.energy.b2"),
+        t("science.energy.b3"),
+        t("science.energy.b4"),
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FFF9F9" }}>
@@ -132,14 +135,14 @@ export default function Science() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
               style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
-              The Science
+              {t("science.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
               <h1
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                light is
+                {t("science.hero1")}
               </h1>
             </motion.div>
             <motion.div variants={heroItem}>
@@ -148,7 +151,7 @@ export default function Science() {
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  the medicine.
+                  {t("science.hero2")}
                 </em>
               </h1>
             </motion.div>
@@ -167,7 +170,7 @@ export default function Science() {
               className="text-2xl md:text-3xl leading-relaxed font-light"
               style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A1008", letterSpacing: "-0.01em" }}
             >
-              Redvive uses clinically calibrated 660nm and 850nm light — the wavelengths most commonly associated with skin support and deeper tissue recovery. The science is serious. The experience is simple.
+              {t("science.intro")}
             </p>
           </div>
         </div>
@@ -183,14 +186,14 @@ export default function Science() {
 
             {/* Label + headline */}
             <div className="reveal mb-14">
-              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>The Mechanism</span>
+              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("science.mech.label")}</span>
               <h2
                 className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Your mitochondria<br />
+                {t("science.mech.title").split("\n")[0]}<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
-                  do the work.
+                  {t("science.mech.title").split("\n")[1] ?? ""}
                 </em>
               </h2>
               <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
@@ -199,10 +202,10 @@ export default function Science() {
             {/* Two-column explanation */}
             <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Photobiomodulation is the mechanism behind red light therapy. When specific wavelengths of light reach your cells, they trigger a reaction in the mitochondria — increasing energy output, reducing oxidative stress, and activating natural repair pathways.
+                {t("science.mech.body1")}
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                This is not heat therapy. It is not UV. It is a precise, non-invasive signal that tells your cells to do what they were designed to do — just more efficiently. Backed by thousands of peer-reviewed studies.
+                {t("science.mech.body2")}
               </p>
             </div>
 
@@ -216,16 +219,16 @@ export default function Science() {
                   className="text-3xl font-bold mb-2"
                   style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
                 >
-                  660nm
+                  {t("science.660.label")}
                 </p>
                 <p
                   className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4"
                   style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  Red Light — Surface
+                  {t("science.660.title")}
                 </p>
                 <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  Targets the skin directly. Stimulates collagen, calms inflammation, and supports a clearer, more even tone — where most people notice results first.
+                  {t("science.660.body")}
                 </p>
               </div>
               <div
@@ -236,16 +239,16 @@ export default function Science() {
                   className="text-3xl font-bold mb-2"
                   style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
                 >
-                  850nm
+                  {t("science.850.label")}
                 </p>
                 <p
                   className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4"
                   style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'DM Sans', sans-serif" }}
                 >
-                  Near-Infrared — Depth
+                  {t("science.850.title")}
                 </p>
                 <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  Reaches deeper tissue — muscles, joints, connective tissue. Activates mitochondria, accelerates recovery, and supports better sleep and a calmer baseline.
+                  {t("science.850.body")}
                 </p>
               </div>
             </div>
@@ -264,14 +267,14 @@ export default function Science() {
 
             {/* Section header */}
             <div className="reveal mb-16">
-              <span className="section-label block mb-4">What It Does For You</span>
+              <span className="section-label block mb-4">{t("carousel.label")}</span>
               <h2
                 className="text-3xl md:text-5xl font-bold text-[#1A1008] leading-[1.05]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Ten minutes.<br />
+                {t("science.result.eyebrow").split(". ")[0]}.<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
-                  Three systems.
+                  {t("science.result.eyebrow").split(". ")[1] ?? ""}
                 </em>
               </h2>
             </div>
@@ -349,23 +352,23 @@ export default function Science() {
       <section className="py-24 md:py-32" style={{ background: "linear-gradient(to bottom, #FFF9F9 0%, #FFF9F9 60%, #F5EDEB 100%)" }}>
         <div className="container">
           <div className="max-w-3xl mx-auto reveal">
-            <span className="section-label block mb-6">The Result</span>
+            <span className="section-label block mb-6">{t("science.theresult.label")}</span>
             <h2
               className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
-              Visible from<br />
+              {t("science.theresult.title").split(" from ")[0]} from<br />
               <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                session one.
+                {t("science.theresult.title").split(" from ")[1] ?? ""}
               </em>
             </h2>
             <span className="brand-rule mb-8" />
             <div className="grid md:grid-cols-2 gap-12">
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Most people notice a difference in skin tone and how their body feels after the first few sessions. Within 2–4 weeks of consistent use, the deeper effects — better sleep, faster recovery, a calmer baseline — become part of how your week feels.
+                {t("science.theresult.body1")}
               </p>
               <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Backed by thousands of peer-reviewed studies. Simple to use. Precise where it matters. The science is serious — the experience is just 10 minutes.
+                {t("science.theresult.body2")}
               </p>
             </div>
           </div>
@@ -380,17 +383,17 @@ export default function Science() {
               className="text-3xl md:text-5xl font-bold leading-[1.1] mb-8 text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
-              Ready to feel it<br />
+              {t("science.cta.question").split(" for ")[0]} for<br />
               <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                for yourself?
+                {t("science.cta.question").split(" for ")[1] ?? ""}
               </em>
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/#waitlist">
-                <button className="btn-primary">Reserve My Spot</button>
+                <button className="btn-primary">{t("nav.reserve")}</button>
               </a>
               <Link href="/experience">
-                <button className="btn-ghost">See the Experience →</button>
+                <button className="btn-ghost">{t("science.cta.link")}</button>
               </Link>
             </div>
           </div>

@@ -2,14 +2,28 @@
  * REDVIVE Footer
  * Style: Dark #0A0303 background, minimal, brand-compliant
  * Logo: White PNG wordmark (CDN) — works perfectly on dark bg
+ * i18n: useTranslation() for all copy; privacy link path is language-aware
  */
 
 import { Link } from "wouter";
+import { useTranslation } from "@/lib/translations";
 
 const LOGO_WHITE =
   "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-logo-white_320ba7bd.png";
 
 export default function Footer() {
+  const t = useTranslation();
+
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/science", label: t("nav.science") },
+    { href: "/experience", label: t("nav.experience") },
+    { href: "/faq", label: t("nav.faq") },
+  ];
+
+  const taglineLines = t("footer.tagline").split("\n");
+  const footerCtaLines = t("nav.footer_tagline").split("\n");
+
   return (
     <footer style={{ backgroundColor: "#0A0303", borderTop: "1px solid rgba(255,249,249,0.06)" }}>
       <div className="container py-16">
@@ -29,8 +43,9 @@ export default function Footer() {
               className="text-xs leading-relaxed"
               style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
             >
-              light is the medicine.<br />
-              Born in Helsinki. Built on science.
+              {taglineLines.map((line, i) => (
+                <span key={i}>{line}{i < taglineLines.length - 1 && <br />}</span>
+              ))}
             </p>
           </div>
 
@@ -40,15 +55,10 @@ export default function Footer() {
               className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
               style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Navigate
+              {t("nav.navigate")}
             </p>
             <nav className="flex flex-col gap-3">
-              {[
-                { href: "/", label: "Home" },
-                { href: "/science", label: "The Science" },
-                { href: "/experience", label: "The Experience" },
-                { href: "/faq", label: "FAQ" },
-              ].map(({ href, label }) => (
+              {navLinks.map(({ href, label }) => (
                 <Link key={href} href={href}>
                   <span
                     className="text-sm transition-colors duration-200 hover:text-white cursor-pointer"
@@ -67,18 +77,19 @@ export default function Footer() {
               className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
               style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Opening Fall 2026
+              {t("nav.opening")}
             </p>
             <p
               className="text-sm mb-6"
               style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}
             >
-              Helsinki, opening Fall 2026.<br />
-              Reserve your spot for priority access.
+              {footerCtaLines.map((line, i) => (
+                <span key={i}>{line}{i < footerCtaLines.length - 1 && <br />}</span>
+              ))}
             </p>
             <a href="/#waitlist">
               <button className="btn-primary text-xs">
-                Reserve My Spot
+                {t("nav.reserve")}
               </button>
             </a>
           </div>
@@ -93,23 +104,15 @@ export default function Footer() {
             className="text-xs"
             style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
           >
-            © 2026 Redvive. Born in Helsinki.
+            {t("footer.copyright")}
           </p>
           <div className="flex gap-6 flex-wrap">
-            <Link href="/privacy">
+            <Link href={t("footer.privacy_path")}>
               <span
                 className="text-xs cursor-pointer transition-colors hover:text-white/50"
                 style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
               >
-                Privacy Policy
-              </span>
-            </Link>
-            <Link href="/tietosuoja">
-              <span
-                className="text-xs cursor-pointer transition-colors hover:text-white/50"
-                style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                Tietosuojaseloste
+                {t("footer.privacy")}
               </span>
             </Link>
             <a

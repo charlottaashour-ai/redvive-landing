@@ -5,10 +5,13 @@
  * On scroll (>60px): smooth 0.35s ease to #0A0303 with backdrop-blur, links full white
  * Non-hero pages: always dark frosted bar
  * Logo: White PNG wordmark — always white (dark bg in both states)
+ * i18n: useTranslation() for all nav labels and CTA
  */
 
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
+import { useTranslation } from "@/lib/translations";
+import LanguageToggle from "./LanguageToggle";
 
 const LOGO_WHITE =
   "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-logo-white_320ba7bd.png";
@@ -17,10 +20,10 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
+  const t = useTranslation();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
-    // Set initial state in case page loads mid-scroll
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -31,8 +34,13 @@ export default function Navbar() {
   }, [location]);
 
   const isHeroPage = location === "/";
-  // Transparent only when: hero page, not scrolled, menu closed
   const isTransparent = isHeroPage && !scrolled && !menuOpen;
+
+  const navLinks = [
+    { href: "/science", label: t("nav.science") },
+    { href: "/experience", label: t("nav.experience") },
+    { href: "/faq", label: t("nav.faq") },
+  ];
 
   return (
     <header
@@ -65,11 +73,7 @@ export default function Navbar() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {[
-              { href: "/science", label: "The Science" },
-              { href: "/experience", label: "The Experience" },
-              { href: "/faq", label: "FAQ" },
-            ].map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <Link key={href} href={href}>
                 <span
                   className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase cursor-pointer"
@@ -102,11 +106,12 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* CTA button */}
-          <div className="hidden md:block">
+          {/* Desktop right: Language toggle + CTA */}
+          <div className="hidden md:flex items-center gap-4">
+            <LanguageToggle />
             <a href="/#waitlist">
               <button className="btn-primary text-xs">
-                Reserve My Spot
+                {t("nav.reserve")}
               </button>
             </a>
           </div>
@@ -139,11 +144,7 @@ export default function Navbar() {
             className="md:hidden py-6 flex flex-col gap-4"
             style={{ borderTop: "1px solid rgba(255,255,255,0.10)" }}
           >
-            {[
-              { href: "/science", label: "The Science" },
-              { href: "/experience", label: "The Experience" },
-              { href: "/faq", label: "FAQ" },
-            ].map(({ href, label }) => (
+            {navLinks.map(({ href, label }) => (
               <Link key={href} href={href}>
                 <span
                   className="block text-xs font-semibold tracking-[0.14em] uppercase py-1.5"
@@ -156,9 +157,12 @@ export default function Navbar() {
                 </span>
               </Link>
             ))}
+            <div className="flex items-center gap-3 mt-1">
+              <LanguageToggle />
+            </div>
             <a href="/#waitlist">
               <button className="btn-primary w-full mt-2 justify-center">
-                Reserve My Spot
+                {t("nav.reserve")}
               </button>
             </a>
           </div>

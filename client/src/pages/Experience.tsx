@@ -5,6 +5,7 @@
  * Tone: Direct, calm — educates on red light therapy while describing the experience
  * Every section earns its place: mechanism + sensory feeling, not just logistics
  * No hyphens in copy.
+ * i18n: useTranslation() for all copy
  */
 
 import { useEffect } from "react";
@@ -12,6 +13,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
+import { useTranslation } from "@/lib/translations";
 
 const heroContainer = {
   hidden: {},
@@ -33,7 +35,6 @@ function useReveal() {
         { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
       );
       document.querySelectorAll(".reveal").forEach((el) => {
-        // If already in viewport, mark visible immediately
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight - 40) {
           el.classList.add("visible");
@@ -49,6 +50,42 @@ function useReveal() {
 
 export default function Experience() {
   useReveal();
+  const t = useTranslation();
+
+  const steps = [
+    {
+      num: "01",
+      headline: t("exp.step1.label"),
+      body: t("exp.step1.body"),
+      detail: "",
+    },
+    {
+      num: "02",
+      headline: t("exp.step2.label"),
+      body: t("exp.step2.body"),
+      detail: t("exp.step2.sub"),
+    },
+    {
+      num: "03",
+      headline: t("exp.step3.label"),
+      body: t("exp.step3.body"),
+      detail: t("exp.step3.sub"),
+    },
+  ];
+
+  const whoRows = [
+    { num: "01", headline: t("exp.who.1.title"), body: t("exp.who.1.body") },
+    { num: "02", headline: t("exp.who.2.title"), body: t("exp.who.2.body") },
+    { num: "03", headline: t("exp.who.3.title"), body: t("exp.who.3.body") },
+    { num: "04", headline: t("exp.who.4.title"), body: t("exp.who.4.body") },
+  ];
+
+  const specs = [
+    { value: "660nm", label: t("exp.spec.red") },
+    { value: "850nm", label: t("exp.spec.nir") },
+    { value: "10 min", label: t("exp.spec.session") },
+    { value: "24/7", label: t("exp.spec.open") },
+  ];
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: "#FFF9F9" }}>
@@ -98,14 +135,14 @@ export default function Experience() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
               style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
             >
-              The Experience
+              {t("exp.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
               <h1
                 className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
               >
-                show up
+                {t("exp.hero1")}
               </h1>
             </motion.div>
             <motion.div variants={heroItem}>
@@ -113,7 +150,7 @@ export default function Experience() {
                 className="text-5xl md:text-7xl leading-[0.95] mt-2"
                 style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
               >
-                for yourself.
+                {t("exp.hero2")}
               </h1>
             </motion.div>
           </div>
@@ -131,7 +168,7 @@ export default function Experience() {
               className="text-2xl md:text-3xl leading-relaxed font-light text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
             >
-              Red light therapy works by delivering specific wavelengths of light — 660nm and 850nm — directly into your cells. Your mitochondria absorb the light and produce more energy. That energy is used for repair: muscle recovery, skin renewal, reduced inflammation, better sleep. The session is 10 minutes. The effects build over weeks. The room just makes it possible.
+              {t("exp.intro")}
             </p>
           </div>
         </div>
@@ -145,39 +182,20 @@ export default function Experience() {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="reveal mb-16">
-              <span className="section-label block mb-4">How It Works</span>
+              <span className="section-label block mb-4">{t("hiw.label")}</span>
               <h2
                 className="text-3xl md:text-5xl font-bold text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Three steps.<br />
+                {t("hiw.sub").split(".")[0]}.<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  That is it.
+                  {t("hiw.sub").split(". ")[1] ?? ""}
                 </em>
               </h2>
             </div>
 
             <div className="flex flex-col">
-              {[
-                {
-                  num: "01",
-                  headline: "Book on your phone.",
-                  body: "Pick a time. Your private room is held the moment you confirm. Available any hour of the day, every day of the week. No calls, no staff, no waiting.",
-                  detail: "24/7 availability.",
-                },
-                {
-                  num: "02",
-                  headline: "Walk in. The light begins.",
-                  body: "Your phone unlocks the door. Full-body panels surround you — 660nm red light for skin, circulation, and surface-level repair; 850nm near-infrared for deeper tissue, muscle recovery, and inflammation. The session runs automatically. You do nothing except be there.",
-                  detail: "660nm + 850nm. Full body.",
-                },
-                {
-                  num: "03",
-                  headline: "Ten minutes. Done. The work continues.",
-                  body: "The session ends. You walk out. But the cellular response continues for hours — your body keeps producing ATP, repairing tissue, reducing cortisol. One session builds on the last. Most people notice a difference within two to four weeks of consistent use.",
-                  detail: "Effects compound over time.",
-                },
-              ].map((step, i) => (
+              {steps.map((step, i) => (
                 <div
                   key={i}
                   className="reveal"
@@ -202,12 +220,14 @@ export default function Experience() {
                       >
                         {step.headline}
                       </p>
-                      <p
-                        className="text-[0.6rem] font-semibold tracking-[0.12em] uppercase"
-                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        {step.detail}
-                      </p>
+                      {step.detail && (
+                        <p
+                          className="text-[0.6rem] font-semibold tracking-[0.12em] uppercase"
+                          style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                        >
+                          {step.detail}
+                        </p>
+                      )}
                     </div>
                     <p
                       className="text-sm leading-relaxed"
@@ -232,34 +252,29 @@ export default function Experience() {
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <div className="reveal mb-12">
-              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>The Studio</span>
+              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("exp.studio.label")}</span>
               <h2
                 className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Clinical grade.<br />
+                {t("exp.studio.title").split(". ")[0]}.<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
-                  Private rooms. Just light.
+                  {t("exp.studio.title").split(". ").slice(1).join(". ")}
                 </em>
               </h2>
               <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
             </div>
             <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Private full-body red light therapy. Clinically calibrated 660nm and 850nm wavelengths — the same protocol used in clinical settings, now available in 10 minutes, at a fraction of the cost.
+                {t("exp.studio.body1")}
               </p>
               <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Every studio is designed around one principle: remove everything that is not the light. A private room. Full-body panels. Fully autonomous — always calibrated, always consistent, always ready.
+                {t("exp.studio.body2")}
               </p>
             </div>
             {/* Spec pills */}
             <div className="reveal grid grid-cols-2 md:grid-cols-4 gap-px" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
-              {[
-                { value: "660nm", label: "Red light" },
-                { value: "850nm", label: "Near-infrared" },
-                { value: "10 min", label: "Per session" },
-                { value: "24/7", label: "Always open" },
-              ].map((spec, i) => (
+              {specs.map((spec, i) => (
                 <div key={i} className="flex flex-col items-center justify-center text-center py-8 px-4" style={{ backgroundColor: "#1A1008" }}>
                   <p
                     className="text-2xl font-bold mb-1"
@@ -288,41 +303,20 @@ export default function Experience() {
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="reveal mb-16">
-              <span className="section-label block mb-4">Who It Is For</span>
+              <span className="section-label block mb-4">{t("who.label")}</span>
               <h2
                 className="text-3xl md:text-5xl font-bold text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                Built for people who<br />
+                {t("exp.who.sub").split(" who ")[0]} who<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
-                  take their health seriously.
+                  {t("exp.who.sub").split(" who ")[1] ?? ""}
                 </em>
               </h2>
             </div>
 
             <div className="flex flex-col">
-              {[
-                {
-                  num: "01",
-                  headline: "Recovery.",
-                  body: "After training, long travel, or a week that left your body heavy. Red light at 850nm penetrates deep into muscle tissue — reducing inflammation, accelerating repair, and helping your nervous system settle faster than rest alone.",
-                },
-                {
-                  num: "02",
-                  headline: "Skin.",
-                  body: "660nm red light stimulates collagen production and supports cellular turnover. When your complexion looks tired, uneven, or older than it should — a consistent weekly session makes a measurable difference over time.",
-                },
-                {
-                  num: "03",
-                  headline: "Energy and sleep.",
-                  body: "Red light therapy reduces cortisol and supports melatonin regulation. An evening session helps your body wind down properly. A morning session helps you start without the heaviness. Both work. Pick what fits your week.",
-                },
-                {
-                  num: "04",
-                  headline: "The long game.",
-                  body: "For people who have read the evidence and want consistent access to the real thing. Not a home gadget. Not a clinic appointment. A 10-minute weekly habit with a compounding return.",
-                },
-              ].map((row, i) => (
+              {whoRows.map((row, i) => (
                 <div
                   key={i}
                   className="reveal"
@@ -378,29 +372,29 @@ export default function Experience() {
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
               style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
-              Born in Helsinki. Opening in Fall of 2026
+              {t("home.hero.eyebrow")}
             </span>
             <h2
               className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
             >
-              Be first<br />
+              {t("cta.headline1")}<br />
               <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                through the door.
+                {t("cta.headline2")}
               </em>
             </h2>
             <p
               className="text-white/50 text-sm mb-10 leading-relaxed"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              300 founding spots. €25/month. Locked in for life. Once the spots are claimed, the rate goes up.
+              {t("exp.cta.body")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="/#waitlist">
-                <button className="btn-primary">Reserve my spot</button>
+                <button className="btn-primary">{t("nav.reserve")}</button>
               </a>
               <Link href="/science">
-                <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>The Science →</button>
+                <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>{t("exp.cta.link")}</button>
               </Link>
             </div>
           </div>
