@@ -290,30 +290,43 @@ export default function Home() {
             </motion.p>
 
             {/* Headline line 1 — DM Sans bold */}
-            <motion.div variants={heroItem}>
-              <h1
-                className="text-[42px] md:text-[72px] font-bold leading-[1.05]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
-              >
-                {t("home.hero.line1").replace(/heal\.$/, "")}
-                <span style={{ color: "rgba(255,255,255,1)" }}>
-                  {t("home.hero.line1").match(/\w+\.$/)?.[0] ?? ""}
-                </span>
-              </h1>
-            </motion.div>
+            {(() => {
+              const line1 = t("home.hero.line1");
+              // Split into preamble + last word (language-agnostic)
+              const lastSpace1 = line1.lastIndexOf(" ");
+              const pre1 = lastSpace1 >= 0 ? line1.slice(0, lastSpace1 + 1) : "";
+              const last1 = lastSpace1 >= 0 ? line1.slice(lastSpace1 + 1) : line1;
+              return (
+                <motion.div variants={heroItem}>
+                  <h1
+                    className="text-[42px] md:text-[72px] font-bold leading-[1.05]"
+                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
+                  >
+                    <span>{pre1}</span>
+                    <span style={{ color: "rgba(255,255,255,1)" }}>{last1}</span>
+                  </h1>
+                </motion.div>
+              );
+            })()}
 
             {/* Headline line 2 — Lora italic */}
-            <motion.div variants={heroItem}>
-              <h1
-                className="text-[42px] md:text-[72px] leading-[1.05] mb-6"
-                style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
-              >
-                {t("home.hero.line2").replace(/light\.$/, "")}
-                <span style={{ color: "rgba(255,255,255,1)" }}>
-                  {t("home.hero.line2").match(/\w+\.$/)?.[0] ?? ""}
-                </span>
-              </h1>
-            </motion.div>
+            {(() => {
+              const line2 = t("home.hero.line2");
+              const lastSpace2 = line2.lastIndexOf(" ");
+              const pre2 = lastSpace2 >= 0 ? line2.slice(0, lastSpace2 + 1) : "";
+              const last2 = lastSpace2 >= 0 ? line2.slice(lastSpace2 + 1) : line2;
+              return (
+                <motion.div variants={heroItem}>
+                  <h1
+                    className="text-[42px] md:text-[72px] leading-[1.05] mb-6"
+                    style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
+                  >
+                    <span>{pre2}</span>
+                    <span style={{ color: "rgba(255,255,255,1)" }}>{last2}</span>
+                  </h1>
+                </motion.div>
+              );
+            })()}
 
             {/* Hero subheadline — what is Redvive */}
             <motion.div variants={heroItem}>
