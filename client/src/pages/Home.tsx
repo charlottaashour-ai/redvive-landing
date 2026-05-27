@@ -65,17 +65,62 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
   const [interest, setInterest] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && consent) setSubmitted(true);
+    setError(null);
+
+    if (!email) {
+      setError("Please enter a valid email.");
+      return;
+    }
+    if (!consent) {
+      setError("Please agree to receive updates to continue.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/waitlist-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          firstName: "",
+          language: "en",
+          consent: true,
+          reason: interest,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          setSubmitted(true);
+          return;
+        }
+      }
+
+      if (res.status === 400) {
+        const data = await res.json().catch(() => ({}));
+        setError(data.error || "Please enter a valid email.");
+      } else {
+        setError("Something went wrong. Please try again in a moment.");
+      }
+    } catch {
+      setError("Something went wrong. Please try again in a moment.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
     return (
       <div className="text-center py-4">
-        <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>You are on the list.</p>
-        <p className={`text-xs mt-1 ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>We will be in touch before Helsinki opens.</p>
+        <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>You are on the waitlist.</p>
+        <p className={`text-xs mt-1 ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>Check your inbox for a welcome email.</p>
       </div>
     );
   }
@@ -132,8 +177,16 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
           .
         </span>
       </label>
-      <button type="submit" className="btn-primary justify-center w-full" disabled={!consent} style={{ opacity: consent ? 1 : 0.5, transition: "opacity 0.2s" }}>
-        Reserve my spot
+      {error && (
+        <p className="text-xs" style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}>{error}</p>
+      )}
+      <button
+        type="submit"
+        className="btn-primary justify-center w-full"
+        disabled={loading || !consent}
+        style={{ opacity: (loading || !consent) ? 0.5 : 1, transition: "opacity 0.2s" }}
+      >
+        {loading ? "Sending..." : "Reserve my spot"}
       </button>
       <p className={`text-xs text-center ${dark ? "text-white/40" : "text-[#7A5A54]/60"}`}>No payment. No commitment.</p>
     </form>
