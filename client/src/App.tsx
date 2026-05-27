@@ -6,7 +6,6 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
-import CookieNotice from "./components/CookieNotice";
 import Home from "./pages/Home";
 import Science from "./pages/Science";
 import Experience from "./pages/Experience";
@@ -40,7 +39,6 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
-          <CookieNotice />
         </TooltipProvider>
       </ThemeProvider>
       </LanguageProvider>
