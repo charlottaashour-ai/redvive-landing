@@ -9,7 +9,8 @@
 //
 // Environment variables to set in Vercel (Project Settings → Environment Variables):
 //   FLODESK_API_KEY         — get from Flodesk → Settings → API
-//   FLODESK_SEGMENT_ID      — the ID of "Waitlist — pre-launch" segment
+//   FLODESK_SEGMENT_EN_ID    — the ID of "Waitlist — EN" segment
+//   FLODESK_SEGMENT_FI_ID    — the ID of "Waitlist — FI" segment
 //   META_PIXEL_ID           — from Meta Business Manager → Pixel settings
 //   META_CAPI_ACCESS_TOKEN  — generated in Meta Events Manager → Conversions API
 //   SLACK_WEBHOOK_URL       — incoming webhook URL (optional, for live ping)
@@ -34,7 +35,9 @@ const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 async function addToFlodesk({ email, firstName, language }) {
   const flodeskKey = process.env.FLODESK_API_KEY;
-  const segmentId = process.env.FLODESK_SEGMENT_ID;
+  const segmentId = language === 'fi'
+    ? process.env.FLODESK_SEGMENT_FI_ID
+    : process.env.FLODESK_SEGMENT_EN_ID;
 
   if (!flodeskKey || !segmentId) {
     throw new Error('Flodesk credentials missing');

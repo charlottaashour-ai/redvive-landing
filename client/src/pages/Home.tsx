@@ -61,6 +61,10 @@ function useReveal() {
 }
 
 function WaitlistForm({ dark = true }: { dark?: boolean }) {
+  // Derive language from browser locale — 'fi' for Finnish users, 'en' for everyone else.
+  // This is the source of truth for Flodesk segment routing (EN vs FI waitlist).
+  const currentLanguage = typeof navigator !== "undefined" && navigator.language?.startsWith("fi") ? "fi" : "en";
+
   const [email, setEmail] = useState("");
   const [interest, setInterest] = useState("");
   const [consent, setConsent] = useState(false);
@@ -89,7 +93,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         body: JSON.stringify({
           email,
           firstName: "",
-          language: "en",
+          language: currentLanguage,
           consent: true,
           reason: interest,
         }),
