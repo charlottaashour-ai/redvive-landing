@@ -11,6 +11,7 @@ import Science from "./pages/Science";
 import Experience from "./pages/Experience";
 import FAQ from "./pages/FAQ";
 import Privacy from "./pages/Privacy";
+import Tietosuojaseloste from "./pages/Tietosuojaseloste";
 
 function Router() {
   return (
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/experience" component={Experience} />
         <Route path="/faq" component={FAQ} />
         <Route path="/privacy" component={Privacy} />
+        <Route path="/tietosuoja" component={Tietosuojaseloste} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

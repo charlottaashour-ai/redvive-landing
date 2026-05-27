@@ -104,6 +104,14 @@ export default function Footer() {
                 Privacy Policy
               </span>
             </Link>
+            <Link href="/tietosuoja">
+              <span
+                className="text-xs cursor-pointer transition-colors hover:text-white/50"
+                style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Tietosuojaseloste
+              </span>
+            </Link>
             <a
               href="https://www.instagram.com/redlighthelsinki"
               target="_blank"

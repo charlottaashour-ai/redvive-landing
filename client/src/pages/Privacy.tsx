@@ -1,259 +1,462 @@
-// Privacy Policy page — Redvive
-// Design: dark warm background (#0A0303), rose-white text, DM Sans body, Lora accent
-// Minimal, editorial layout — matches the restrained Finnish aesthetic of the rest of the site
+// Privacy Policy — Redvive (/privacy)
+// Design: warm cream #FAF6F4 background, charcoal #1A0A08 text
+// Max-width 720px centred, DM Sans body, generous spacing
+// Quiet, neutral, trustworthy — not the red gradient
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 
+/* ── Shared sub-components ── */
+
+function H2({ children }: { children: React.ReactNode }) {
+  return (
+    <h2
+      className="text-xl font-bold mt-12 mb-4"
+      style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A0A08", letterSpacing: "-0.02em" }}
+    >
+      {children}
+    </h2>
+  );
+}
+
+function H3({ children }: { children: React.ReactNode }) {
+  return (
+    <h3
+      className="text-base font-semibold mt-6 mb-2"
+      style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A0A08" }}
+    >
+      {children}
+    </h3>
+  );
+}
+
+function P({ children }: { children: React.ReactNode }) {
+  return (
+    <p
+      className="text-base leading-relaxed mb-3"
+      style={{ fontFamily: "'DM Sans', sans-serif", color: "#3D1A14", lineHeight: 1.7 }}
+    >
+      {children}
+    </p>
+  );
+}
+
+function UL({ items }: { items: React.ReactNode[] }) {
+  return (
+    <ul className="mb-4" style={{ paddingLeft: "1.25rem" }}>
+      {items.map((item, i) => (
+        <li
+          key={i}
+          className="text-base"
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            color: "#3D1A14",
+            lineHeight: 1.7,
+            marginBottom: "8px",
+            listStyleType: "disc",
+          }}
+        >
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function Code({ children }: { children: React.ReactNode }) {
+  return (
+    <code
+      style={{
+        backgroundColor: "#EDE8E5",
+        color: "#1A0A08",
+        borderRadius: "3px",
+        padding: "1px 5px",
+        fontFamily: "monospace",
+        fontSize: "0.9em",
+      }}
+    >
+      {children}
+    </code>
+  );
+}
+
+function MailLink({ email }: { email: string }) {
+  return (
+    <a
+      href={`mailto:${email}`}
+      style={{ color: "#D53E0F" }}
+      className="hover:opacity-75 transition-opacity"
+    >
+      {email}
+    </a>
+  );
+}
+
+function ExternalLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{ color: "#D53E0F" }}
+      className="hover:opacity-75 transition-opacity"
+    >
+      {label}
+    </a>
+  );
+}
+
+function HR() {
+  return <hr style={{ border: "none", borderTop: "1px solid #E5DDD5", margin: "2rem 0" }} />;
+}
+
+function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
+  return (
+    <div className="overflow-x-auto mb-6">
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "0.875rem",
+          color: "#3D1A14",
+        }}
+      >
+        <thead>
+          <tr>
+            {headers.map((h, i) => (
+              <th
+                key={i}
+                style={{
+                  textAlign: "left",
+                  padding: "10px 14px",
+                  fontWeight: 600,
+                  backgroundColor: "#EDE8E5",
+                  border: "1px solid #E5DDD5",
+                  color: "#1A0A08",
+                }}
+              >
+                {h}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, i) => (
+            <tr key={i} style={{ backgroundColor: i % 2 === 0 ? "#FAF6F4" : "#F5EDEB" }}>
+              {row.map((cell, j) => (
+                <td
+                  key={j}
+                  style={{
+                    padding: "10px 14px",
+                    border: "1px solid #E5DDD5",
+                    lineHeight: 1.6,
+                    verticalAlign: "top",
+                  }}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/* ── Page ── */
+
 export default function Privacy() {
   return (
-    <div style={{ backgroundColor: "#0A0303", minHeight: "100vh" }}>
+    <div style={{ backgroundColor: "#FAF6F4", minHeight: "100vh" }}>
       <Navbar />
 
-      {/* Hero label */}
-      <div className="pt-32 pb-16 px-6" style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="max-w-2xl mx-auto">
+      <div className="px-6 pt-32 pb-24">
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+
+          {/* Header */}
           <p
-            className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-6"
-            style={{ color: "rgba(255,249,249,0.4)", fontFamily: "'DM Sans', sans-serif" }}
+            className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-4"
+            style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
           >
             Legal
           </p>
           <h1
-            className="text-4xl md:text-5xl font-bold mb-4"
-            style={{ fontFamily: "'DM Sans', sans-serif", color: "#FFF9F9", letterSpacing: "-0.03em" }}
+            className="font-bold mb-2"
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              color: "#1A0A08",
+              fontSize: "clamp(2rem, 5vw, 3rem)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1.1,
+            }}
           >
             Privacy Policy
           </h1>
           <p
-            className="text-sm"
-            style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+            className="text-sm mb-10"
+            style={{ color: "#7A4A42", fontFamily: "'DM Sans', sans-serif" }}
           >
-            Last updated: April 2026
+            Last updated: 27 May 2026
           </p>
-        </div>
-      </div>
 
-      {/* Body */}
-      <div className="py-16 px-6">
-        <div className="max-w-2xl mx-auto space-y-12">
+          <P>
+            Redvive Oy ("Redvive", "we", "us") is committed to protecting your privacy and complying
+            with the EU General Data Protection Regulation (GDPR) and the Finnish Data Protection Act
+            (1050/2018).
+          </P>
+          <P>
+            This policy explains what personal data we collect, why, how we use it, who we share it
+            with, and what your rights are.
+          </P>
+          <P>
+            If you have any questions, contact us at <MailLink email="privacy@redvivestudios.com" />.
+          </P>
 
-          {/* Section */}
-          <Section title="Who we are">
-            <p>
-              Redvive is a private red light therapy studio opening in Helsinki, Finland in Fall 2026.
-              For the purposes of this policy, "Redvive", "we", "us" and "our" refers to the data
-              controller responsible for your personal data.
-            </p>
-            <p className="mt-3">
-              <strong>Data controller contact:</strong>{" "}
-              <a
-                href="mailto:hello@redvivewell.com"
-                style={{ color: "#D53E0F" }}
-                className="hover:opacity-80 transition-opacity"
+          <HR />
+
+          {/* 1 */}
+          <H2>1. Data controller</H2>
+          <P>
+            Redvive Oy<br />
+            Business ID (Y-tunnus): 3573167-1<br />
+            Registered address: Katajanokanlaituri 2B, 00160 Helsinki, Finland
+          </P>
+          <P>
+            Email: <MailLink email="privacy@redvivestudios.com" />
+          </P>
+
+          <HR />
+
+          {/* 2 */}
+          <H2>2. Personal data we collect</H2>
+
+          <H3>2.1 Waitlist signups</H3>
+          <P>When you join our pre-launch waitlist, we collect:</P>
+          <UL items={[
+            "Email address",
+            "First name (optional)",
+            "Language preference (optional)",
+            "Timestamp of signup",
+            "IP address (for fraud prevention)",
+            "Marketing consent status",
+          ]} />
+
+          <H3>2.2 Website usage</H3>
+          <P>
+            When you visit <Code>redvivestudios.com</Code>, we may collect (subject to your consent):
+          </P>
+          <UL items={[
+            "Device type, browser, operating system",
+            "Pages visited, time on site, navigation paths",
+            "Referrer URL",
+            "Approximate location (country/city level)",
+            "Cookie identifiers",
+          ]} />
+
+          <H3>2.3 Communications</H3>
+          <P>
+            If you email us or contact us via the website, we retain the contents of those
+            communications.
+          </P>
+          <P>
+            We do <strong>not</strong> collect health, biometric, or special-category data on this
+            website.
+          </P>
+
+          <HR />
+
+          {/* 3 */}
+          <H2>3. Legal basis for processing</H2>
+          <P>
+            We process your personal data on the following legal bases under GDPR Article 6:
+          </P>
+          <Table
+            headers={["Purpose", "Legal basis"]}
+            rows={[
+              ["Sending waitlist + welcome emails", "Your explicit consent (Article 6(1)(a))"],
+              ["Marketing emails after waitlist", "Your explicit consent (Article 6(1)(a))"],
+              ["Website analytics + advertising pixels", "Your consent via cookie banner (Article 6(1)(a))"],
+              ["Responding to inquiries", "Legitimate interest in customer service (Article 6(1)(f))"],
+              ["Fraud prevention + security", "Legitimate interest (Article 6(1)(f))"],
+              ["Compliance with legal obligations", "Legal obligation (Article 6(1)(c))"],
+            ]}
+          />
+          <P>
+            You can withdraw consent at any time. Withdrawing consent does not affect the lawfulness
+            of processing before the withdrawal.
+          </P>
+
+          <HR />
+
+          {/* 4 */}
+          <H2>4. How we use your data</H2>
+          <P>We use your personal data to:</P>
+          <UL items={[
+            "Confirm your spot on the waitlist",
+            "Send you the 5-email welcome series before launch",
+            "Inform you when our studios open and when booking opens",
+            "Send occasional brand updates (you can unsubscribe at any time)",
+            "Improve our website performance and user experience",
+            "Comply with legal obligations",
+          ]} />
+          <P>We do <strong>not</strong>:</P>
+          <UL items={[
+            "Sell your data to third parties",
+            "Use your data for automated decision-making with significant effects",
+            "Process your data outside the EU/EEA without appropriate safeguards",
+          ]} />
+
+          <HR />
+
+          {/* 5 */}
+          <H2>5. Who we share data with</H2>
+          <P>
+            We share data only with service providers ("data processors") who help us run our
+            business. Each is bound by GDPR-compliant Data Processing Agreements (DPAs).
+          </P>
+          <Table
+            headers={["Service provider", "Purpose", "Location"]}
+            rows={[
+              ["Flodesk Inc.", "Email marketing", "USA — covered under EU-US Data Privacy Framework"],
+              ["Vercel Inc.", "Website hosting", "USA — covered under EU-US Data Privacy Framework"],
+              ["Google LLC (Workspace + Analytics)", "Email infrastructure + analytics", "USA — Standard Contractual Clauses"],
+              ["Meta Platforms Ireland Ltd.", "Conversion tracking (only with consent)", "EU/USA — Standard Contractual Clauses"],
+              ["Cookiebot / Iubenda", "Consent management", "EU"],
+            ]}
+          />
+          <P>We may share data with authorities if required by Finnish or EU law.</P>
+
+          <HR />
+
+          {/* 6 */}
+          <H2>6. International transfers</H2>
+          <P>
+            Some of our service providers are based outside the EU. We rely on:
+          </P>
+          <UL items={[
+            "The EU-US Data Privacy Framework (for US-based processors that have certified)",
+            "Standard Contractual Clauses (for other transfers)",
+            "Supplementary safeguards where appropriate",
+          ]} />
+
+          <HR />
+
+          {/* 7 */}
+          <H2>7. How long we keep your data</H2>
+          <Table
+            headers={["Data type", "Retention period"]}
+            rows={[
+              ["Waitlist email + consent", "Until you unsubscribe + 12 months audit log"],
+              ["Marketing subscriber data", "Until you unsubscribe + 6 months"],
+              ["Customer support inquiries", "24 months"],
+              ["Website analytics (anonymised)", "26 months"],
+              ["Cookie consent records", "12 months"],
+            ]}
+          />
+          <P>After these periods, data is deleted or fully anonymised.</P>
+
+          <HR />
+
+          {/* 8 */}
+          <H2>8. Your rights under GDPR</H2>
+          <P>You have the right to:</P>
+          <UL items={[
+            <><strong>Access</strong> your personal data</>,
+            <><strong>Rectify</strong> inaccurate or incomplete data</>,
+            <><strong>Erase</strong> your data ("right to be forgotten")</>,
+            <><strong>Restrict</strong> processing</>,
+            <><strong>Object</strong> to processing based on legitimate interest</>,
+            <><strong>Data portability</strong> — receive your data in a machine-readable format</>,
+            <><strong>Withdraw consent</strong> at any time</>,
+            <>
+              <strong>Lodge a complaint</strong> with the Finnish Data Protection Ombudsman
+              (Tietosuojavaltuutettu) — <ExternalLink href="https://www.tietosuoja.fi" label="tietosuoja.fi" />
+            </>,
+          ]} />
+          <P>
+            To exercise any right, email <MailLink email="privacy@redvivestudios.com" />. We respond
+            within 30 days.
+          </P>
+
+          <HR />
+
+          {/* 9 */}
+          <H2>9. Cookies</H2>
+          <P>
+            Our website uses cookies. You can review and change your preferences via the cookie
+            banner at any time.
+          </P>
+          <P>Categories:</P>
+          <UL items={[
+            <><strong>Necessary</strong> — site function (always on, no consent required)</>,
+            <><strong>Analytics</strong> — Google Analytics, anonymised IP (consent required)</>,
+            <><strong>Marketing</strong> — Meta Pixel, conversion tracking (consent required)</>,
+          ]} />
+          <P>Without consent, only necessary cookies are loaded.</P>
+
+          <HR />
+
+          {/* 10 */}
+          <H2>10. Children's privacy</H2>
+          <P>
+            Our services are not directed to anyone under 16. We do not knowingly collect data from
+            minors. If you believe we have collected data from a minor, contact{" "}
+            <MailLink email="privacy@redvivestudios.com" /> and we will delete it.
+          </P>
+
+          <HR />
+
+          {/* 11 */}
+          <H2>11. Security</H2>
+          <P>
+            We use reasonable technical and organisational measures to protect your data, including
+            HTTPS encryption, encrypted databases at our processors, access controls, and 2FA on
+            administrative accounts. No method of transmission over the internet is 100% secure.
+          </P>
+
+          <HR />
+
+          {/* 12 */}
+          <H2>12. Changes to this policy</H2>
+          <P>
+            We may update this policy. The "Last updated" date at the top reflects the most recent
+            change. Material changes will be communicated by email to active subscribers.
+          </P>
+
+          <HR />
+
+          {/* 13 */}
+          <H2>13. Contact</H2>
+          <P>
+            Redvive Oy<br />
+            <MailLink email="privacy@redvivestudios.com" /><br />
+            Helsinki, Finland
+          </P>
+          <P>
+            Finnish Data Protection Ombudsman:{" "}
+            <ExternalLink href="https://www.tietosuoja.fi" label="tietosuoja.fi" />
+          </P>
+
+          <HR />
+
+          {/* Language link */}
+          <div className="mt-8 flex items-center gap-4">
+            <Link href="/tietosuoja">
+              <span
+                className="text-xs tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity"
+                style={{ color: "#7A4A42", fontFamily: "'DM Sans', sans-serif" }}
               >
-                hello@redvivewell.com
-              </a>
-            </p>
-          </Section>
-
-          <Divider />
-
-          <Section title="What data we collect and why">
-            <p>When you join our waitlist, we collect:</p>
-            <ul className="mt-3 space-y-2 list-none">
-              <ListItem>
-                <strong>Email address</strong> — to send you launch updates, founding member
-                information and early access details.
-              </ListItem>
-              <ListItem>
-                <strong>Stated interest</strong> (optional) — the reason you selected for joining
-                (e.g. Skin &amp; Glow, Recovery &amp; Performance) — used only to personalise the
-                communications we send you.
-              </ListItem>
-            </ul>
-            <p className="mt-4">
-              We do not collect any other personal data. We do not use tracking pixels, advertising
-              cookies, or behavioural analytics tools.
-            </p>
-          </Section>
-
-          <Divider />
-
-          <Section title="Lawful basis for processing">
-            <p>
-              We process your personal data on the basis of your{" "}
-              <strong>freely given, specific and informed consent</strong> (Article 6(1)(a) of the
-              GDPR). You provide this consent by ticking the checkbox on our waitlist form.
-            </p>
-            <p className="mt-3">
-              You may withdraw your consent at any time by emailing{" "}
-              <a
-                href="mailto:hello@redvivewell.com"
-                style={{ color: "#D53E0F" }}
-                className="hover:opacity-80 transition-opacity"
-              >
-                hello@redvivewell.com
-              </a>
-              . Withdrawal does not affect the lawfulness of any processing carried out before you
-              withdrew consent.
-            </p>
-          </Section>
-
-          <Divider />
-
-          <Section title="How long we keep your data">
-            <p>We retain your data until one of the following occurs:</p>
-            <ul className="mt-3 space-y-2 list-none">
-              <ListItem>You withdraw your consent and request deletion.</ListItem>
-              <ListItem>
-                Redvive opens and the waitlist period ends — at which point we will contact you with
-                options to continue receiving communications or to be removed.
-              </ListItem>
-              <ListItem>
-                In any case, no longer than 24 months from the date you joined the waitlist.
-              </ListItem>
-            </ul>
-          </Section>
-
-          <Divider />
-
-          <Section title="Who we share your data with">
-            <p>
-              We do not sell or share your personal data with third parties for marketing purposes.
-            </p>
-            <p className="mt-3">
-              If we use an email service provider (such as Brevo or Mailchimp) to send waitlist
-              communications, your email address will be stored on their servers. Any such provider
-              is bound by a data processing agreement and GDPR-compliant terms. We will update this
-              policy if and when such a provider is engaged.
-            </p>
-          </Section>
-
-          <Divider />
-
-          <Section title="Cookies and tracking">
-            <p>
-              This website does not use advertising or tracking cookies. We load fonts from Google
-              Fonts CDN, which may result in a connection to Google's servers. No personal data is
-              transmitted in this process beyond standard server log data (IP address, browser type)
-              which Google may retain per their own privacy policy.
-            </p>
-            <p className="mt-3">
-              We do not use Google Analytics or any other analytics platform at this time.
-            </p>
-          </Section>
-
-          <Divider />
-
-          <Section title="Your rights under GDPR">
-            <p className="mb-5">
-              As a data subject in the EU/EEA, you have the following rights:
-            </p>
-            <div className="space-y-3">
-              {[
-                { right: "Access", desc: "Request a copy of the personal data we hold about you." },
-                { right: "Rectification", desc: "Ask us to correct inaccurate data." },
-                { right: "Erasure", desc: "Ask us to delete your data (\"right to be forgotten\")." },
-                { right: "Restriction", desc: "Ask us to limit how we use your data." },
-                { right: "Portability", desc: "Receive your data in a structured, machine-readable format." },
-                { right: "Objection", desc: "Object to processing based on legitimate interests." },
-                { right: "Withdraw consent", desc: "Withdraw consent at any time without penalty." },
-              ].map(({ right, desc }) => (
-                <div
-                  key={right}
-                  className="flex gap-4 py-3"
-                  style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
-                >
-                  <span
-                    className="text-xs font-semibold tracking-wide uppercase flex-shrink-0 w-36"
-                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif", paddingTop: "1px" }}
-                  >
-                    {right}
-                  </span>
-                  <span
-                    className="text-sm leading-relaxed"
-                    style={{ color: "rgba(255,249,249,0.6)", fontFamily: "'DM Sans', sans-serif" }}
-                  >
-                    {desc}
-                  </span>
-                </div>
-              ))}
-            </div>
-            <p className="mt-5">
-              To exercise any of these rights, contact us at{" "}
-              <a
-                href="mailto:hello@redvivewell.com"
-                style={{ color: "#D53E0F" }}
-                className="hover:opacity-80 transition-opacity"
-              >
-                hello@redvivewell.com
-              </a>
-              . We will respond within 30 days.
-            </p>
-          </Section>
-
-          <Divider />
-
-          <Section title="Right to lodge a complaint">
-            <p>
-              If you believe we have not handled your data in accordance with GDPR, you have the
-              right to lodge a complaint with the Finnish Data Protection Ombudsman:
-            </p>
-            <div
-              className="mt-4 p-5"
-              style={{ border: "1px solid rgba(255,255,255,0.08)", backgroundColor: "rgba(255,249,249,0.02)" }}
-            >
-              <p
-                className="text-sm font-semibold mb-1"
-                style={{ color: "#FFF9F9", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                Tietosuojavaltuutetun toimisto
-              </p>
-              <p
-                className="text-xs leading-relaxed"
-                style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                Office of the Data Protection Ombudsman<br />
-                PO Box 800, FI-00531 Helsinki<br />
-                <a
-                  href="mailto:tietosuoja@om.fi"
-                  style={{ color: "#D53E0F" }}
-                  className="hover:opacity-80 transition-opacity"
-                >
-                  tietosuoja@om.fi
-                </a>
-                {" · "}
-                <a
-                  href="https://www.tietosuoja.fi"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ color: "#D53E0F" }}
-                  className="hover:opacity-80 transition-opacity"
-                >
-                  www.tietosuoja.fi
-                </a>
-              </p>
-            </div>
-          </Section>
-
-          <Divider />
-
-          <Section title="Changes to this policy">
-            <p>
-              We may update this policy as our services develop. Any material changes will be
-              communicated to waitlist members by email. The "last updated" date at the top of this
-              page will always reflect the most recent version.
-            </p>
-          </Section>
-
-          {/* Back link */}
-          <div className="pt-8">
+                Lue suomeksi →
+              </span>
+            </Link>
+            <span style={{ color: "#E5DDD5" }}>|</span>
             <Link href="/">
               <span
                 className="text-xs tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity"
-                style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: "#7A4A42", fontFamily: "'DM Sans', sans-serif" }}
               >
                 ← Back to home
               </span>
@@ -263,42 +466,7 @@ export default function Privacy() {
         </div>
       </div>
 
-      <div style={{ height: "2px", backgroundColor: "#1A1008" }} />
       <Footer />
     </div>
-  );
-}
-
-/* ── Sub-components ── */
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div>
-      <h2
-        className="text-lg font-bold mb-4"
-        style={{ fontFamily: "'DM Sans', sans-serif", color: "#FFF9F9", letterSpacing: "-0.02em" }}
-      >
-        {title}
-      </h2>
-      <div
-        className="text-sm leading-relaxed"
-        style={{ color: "rgba(255,249,249,0.55)", fontFamily: "'DM Sans', sans-serif" }}
-      >
-        {children}
-      </div>
-    </div>
-  );
-}
-
-function Divider() {
-  return <div style={{ height: "1px", backgroundColor: "rgba(255,255,255,0.06)" }} />;
-}
-
-function ListItem({ children }: { children: React.ReactNode }) {
-  return (
-    <li className="flex gap-3 items-start">
-      <span style={{ color: "#D53E0F", marginTop: "2px", flexShrink: 0 }}>—</span>
-      <span>{children}</span>
-    </li>
   );
 }
