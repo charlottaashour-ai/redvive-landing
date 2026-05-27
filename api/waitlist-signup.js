@@ -40,11 +40,13 @@ async function addToFlodesk({ email, firstName, language }) {
     throw new Error('Flodesk credentials missing');
   }
 
-  // Create subscriber + assign to segment in one call
+  const authHeader = `Basic ${Buffer.from(flodeskKey + ':').toString('base64')}`;
+
+  // Step 1: create or update subscriber, then parse response for ID
   const subscriberRes = await fetch('https://api.flodesk.com/v1/subscribers', {
     method: 'POST',
     headers: {
-      'Authorization': `Basic ${Buffer.from(flodeskKey + ':').toString('base64')}`,
+      'Authorization': authHeader,
       'Content-Type': 'application/json',
       'User-Agent': 'Redvive/waitlist-signup'
     },
@@ -53,14 +55,35 @@ async function addToFlodesk({ email, firstName, language }) {
       first_name: firstName || '',
       custom_fields: { language: language || 'en' },
       status: 'active',
-      source: 'redvive-waitlist',
-      segments: [{ id: segmentId }]
+      source: 'redvive-waitlist'
     })
   });
 
   if (!subscriberRes.ok) {
     const errText = await subscriberRes.text();
     throw new Error(`Flodesk subscriber create failed: ${subscriberRes.status} — ${errText}`);
+  }
+
+  const subscriberData = await subscriberRes.json();
+  const subscriberId = subscriberData.id || subscriberData.data?.id;
+
+  if (!subscriberId) {
+    throw new Error(`Flodesk subscriber response missing ID: ${JSON.stringify(subscriberData)}`);
+  }
+
+  // Step 2: add subscriber to segment using SUBSCRIBER ID (not email)
+  const segmentRes = await fetch(`https://api.flodesk.com/v1/subscribers/${subscriberId}/segments`, {
+    method: 'POST',
+    headers: {
+      'Authorization': authHeader,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ segment_ids: [segmentId] })
+  });
+
+  if (!segmentRes.ok) {
+    const errText = await segmentRes.text();
+    throw new Error(`Flodesk segment add failed: ${segmentRes.status} — ${errText}`);
   }
 
   return true;
