@@ -69,7 +69,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
 
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
-  const [interest, setInterest] = useState("");
+  const [postalCode, setPostalCode] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [foundingNumber, setFoundingNumber] = useState<string | null>(null);
@@ -104,7 +104,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
           firstName: firstName.trim(),
           language,
           consent: true,
-          reason: interest,
+          postalCode: postalCode.trim() || undefined,
         }),
       });
 
@@ -169,19 +169,14 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         className={inputClass}
         style={{ fontFamily: "'DM Sans', sans-serif" }}
       />
-      <select
-        value={interest}
-        onChange={(e) => setInterest(e.target.value)}
-        className={inputClass + " appearance-none"}
-        style={{ fontFamily: "'DM Sans', sans-serif", color: interest ? (dark ? "white" : "#1A1008") : (dark ? "rgba(255,255,255,0.4)" : "rgba(122,90,84,0.6)") }}
-      >
-        <option value="" disabled style={{ color: "#1A1008" }}>{t("form.interest")}</option>
-        <option value="skin" style={{ color: "#1A1008" }}>{t("form.opt.skin")}</option>
-        <option value="recovery" style={{ color: "#1A1008" }}>{t("form.opt.recovery")}</option>
-        <option value="energy" style={{ color: "#1A1008" }}>{t("form.opt.energy")}</option>
-        <option value="wellness" style={{ color: "#1A1008" }}>{t("form.opt.wellness")}</option>
-        <option value="science" style={{ color: "#1A1008" }}>{t("form.opt.science")}</option>
-      </select>
+      <input
+        type="text"
+        placeholder={t("form.postal_placeholder")}
+        value={postalCode}
+        onChange={(e) => setPostalCode(e.target.value)}
+        className={inputClass}
+        style={{ fontFamily: "'DM Sans', sans-serif" }}
+      />
       {/* GDPR consent checkbox */}
       <label className="flex items-start gap-3 cursor-pointer group text-left">
         <input

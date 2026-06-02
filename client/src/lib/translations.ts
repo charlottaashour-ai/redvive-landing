@@ -37,12 +37,8 @@ export const translations: Record<string, Record<string, string>> = {
     "form.firstname": "First name",
     "form.firstname_placeholder": "your first name",
     "form.email": "Your email",
-    "form.interest": "What brings you here?",
-    "form.opt.skin": "Skin and Glow",
-    "form.opt.recovery": "Recovery and Performance",
-    "form.opt.energy": "Energy and Weekly Balance",
-    "form.opt.wellness": "General Wellness",
-    "form.opt.science": "I want the science",
+    "form.postal_label": "Postal code (optional)",
+    "form.postal_placeholder": "e.g. 00160",
     "form.consent": "I agree to receive launch updates and founding member information from Redvive. See our",
     "form.consent_link": "Privacy Policy",
     "form.submit": "Reserve my spot",
@@ -68,7 +64,7 @@ export const translations: Record<string, Record<string, string>> = {
     "hiw.cta": "Understand the experience →",
 
     // ── HOME — Pricing ──
-    "pricing.label": "Limited to 100 Spots",
+    "pricing.label": "Limited to 99 Spots",
     "pricing.title": "Founding Member Pricing",
     "pricing.price": "€29/ month.",
     "pricing.locked": "Locked in for life.",
@@ -107,7 +103,7 @@ export const translations: Record<string, Record<string, string>> = {
     // ── HOME — Final CTA ──
     "cta.headline1": "Be first",
     "cta.headline2": "through the door.",
-    "cta.body": "We are opening with 100 founding spots. The €29/month rate is locked in for life — but only for the people on this list. Once the spots are claimed, the rate goes up.",
+    "cta.body": "We are opening with 99 founding spots. The €29/month rate is locked in for life — but only for the people on this list. Once the spots are claimed, the rate goes up.",
 
     // ── SCIENCE PAGE ──
     "science.eyebrow": "The Science",
@@ -178,7 +174,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.who.3.body": "Red light therapy reduces cortisol and supports melatonin regulation. An evening session helps your body wind down properly. A morning session helps you start without the heaviness. Both work. Pick what fits your week.",
     "exp.who.4.title": "The long game.",
     "exp.who.4.body": "For people who have read the evidence and want consistent access to the real thing. Not a home gadget. Not a clinic appointment. A 10-minute weekly habit with a compounding return.",
-    "exp.cta.body": "100 founding spots. €29/month. Locked in for life. Once the spots are claimed, the rate goes up.",
+    "exp.cta.body": "99 founding spots. €29/month. Locked in for life. Once the spots are claimed, the rate goes up.",
     "exp.cta.link": "The Science →",
 
     // ── FAQ PAGE ──
@@ -259,12 +255,8 @@ export const translations: Record<string, Record<string, string>> = {
     "form.firstname": "Etunimi",
     "form.firstname_placeholder": "etunimesi",
     "form.email": "Sähköpostisi",
-    "form.interest": "Mikä toi sinut tänne?",
-    "form.opt.skin": "Iho ja hehku",
-    "form.opt.recovery": "Palautuminen ja suorituskyky",
-    "form.opt.energy": "Energia ja viikon tasapaino",
-    "form.opt.wellness": "Yleinen hyvinvointi",
-    "form.opt.science": "Haluan tieteen",
+    "form.postal_label": "Postinumero (valinnainen)",
+    "form.postal_placeholder": "esim. 00160",
     "form.consent": "Hyväksyn lanseeraus-päivitysten ja perustajajäsentietojen vastaanoton Redviveltä. Katso",
     "form.consent_link": "tietosuojaseloste",
     "form.submit": "Varaa paikkani",
@@ -290,7 +282,7 @@ export const translations: Record<string, Record<string, string>> = {
     "hiw.cta": "Ymmärrä kokemus →",
 
     // ── HOME — Pricing ──
-    "pricing.label": "Vain 100 paikkaa",
+    "pricing.label": "Vain 99 paikkaa",
     "pricing.title": "Perustajajäsenen hinta",
     "pricing.price": "29€/ kuukausi.",
     "pricing.locked": "Lukittu elinikäisesti.",
@@ -329,7 +321,7 @@ export const translations: Record<string, Record<string, string>> = {
     // ── HOME — Final CTA ──
     "cta.headline1": "Ole ensimmäisenä",
     "cta.headline2": "ovesta.",
-    "cta.body": "Avaamme 100 perustajapaikalla. 29€/kk hinta on lukittu elinikäisesti — mutta vain tämän listan ihmisille. Kun paikat on lunastettu, hinta nousee.",
+    "cta.body": "Avaamme 99 perustajapaikalla. 29€/kk hinta on lukittu elinikäisesti — mutta vain tämän listan ihmisille. Kun paikat on lunastettu, hinta nousee.",
 
     // ── SCIENCE PAGE ──
     "science.eyebrow": "Tiede",
@@ -400,7 +392,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.who.3.body": "Punavaloterapia vähentää kortisolia ja tukee melatoniinin säätelyä. Iltakäynti auttaa kehoasi rauhoittumaan kunnolla. Aamukäynti auttaa sinua aloittamaan ilman raskautta. Molemmat toimivat. Valitse mikä sopii viikkoosi.",
     "exp.who.4.title": "Pitkä peli.",
     "exp.who.4.body": "Ihmisille jotka ovat lukeneet todisteet ja haluavat johdonmukaisen pääsyn aitoon. Ei koti-vehje. Ei klinikkavaraus. 10 minuutin viikoittainen tapa kumuloituvalla tuotolla.",
-    "exp.cta.body": "100 perustajapaikkaa. 29€/kk. Lukittu elinikäisesti. Kun paikat on lunastettu, hinta nousee.",
+    "exp.cta.body": "99 perustajapaikkaa. 29€/kk. Lukittu elinikäisesti. Kun paikat on lunastettu, hinta nousee.",
     "exp.cta.link": "Tiede →",
 
     // ── FAQ PAGE ──

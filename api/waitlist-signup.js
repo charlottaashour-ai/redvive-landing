@@ -59,7 +59,7 @@ async function claimFoundingSpot(emailHash) {
 }
 
 // ----- Flodesk -----
-async function addToFlodesk({ email, firstName, language, foundingNumber }) {
+async function addToFlodesk({ email, firstName, language, foundingNumber, postalCode }) {
   const flodeskKey = process.env.FLODESK_API_KEY;
   const foundingSegmentId = language === 'fi'
     ? process.env.FLODESK_SEGMENT_FI_ID
@@ -77,6 +77,9 @@ async function addToFlodesk({ email, firstName, language, foundingNumber }) {
   const customFields = { language: language || 'en' };
   if (foundingNumber) {
     customFields.founding_number = foundingNumber;
+  }
+  if (postalCode) {
+    customFields.postal_code = postalCode;
   }
 
   // Step 1: create or update subscriber
@@ -201,7 +204,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { email, firstName, language, consent } = req.body || {};
+  const { email, firstName, language, consent, postalCode } = req.body || {};
 
   if (!email || !isValidEmail(email)) {
     return res.status(400).json({ error: 'Invalid email' });
@@ -218,7 +221,7 @@ export default async function handler(req, res) {
 
     if (!duplicate) {
       // 2. Add to Flodesk (triggers welcome sequence)
-      await addToFlodesk({ email, firstName, language: language || 'en', foundingNumber });
+      await addToFlodesk({ email, firstName, language: language || 'en', foundingNumber, postalCode: postalCode || '' });
 
       // 3. Fire Meta CAPI Lead (fire and forget)
       fireMetaLead({ email, firstName, request: req }).catch(() => {});
