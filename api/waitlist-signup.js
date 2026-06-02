@@ -1,43 +1,72 @@
-// Redvive — Vercel serverless function for waitlist signup
+// Redvive — Vercel serverless function for waitlist signup (v2 — founding counter)
 // Place at: /api/waitlist-signup.js
 //
 // What this does:
 //   1. Validates POST input (email + first name + GDPR consent + language)
-//   2. Sends to Flodesk API (adds subscriber + tags them)
-//   3. Fires Meta Conversions API "Lead" event (if Pixel ID + access token configured)
-//   4. Posts to a Slack webhook so Charlotta gets pinged on each signup
+//   2. Deduplicates repeat emails using Vercel KV
+//   3. Atomically increments a founding-member counter (max 99) in Vercel KV
+//   4. Sends to Flodesk API (adds subscriber + founding_number custom field + segments)
+//   5. Fires Meta Conversions API "Lead" event (if Pixel ID + access token configured)
+//   6. Posts to a Slack webhook so Charlotta gets pinged on each signup
 //
 // Environment variables to set in Vercel (Project Settings → Environment Variables):
-//   FLODESK_API_KEY         — get from Flodesk → Settings → API
-//   FLODESK_SEGMENT_EN_ID    — the ID of "Waitlist — EN" segment
-//   FLODESK_SEGMENT_FI_ID    — the ID of "Waitlist — FI" segment
-//   META_PIXEL_ID           — from Meta Business Manager → Pixel settings
-//   META_CAPI_ACCESS_TOKEN  — generated in Meta Events Manager → Conversions API
-//   SLACK_WEBHOOK_URL       — incoming webhook URL (optional, for live ping)
+//   FLODESK_API_KEY             — get from Flodesk → Settings → API
+//   FLODESK_SEGMENT_EN_ID       — the ID of "Waitlist — EN" segment
+//   FLODESK_SEGMENT_FI_ID       — the ID of "Waitlist — FI" segment
+//   FLODESK_GENERAL_SEGMENT_ID  — (optional) segment for signups after spot 99
+//   META_PIXEL_ID               — from Meta Business Manager → Pixel settings
+//   META_CAPI_ACCESS_TOKEN      — generated in Meta Events Manager → Conversions API
+//   SLACK_WEBHOOK_URL           — incoming webhook URL (optional, for live ping)
+//   KV_REST_API_URL             — auto-added by Vercel KV (Upstash)
+//   KV_REST_API_TOKEN           — auto-added by Vercel KV (Upstash)
 //
-// Deploy:
-//   vercel deploy
-//
-// Test:
-//   curl -X POST https://redvivestudios.com/api/waitlist-signup \
-//     -H "Content-Type: application/json" \
-//     -d '{"email":"test@example.com","firstName":"Test","language":"en","consent":true}'
+// Vercel KV keys used:
+//   "founding_counter"          — integer 0–99, incremented atomically per signup
+//   "waitlist_emails"           — hash map of hashed emails → founding number (or "general")
 
 import crypto from 'crypto';
+import { kv } from '@vercel/kv';
 
 // ----- helpers -----
-
 const hash = (value) => crypto.createHash('sha256').update(value.toLowerCase().trim()).digest('hex');
-
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-// ----- Flodesk -----
+const FOUNDING_MAX = 99;
 
-async function addToFlodesk({ email, firstName, language }) {
+// ----- Founding counter (atomic via Vercel KV) -----
+async function claimFoundingSpot(emailHash) {
+  // Deduplicate: if this email already signed up, return their existing number
+  const existing = await kv.hget('waitlist_emails', emailHash);
+  if (existing !== null && existing !== undefined) {
+    return {
+      founding: existing !== 'general',
+      foundingNumber: existing !== 'general' ? String(existing).padStart(2, '0') : null,
+      duplicate: true
+    };
+  }
+
+  // Atomically increment counter
+  const newCount = await kv.incr('founding_counter');
+
+  if (newCount <= FOUNDING_MAX) {
+    const paddedNumber = String(newCount).padStart(2, '0');
+    await kv.hset('waitlist_emails', { [emailHash]: newCount });
+    return { founding: true, foundingNumber: paddedNumber, duplicate: false };
+  } else {
+    await kv.hset('waitlist_emails', { [emailHash]: 'general' });
+    return { founding: false, foundingNumber: null, duplicate: false };
+  }
+}
+
+// ----- Flodesk -----
+async function addToFlodesk({ email, firstName, language, foundingNumber }) {
   const flodeskKey = process.env.FLODESK_API_KEY;
-  const segmentId = language === 'fi'
+  const foundingSegmentId = language === 'fi'
     ? process.env.FLODESK_SEGMENT_FI_ID
     : process.env.FLODESK_SEGMENT_EN_ID;
+  const generalSegmentId = process.env.FLODESK_GENERAL_SEGMENT_ID;
+
+  const segmentId = foundingNumber ? foundingSegmentId : (generalSegmentId || foundingSegmentId);
 
   if (!flodeskKey || !segmentId) {
     throw new Error('Flodesk credentials missing');
@@ -45,7 +74,12 @@ async function addToFlodesk({ email, firstName, language }) {
 
   const authHeader = `Basic ${Buffer.from(flodeskKey + ':').toString('base64')}`;
 
-  // Step 1: create or update subscriber, then parse response for ID
+  const customFields = { language: language || 'en' };
+  if (foundingNumber) {
+    customFields.founding_number = foundingNumber;
+  }
+
+  // Step 1: create or update subscriber
   const subscriberRes = await fetch('https://api.flodesk.com/v1/subscribers', {
     method: 'POST',
     headers: {
@@ -56,7 +90,7 @@ async function addToFlodesk({ email, firstName, language }) {
     body: JSON.stringify({
       email,
       first_name: firstName || '',
-      custom_fields: { language: language || 'en' },
+      custom_fields: customFields,
       status: 'active',
       source: 'redvive-waitlist'
     })
@@ -69,12 +103,11 @@ async function addToFlodesk({ email, firstName, language }) {
 
   const subscriberData = await subscriberRes.json();
   const subscriberId = subscriberData.id || subscriberData.data?.id;
-
   if (!subscriberId) {
     throw new Error(`Flodesk subscriber response missing ID: ${JSON.stringify(subscriberData)}`);
   }
 
-  // Step 2: add subscriber to segment using SUBSCRIBER ID (not email)
+  // Step 2: add subscriber to segment
   const segmentRes = await fetch(`https://api.flodesk.com/v1/subscribers/${subscriberId}/segments`, {
     method: 'POST',
     headers: {
@@ -93,13 +126,11 @@ async function addToFlodesk({ email, firstName, language }) {
 }
 
 // ----- Meta Conversions API -----
-
 async function fireMetaLead({ email, firstName, request }) {
   const pixelId = process.env.META_PIXEL_ID;
   const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
-
   if (!pixelId || !accessToken) {
-    return false; // CAPI not configured, skip silently
+    return false;
   }
 
   const eventTime = Math.floor(Date.now() / 1000);
@@ -135,16 +166,19 @@ async function fireMetaLead({ email, firstName, request }) {
 }
 
 // ----- Slack ping -----
-
-async function pingSlack({ email, firstName, language, totalSignupsToday }) {
+async function pingSlack({ email, firstName, language, foundingNumber }) {
   const webhook = process.env.SLACK_WEBHOOK_URL;
   if (!webhook) return false;
+
+  const spotLine = foundingNumber
+    ? `*Founding spot:* #${foundingNumber} of ${FOUNDING_MAX}`
+    : `*Spot:* General waitlist (founding full)`;
 
   const text = `🔴 *New Redvive waitlist signup*\n` +
     `*Name:* ${firstName || '(not provided)'}\n` +
     `*Email:* ${email}\n` +
     `*Language:* ${language}\n` +
-    (totalSignupsToday ? `*Today's count:* ${totalSignupsToday}` : '');
+    spotLine;
 
   try {
     await fetch(webhook, {
@@ -160,19 +194,15 @@ async function pingSlack({ email, firstName, language, totalSignupsToday }) {
 }
 
 // ----- main handler -----
-
 export default async function handler(req, res) {
-  // CORS for browser POST
   res.setHeader('Access-Control-Allow-Origin', 'https://redvivestudios.com');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const { email, firstName, language, consent } = req.body || {};
 
-  // Validate
   if (!email || !isValidEmail(email)) {
     return res.status(400).json({ error: 'Invalid email' });
   }
@@ -181,16 +211,28 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 1. Add to Flodesk (this triggers welcome sequence)
-    await addToFlodesk({ email, firstName, language: language || 'en' });
+    const emailHash = hash(email);
 
-    // 2. Fire Meta CAPI Lead (server-side, in addition to client Pixel)
-    fireMetaLead({ email, firstName, request: req }).catch(() => {}); // fire and forget
+    // 1. Claim founding spot (or detect duplicate)
+    const { founding, foundingNumber, duplicate } = await claimFoundingSpot(emailHash);
 
-    // 3. Slack ping (fire and forget)
-    pingSlack({ email, firstName, language: language || 'en' }).catch(() => {});
+    if (!duplicate) {
+      // 2. Add to Flodesk (triggers welcome sequence)
+      await addToFlodesk({ email, firstName, language: language || 'en', foundingNumber });
 
-    return res.status(200).json({ success: true, message: 'Welcome to the waitlist' });
+      // 3. Fire Meta CAPI Lead (fire and forget)
+      fireMetaLead({ email, firstName, request: req }).catch(() => {});
+
+      // 4. Slack ping (fire and forget)
+      pingSlack({ email, firstName, language: language || 'en', foundingNumber }).catch(() => {});
+    }
+
+    return res.status(200).json({
+      success: true,
+      founding,
+      foundingNumber: foundingNumber ?? undefined,
+      duplicate
+    });
   } catch (err) {
     console.error('Signup handler error:', err.message);
     return res.status(500).json({ error: 'Something went wrong. Try again in a moment.' });

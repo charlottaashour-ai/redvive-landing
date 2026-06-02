@@ -34,6 +34,8 @@ export const translations: Record<string, Record<string, string>> = {
     "home.hero.scroll": "Scroll",
 
     // ── HOME — Waitlist form ──
+    "form.firstname": "First name",
+    "form.firstname_placeholder": "your first name",
     "form.email": "Your email",
     "form.interest": "What brings you here?",
     "form.opt.skin": "Skin and Glow",
@@ -47,6 +49,8 @@ export const translations: Record<string, Record<string, string>> = {
     "form.sending": "Sending...",
     "form.success_title": "You're on the waitlist.",
     "form.success_sub": "Check your inbox for a welcome email.",
+    "form.founding_member": "you're in — founding member no. {n} of 99.",
+    "form.general_waitlist": "you're on the list. we'll be in touch.",
     "form.err.email": "Please enter a valid email",
     "form.err.consent": "Please agree to receive updates",
     "form.err.generic": "Something went wrong. Please try again in a moment.",
@@ -252,6 +256,8 @@ export const translations: Record<string, Record<string, string>> = {
     "home.hero.scroll": "Vieritä",
 
     // ── HOME — Waitlist form ──
+    "form.firstname": "Etunimi",
+    "form.firstname_placeholder": "etunimesi",
     "form.email": "Sähköpostisi",
     "form.interest": "Mikä toi sinut tänne?",
     "form.opt.skin": "Iho ja hehku",
@@ -265,6 +271,8 @@ export const translations: Record<string, Record<string, string>> = {
     "form.sending": "Lähetetään...",
     "form.success_title": "Olet odotuslistalla.",
     "form.success_sub": "Tarkista sähköpostisi tervetuloviestin osalta.",
+    "form.founding_member": "olet mukana — perustajajäsen nro {n} / 99.",
+    "form.general_waitlist": "olet listalla. olemme yhteydessä.",
     "form.err.email": "Syötä kelvollinen sähköpostiosoite",
     "form.err.consent": "Hyväksy päivitysten vastaanotto",
     "form.err.generic": "Jokin meni vikaan. Yritä uudelleen hetken kuluttua.",

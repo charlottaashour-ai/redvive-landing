@@ -67,10 +67,13 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
   const t = useTranslation();
   const { language } = useLanguage();
 
+  const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [interest, setInterest] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [foundingNumber, setFoundingNumber] = useState<string | null>(null);
+  const [isFounding, setIsFounding] = useState<boolean | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -78,6 +81,10 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
     e.preventDefault();
     setError(null);
 
+    if (!firstName.trim()) {
+      setError(t("form.err.email"));
+      return;
+    }
     if (!email) {
       setError(t("form.err.email"));
       return;
@@ -94,7 +101,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          firstName: "",
+          firstName: firstName.trim(),
           language,
           consent: true,
           reason: interest,
@@ -104,6 +111,8 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
+          setIsFounding(data.founding === true);
+          setFoundingNumber(data.foundingNumber ?? null);
           setSubmitted(true);
           return;
         }
@@ -123,9 +132,14 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
   };
 
   if (submitted) {
+    const successLine = isFounding && foundingNumber
+      ? t("form.founding_member").replace("{n}", foundingNumber)
+      : isFounding === false
+        ? t("form.general_waitlist")
+        : t("form.success_title");
     return (
       <div className="text-center py-4">
-        <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>{t("form.success_title")}</p>
+        <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>{successLine}</p>
         <p className={`text-xs mt-1 ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>{t("form.success_sub")}</p>
       </div>
     );
@@ -137,6 +151,15 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-full">
+      <input
+        type="text"
+        required
+        placeholder={t("form.firstname_placeholder")}
+        value={firstName}
+        onChange={(e) => setFirstName(e.target.value)}
+        className={inputClass}
+        style={{ fontFamily: "'DM Sans', sans-serif" }}
+      />
       <input
         type="email"
         required
