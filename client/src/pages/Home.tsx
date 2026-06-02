@@ -139,9 +139,52 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         ? t("form.general_waitlist")
         : t("form.success_title");
     return (
-      <div className="text-center py-4">
+      <div
+        className="text-center py-6 flex flex-col items-center gap-3"
+        style={{ animation: "fadeSlideUp 0.55s ease-out both" }}
+      >
+        {/* Animated checkmark circle */}
+        <svg
+          width="40" height="40" viewBox="0 0 40 40" fill="none"
+          style={{ animation: "successPop 0.45s cubic-bezier(0.34,1.56,0.64,1) both" }}
+        >
+          <circle cx="20" cy="20" r="19" stroke="#D53E0F" strokeWidth="1.5" fill="none"
+            style={{
+              strokeDasharray: 120,
+              strokeDashoffset: 0,
+              animation: "drawCircle 0.5s ease-out both"
+            }}
+          />
+          <polyline
+            points="12,21 18,27 29,14"
+            stroke="#D53E0F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"
+            style={{
+              strokeDasharray: 30,
+              strokeDashoffset: 0,
+              animation: "drawCheck 0.35s 0.3s ease-out both"
+            }}
+          />
+        </svg>
         <p className={`text-sm font-medium tracking-wide ${dark ? "text-white" : "text-[#1A1008]"}`}>{successLine}</p>
-        <p className={`text-xs mt-1 ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>{t("form.success_sub")}</p>
+        <p className={`text-xs ${dark ? "text-white/60" : "text-[#7A5A54]"}`}>{t("form.success_sub")}</p>
+        <style>{`
+          @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to   { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes successPop {
+            from { opacity: 0; transform: scale(0.6); }
+            to   { opacity: 1; transform: scale(1); }
+          }
+          @keyframes drawCircle {
+            from { stroke-dashoffset: 120; }
+            to   { stroke-dashoffset: 0; }
+          }
+          @keyframes drawCheck {
+            from { stroke-dashoffset: 30; }
+            to   { stroke-dashoffset: 0; }
+          }
+        `}</style>
       </div>
     );
   }
@@ -209,9 +252,26 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         type="submit"
         className="btn-primary justify-center w-full"
         disabled={loading || !consent}
-        style={{ opacity: (loading || !consent) ? 0.5 : 1, transition: "opacity 0.2s" }}
+        style={{ opacity: (loading || !consent) ? 0.5 : 1, transition: "opacity 0.2s", position: "relative" }}
       >
-        {loading ? t("form.sending") : t("form.submit")}
+        {loading ? (
+          <span className="flex items-center justify-center gap-2">
+            <svg
+              width="16" height="16" viewBox="0 0 16 16" fill="none"
+              style={{ animation: "spinCW 0.75s linear infinite", flexShrink: 0 }}
+            >
+              <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.5"
+                strokeDasharray="28" strokeDashoffset="10" strokeLinecap="round" />
+            </svg>
+            {t("form.sending")}
+            <style>{`
+              @keyframes spinCW {
+                from { transform: rotate(0deg); }
+                to   { transform: rotate(360deg); }
+              }
+            `}</style>
+          </span>
+        ) : t("form.submit")}
       </button>
       <p className={`text-xs text-center ${dark ? "text-white/40" : "text-[#7A5A54]/60"}`}>{t("form.no_payment")}</p>
     </form>
