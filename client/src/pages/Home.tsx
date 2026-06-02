@@ -82,10 +82,11 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
     setError(null);
 
     if (!firstName.trim()) {
-      setError(t("form.err.email"));
+      setError(t("form.err.firstname"));
       return;
     }
-    if (!email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
       setError(t("form.err.email"));
       return;
     }

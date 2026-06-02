@@ -223,10 +223,18 @@ export default async function handler(req, res) {
       // 2. Add to Flodesk (triggers welcome sequence)
       await addToFlodesk({ email, firstName, language: language || 'en', foundingNumber, postalCode: postalCode || '' });
 
-      // 3. Fire Meta CAPI Lead (fire and forget)
+      // 3. Log postal code to KV for geographic analysis (fire and forget, no PII)
+      kv.rpush('redvive:signups', JSON.stringify({
+        postalCode: postalCode || '',
+        language: language || 'en',
+        foundingNumber: foundingNumber ?? null,
+        ts: new Date().toISOString()
+      })).catch(() => {});
+
+      // 4. Fire Meta CAPI Lead (fire and forget)
       fireMetaLead({ email, firstName, request: req }).catch(() => {});
 
-      // 4. Slack ping (fire and forget)
+      // 5. Slack ping (fire and forget)
       pingSlack({ email, firstName, language: language || 'en', foundingNumber }).catch(() => {});
     }
 
