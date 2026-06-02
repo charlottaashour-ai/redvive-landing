@@ -96,6 +96,10 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
     }
 
     setLoading(true);
+    const eventId = (typeof crypto !== 'undefined' && crypto.randomUUID)
+      ? crypto.randomUUID()
+      : String(Date.now()) + Math.random();
+    const marketingConsent = (window as any).Cookiebot?.consent?.marketing === true;
     try {
       const res = await fetch("/api/waitlist-signup", {
         method: "POST",
@@ -106,6 +110,8 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
           language,
           consent: true,
           postalCode: postalCode.trim() || undefined,
+          eventId,
+          marketingConsent,
         }),
       });
 
@@ -115,6 +121,12 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
           setIsFounding(data.founding === true);
           setFoundingNumber(data.foundingNumber ?? null);
           setSubmitted(true);
+          if (marketingConsent && typeof (window as any).fbq === 'function') {
+            (window as any).fbq('track', 'Lead',
+              { content_name: 'Redvive waitlist', currency: 'EUR', value: 0 },
+              { eventID: eventId }
+            );
+          }
           return;
         }
       }

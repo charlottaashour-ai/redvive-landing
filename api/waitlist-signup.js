@@ -117,7 +117,7 @@ async function processSignup({ email, firstName, language, postalCode }) {
 
 // ----- Meta Conversions API -----
 
-async function fireMetaLead({ email, firstName, request }) {
+async function fireMetaLead({ email, firstName, request, eventId }) {
   const pixelId = process.env.META_PIXEL_ID;
   const accessToken = process.env.META_CAPI_ACCESS_TOKEN;
   if (!pixelId || !accessToken) return false;
@@ -132,6 +132,7 @@ async function fireMetaLead({ email, firstName, request }) {
     data: [{
       event_name: 'Lead',
       event_time: Math.floor(Date.now() / 1000),
+      event_id: eventId || undefined,
       event_source_url: 'https://redvivestudios.com',
       action_source: 'website',
       user_data: userData,
@@ -187,7 +188,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { email, firstName, language, postalCode, consent } = req.body || {};
+  const { email, firstName, language, postalCode, consent, eventId, marketingConsent } = req.body || {};
 
   if (!email || !isValidEmail(email)) {
     return res.status(400).json({ error: 'Invalid email' });
@@ -201,7 +202,9 @@ export default async function handler(req, res) {
       email, firstName, language: language || 'en', postalCode
     });
 
-    fireMetaLead({ email, firstName, request: req }).catch(() => {});
+    if (marketingConsent) {
+      fireMetaLead({ email, firstName, request: req, eventId }).catch(() => {});
+    }
     pingSlack({ email, firstName, language: language || 'en', foundingNumber, founding }).catch(() => {});
 
     return res.status(200).json({

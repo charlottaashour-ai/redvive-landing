@@ -29,5 +29,32 @@
       data-cookieconsent="statistics"
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
+    <!-- Meta Pixel — gated by Cookiebot marketing consent; never fires without it -->
+    <script>
+      (function() {
+        function initMetaPixel() {
+          if (window._metaPixelInited) return;
+          if (window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.marketing !== true) return;
+          window._metaPixelInited = true;
+          !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+          n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+          document,'script','https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1709646760223618');
+          fbq('track', 'PageView');
+        }
+        window.addEventListener('CookiebotOnAccept', function() {
+          if (window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.marketing) {
+            initMetaPixel();
+          }
+        });
+        window.addEventListener('CookiebotOnConsentReady', function() {
+          if (window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.marketing) {
+            initMetaPixel();
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
