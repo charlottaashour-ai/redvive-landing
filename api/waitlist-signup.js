@@ -35,9 +35,9 @@ async function upsertFlodesk(fields) {
   return res.json();
 }
 
-async function addToSegment(email, segmentId) {
+async function addToSegment(subscriberId, segmentId) {
   const res = await fetch(
-    `https://api.flodesk.com/v1/subscribers/${encodeURIComponent(email)}/segments`,
+    `https://api.flodesk.com/v1/subscribers/${subscriberId}/segments`,
     {
       method: 'POST',
       headers: { 'Authorization': flodeskAuth(), 'Content-Type': 'application/json' },
@@ -58,12 +58,16 @@ async function processSignup({ email, firstName, language, postalCode }) {
   const lang = language || 'en';
   const emailKey = hash(email);
 
-  await upsertFlodesk({
+  const subscriber = await upsertFlodesk({
     email,
     first_name: firstName || '',
     status: 'active',
     source: 'redvive-waitlist'
   });
+  const subscriberId = subscriber?.id || subscriber?.data?.id;
+  if (!subscriberId) {
+    throw new Error('Flodesk upsert returned no subscriber id');
+  }
 
   let foundingNumber = null;
   let founding = false;
@@ -96,7 +100,7 @@ async function processSignup({ email, firstName, language, postalCode }) {
   } else {
     segmentId = process.env.FLODESK_SEGMENT_ID;
   }
-  await addToSegment(email, segmentId);
+  await addToSegment(subscriberId, segmentId);
 
   if (isNew) {
     try {
