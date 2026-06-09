@@ -303,7 +303,6 @@ export default function Home() {
   const STATS = [
     { stat: t("carousel.skin"), label: t("carousel.skin_sub"), body: t("carousel.skin_body") },
     { stat: t("carousel.recovery"), label: t("carousel.recovery_sub"), body: t("carousel.recovery_body") },
-    { stat: t("carousel.hair"), label: t("carousel.hair_sub"), body: t("carousel.hair_body") },
     { stat: t("carousel.sleep"), label: t("carousel.sleep_sub"), body: t("carousel.sleep_body") },
   ];
 
