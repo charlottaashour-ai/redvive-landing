@@ -295,11 +295,9 @@ export default function Home() {
   const t = useTranslation();
 
   const howBeats = [
-    t("hiw.how.step1"),
-    t("hiw.how.step2"),
-    t("hiw.how.step3"),
-    t("hiw.how.step4"),
-    t("hiw.how.step5"),
+    t("hiw.step1.title") + " " + t("hiw.step1.body"),
+    t("hiw.step2.title") + " " + t("hiw.step2.body"),
+    t("hiw.step3.title") + " " + t("hiw.step3.body"),
   ];
 
   const STATS = [
@@ -430,6 +428,17 @@ export default function Home() {
               </p>
             </motion.div>
 
+            {/* Scarcity badge */}
+            <motion.div variants={heroItem} className="mb-6">
+              <span
+                className="inline-flex items-center gap-2 text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
+                style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#D53E0F" }} />
+                {t("home.hero.badge")}
+              </span>
+            </motion.div>
+
             {/* Waitlist form */}
             <motion.div variants={heroItem} className="max-w-md">
               <WaitlistForm dark={true} />
@@ -492,7 +501,7 @@ export default function Home() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <p
-                    className="text-base md:text-lg leading-snug font-medium"
+                    className="text-base md:text-lg leading-snug"
                     style={{ color: "#1A1008", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
                   >
                     {beat}
@@ -593,10 +602,11 @@ export default function Home() {
           </div>
 
           {/* Two value facts */}
-          <div className="reveal grid grid-cols-1 sm:grid-cols-2 gap-px max-w-2xl mx-auto" style={{ backgroundColor: "rgba(255,249,249,0.08)" }}>
+          <div className="reveal grid grid-cols-1 sm:grid-cols-3 gap-px max-w-2xl mx-auto" style={{ backgroundColor: "rgba(255,249,249,0.08)" }}>
             {[
-              { stat: t("pricing.stat1_num"), label: t("pricing.stat1_label"), body: t("pricing.stat1_body") },
-              { stat: t("pricing.stat2_num"), label: "", body: t("pricing.stat2_body") },
+              { stat: t("pricing.stat1_num"), label: t("pricing.stat1_label"), body: "" },
+              { stat: t("pricing.stat2_num"), label: t("pricing.stat2_label"), body: "" },
+              { stat: t("pricing.stat3_num"), label: t("pricing.stat3_label"), body: "" },
             ].map((item, i) => (
               <div
                 key={i}

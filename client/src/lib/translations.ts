@@ -13,7 +13,7 @@ export const translations: Record<string, Record<string, string>> = {
     // ── SHARED NAV ──
     "nav.science": "the science",
     "nav.experience": "the experience",
-    "nav.faq": "usein kysytyt",
+    "nav.faq": "faq",
     "nav.navigate": "navigate",
     "nav.reserve": "reserve my spot",
     "nav.opening": "opening fall 2026",
@@ -30,11 +30,12 @@ export const translations: Record<string, Record<string, string>> = {
     "cookie.ok": "ok",
 
     // ── HOME — Hero ──
-    "home.hero.eyebrow": "born in Helsinki. opening in fall of 2026.",
+    "home.hero.eyebrow": "born in Helsinki. opening fall 2026.",
     "home.hero.line1": "your body knows how to heal.",
-    "home.hero.line2": "we just give it light.",
+    "home.hero.line2": "we give it light.",
     "home.hero.sub": "autonomous red light therapy studio opens fall 2026 in Helsinki. lock your priority access today.",
     "home.hero.scroll": "scroll",
+    "home.hero.badge": "99 founding spots",
 
     // ── HOME — Waitlist form ──
     "form.firstname": "first name",
@@ -57,20 +58,15 @@ export const translations: Record<string, Record<string, string>> = {
     "form.err.generic": "something went wrong. please try again in a moment.",
     "form.no_payment": "no payment. no commitment.",
 
-    // ── HOME — How It Works ──
+    // ── HOME — How It Works (3 beats) ──
     "hiw.label": "how it works",
     "hiw.sub": "three steps. that is it.",
     "hiw.step1.title": "book on your phone.",
-    "hiw.step1.body": "open the app. pick a time. your private room is reserved. no calls, no waiting lists, no staff to coordinate with. available 24 hours a day, 7 days a week.",
+    "hiw.step1.body": "open the app. pick a time. your private room is reserved. no calls, no waiting lists, no staff to coordinate with. available 24/7.",
     "hiw.step2.title": "walk in.",
     "hiw.step2.body": "your phone unlocks the door. your private room is ready. step in. the light begins. we're one message away if you need us.",
     "hiw.step3.title": "10 minutes. done.",
     "hiw.step3.body": "your light treatment starts automatically. a ten-minute session. precisely calibrated full-body panels. when the program ends, you walk out. no upsell. you return when the moment is right.",
-    "hiw.how.step1": "open the redvive app. pick a time.",
-    "hiw.how.step2": "your private room is reserved.",
-    "hiw.how.step3": "just you and the light.",
-    "hiw.how.step4": "we're one message away if you need us.",
-    "hiw.how.step5": "available 24/7.",
     "hiw.cta": "read more about the experience →",
 
     // ── HOME — Pricing ──
@@ -83,9 +79,8 @@ export const translations: Record<string, Record<string, string>> = {
     "pricing.stat1_label": "less than a coffee. every single day.",
     "pricing.stat2_num": "10×",
     "pricing.stat2_label": "10× more affordable.",
-    "pricing.stat2_body": "compared to typical wellness services.",
     "pricing.stat3_num": "forever locked in",
-    "pricing.stat3_body": "this price never increases. not ever.",
+    "pricing.stat3_label": "this price never increases. not ever.",
     "pricing.footnote": "final session structure confirmed at launch. founding rate locked in for life.",
 
     // ── HOME — Carousel (3 cards) ──
@@ -94,7 +89,7 @@ export const translations: Record<string, Record<string, string>> = {
     "carousel.skin_sub": "visible glow.",
     "carousel.skin_body": "light therapy for face and scalp. clearer, firmer skin and fuller hair — in 10 minutes.",
     "carousel.recovery": "recovery",
-    "carousel.recovery_sub": "body reset",
+    "carousel.recovery_sub": "body reset.",
     "carousel.recovery_body": "when training or work leaves you heavy, 10 minutes of light helps your body bounce back.",
     "carousel.sleep": "energy & sleep",
     "carousel.sleep_sub": "a calmer baseline.",
@@ -123,10 +118,10 @@ export const translations: Record<string, Record<string, string>> = {
     "science.mech.title": "your mitochondria do all the work.",
     "science.mech.body1": "photobiomodulation is the mechanism behind red light therapy. when specific wavelengths of light reach your cells, they trigger a reaction in the mitochondria — increasing energy output, reducing oxidative stress, and activating natural repair pathways.",
     "science.mech.body2": "this is not heat therapy. it is not UV. it is a precise, non-invasive signal that tells your cells to do what they were designed to do — just more efficiently. backed by thousands of peer-reviewed studies.",
-    "science.660.label": "660nm",
+    "science.660.label": "660 nm",
     "science.660.title": "red light — surface",
     "science.660.body": "targets the skin directly. stimulates collagen, calms inflammation, and supports a clearer, more even tone — where most people notice results first.",
-    "science.850.label": "850nm",
+    "science.850.label": "850 nm",
     "science.850.title": "near-infrared — depth",
     "science.850.body": "reaches deeper tissue — muscles, joints, connective tissue. activates mitochondria, accelerates recovery, and supports better sleep and a calmer baseline.",
     "science.result.eyebrow": "ten minutes. three systems.",
@@ -187,7 +182,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.cta.link": "the science →",
 
     // ── FAQ PAGE ──
-    "faq.eyebrow": "usein kysytyt",
+    "faq.eyebrow": "faq",
     "faq.hero1": "direct",
     "faq.hero2": "answers.",
     "faq.cat1": "the basics",
@@ -232,7 +227,7 @@ export const translations: Record<string, Record<string, string>> = {
     // ── SHARED NAV ──
     "nav.science": "tiede",
     "nav.experience": "kokemus",
-    "nav.faq": "usein kysytyt",
+    "nav.faq": "ukk",
     "nav.navigate": "navigointi",
     "nav.reserve": "varaa paikkasi",
     "nav.opening": "avaamme syksyllä 2026",
@@ -254,6 +249,7 @@ export const translations: Record<string, Record<string, string>> = {
     "home.hero.line2": "me annamme sille valon.",
     "home.hero.sub": "autonominen punavalostudio avautuu Helsinkiin. lukitse nyt pääsysi ennakkoon.",
     "home.hero.scroll": "",
+    "home.hero.badge": "99 perustajapaikkaa",
 
     // ── HOME — Waitlist form ──
     "form.firstname": "etunimi",
@@ -276,7 +272,7 @@ export const translations: Record<string, Record<string, string>> = {
     "form.err.generic": "jokin meni vikaan. yritä hetken kuluttua uudelleen.",
     "form.no_payment": "ei maksua. ei sitoumusta.",
 
-    // ── HOME — How It Works ──
+    // ── HOME — How It Works (3 beats) ──
     "hiw.label": "miten se toimii",
     "hiw.sub": "kolme askelta. siinä kaikki.",
     "hiw.step1.title": "varaa puhelimella.",
@@ -285,11 +281,6 @@ export const translations: Record<string, Record<string, string>> = {
     "hiw.step2.body": "puhelin avaa oven. yksityinen huoneesi on valmis. astu sisään. valo syttyy. olemme viestin päässä, kun tarvitset.",
     "hiw.step3.title": "10 minuuttia. valmista.",
     "hiw.step3.body": "valohoitosi käynnistyy automaattisesti. 10 minuutin hoitojakso. tarkasti ohjelmoidut koko vartalon paneelit. kun ohjelma loppuu, kävelet pois. ei lisämyyntiä. palaat, kun sinulle on hyvä hetki.",
-    "hiw.how.step1": "avaa redvive-sovellus. valitse aika.",
-    "hiw.how.step2": "yksityinen huoneesi odottaa.",
-    "hiw.how.step3": "vain sinä ja valo.",
-    "hiw.how.step4": "olemme viestin päässä, kun tarvitset.",
-    "hiw.how.step5": "auki 24/7.",
     "hiw.cta": "lue lisää kokemuksesta →",
 
     // ── HOME — Pricing ──
@@ -302,18 +293,17 @@ export const translations: Record<string, Record<string, string>> = {
     "pricing.stat1_label": "vähemmän kuin kahvi. joka päivä.",
     "pricing.stat2_num": "10×",
     "pricing.stat2_label": "10× edullisempi.",
-    "pricing.stat2_body": "kuin tavalliset hoitolat.",
     "pricing.stat3_num": "pysyvästi lukittu.",
-    "pricing.stat3_body": "hinta ei nouse koskaan. ei koskaan.",
+    "pricing.stat3_label": "hinta ei nouse koskaan. ei koskaan.",
     "pricing.footnote": "käyntien rakenne vahvistuu avajaisten yhteydessä. perustajahinta lukittu elinikäisesti.",
 
     // ── HOME — Carousel (3 cards) ──
-    "carousel.label": "mitkä ovat punavalon hyödyt",
+    "carousel.label": "mitä valo tekee.",
     "carousel.skin": "kasvot & hiukset",
     "carousel.skin_sub": "näkyvä hehku.",
     "carousel.skin_body": "valohoitoa kasvoille sekä päänahalle. kirkkaampi ja kimmoisampi iho ja tuuhentuneet hiukset — 10 minuutissa.",
     "carousel.recovery": "palautuminen",
-    "carousel.recovery_sub": "kehon resetti",
+    "carousel.recovery_sub": "kehon resetti.",
     "carousel.recovery_body": "kun treeni tai työ painaa, 10 minuutin valohoito palauttaa.",
     "carousel.sleep": "energia ja uni",
     "carousel.sleep_sub": "rauhallisempi perustaso.",
@@ -400,7 +390,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.who.2.body": "660 nm punavalo stimuloi kollageenin tuotantoa ja tukee solujen uusiutumista. kun iho näyttää väsyneeltä, epätasaiselta tai vanhemmalta kuin pitäisi — säännöllinen viikoittainen käynti tuo mitattavan eron ajan myötä.",
     "exp.who.3.title": "energia ja uni.",
     "exp.who.3.body": "punavaloterapia laskee kortisolia ja tukee melatoniinin säätelyä. iltakäynti auttaa kehoa rauhoittumaan kunnolla. aamukäynti auttaa aloittamaan ilman raskautta. molemmat toimivat. valitse mikä sopii arkeesi.",
-    "exp.who.4.title": "parempia tuloksia, viikko viikolta — säännöllisyys palkitaan.",
+    "exp.who.4.title": "parempia tuloksia, viikko viikolta.",
     "exp.who.4.body": "viikoittainen tapa, joka rakentuu vähitellen. kymmenen minuuttia valohoitoa, viikko viikolta — näkyviä tuloksia. sijoitus hyvinvointiin, jonka pystyt todella pitämään yllä.",
     "exp.cta.body": "tarjolla vain 99 perustajapaikkaa tällä hinnalla. 29 €/kk. lukittu elinikäisesti. kun paikat täyttyvät, hinta nousee.",
     "exp.cta.link": "tiede →",

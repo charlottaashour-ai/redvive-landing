@@ -212,7 +212,7 @@ export default function Science() {
             {/* Wavelength callouts — inline, not a separate section */}
             <div
               className="reveal grid md:grid-cols-2 gap-px"
-              style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "3rem" }}
+              style={{ paddingTop: "3rem" }}
             >
               <div className="pr-0 md:pr-12 pb-10 md:pb-0">
                 <p
@@ -233,7 +233,6 @@ export default function Science() {
               </div>
               <div
                 className="pt-10 md:pt-0 md:pl-12"
-                style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}
               >
                 <p
                   className="text-3xl font-bold mb-2"
@@ -392,9 +391,6 @@ export default function Science() {
               <a href="/#waitlist">
                 <button className="btn-primary">{t("nav.reserve")}</button>
               </a>
-              <Link href="/experience">
-                <button className="btn-ghost">{t("science.cta.link")}</button>
-              </Link>
             </div>
           </div>
         </div>
