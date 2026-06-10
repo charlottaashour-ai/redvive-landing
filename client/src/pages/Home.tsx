@@ -294,10 +294,12 @@ export default function Home() {
   useReveal();
   const t = useTranslation();
 
-  const steps = [
-    { num: "01", headline: t("hiw.step1.title"), body: t("hiw.step1.body") },
-    { num: "02", headline: t("hiw.step2.title"), body: t("hiw.step2.body") },
-    { num: "03", headline: t("hiw.step3.title"), body: t("hiw.step3.body") },
+  const howBeats = [
+    t("hiw.how.step1"),
+    t("hiw.how.step2"),
+    t("hiw.how.step3"),
+    t("hiw.how.step4"),
+    t("hiw.how.step5"),
   ];
 
   const STATS = [
@@ -472,39 +474,29 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col">
-              {steps.map((step, i) => (
+              {howBeats.map((beat, i) => (
                 <div
                   key={i}
-                  className="reveal"
+                  className="reveal flex items-start gap-5"
                   style={{
                     borderTop: "1px solid rgba(26,16,8,0.1)",
-                    paddingTop: "2.75rem",
-                    paddingBottom: "2.75rem",
-                    transitionDelay: `${i * 80}ms`,
+                    paddingTop: "1.5rem",
+                    paddingBottom: "1.5rem",
+                    transitionDelay: `${i * 60}ms`,
                   }}
                 >
-                  <div className="grid md:grid-cols-[200px_1fr] gap-8 md:gap-16 items-start">
-                    <div>
-                      <p
-                        className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
-                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                      >
-                        {step.num}
-                      </p>
-                      <p
-                        className="text-lg font-bold leading-snug text-[#1A1008]"
-                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
-                      >
-                        {step.headline}
-                      </p>
-                    </div>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
-                    >
-                      {step.body}
-                    </p>
-                  </div>
+                  <span
+                    className="shrink-0 text-[0.6rem] font-semibold tracking-[0.2em] uppercase mt-[3px]"
+                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif", minWidth: "28px" }}
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <p
+                    className="text-base md:text-lg leading-snug font-medium"
+                    style={{ color: "#1A1008", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
+                  >
+                    {beat}
+                  </p>
                 </div>
               ))}
               <div style={{ borderTop: "1px solid rgba(26,16,8,0.1)" }} />

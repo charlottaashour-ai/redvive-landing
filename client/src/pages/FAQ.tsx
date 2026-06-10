@@ -232,55 +232,6 @@ export default function FAQ() {
         </div>
       </section>
 
-      {/* ── FINAL CTA ── */}
-      <section
-        className="relative py-32 md:py-40 overflow-hidden"
-        style={{ background: "linear-gradient(to bottom, #FFF9F9 0%, #EDE3DF 8%, #C9A89E 22%, #7A4A42 42%, #3D1A14 62%, #1A1008 80%, #0A0303 100%)" }}
-      >
-        <img
-          src={HERO_IMG}
-          srcSet={`${HERO_IMG_MOBILE} 768w, ${HERO_IMG} 1920w`}
-          sizes="100vw"
-          alt=""
-          aria-hidden="true"
-          width="1672"
-          height="941"
-          loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ opacity: 0.12 }}
-        />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 30%, rgba(61,26,20,0.22) 0%, transparent 65%)" }} />
-        <div className="relative z-10 container">
-          <div className="max-w-lg mx-auto text-center reveal">
-            <span
-              className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-            >
-              {t("faq.cta.eyebrow")}
-            </span>
-            <h2
-              className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
-            >
-              {t("faq.cta.headline1")}<br />
-              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                {t("faq.cta.headline2")}
-              </em>
-            </h2>
-            <p
-              className="text-white/50 text-sm mb-10 leading-relaxed"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
-            >
-              {t("faq.cta.body")}
-            </p>
-            <a href="/#waitlist">
-              <button className="btn-primary mx-auto">
-                {t("faq.cta.btn")}
-              </button>
-            </a>
-          </div>
-        </div>
-      </section>
 
       <Footer />
     </div>
