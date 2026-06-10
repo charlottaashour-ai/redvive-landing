@@ -7,6 +7,7 @@
 
 import { Link } from "wouter";
 import { useTranslation } from "@/lib/translations";
+import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
 
 const LOGO_WHITE =
   "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-logo-white_320ba7bd.png";
@@ -87,11 +88,9 @@ export default function Footer() {
                 <span key={i}>{line}{i < footerCtaLines.length - 1 && <br />}</span>
               ))}
             </p>
-            <a href="/#waitlist">
-              <button className="btn-primary text-xs">
-                {t("nav.reserve")}
-              </button>
-            </a>
+            <button className="btn-primary text-xs" onClick={scrollToWaitlist}>
+              {t("nav.reserve")}
+            </button>
           </div>
         </div>
 

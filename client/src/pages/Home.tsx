@@ -294,6 +294,20 @@ export default function Home() {
   useReveal();
   const t = useTranslation();
 
+  // Smooth-scroll to #waitlist when arriving via /#waitlist hash link
+  useEffect(() => {
+    if (window.location.hash === "#waitlist") {
+      const el = document.getElementById("waitlist");
+      if (el) {
+        // Small delay to let the page paint before scrolling
+        const timer = setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 120);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, []);
+
   const howBeats = [
     { title: t("hiw.step1.title"), body: t("hiw.step1.body") },
     { title: t("hiw.step2.title"), body: t("hiw.step2.body") },

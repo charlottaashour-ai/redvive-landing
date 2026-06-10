@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { useTranslation } from "@/lib/translations";
+import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
 
 const heroContainer = {
   hidden: {},
@@ -386,9 +387,7 @@ export default function Experience() {
               {t("exp.cta.body")}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/#waitlist">
-                <button className="btn-primary">{t("nav.reserve")}</button>
-              </a>
+              <button className="btn-primary" onClick={scrollToWaitlist}>{t("nav.reserve")}</button>
               <Link href="/science">
                 <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>{t("exp.cta.link")}</button>
               </Link>

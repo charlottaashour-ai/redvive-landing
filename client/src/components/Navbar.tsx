@@ -11,6 +11,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useTranslation } from "@/lib/translations";
+import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
 import LanguageToggle from "./LanguageToggle";
 
 const LOGO_WHITE =
@@ -109,11 +110,9 @@ export default function Navbar() {
           {/* Desktop right: Language toggle + CTA */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageToggle />
-            <a href="/#waitlist">
-              <button className="btn-primary text-xs">
-                {t("nav.reserve")}
-              </button>
-            </a>
+            <button className="btn-primary text-xs" onClick={scrollToWaitlist}>
+              {t("nav.reserve")}
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -160,11 +159,12 @@ export default function Navbar() {
             <div className="flex items-center gap-3 mt-1">
               <LanguageToggle />
             </div>
-            <a href="/#waitlist">
-              <button className="btn-primary w-full mt-2 justify-center">
-                {t("nav.reserve")}
-              </button>
-            </a>
+            <button
+              className="btn-primary w-full mt-2 justify-center"
+              onClick={() => { setMenuOpen(false); scrollToWaitlist(); }}
+            >
+              {t("nav.reserve")}
+            </button>
           </div>
         )}
       </div>
