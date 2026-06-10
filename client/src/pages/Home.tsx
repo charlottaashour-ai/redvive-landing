@@ -431,11 +431,10 @@ export default function Home() {
             {/* Scarcity badge */}
             <motion.div variants={heroItem} className="mb-6">
               <span
-                className="inline-flex items-center gap-2 text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
-                style={{ color: "rgba(255,255,255,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+                className="inline-block px-3 py-1 text-[0.65rem] font-semibold tracking-[0.15em] uppercase"
+                style={{ backgroundColor: "#C4291C", color: "#F8F2EA", fontFamily: "'DM Sans', sans-serif" }}
               >
-                <span className="inline-block w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#D53E0F" }} />
-                {t("home.hero.badge")}
+                {t("home.hero.scarcity")}
               </span>
             </motion.div>
 
