@@ -356,9 +356,9 @@ export default function Science() {
               className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
-              {t("science.theresult.title").split(" from ")[0]} from<br />
+              {(() => { const s = t("science.theresult.title"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
               <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                {t("science.theresult.title").split(" from ")[1] ?? ""}
+                {(() => { const s = t("science.theresult.title"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
               </em>
             </h2>
             <span className="brand-rule mb-8" />
@@ -382,9 +382,9 @@ export default function Science() {
               className="text-3xl md:text-5xl font-bold leading-[1.1] mb-8 text-[#1A1008]"
               style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
             >
-              {t("science.cta.question").split(" for ")[0]} for<br />
+              {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
               <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                {t("science.cta.question").split(" for ")[1] ?? ""}
+                {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
               </em>
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

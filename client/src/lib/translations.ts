@@ -229,9 +229,9 @@ export const translations: Record<string, Record<string, string>> = {
     "nav.experience": "kokemus",
     "nav.faq": "ukk",
     "nav.navigate": "navigointi",
-    "nav.reserve": "varaa paikkasi",
+    "nav.reserve": "lukitse paikkasi",
     "nav.opening": "avaamme syksyllä 2026",
-    "nav.footer_tagline": "Helsinki, avaamme syksyllä 2026.\nvaraa paikkasi etukäteen.",
+    "nav.footer_tagline": "Helsinki, avaamme syksyllä 2026.\nlukitse paikkasi etukäteen.",
 
     // ── SHARED FOOTER ──
     "footer.tagline": "valo on lääke.\nsyntynyt Helsingissä. tieteeseen pohjautuva.",
@@ -364,7 +364,7 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── EXPERIENCE PAGE ──
     "exp.eyebrow": "kokemus",
-    "exp.hero1": "astu sisään —",
+    "exp.hero1": "astu sisään.",
     "exp.hero2": "hetki itsellesi.",
     "exp.intro": "punavaloterapia toimii viemällä tietyt valon aallonpituudet — 660 nm ja 850 nm — suoraan soluihin. mitokondriot imevät valoa ja tuottavat enemmän energiaa. energiaa käytetään korjautumiseen: lihasten palautumiseen, ihon uudistumiseen, tulehduksen vähentämiseen, parempaan uneen. käynti kestää 10 minuuttia. vaikutukset rakentuvat viikkojen aikana. punavalo tekee sen mahdolliseksi.",
     "exp.step1.label": "auki 24/7.",
@@ -424,7 +424,7 @@ export const translations: Record<string, Record<string, string>> = {
     "faq.q10": "mitä jos käynnin aikana sattuu jotain?",
     "faq.a10": "jokaisessa kabiinissa on hätäpysäytyspainike ja suora yhteys tukitiimiimme, saatavilla 24/7. et ole koskaan todella yksin — vain häiriötön.",
     "faq.q11": "missä ensimmäinen studio on?",
-    "faq.a11": "Helsinki, avaamme vuonna 2026. varaa paikkasi saadaksesi etuoikeutetun pääsyn ja perustajajäsenen hinnan.",
+    "faq.a11": "Helsinki, avaamme vuonna 2026. lukitse paikkasi saadaksesi etuoikeutetun pääsyn ja perustajajäsenen hinnan.",
     "faq.q12": "mitä se maksaa?",
     "faq.a12": "perustajajäsenen hinta on 29 € kuukaudessa — saatavilla yksinomaan odotuslistalaisille ennen avajaisia. kerran lunastettu, se on lukittu elinikäisesti. ei hinnankorotuksia, koskaan.",
     "faq.q13": "mitä 29 €/kk sisältää?",

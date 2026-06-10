@@ -220,20 +220,16 @@ export default function Experience() {
                       >
                         {step.headline}
                       </p>
-                      {step.detail && (
-                        <p
-                          className="text-[0.6rem] font-semibold tracking-[0.12em] uppercase"
-                          style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
-                        >
-                          {step.detail}
-                        </p>
-                      )}
                     </div>
                     <p
                       className="text-sm leading-relaxed"
                       style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
                     >
-                      {step.body}
+                      {step.body.split(/(660 nm|850 nm)/g).map((part, idx) =>
+                        part === "660 nm" || part === "850 nm"
+                          ? <span key={idx} style={{ color: "#D53E0F" }}>{part}</span>
+                          : part
+                      )}
                     </p>
                   </div>
                 </div>
