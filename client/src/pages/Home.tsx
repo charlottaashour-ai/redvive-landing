@@ -739,9 +739,9 @@ export default function Home() {
                 className="text-4xl md:text-6xl font-bold leading-[1.05] text-white"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                {t("who.sub").split(" who ")[0]}<br />
+                {(() => { const s = t("who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  {t("who.sub").includes(" who ") ? "who " + t("who.sub").split(" who ")[1] : ""}
+                  {(() => { const s = t("who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
                 </em>
               </h2>
             </div>

@@ -212,7 +212,7 @@ export default function Science() {
 
             {/* Wavelength callouts — inline, not a separate section */}
             <div
-              className="reveal grid md:grid-cols-2 gap-px"
+              className="reveal grid md:grid-cols-2 gap-12"
               style={{ paddingTop: "3rem" }}
             >
               <div className="pr-0 md:pr-12 pb-10 md:pb-0">

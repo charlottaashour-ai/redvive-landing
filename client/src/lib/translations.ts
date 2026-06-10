@@ -2,10 +2,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Translation dictionary — EN (source) + FI
-// Rules: never translate brand names, numbers, wavelengths, or geographic names.
+// GLOBAL RULE: all user-facing strings are lowercase.
+// EXCEPTIONS: Helsinki (all inflected forms), Redvive Oy (legal entity only),
+//             ATP, UV, nm, EU abbreviations stay as-is.
 // Brand name "redvive" is always lowercase in user-facing copy.
-// "Helsinki" and its inflected forms are always capitalised.
-// Abbreviations: ATP, UV, nm, EU stay uppercase.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const translations: Record<string, Record<string, string>> = {
@@ -20,7 +20,7 @@ export const translations: Record<string, Record<string, string>> = {
     "nav.footer_tagline": "Helsinki, opening fall 2026.\njoin the waitlist.",
 
     // ── SHARED FOOTER ──
-    "footer.tagline": "light is the medicine.\nborn in Helsinki. built on science.",
+    "footer.tagline": "light gives strength.\nborn in Helsinki. built on science.",
     "footer.copyright": "© 2026 redvive. born in Helsinki.",
     "footer.privacy": "privacy policy",
     "footer.privacy_path": "/privacy",
@@ -30,9 +30,9 @@ export const translations: Record<string, Record<string, string>> = {
     "cookie.ok": "ok",
 
     // ── HOME — Hero ──
-    "home.hero.eyebrow": "born in Helsinki. opening fall 2026.",
-    "home.hero.line1": "your body knows how to recover —",
-    "home.hero.line2": "light is the medicine.",
+    "home.hero.eyebrow": "born in Helsinki. opening in fall of 2026.",
+    "home.hero.line1": "your body knows how to recover",
+    "home.hero.line2": "we just give it light",
     "home.hero.sub": "lock the €29/month founding rate today. keep your lifetime price (as long as your membership is active) and get early access to the studio. join the waitlist.",
     "home.hero.scroll": "scroll",
     "home.hero.badge": "99 founding spots",
@@ -57,17 +57,17 @@ export const translations: Record<string, Record<string, string>> = {
     "form.err.email": "please add a valid email",
     "form.err.consent": "please agree to receive updates",
     "form.err.generic": "something went wrong. please try again in a moment.",
-    "form.no_payment": "no payment. no commitment.",
+    "form.no_payment": "*you don't pay anything yet, you lock in your founding member price.",
 
     // ── HOME — How It Works (3 beats) ──
     "hiw.label": "how it works",
     "hiw.sub": "three steps. that is it.",
     "hiw.step1.title": "book on your phone.",
-    "hiw.step1.body": "open the app. pick a time. your private room is reserved. no calls, no waiting lists, no staff to coordinate with. available 24/7.",
+    "hiw.step1.body": "open the redvive app. pick a time.",
     "hiw.step2.title": "walk in.",
-    "hiw.step2.body": "your phone unlocks the door. your private room is ready. step in. the light begins. we're one message away if you need us.",
+    "hiw.step2.body": "your private room is ready. just you and the light.",
     "hiw.step3.title": "10 minutes. done.",
-    "hiw.step3.body": "your light treatment starts automatically. a ten-minute session. precisely calibrated full-body panels. when the program ends, you walk out. no upsell. you return when the moment is right.",
+    "hiw.step3.body": "we're one message away. open 24/7.",
     "hiw.cta": "read more about the experience →",
 
     // ── HOME — Pricing ──
@@ -112,8 +112,8 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── SCIENCE PAGE ──
     "science.eyebrow": "the science",
-    "science.hero1": "light is",
-    "science.hero2": "the medicine.",
+    "science.hero1": "light gives",
+    "science.hero2": "strength.",
     "science.intro": "redvive uses precision-calibrated 660 nm and 850 nm light — the most studied wavelengths in red light research. the science is serious. the experience is simple.",
     "science.mech.label": "the mechanism",
     "science.mech.title": "your mitochondria do all the work.",
@@ -163,7 +163,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.step3.sub": "the effect builds quietly.",
     "exp.step3.body": "the session ends. you walk out. but the cellular response continues for hours — your body keeps producing cellular energy (ATP), repairing tissue, reducing cortisol. one session builds on the last. most people notice a difference within two to four weeks of consistent use.",
     "exp.studio.label": "the studio",
-    "exp.studio.title": "clinical grade panels in a private room. just you and the light.",
+    "exp.studio.title": "precision-calibrated panels in a private room. just you and the light.",
     "exp.studio.body1": "private full-body red light therapy. precision-calibrated 660 nm and 850 nm — the most studied wavelengths in red light research. ten minutes per session.",
     "exp.studio.body2": "every studio is designed around one principle: remove everything that is not the light. a private room. full-body panels. fully autonomous — always calibrated, always consistent, always ready.",
     "exp.spec.red": "red light",
@@ -213,15 +213,15 @@ export const translations: Record<string, Record<string, string>> = {
     "faq.q11": "where is the first studio?",
     "faq.a11": "Helsinki, opening in 2026. join the waitlist to get priority access and the founding member rate.",
     "faq.q12": "how much does it cost?",
-    "faq.a12": "the founding member rate is €29 per month — available exclusively to waitlist members before we open. once claimed, it is locked in for life. no price increases, ever.",
+    "faq.a12": "the founding member price is 29 €/month — only for waitlist members before we open. after launch, the standard membership rate is 49 €/month. founding members keep 29 €/month for life, as long as the membership is active.",
     "faq.q13": "what does €29/month include?",
-    "faq.a13": "unlimited sessions per month at the founding price. final session structure will be confirmed at launch, but founding members will always pay €29/month — regardless of how pricing evolves.",
+    "faq.a13": "unlimited 10-minute sessions at the founding rate. the final session structure is confirmed at launch. founding members always pay 29 €/month — regardless of how the standard rate evolves.",
     "faq.q14": "what happens to my price when you expand?",
-    "faq.a14": "nothing. your founding member rate never changes. not when we open a second location, not when we raise standard pricing, not ever. that is the founding member promise.",
+    "faq.a14": "nothing. the founding member rate is locked — not when we open a second location, not when we raise the standard rate. that's the founding member promise.",
     "faq.q15": "can i cancel my subscription?",
-    "faq.a15": "yes, at any time. no notice period, no cancellation fees. we don't believe in commitment traps.",
+    "faq.a15": "yes, anytime. no notice period, no cancellation fees. note however: if you cancel and rejoin later, the founding rate cannot be re-locked — the standard rate applies.",
     "faq.q16": "is the waitlist free?",
-    "faq.a16": "yes. no payment, no commitment. you are simply reserving your place for priority booking and the €29/month founding rate.",
+    "faq.a16": "yes, completely free. you don't pay anything, you don't commit to anything. you simply reserve your founding member spot and lock in the 29 €/month price.",
   },
 
   fi: {
@@ -235,7 +235,7 @@ export const translations: Record<string, Record<string, string>> = {
     "nav.footer_tagline": "Helsinki, avaamme syksyllä 2026.\nliity odotuslistalle.",
 
     // ── SHARED FOOTER ──
-    "footer.tagline": "valo on voima.\nsyntynyt Helsingissä. tieteeseen pohjautuva.",
+    "footer.tagline": "valo antaa voimaa.\nsyntynyt Helsingissä. tieteeseen pohjautuva.",
     "footer.copyright": "© 2026 redvive. syntynyt Helsingissä.",
     "footer.privacy": "tietosuojaseloste",
     "footer.privacy_path": "/tietosuoja",
@@ -246,8 +246,8 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── HOME — Hero ──
     "home.hero.eyebrow": "syntynyt Helsingissä — avaamme syksyllä 2026.",
-    "home.hero.line1": "kehosi osaa palautua —",
-    "home.hero.line2": "annamme sille valon.",
+    "home.hero.line1": "kehosi osaa palautua",
+    "home.hero.line2": "annamme sille valon",
     "home.hero.sub": "lukitse perustajajäsenhinta 29 €/kk jo tänään. säilytät elinikäisen hinnan (niin kauan kuin jäsenyys on voimassa) ja saat ennakkopääsyn studiolle. liity odotuslistalle.",
     "home.hero.scroll": "",
     "home.hero.badge": "99 perustajapaikkaa",
@@ -272,17 +272,17 @@ export const translations: Record<string, Record<string, string>> = {
     "form.err.email": "tarkista sähköpostiosoite.",
     "form.err.consent": "hyväksy ehdot ennen jatkamista.",
     "form.err.generic": "jokin meni vikaan. yritä hetken kuluttua uudelleen.",
-    "form.no_payment": "ei maksua. ei sitoumusta.",
+    "form.no_payment": "*et maksa vielä mitään, lukitset perustajajäsenhintasi.",
 
     // ── HOME — How It Works (3 beats) ──
     "hiw.label": "miten se toimii",
     "hiw.sub": "kolme askelta. siinä kaikki.",
     "hiw.step1.title": "varaa puhelimella.",
-    "hiw.step1.body": "avaa sovellus. valitse aika. yksityinen huone odottaa sinua. ei puheluita, ei jonotuslistoja, ei henkilökunnan kanssa sovittavaa. auki 24/7.",
+    "hiw.step1.body": "avaa redvive-sovellus. valitse aika.",
     "hiw.step2.title": "astu sisään.",
-    "hiw.step2.body": "puhelin avaa oven. yksityinen huoneesi on valmis. astu sisään. valo syttyy. olemme viestin päässä, kun tarvitset.",
+    "hiw.step2.body": "yksityinen huoneesi on valmis. vain sinä ja valo.",
     "hiw.step3.title": "10 minuuttia. valmista.",
-    "hiw.step3.body": "valohoitosi käynnistyy automaattisesti. 10 minuutin hoitojakso. tarkasti ohjelmoidut koko vartalon paneelit. kun ohjelma loppuu, kävelet pois. ei lisämyyntiä. palaat, kun sinulle on hyvä hetki.",
+    "hiw.step3.body": "olemme viestin päässä. auki 24/7.",
     "hiw.cta": "lue lisää kokemuksesta →",
 
     // ── HOME — Pricing ──
@@ -327,8 +327,8 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── SCIENCE PAGE ──
     "science.eyebrow": "tiede",
-    "science.hero1": "valo on",
-    "science.hero2": "voima.",
+    "science.hero1": "valo antaa",
+    "science.hero2": "voimaa.",
     "science.intro": "redvive käyttää tarkasti kalibroitua 660 nm ja 850 nm valoa — punavalon tutkituimpia aallonpituuksia. tiede on tarkkaa. kokemus on yksinkertainen.",
     "science.mech.label": "mekanismi",
     "science.mech.title": "mitokondriot tekevät kaiken työn.",
@@ -378,7 +378,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.step3.sub": "vaikutus rakentuu hiljalleen.",
     "exp.step3.body": "käynti päättyy. kävelet ulos. mutta solujen reaktio jatkuu tunteja — keho tuottaa soluenergiaa (ATP), korjaa kudosta ja laskee kortisolia. yksi käynti rakentuu edellisen päälle. useimmat huomaavat eron 2–4 viikon säännöllisen käytön aikana.",
     "exp.studio.label": "studio",
-    "exp.studio.title": "kliinisen tason paneelit, yksityisessä huoneessa. vain valo ja sinä.",
+    "exp.studio.title": "tarkasti kalibroidut paneelit, yksityisessä huoneessa. vain valo ja sinä.",
     "exp.studio.body1": "yksityinen koko vartalon punavaloterapia. tarkasti kalibroidut 660 nm ja 850 nm — punavalon tutkituimmat aallonpituudet. kymmenen minuuttia per käynti.",
     "exp.studio.body2": "jokainen studio on suunniteltu yhden periaatteen pohjalta: poista kaikki, mikä ei ole valoa. yksityinen huone. koko vartalon paneelit. täysin autonominen — aina kalibroitu, aina yhtenäinen, aina valmiina.",
     "exp.spec.red": "punavalo",
@@ -428,15 +428,15 @@ export const translations: Record<string, Record<string, string>> = {
     "faq.q11": "missä ensimmäinen studio on?",
     "faq.a11": "Helsinki, avaamme vuonna 2026. liity odotuslistalle saadaksesi etuoikeutetun pääsyn ja perustajajäsenen hinnan.",
     "faq.q12": "mitä se maksaa?",
-    "faq.a12": "perustajajäsenen hinta on 29 € kuukaudessa — saatavilla yksinomaan odotuslistalaisille ennen avajaisia. kerran lunastettu, se on lukittu elinikäisesti. ei hinnankorotuksia, koskaan.",
+    "faq.a12": "perustajajäsenen hinta on 29 €/kk — vain odotuslistalla oleville ennen avajaisia. avajaisten jälkeen jäsenyyden standardihinta on 49 €/kk. perustajajäsenet maksavat aina 29 €/kk niin kauan kuin jäsenyys on voimassa.",
     "faq.q13": "mitä 29 €/kk sisältää?",
-    "faq.a13": "rajattomat käynnit kuukaudessa perustajahinnalla. lopullinen käyntirakenne vahvistetaan avajaisissa, mutta perustajajäsenet maksavat aina 29 €/kk — riippumatta siitä miten hinnoittelu kehittyy.",
+    "faq.a13": "rajattomat 10 minuutin käynnit perustajahinnalla. lopullinen käyntirakenne vahvistetaan avajaisissa. perustajajäsenet maksavat aina 29 €/kk — riippumatta siitä miten standardihinnoittelu kehittyy.",
     "faq.q14": "mitä hinnalleni tapahtuu, kun laajennatte?",
-    "faq.a14": "ei mitään. perustajajäsenen hintasi ei muutu koskaan. ei kun avaamme toisen toimipisteen, ei kun nostamme standardihinnoittelua, ei koskaan. se on perustajajäsenen lupaus.",
+    "faq.a14": "ei mitään. perustajajäsenen hinta on lukittu — ei kun avaamme toisen toimipisteen, ei kun nostamme standardihinnoittelua. se on perustajajäsenen lupaus.",
     "faq.q15": "voinko peruuttaa tilauksen?",
-    "faq.a15": "kyllä, milloin tahansa. ei irtisanomisaikaa, ei peruutusmaksuja. emme usko sitoumusfalleihin.",
+    "faq.a15": "kyllä, milloin tahansa. ei irtisanomisaikaa, ei peruutusmaksuja. huomaa kuitenkin: jos peruutat ja palaat myöhemmin, perustajahintaa ei voi enää lukita — silloin voimassa on standardihinta.",
     "faq.q16": "onko odotuslista ilmainen?",
-    "faq.a16": "kyllä. ei maksua, ei sitoumusta. varaat yksinkertaisesti paikkasi etuoikeutettua varausta ja 29 €/kk perustajahintaa varten.",
+    "faq.a16": "kyllä, täysin ilmainen. et maksa mitään, et sitoudu mihinkään. varaat vain perustajajäsenpaikkasi ja lukitset 29 €/kk hinnan ennakkoon.",
   },
 };
 

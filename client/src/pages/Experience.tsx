@@ -305,9 +305,9 @@ export default function Experience() {
                 className="text-3xl md:text-5xl font-bold text-[#1A1008]"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
               >
-                {t("exp.who.sub").split(" who ")[0]} who<br />
+                {(() => { const s = t("exp.who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
                 <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
-                  {t("exp.who.sub").split(" who ")[1] ?? ""}
+                  {(() => { const s = t("exp.who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
                 </em>
               </h2>
             </div>
