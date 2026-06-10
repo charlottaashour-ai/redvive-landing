@@ -86,13 +86,13 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── HOME — Carousel (3 cards) ──
     "carousel.label": "what light does.",
-    "carousel.skin": "face",
+    "carousel.skin": "skin",
     "carousel.skin_sub": "visible glow.",
     "carousel.skin_body": "660 nm light reaches the skin's surface — supporting collagen, tone, and renewal. clearer, firmer skin in 10 minutes.",
     "carousel.recovery": "recovery",
     "carousel.recovery_sub": "feels lighter.",
     "carousel.recovery_body": "850 nm light reaches deep into muscle and joint tissue. faster recovery from training, travel, or a heavy week.",
-    "carousel.sleep": "energy & sleep",
+    "carousel.sleep": "sleep",
     "carousel.sleep_sub": "a calmer baseline.",
     "carousel.sleep_body": "light supports mitochondria, regulates the nervous system, and eases everyday stress. deeper sleep, more energy when you need it.",
     "carousel.cta": "understand the science →",
@@ -183,7 +183,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.cta.link": "the science →",
 
     // ── FAQ PAGE ──
-    "faq.eyebrow": "usein kysytyt",
+    "faq.eyebrow": "frequently asked",
     "faq.hero1": "direct",
     "faq.hero2": "answers.",
     "faq.cat1": "the basics",
@@ -301,13 +301,13 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── HOME — Carousel (3 cards) ──
     "carousel.label": "mitkä ovat punavalon hyödyt",
-    "carousel.skin": "kasvot",
+    "carousel.skin": "iho",
     "carousel.skin_sub": "näkyvä hehku.",
     "carousel.skin_body": "660 nm valo kohdistuu ihon pintaan — tukee kollageenia, ihonsävyä ja uusiutumista. kirkkaampi, kimmoisampi iho 10 minuutissa.",
     "carousel.recovery": "palautuminen",
     "carousel.recovery_sub": "keveämpi olo.",
     "carousel.recovery_body": "850 nm valo tunkeutuu syvälle lihaksiin ja niveliin. nopeampi palautuminen treenistä, matkasta tai raskaasta viikosta.",
-    "carousel.sleep": "energia ja uni",
+    "carousel.sleep": "uni",
     "carousel.sleep_sub": "rauhallisempi perustaso.",
     "carousel.sleep_body": "valo tukee mitokondrioita, rauhoittaa hermostoa ja keventää arjen kuormaa. syvempi uni, enemmän energiaa silloin kun sitä tarvitset.",
     "carousel.cta": "tutustu tieteeseen →",
