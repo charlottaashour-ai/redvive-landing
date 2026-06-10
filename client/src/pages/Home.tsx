@@ -295,9 +295,9 @@ export default function Home() {
   const t = useTranslation();
 
   const howBeats = [
-    t("hiw.step1.title") + " " + t("hiw.step1.body"),
-    t("hiw.step2.title") + " " + t("hiw.step2.body"),
-    t("hiw.step3.title") + " " + t("hiw.step3.body"),
+    { title: t("hiw.step1.title"), body: t("hiw.step1.body") },
+    { title: t("hiw.step2.title"), body: t("hiw.step2.body") },
+    { title: t("hiw.step3.title"), body: t("hiw.step3.body") },
   ];
 
   const STATS = [
@@ -504,7 +504,8 @@ export default function Home() {
                     className="text-base md:text-lg leading-snug"
                     style={{ color: "#1A1008", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
                   >
-                    {beat}
+                    <span className="font-semibold">{beat.title}</span>{" "}
+                    <span style={{ color: "rgba(26,16,8,0.55)" }}>{beat.body}</span>
                   </p>
                 </div>
               ))}
