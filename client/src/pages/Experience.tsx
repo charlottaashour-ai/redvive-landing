@@ -146,14 +146,16 @@ export default function Experience() {
                 {t("exp.hero1")}
               </h1>
             </motion.div>
-            <motion.div variants={heroItem}>
-              <h1
-                className="text-5xl md:text-7xl leading-[0.95] mt-2"
-                style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
-              >
-                {t("exp.hero2")}
-              </h1>
-            </motion.div>
+            {t("exp.hero2") && (
+              <motion.div variants={heroItem}>
+                <h1
+                  className="text-5xl md:text-7xl leading-[0.95] mt-2"
+                  style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
+                >
+                  {t("exp.hero2")}
+                </h1>
+              </motion.div>
+            )}
           </div>
         </motion.div>
       </section>
