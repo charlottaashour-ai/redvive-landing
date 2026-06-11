@@ -438,7 +438,11 @@ export default function Home() {
                 className="text-sm md:text-base leading-relaxed mb-10"
                 style={{ color: "rgba(255,255,255,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
               >
-                {t("home.hero.sub")}
+                {t("home.hero.sub").split(/(€29\/month)/g).map((part, i) =>
+                  part === "€29/month"
+                    ? <span key={i} style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}>{part}</span>
+                    : part
+                )}
               </p>
             </motion.div>
 
