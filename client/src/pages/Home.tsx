@@ -438,11 +438,21 @@ export default function Home() {
                 className="text-sm md:text-base leading-relaxed mb-4"
                 style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
               >
-                {t("home.hero.sub").split(/(29€\/month)/g).map((part, i) =>
-                  part === "29€/month"
-                    ? <span key={i} style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}>{part}</span>
-                    : part
-                )}
+                {(() => {
+                  const line1 = "lock your 29€/month founding member rate today.";
+                  const line2 = "get early access.";
+                  return (
+                    <>
+                      {line1.split(/(29€\/month)/g).map((part, i) =>
+                        part === "29€/month"
+                          ? <span key={i} style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}>{part}</span>
+                          : part
+                      )}
+                      <br />
+                      {line2}
+                    </>
+                  );
+                })()}
               </p>
             </motion.div>
             {/* Waitlist form */}
