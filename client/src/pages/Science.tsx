@@ -388,7 +388,7 @@ export default function Science() {
                 {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
               </em>
             </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col items-center sm:flex-row gap-4 justify-center">
               <button className="btn-primary" onClick={scrollToWaitlist}>{t("nav.reserve")}</button>
             </div>
           </div>

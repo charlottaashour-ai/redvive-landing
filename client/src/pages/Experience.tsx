@@ -428,7 +428,7 @@ export default function Experience() {
             >
               {t("exp.cta.body")}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col items-center sm:flex-row gap-4 justify-center">
               <button className="btn-primary" onClick={scrollToWaitlist}>{t("nav.reserve")}</button>
               <Link href="/science">
                 <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>{t("exp.cta.link")}</button>
