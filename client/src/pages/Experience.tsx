@@ -177,6 +177,46 @@ export default function Experience() {
         </div>
       </section>
 
+      {/* ── PHILOSOPHY BLOCK ── */}
+      <section className="py-16 md:py-20" style={{ backgroundColor: "#FFF9F9" }}>
+        <div className="container">
+          <div className="max-w-3xl reveal">
+            <span className="section-label block mb-6">{t("exp.philosophy.eyebrow")}</span>
+            <h2
+              className="text-3xl md:text-5xl font-bold text-[#1A1008] mb-12"
+              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+            >
+              {(() => {
+                const title = t("exp.philosophy.title");
+                const lastSpace = title.lastIndexOf(" ");
+                return (
+                  <>
+                    <span>{title.slice(0, lastSpace + 1)}</span>
+                    <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", color: "#7A4A42" }}>{title.slice(lastSpace + 1)}</em>
+                  </>
+                );
+              })()}
+            </h2>
+            <div className="flex flex-col">
+              {(["exp.philosophy.line1", "exp.philosophy.line2", "exp.philosophy.line3"] as const).map((key, i) => (
+                <div
+                  key={i}
+                  className="reveal py-5"
+                  style={{ borderTop: "1px solid rgba(26,16,8,0.10)", transitionDelay: `${i * 80}ms` }}
+                >
+                  <p
+                    className="text-lg md:text-xl font-light text-[#3D1A14]"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {t(key)}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Feathered: rose-white → blush */}
       <div style={{ height: "160px", background: "linear-gradient(to bottom, #FFF9F9 0%, #EDE3DF 40%, #E8DCDA 70%, #F5EDEB 100%)" }} />
 

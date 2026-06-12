@@ -432,33 +432,31 @@ export default function Home() {
               );
             })()}
 
-            {/* Hero subheadline — what is Redvive */}
+            {/* Hero subtitle — offer-led */}
             <motion.div variants={heroItem}>
               <p
-                className="text-sm md:text-base leading-relaxed mb-10"
-                style={{ color: "rgba(255,255,255,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
+                className="text-sm md:text-base leading-relaxed mb-4"
+                style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
               >
-                {t("home.hero.sub").split(/(€29\/month)/g).map((part, i) =>
-                  part === "€29/month"
+                {t("home.hero.sub").split(/(29€\/month)/g).map((part, i) =>
+                  part === "29€/month"
                     ? <span key={i} style={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}>{part}</span>
                     : part
                 )}
               </p>
             </motion.div>
-
-            {/* Scarcity badge */}
-            <motion.div variants={heroItem} className="mb-6">
-              <span
-                className="inline-block px-3 py-1 text-[0.65rem] font-semibold tracking-[0.15em] uppercase"
-                style={{ backgroundColor: "#C4291C", color: "#F8F2EA", fontFamily: "'DM Sans', sans-serif" }}
-              >
-                {t("home.hero.scarcity")}
-              </span>
-            </motion.div>
-
             {/* Waitlist form */}
-            <motion.div variants={heroItem} className="max-w-md">
+            <motion.div variants={heroItem} className="max-w-md mb-4">
               <WaitlistForm dark={true} />
+            </motion.div>
+            {/* Disclosure line */}
+            <motion.div variants={heroItem}>
+              <p
+                className="text-xs leading-relaxed"
+                style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'DM Sans', sans-serif", fontStyle: "italic", maxWidth: "420px" }}
+              >
+                {t("home.hero.disclosure")}
+              </p>
             </motion.div>
           </div>
         </motion.div>

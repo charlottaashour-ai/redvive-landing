@@ -1,6 +1,6 @@
 /*
  * REDVIVE — translations.ts
- * EN-ONLY DEPLOY (v5) — FI block deferred to v2 with native copywriter.
+ * EN-ONLY DEPLOY (v8) — FI block deferred to v2 with native copywriter.
  * RULES:
  *   - All user-facing strings are lowercase.
  *   - Exceptions: Helsinki (+ inflected forms), Redvive Oy (legal only), ATP, UV, nm, EU.
@@ -14,7 +14,7 @@ export const translations: Record<string, Record<string, string>> = {
     "nav.science": "the science",
     "nav.experience": "the experience",
     "nav.faq": "frequently asked",
-    "nav.reserve": "secure your spot",
+    "nav.reserve": "join the waitlist",
     "nav.footer_tagline": "Helsinki, opening fall 2026. join the waitlist.",
     "nav.navigate": "navigate",
     "nav.opening": "opening fall 2026",
@@ -27,12 +27,12 @@ export const translations: Record<string, Record<string, string>> = {
     "footer.privacy_path": "/privacy",
     "footer.copyright": "© 2026 redvive. born in Helsinki.",
 
-    // ── HOME — Hero ──
-    "home.hero.eyebrow": "born in Helsinki. opening in fall of 2026.",
+    // ── HOME — Hero v8 ──
+    "home.hero.eyebrow": "full-body red light therapy studios — for the people who play the long game.",
     "home.hero.line1": "your body recovers.",
     "home.hero.line2": "we just give it light.",
-    "home.hero.sub": "lock the €29/month founding rate today. keep your lifetime price (as long as your membership is active) and get early access to the studio. join the waitlist.",
-    "home.hero.scarcity": "only 99 spots.",
+    "home.hero.sub": "lock your 29€/month founding member rate today. get early access.",
+    "home.hero.disclosure": "the studios are being built in Helsinki. join today for the unveiling.",
     "home.hero.scroll": "scroll",
 
     // ── HOME — How It Works (3 beats) ──
@@ -45,6 +45,12 @@ export const translations: Record<string, Record<string, string>> = {
     "hiw.step3.title": "done.",
     "hiw.step3.body": "we're one message away. open 24/7.",
     "hiw.cta": "read more about the experience →",
+
+    // ── HOME — Walk In ──
+    "home.walkin.body": "your phone unlocks the door. your private room is ready. step in. the light begins. we're one message away if you need us.",
+
+    // ── HOME — Session ──
+    "home.session.body": "your light treatment starts automatically. a ten-minute session. precisely calibrated full-body panels. when the program ends, you walk out. no upsell. you return when the moment is right.",
 
     // ── HOME — Pricing ──
     "pricing.label": "founding member pricing",
@@ -91,7 +97,7 @@ export const translations: Record<string, Record<string, string>> = {
     "form.postal_placeholder": "postal code (optional)",
     "form.consent": "i want to hear about redvive's founding member benefits and opening news. see",
     "form.consent_link": "privacy policy",
-    "form.submit": "secure your spot",
+    "form.submit": "join the waitlist",
     "form.sending": "sending…",
     "form.no_payment": "*you don't pay anything yet, you lock in your founding member price.",
     "form.success_title": "you're on the list.",
@@ -142,39 +148,6 @@ export const translations: Record<string, Record<string, string>> = {
     "science.cta.question1": "ready to experience",
     "science.cta.question2": "it for yourself?",
 
-    // ── EXPERIENCE PAGE ──
-    "exp.eyebrow": "the experience",
-    "exp.hero1": "show up for yourself.",
-    "exp.hero2": "",
-    "exp.intro": "red light therapy works by delivering specific wavelengths of light — 660 nm and 850 nm — directly into your cells. your mitochondria absorb the light and produce more energy. that energy is used for repair: muscle recovery, skin renewal, reduced inflammation, better sleep. the session is 10 minutes. the effects build over weeks. the room just makes it possible.",
-    "exp.step1.label": "24/7 availability.",
-    "exp.step1.body": "pick a time. your private room is held the moment you confirm. available 24/7.",
-    "exp.step2.label": "walk in. the light begins.",
-    "exp.step2.body": "your phone unlocks the door. full-body panels surround you — 660 nm red light for skin, circulation, and surface-level repair; 850 nm near-infrared for deeper tissue, muscle recovery, and inflammation. the session runs automatically. you do nothing except be there.",
-    "exp.step2.sub": "660 nm + 850 nm. full body.",
-    "exp.step3.label": "ten minutes. done. the work continues.",
-    "exp.step3.body": "the session ends. you walk out. but the cellular response continues for hours — your body keeps producing cellular energy (ATP), repairing tissue, reducing cortisol. one session builds on the last. most people notice a difference within two to four weeks of consistent use.",
-    "exp.step3.sub": "the effect builds quietly.",
-    "exp.studio.label": "the studio",
-    "exp.studio.title": "precision-calibrated panels in a private room. just you and the light.",
-    "exp.studio.body1": "private full-body red light therapy. precision-calibrated 660 nm and 850 nm — the most studied wavelengths in red light research. ten minutes per session.",
-    "exp.studio.body2": "built for you, if you take your wellbeing seriously.",
-    "exp.spec.red": "red light",
-    "exp.spec.nir": "near-infrared",
-    "exp.spec.session": "per session",
-    "exp.spec.open": "availability",
-    "exp.who.sub": "built for you, if you want results.",
-    "exp.who.1.title": "recovery.",
-    "exp.who.1.body": "after training, long travel, or a week that left your body heavy. red light at 850 nm penetrates deep into muscle tissue — reducing inflammation, accelerating repair, and helping the nervous system settle faster than rest alone.",
-    "exp.who.2.title": "skin.",
-    "exp.who.2.body": "660 nm red light stimulates collagen production and supports cellular turnover. when your complexion looks tired, uneven, or older than it should — a consistent weekly session makes a measurable difference over time.",
-    "exp.who.3.title": "energy and sleep.",
-    "exp.who.3.body": "red light therapy reduces cortisol and supports melatonin regulation. an evening session helps your body wind down properly. a morning session helps you start without the heaviness. both work. pick what fits your week.",
-    "exp.who.4.title": "the long game.",
-    "exp.who.4.body": "a weekly habit that quietly compounds. ten minutes of light, week after week — visible results. an investment in your wellbeing you can actually keep up with.",
-    "exp.cta.body": "only 99 founding spots at this rate. €29/month. locked in for life. once the spots are claimed, the rate goes up.",
-    "exp.cta.link": "the science →",
-
     // ── SCIENCE — legacy key aliases (used by Science.tsx JSX) ──
     "science.660.label": "660 nm",
     "science.660.title": "red light — surface",
@@ -190,6 +163,50 @@ export const translations: Record<string, Record<string, string>> = {
     "science.theresult.body1": "most people notice a difference in skin tone and how their body feels after the first few sessions. within 2–4 weeks of consistent use, the deeper effects — better sleep, faster recovery, a calmer baseline — become part of how your week feels.",
     "science.theresult.body2": "the session is 10 minutes. the effects compound. the habit is simple.",
     "science.cta.question": "ready to experience it for yourself?",
+
+    // ── EXPERIENCE PAGE ──
+    "exp.eyebrow": "the experience",
+    "exp.hero1": "show up for yourself.",
+    "exp.hero2": "",
+    "exp.intro": "red light therapy works by delivering specific wavelengths of light — 660 nm and 850 nm — directly into your cells. your mitochondria absorb the light and produce more energy. that energy is used for repair: muscle recovery, skin renewal, reduced inflammation, better sleep. the session is 10 minutes. the effects build over weeks. the room just makes it possible.",
+    "exp.step1.label": "24/7 availability.",
+    "exp.step1.body": "pick a time. your private room is held the moment you confirm. available 24/7.",
+    "exp.step2.label": "walk in. the light begins.",
+    "exp.step2.body": "your phone unlocks the door. full-body panels surround you — 660 nm red light for skin, circulation, and surface-level repair; 850 nm near-infrared for deeper tissue, muscle recovery, and inflammation. the session runs automatically. you do nothing except be there.",
+    "exp.step2.sub": "660 nm + 850 nm. full body.",
+    "exp.step3.label": "ten minutes. done. the work continues.",
+    "exp.step3.body": "the session ends. you walk out. but the cellular response continues for hours — your body keeps producing cellular energy (ATP), repairing tissue, reducing cortisol. one session builds on the last. most people notice a difference within two to four weeks of consistent use.",
+    "exp.step3.sub": "the effect builds quietly.",
+
+    // ── EXPERIENCE — Philosophy block (new, v8) ──
+    "exp.philosophy.eyebrow": "the philosophy",
+    "exp.philosophy.title": "recovery is the new luxury.",
+    "exp.philosophy.line1": "modern life drains us. recovery restores us.",
+    "exp.philosophy.line2": "performance begins with restoration.",
+    "exp.philosophy.line3": "longevity starts with daily rituals.",
+
+    // ── EXPERIENCE — Studio ──
+    "exp.studio.label": "the studio",
+    "exp.studio.title": "precision-calibrated panels in a private room. just you and the light.",
+    "exp.studio.body1": "private full-body red light therapy. precision-calibrated 660 nm and 850 nm — the most studied wavelengths in red light research. ten minutes per session.",
+    "exp.studio.body2": "built for you, if you take your wellbeing seriously.",
+    "exp.spec.red": "red light",
+    "exp.spec.nir": "near-infrared",
+    "exp.spec.session": "per session",
+    "exp.spec.open": "availability",
+
+    // ── EXPERIENCE — Who It's For ──
+    "exp.who.sub": "built for you, if you want results.",
+    "exp.who.1.title": "recovery.",
+    "exp.who.1.body": "after training, long travel, or a week that left your body heavy. red light at 850 nm penetrates deep into muscle tissue — reducing inflammation, accelerating repair, and helping the nervous system settle faster than rest alone.",
+    "exp.who.2.title": "skin.",
+    "exp.who.2.body": "660 nm red light stimulates collagen production and supports cellular turnover. when your complexion looks tired, uneven, or older than it should — a consistent weekly session makes a measurable difference over time.",
+    "exp.who.3.title": "energy and sleep.",
+    "exp.who.3.body": "red light therapy reduces cortisol and supports melatonin regulation. an evening session helps your body wind down properly. a morning session helps you start without the heaviness. both work. pick what fits your week.",
+    "exp.who.4.title": "the long game.",
+    "exp.who.4.body": "a weekly habit that quietly compounds. ten minutes of light, week after week — visible results. an investment in your wellbeing you can actually keep up with.",
+    "exp.cta.body": "only 99 founding spots at this rate. €29/month. locked in for life. once the spots are claimed, the rate goes up.",
+    "exp.cta.link": "the science →",
 
     // ── FAQ PAGE ──
     "faq.eyebrow": "frequently asked",
