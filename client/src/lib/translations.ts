@@ -29,7 +29,7 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── HOME — Hero v8 ──
     "home.hero.eyebrow": "full-body red light therapy studios — for the people who play the long game.",
-    "home.hero.line1": "your body knows how to recover —",
+    "home.hero.line1": "your body knows how to recover",
     "home.hero.line2": "we just give it light.",
     "home.hero.sub": "lock your 29€/month founding member rate today. get early access.",
     "home.hero.disclosure": "the studios are being built in Helsinki. join today for the unveiling.",
