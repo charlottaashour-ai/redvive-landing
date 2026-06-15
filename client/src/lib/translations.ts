@@ -80,7 +80,7 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── HOME — Who It's For ──
     "who.label": "for you.",
-    "who.sub": "built for you, if you want results.",
+    "who.sub": "for the people who play the long game.",
     "who.1": "you train, and you want your body to recover properly.",
     "who.2": "you've noticed your skin isn't what it was.",
     "who.3": "you're tired after work, and you want something that actually helps.",
@@ -196,7 +196,7 @@ export const translations: Record<string, Record<string, string>> = {
     "exp.spec.open": "availability",
 
     // ── EXPERIENCE — Who It's For ──
-    "exp.who.sub": "built for you, if you want results.",
+    "exp.who.sub": "for the people who play the long game.",
     "exp.who.1.title": "recovery.",
     "exp.who.1.body": "after training, long travel, or a week that left your body heavy. red light at 850 nm penetrates deep into muscle tissue — reducing inflammation, accelerating repair, and helping the nervous system settle faster than rest alone.",
     "exp.who.2.title": "skin.",
