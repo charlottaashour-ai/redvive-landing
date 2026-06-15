@@ -28,12 +28,12 @@ export const translations: Record<string, Record<string, string>> = {
     "footer.copyright": "© 2026 redvive. born in Helsinki.",
 
     // ── HOME — Hero v8 ──
-    "home.hero.eyebrow": "full-body red light therapy studios — for the people who play the long game.",
+    "home.hero.eyebrow": "full-body red light therapy studios — opening in Helsinki fall 2026.",
     "home.hero.line1": "your body knows how to recover",
     "home.hero.line2": "we just give it light.",
     "home.hero.sub": "lock your 29€/month founding member rate today. get early access.",
     "home.hero.disclosure": "the studios are being built in Helsinki. join today for the unveiling.",
-    "home.hero.scroll": "scroll",
+    "home.hero.scroll": "continue.",
 
     // ── HOME — How It Works (3 beats) ──
     "hiw.label": "how it works.",
@@ -53,7 +53,7 @@ export const translations: Record<string, Record<string, string>> = {
     "home.session.body": "your light treatment starts automatically. a ten-minute session. precisely calibrated full-body panels. when the program ends, you walk out. no upsell. you return when the moment is right.",
 
     // ── HOME — Pricing ──
-    "pricing.label": "founding member pricing",
+    "pricing.label": "only 99 spots",
     "pricing.title": "founding member pricing",
     "pricing.locked": "locked in for life.",
     "pricing.body": "available only to waitlist members before we open. once claimed, it is yours forever. no price increases. no conditions.",

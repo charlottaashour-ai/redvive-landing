@@ -472,22 +472,22 @@ export default function Home() {
         </motion.div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10">
-          <span className="text-white/30 text-[0.6rem] tracking-[0.2em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 z-10">
+          <svg
+            width="18" height="18" viewBox="0 0 18 18" fill="none"
+            style={{ color: "#D53E0F", animation: "chevronBounce 2s ease-in-out infinite" }}
+          >
+            <path d="M3 6l6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span className="text-white/30 text-[0.55rem] tracking-[0.18em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             {t("home.hero.scroll")}
           </span>
-          <div className="w-px h-8 bg-white/20 relative overflow-hidden">
-            <div
-              className="absolute top-0 left-0 w-full bg-white/60"
-              style={{ height: "40%", animation: "scrollDot 1.8s ease-in-out infinite" }}
-            />
-          </div>
         </div>
       </section>
 
 
       {/* ── FEATHERED TRANSITION: dark → rose-white ── */}
-      <div style={{ height: "220px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
+      <div style={{ height: "140px", background: "linear-gradient(to bottom, #0A0303 0%, #3D1A14 20%, #8B5E56 50%, #D4B8B4 75%, #FFF9F9 100%)" }} />
 
       {/* ── HOW IT WORKS ── */}
       <section className="py-24 md:py-32" style={{ backgroundColor: "#FFF9F9" }}>
@@ -567,7 +567,7 @@ export default function Home() {
                   width: "5px",
                   height: "5px",
                   backgroundColor: "white",
-                  animation: "dotBlink 2s ease-in-out infinite",
+                  animation: "pulseDot 1.5s ease-in-out infinite",
                 }}
               />
               <span
@@ -769,7 +769,7 @@ export default function Home() {
                   }}
                 >
                   <p
-                    className="text-xl md:text-2xl font-bold text-white leading-snug mx-auto"
+                    className="text-base md:text-xl font-semibold text-white leading-snug mx-auto"
                     style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em", maxWidth: "600px" }}
                   >
                     {line}
@@ -829,6 +829,14 @@ export default function Home() {
         @keyframes dotBlink {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.15; }
+        }
+        @keyframes chevronBounce {
+          0%, 100% { transform: translateY(0); opacity: 0.7; }
+          50% { transform: translateY(5px); opacity: 1; }
+        }
+        @keyframes pulseDot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.2); }
         }
       `}</style>
     </div>
