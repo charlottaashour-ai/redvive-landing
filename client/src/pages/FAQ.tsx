@@ -182,21 +182,15 @@ export default function FAQ() {
               {t("faq.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
-              <h1
-                className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
-              >
-                {t("faq.hero1")}
-              </h1>
-            </motion.div>
-            <motion.div variants={heroItem}>
-              <h1
-                className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
-              >
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                  {t("faq.hero2")}
-                </em>
+              <h1 className="text-5xl md:text-7xl leading-[0.95]" style={{ letterSpacing: "-0.03em" }}>
+                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {t("faq.hero1")}
+                </span>
+                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                    {t("faq.hero2")}
+                  </em>
+                </span>
               </h1>
             </motion.div>
           </div>

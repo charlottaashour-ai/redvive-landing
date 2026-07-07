@@ -139,23 +139,20 @@ export default function Experience() {
               {t("exp.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
-              <h1
-                className="text-5xl md:text-7xl font-bold text-white leading-[0.95]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
-              >
-                {t("exp.hero1")}
+              <h1 className="text-5xl md:text-7xl leading-[0.95]" style={{ letterSpacing: "-0.03em" }}>
+                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {t("exp.hero1")}
+                </span>
+                {t("exp.hero2") && (
+                  <span
+                    className="block mt-2"
+                    style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
+                  >
+                    {t("exp.hero2")}
+                  </span>
+                )}
               </h1>
             </motion.div>
-            {t("exp.hero2") && (
-              <motion.div variants={heroItem}>
-                <h1
-                  className="text-5xl md:text-7xl leading-[0.95] mt-2"
-                  style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
-                >
-                  {t("exp.hero2")}
-                </h1>
-              </motion.div>
-            )}
           </div>
         </motion.div>
       </section>

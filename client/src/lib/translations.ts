@@ -20,7 +20,7 @@ export const translations: Record<string, Record<string, string>> = {
     "nav.opening": "opening fall 2026",
 
     // ── FOOTER ──
-    "footer.tagline": "light gives strength. born in Helsinki. built on science.",
+    "footer.tagline": "light gives strength. born in Helsinki. built on science. punavalohoito Helsinki — red light therapy Helsinki.",
     "footer.navigate": "navigate",
     "footer.legal": "legal",
     "footer.privacy": "privacy policy",
@@ -113,7 +113,7 @@ export const translations: Record<string, Record<string, string>> = {
     "science.eyebrow": "the science",
     "science.hero1": "light is",
     "science.hero2": "the medicine.",
-    "science.intro": "redvive uses precision-calibrated 660 nm and 850 nm light — the most studied wavelengths in red light research. the science is serious. the experience is simple.",
+    "science.intro": "redvive uses precision-calibrated 660 nm and 850 nm light — the most studied wavelengths in red light research. Helsinki's first dedicated red light therapy studio. the science is serious. the experience is simple.",
     "science.mech.label": "the mechanism",
     "science.mech.title1": "your mitochondria",
     "science.mech.title2": "do all the work.",

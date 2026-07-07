@@ -402,31 +402,31 @@ export default function Home() {
               const last1 = lastSpace1 >= 0 ? line1.slice(lastSpace1 + 1) : line1;
               return (
                 <motion.div variants={heroItem}>
-                  <h1
-                    className="text-[42px] md:text-[72px] font-bold leading-[1.05]"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
-                  >
-                    <span>{pre1}</span>
-                    <span style={{ color: "rgba(255,255,255,1)" }}>{last1}</span>
-                  </h1>
-                </motion.div>
-              );
-            })()}
-
-            {/* Headline line 2 — Lora italic */}
-            {(() => {
-              const line2 = t("home.hero.line2");
-              const lastSpace2 = line2.lastIndexOf(" ");
-              const pre2 = lastSpace2 >= 0 ? line2.slice(0, lastSpace2 + 1) : "";
-              const last2 = lastSpace2 >= 0 ? line2.slice(lastSpace2 + 1) : line2;
-              return (
-                <motion.div variants={heroItem}>
-                  <h1
-                    className="text-[42px] md:text-[72px] leading-[1.05] mb-6"
-                    style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
-                  >
-                    <span>{pre2}</span>
-                    <span style={{ color: "rgba(255,255,255,1)" }}>{last2}</span>
+                  <h1 className="mb-6">
+                    {/* Line 1 — DM Sans bold */}
+                    <span
+                      className="block text-[42px] md:text-[72px] font-bold leading-[1.05]"
+                      style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
+                    >
+                      <span>{pre1}</span>
+                      <span style={{ color: "rgba(255,255,255,1)" }}>{last1}</span>
+                    </span>
+                    {/* Line 2 — Lora italic */}
+                    {(() => {
+                      const line2 = t("home.hero.line2");
+                      const lastSpace2 = line2.lastIndexOf(" ");
+                      const pre2 = lastSpace2 >= 0 ? line2.slice(0, lastSpace2 + 1) : "";
+                      const last2 = lastSpace2 >= 0 ? line2.slice(lastSpace2 + 1) : line2;
+                      return (
+                        <span
+                          className="block text-[42px] md:text-[72px] leading-[1.05]"
+                          style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
+                        >
+                          <span>{pre2}</span>
+                          <span style={{ color: "rgba(255,255,255,1)" }}>{last2}</span>
+                        </span>
+                      );
+                    })()}
                   </h1>
                 </motion.div>
               );
