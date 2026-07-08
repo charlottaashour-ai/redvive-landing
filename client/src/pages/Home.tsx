@@ -559,7 +559,7 @@ export default function Home() {
             {/* Mobile: phone first — hidden on md+ */}
             <div className="w-full flex justify-center md:hidden reveal">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-light_1c34ce53.webp"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-v2_5e43c3f1.webp"
                 alt="redvive app — book a session screen"
                 width="320"
                 height="420"
@@ -589,22 +589,13 @@ export default function Home() {
               >
                 your studio, in your pocket. book and manage every session in seconds — affordable red-light recovery, open 24/7.
               </p>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("waitlist");
-                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                }}
-                className="inline-flex items-center px-8 py-3.5 text-sm font-semibold text-white rounded-full transition-opacity hover:opacity-80"
-                style={{ backgroundColor: "#B0342A", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
-              >
-                join the waitlist
-              </button>
+
             </div>
 
             {/* Right: phone mockup — desktop only */}
             <div className="hidden md:flex flex-1 justify-center md:justify-end reveal">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-light_1c34ce53.webp"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-v2_5e43c3f1.webp"
                 alt="redvive app — book a session screen"
                 width="420"
                 height="560"
