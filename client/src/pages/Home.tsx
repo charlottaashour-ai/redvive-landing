@@ -548,11 +548,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: rose-white → warm off-white ── */}
-      <div style={{ height: "60px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F7F2EC 100%)" }} />
-
       {/* ── THE APP ── */}
-      <section className="py-24 md:py-36" style={{ backgroundColor: "#F7F2EC" }}>
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#FFF9F9" }}>
         <div className="container">
           <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24">
 
@@ -609,8 +606,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: warm off-white → deep dark ── */}
-      <div style={{ height: "220px", background: "linear-gradient(to bottom, #F7F2EC 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
+      {/* ── FEATHERED TRANSITION: rose-white → deep dark ── */}
+      <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
 
       {/* ── FOUNDING MEMBER PRICING ── */}
       <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
