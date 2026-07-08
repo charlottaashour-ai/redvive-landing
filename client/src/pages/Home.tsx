@@ -613,30 +613,6 @@ export default function Home() {
       <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
         <div className="container">
 
-          {/* Scarcity pill */}
-          <div className="reveal flex justify-center mb-10">
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2"
-              style={{ backgroundColor: "#D53E0F" }}
-            >
-              <span
-                className="block rounded-full flex-shrink-0"
-                style={{
-                  width: "5px",
-                  height: "5px",
-                  backgroundColor: "white",
-                  animation: "pulseDot 1.5s ease-in-out infinite",
-                }}
-              />
-              <span
-                className="text-[0.6rem] font-bold tracking-[0.2em] uppercase text-white"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
-                {t("pricing.label")}
-              </span>
-            </div>
-          </div>
-
           {/* Section label */}
           <div className="reveal text-center mb-6">
             <span className="section-label">{t("pricing.title")}</span>
