@@ -572,22 +572,22 @@ export default function Home() {
             {/* Left: text */}
             <div className="flex-1 reveal">
               <span
-                className="block mb-5 text-xs font-semibold uppercase tracking-widest"
+                className="block mb-5 text-xs font-bold uppercase tracking-widest"
                 style={{ color: "#B0342A", fontFamily: "'DM Sans', sans-serif" }}
               >
                 the app
               </span>
               <h2
-                className="text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.05] mb-6"
-                style={{ fontFamily: "'Lora', serif", fontWeight: 400, color: "#1c1a19", letterSpacing: "-0.02em" }}
+                className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold leading-[1.05] mb-6"
+                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, color: "#1c1a19", letterSpacing: "-0.03em" }}
               >
                 the whole ritual. one app.
               </h2>
               <p
                 className="text-base md:text-lg leading-relaxed mb-10 max-w-md"
-                style={{ color: "#6f6763", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: "#6f6763", fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}
               >
-                affordable-luxury wellness, ready the moment you are. book a session, step into the light, and feel yourself recharge and glow — in your pocket, open 24/7.
+                your studio, in your pocket. book and manage every session in seconds — affordable red-light recovery, open 24/7.
               </p>
               <button
                 onClick={() => {
