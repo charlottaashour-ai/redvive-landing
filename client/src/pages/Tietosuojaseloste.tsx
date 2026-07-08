@@ -173,7 +173,7 @@ export default function Tietosuojaseloste() {
     <div style={{ backgroundColor: "#FAF6F4", minHeight: "100vh" }}>
       <Navbar />
 
-      <div className="px-6 pt-32 pb-24">
+      <div className="px-6 pt-40 pb-24">
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
 
           {/* Header */}

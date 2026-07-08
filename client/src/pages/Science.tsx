@@ -125,7 +125,7 @@ export default function Science() {
           }}
         />
         <motion.div
-          className="relative z-10 container pb-20 pt-32"
+          className="relative z-10 container pb-20 pt-40"
           variants={heroContainer}
           initial="hidden"
           animate="show"

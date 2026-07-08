@@ -378,7 +378,7 @@ export default function Home() {
 
         {/* Staggered hero content */}
         <motion.div
-          className="relative z-10 container pb-40 pt-32"
+          className="relative z-10 container pb-40 pt-40"
           variants={heroContainer}
           initial="hidden"
           animate="show"

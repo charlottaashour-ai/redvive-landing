@@ -44,8 +44,38 @@ export default function Navbar() {
   ];
 
   return (
+    <div className="fixed top-0 left-0 right-0 z-50 flex flex-col">
+    {/* ── URGENCY BAR ── */}
+    <div
+      style={{
+        backgroundColor: "#0A0303",
+        borderBottom: "1px solid rgba(255,255,255,0.08)",
+      }}
+    >
+      <div className="flex items-center justify-center gap-2.5 py-2">
+        <span
+          className="inline-block w-1.5 h-1.5 rounded-full flex-shrink-0"
+          style={{
+            backgroundColor: "#D53E0F",
+            animation: "urgency-pulse 2s ease-in-out infinite",
+          }}
+        />
+        <span
+          style={{
+            fontFamily: "'DM Sans', sans-serif",
+            fontSize: "0.65rem",
+            fontWeight: 600,
+            letterSpacing: "0.16em",
+            color: "rgba(255,255,255,0.90)",
+            textTransform: "uppercase",
+          }}
+        >
+          only 99 founding member spots — <span style={{ color: "#D53E0F" }}>claim yours before we open</span>
+        </span>
+      </div>
+    </div>
     <header
-      className="fixed top-0 left-0 right-0 z-50"
+      className=""
       style={{
         backgroundColor: isTransparent ? "transparent" : "rgba(10,3,3,0.88)",
         backdropFilter: isTransparent ? "none" : "blur(12px)",
@@ -169,5 +199,6 @@ export default function Navbar() {
         )}
       </div>
     </header>
+    </div>
   );
 }
