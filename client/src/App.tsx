@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import ScrollToTop from "./components/ScrollToTop";
+import ScarcityBar from "./components/ScarcityBar";
 import Home from "./pages/Home";
 import Science from "./pages/Science";
 import Experience from "./pages/Experience";
@@ -17,6 +18,7 @@ function Router() {
   return (
     <>
       <ScrollToTop />
+      <ScarcityBar />
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/science" component={Science} />
