@@ -551,6 +551,66 @@ export default function Home() {
       {/* ── FEATHERED TRANSITION: rose-white → deep dark ── */}
       <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
 
+      {/* ── THE APP ── */}
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#0A0303" }}>
+        <div className="container">
+          <div className="flex flex-col-reverse md:flex-row items-center gap-16 md:gap-20">
+
+            {/* Left: text */}
+            <div className="flex-1 reveal">
+              <span
+                className="section-label block mb-6"
+                style={{ color: "#B0342A" }}
+              >
+                the app
+              </span>
+              <h2
+                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.0] mb-6"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "#F5EDEB" }}
+              >
+                the whole ritual.
+                <br />
+                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", color: "#B89490" }}>
+                  one app.
+                </em>
+              </h2>
+              <p
+                className="text-base md:text-lg leading-relaxed mb-10 max-w-md"
+                style={{ color: "rgba(245,237,235,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+              >
+                affordable-luxury wellness, ready the moment you are. book a session, step into the light, and feel yourself recharge and glow — in your pocket, open 24/7.
+              </p>
+              <button
+                onClick={() => {
+                  const el = document.getElementById("waitlist");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
+                className="inline-flex items-center px-8 py-3.5 text-sm font-semibold text-white rounded-full transition-opacity hover:opacity-80"
+                style={{ backgroundColor: "#B0342A", fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.02em" }}
+              >
+                join the waitlist
+              </button>
+            </div>
+
+            {/* Right: phone mockup */}
+            <div className="flex-1 flex justify-center md:justify-end reveal">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup_4111f505.webp"
+                alt="redvive app — book a session screen"
+                width="420"
+                height="560"
+                loading="lazy"
+                className="w-[280px] md:w-[360px] lg:w-[420px] object-contain"
+                style={{
+                  filter: "drop-shadow(0 32px 64px rgba(0,0,0,0.55))",
+                }}
+              />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* ── FOUNDING MEMBER PRICING ── */}
       <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
         <div className="container">
