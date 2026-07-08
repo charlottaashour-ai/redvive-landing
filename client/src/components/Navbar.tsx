@@ -70,7 +70,7 @@ export default function Navbar() {
             textTransform: "uppercase",
           }}
         >
-          only 99 founding member spots — <span style={{ color: "#D53E0F" }}>claim yours before we open</span>
+          only 99 founding member spots.
         </span>
       </div>
     </div>
