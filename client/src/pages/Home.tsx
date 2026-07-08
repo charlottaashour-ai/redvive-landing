@@ -556,7 +556,7 @@ export default function Home() {
             {/* Mobile: phone first — hidden on md+ */}
             <div className="w-full flex justify-center md:hidden reveal">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-v2_5e43c3f1.webp"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-nobg_54be75cb.png"
                 alt="redvive app — book a session screen"
                 width="320"
                 height="420"
@@ -592,7 +592,7 @@ export default function Home() {
             {/* Right: phone mockup — desktop only */}
             <div className="hidden md:flex flex-1 justify-center md:justify-end reveal">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-v2_5e43c3f1.webp"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-nobg_54be75cb.png"
                 alt="redvive app — book a session screen"
                 width="420"
                 height="560"
