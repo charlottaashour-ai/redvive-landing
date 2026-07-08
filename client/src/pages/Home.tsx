@@ -572,8 +572,8 @@ export default function Home() {
             {/* Left: text */}
             <div className="flex-1 reveal">
               <span
-                className="block mb-5 text-xs font-bold uppercase tracking-widest"
-                style={{ color: "#B0342A", fontFamily: "'DM Sans', sans-serif" }}
+                className="section-label block mb-5"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
                 the app
               </span>
@@ -587,7 +587,7 @@ export default function Home() {
                 className="text-base md:text-lg leading-relaxed mb-10 max-w-md"
                 style={{ color: "#6f6763", fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}
               >
-                your studio, in your pocket. book and manage every session in seconds — affordable red-light recovery, open 24/7.
+                your studio, in your pocket. book and manage every session in seconds — affordable red-light therapy, open 24/7.
               </p>
 
             </div>
