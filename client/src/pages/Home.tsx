@@ -548,35 +548,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FEATHERED TRANSITION: rose-white → deep dark ── */}
-      <div style={{ height: "220px", background: "linear-gradient(to bottom, #FFF9F9 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
+      {/* ── FEATHERED TRANSITION: rose-white → warm off-white ── */}
+      <div style={{ height: "60px", background: "linear-gradient(to bottom, #FFF9F9 0%, #F7F2EC 100%)" }} />
 
       {/* ── THE APP ── */}
-      <section className="py-24 md:py-36" style={{ backgroundColor: "#0A0303" }}>
+      <section className="py-24 md:py-36" style={{ backgroundColor: "#F7F2EC" }}>
         <div className="container">
-          <div className="flex flex-col-reverse md:flex-row items-center gap-16 md:gap-20">
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-16 lg:gap-24">
+
+            {/* Mobile: phone first — hidden on md+ */}
+            <div className="w-full flex justify-center md:hidden reveal">
+              <img
+                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-light_1c34ce53.webp"
+                alt="redvive app — book a session screen"
+                width="320"
+                height="420"
+                loading="lazy"
+                className="w-[260px] object-contain"
+                style={{ filter: "drop-shadow(0 24px 48px rgba(28,26,25,0.18))" }}
+              />
+            </div>
 
             {/* Left: text */}
             <div className="flex-1 reveal">
               <span
-                className="section-label block mb-6"
-                style={{ color: "#B0342A" }}
+                className="block mb-5 text-xs font-semibold uppercase tracking-widest"
+                style={{ color: "#B0342A", fontFamily: "'DM Sans', sans-serif" }}
               >
                 the app
               </span>
               <h2
-                className="text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.0] mb-6"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "#F5EDEB" }}
+                className="text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.05] mb-6"
+                style={{ fontFamily: "'Lora', serif", fontWeight: 400, color: "#1c1a19", letterSpacing: "-0.02em" }}
               >
-                the whole ritual.
-                <br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", color: "#B89490" }}>
-                  one app.
-                </em>
+                the whole ritual. one app.
               </h2>
               <p
                 className="text-base md:text-lg leading-relaxed mb-10 max-w-md"
-                style={{ color: "rgba(245,237,235,0.6)", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: "#6f6763", fontFamily: "'DM Sans', sans-serif" }}
               >
                 affordable-luxury wellness, ready the moment you are. book a session, step into the light, and feel yourself recharge and glow — in your pocket, open 24/7.
               </p>
@@ -592,24 +601,25 @@ export default function Home() {
               </button>
             </div>
 
-            {/* Right: phone mockup */}
-            <div className="flex-1 flex justify-center md:justify-end reveal">
+            {/* Right: phone mockup — desktop only */}
+            <div className="hidden md:flex flex-1 justify-center md:justify-end reveal">
               <img
-                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup_4111f505.webp"
+                src="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/app-mockup-light_1c34ce53.webp"
                 alt="redvive app — book a session screen"
                 width="420"
                 height="560"
                 loading="lazy"
-                className="w-[280px] md:w-[360px] lg:w-[420px] object-contain"
-                style={{
-                  filter: "drop-shadow(0 32px 64px rgba(0,0,0,0.55))",
-                }}
+                className="w-[300px] lg:w-[380px] object-contain"
+                style={{ filter: "drop-shadow(0 32px 64px rgba(28,26,25,0.20))" }}
               />
             </div>
 
           </div>
         </div>
       </section>
+
+      {/* ── FEATHERED TRANSITION: warm off-white → deep dark ── */}
+      <div style={{ height: "220px", background: "linear-gradient(to bottom, #F7F2EC 0%, #D4B8B4 25%, #8B5E56 50%, #3D1A14 80%, #1A1008 100%)" }} />
 
       {/* ── FOUNDING MEMBER PRICING ── */}
       <section className="py-24 md:py-36" style={{ backgroundColor: "#1A1008" }}>
