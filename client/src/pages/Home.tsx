@@ -670,27 +670,24 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="px-6 py-10 flex flex-col gap-3 text-center"
-                style={{ backgroundColor: "#1A1008", transitionDelay: `${i * 100}ms` }}
+                className="px-6 py-10 flex flex-col text-center"
+                style={{ backgroundColor: "#1A1008", transitionDelay: `${i * 100}ms`, minHeight: "180px" }}
               >
                 <p
-                  className="text-4xl md:text-5xl font-bold"
+                  className="text-4xl md:text-5xl font-bold mb-3"
                   style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
                 >
                   {item.stat}
                 </p>
                 {item.label && (
                   <p
-                    className="text-xs font-semibold tracking-[0.14em] uppercase"
+                    className="text-xs font-semibold tracking-[0.14em] uppercase flex-1"
                     style={{ color: "rgba(255,249,249,0.40)", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {item.label}
                   </p>
                 )}
-                <span className="brand-rule mx-auto" />
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,249,249,0.55)", fontFamily: "'DM Sans', sans-serif" }}>
-                  {item.body}
-                </p>
+                <span className="brand-rule mx-auto mt-4" />
               </div>
             ))}
           </div>
