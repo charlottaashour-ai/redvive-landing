@@ -134,20 +134,17 @@ export default function Science() {
             <motion.span
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'Outfit', sans-serif" }}
             >
               {t("science.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
-              <h1 className="text-5xl md:text-7xl leading-[0.95]" style={{ letterSpacing: "-0.03em" }}>
-                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  {t("science.hero1")}
-                </span>
-                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                    {t("science.hero2")}
-                  </em>
-                </span>
+              <h1
+                className="text-5xl md:text-7xl leading-[1.05] text-white"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+              >
+                {t("science.hero1")}{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>{t("science.hero2")}</em>
               </h1>
             </motion.div>
           </div>
@@ -163,7 +160,7 @@ export default function Science() {
           <div className="max-w-3xl mx-auto reveal">
             <p
               className="text-2xl md:text-3xl leading-relaxed font-light"
-              style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A1008", letterSpacing: "-0.01em" }}
+              style={{ fontFamily: "'Outfit', sans-serif", color: "#1A1008", letterSpacing: "-0.01em" }}
             >
               {t("science.intro")}
             </p>
@@ -183,11 +180,11 @@ export default function Science() {
             <div className="reveal mb-14">
               <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("science.mech.label")}</span>
               <h2
-                className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+                className="text-3xl md:text-5xl leading-[1.1] mb-6 text-white"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
               >
-                {t("science.mech.title").split("\n")[0]}<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
+                {t("science.mech.title").split("\n")[0]}{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {t("science.mech.title").split("\n")[1] ?? ""}
                 </em>
               </h2>
@@ -196,10 +193,10 @@ export default function Science() {
 
             {/* Two-column explanation */}
             <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
-              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("science.mech.body1")}
               </p>
-              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("science.mech.body2")}
               </p>
             </div>
@@ -212,17 +209,17 @@ export default function Science() {
               <div className="pr-0 md:pr-12 pb-10 md:pb-0">
                 <p
                   className="text-3xl font-bold mb-2"
-                  style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
+                  style={{ fontFamily: "'Outfit', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
                 >
                   {t("science.660.label")}
                 </p>
                 <p
                   className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4"
-                  style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'Outfit', sans-serif" }}
                 >
                   {t("science.660.title")}
                 </p>
-                <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                   {t("science.660.body")}
                 </p>
               </div>
@@ -231,17 +228,17 @@ export default function Science() {
               >
                 <p
                   className="text-3xl font-bold mb-2"
-                  style={{ fontFamily: "'DM Sans', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
+                  style={{ fontFamily: "'Outfit', sans-serif", color: "#D53E0F", letterSpacing: "-0.03em" }}
                 >
                   {t("science.850.label")}
                 </p>
                 <p
                   className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-4"
-                  style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'DM Sans', sans-serif" }}
+                  style={{ color: "rgba(255,249,249,0.3)", fontFamily: "'Outfit', sans-serif" }}
                 >
                   {t("science.850.title")}
                 </p>
-                <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <p className="text-white/50 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                   {t("science.850.body")}
                 </p>
               </div>
@@ -263,11 +260,11 @@ export default function Science() {
             <div className="reveal mb-16">
               <span className="section-label block mb-4">{t("carousel.label")}</span>
               <h2
-                className="text-3xl md:text-5xl font-bold text-[#1A1008] leading-[1.05]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+                className="text-3xl md:text-5xl text-[#1A1008] leading-[1.1]"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
               >
-                {t("science.result.eyebrow").split(". ")[0]}.<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
+                {t("science.result.eyebrow").split(". ")[0]}.{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {t("science.result.eyebrow").split(". ")[1] ?? ""}
                 </em>
               </h2>
@@ -292,13 +289,13 @@ export default function Science() {
                     <div>
                       <p
                         className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
-                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                        style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
                       >
                         {group.category}
                       </p>
                       <p
-                        className="text-lg font-bold leading-snug text-[#1A1008]"
-                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                        className="text-lg leading-snug text-[#1A1008]"
+                        style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
                       >
                         {group.headline}
                       </p>
@@ -320,7 +317,7 @@ export default function Science() {
                           />
                           <span
                             className="text-sm leading-relaxed"
-                            style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                            style={{ color: "#7A5A54", fontFamily: "'Outfit', sans-serif" }}
                           >
                             {item}
                           </span>
@@ -348,20 +345,20 @@ export default function Science() {
           <div className="max-w-3xl mx-auto reveal">
             <span className="section-label block mb-6">{t("science.theresult.label")}</span>
             <h2
-              className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-[#1A1008]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+              className="text-3xl md:text-5xl leading-[1.1] mb-6 text-[#1A1008]"
+              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
             >
-              {(() => { const s = t("science.theresult.title"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
-              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+              {(() => { const s = t("science.theresult.title"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
+              <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                 {(() => { const s = t("science.theresult.title"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
               </em>
             </h2>
             <span className="brand-rule mb-8" />
             <div className="grid md:grid-cols-2 gap-12">
-              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("science.theresult.body1")}
               </p>
-              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-[#7A5A54] text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("science.theresult.body2")}
               </p>
             </div>
@@ -374,11 +371,11 @@ export default function Science() {
         <div className="container">
           <div className="reveal max-w-xl mx-auto text-center">
             <h2
-              className="text-3xl md:text-5xl font-bold leading-[1.1] mb-8 text-[#1A1008]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+              className="text-3xl md:text-5xl leading-[1.1] mb-8 text-[#1A1008]"
+              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
             >
-              {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
-              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+              {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
+              <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                 {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
               </em>
             </h2>

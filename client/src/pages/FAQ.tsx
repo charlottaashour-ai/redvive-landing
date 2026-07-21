@@ -57,7 +57,7 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
       >
         <span
           className="text-sm font-semibold text-[#1A1008] leading-snug"
-          style={{ fontFamily: "'DM Sans', sans-serif" }}
+          style={{ fontFamily: "'Outfit', sans-serif" }}
         >
           {q}
         </span>
@@ -78,7 +78,7 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
         <div className="pb-5">
           <p
             className="text-sm leading-relaxed text-[#7A5A54]"
-            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            style={{ fontFamily: "'Outfit', sans-serif" }}
           >
             {a}
           </p>
@@ -177,20 +177,17 @@ export default function FAQ() {
             <motion.span
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'Outfit', sans-serif" }}
             >
               {t("faq.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
-              <h1 className="text-5xl md:text-7xl leading-[0.95]" style={{ letterSpacing: "-0.03em" }}>
-                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  {t("faq.hero1")}
-                </span>
-                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
-                    {t("faq.hero2")}
-                  </em>
-                </span>
+              <h1
+                className="text-5xl md:text-7xl leading-[1.05] text-white"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+              >
+                {t("faq.hero1")}{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>{t("faq.hero2")}</em>
               </h1>
             </motion.div>
           </div>
@@ -209,7 +206,7 @@ export default function FAQ() {
                 <div className="flex items-center gap-4 mb-8">
                   <span
                     className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase"
-                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
                   >
                     {group.category}
                   </span>

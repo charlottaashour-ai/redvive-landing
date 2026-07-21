@@ -214,7 +214,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         value={firstName}
         onChange={(e) => setFirstName(e.target.value)}
         className={inputClass}
-        style={{ fontFamily: "'DM Sans', sans-serif" }}
+        style={{ fontFamily: "'Outfit', sans-serif" }}
       />
       <input
         type="email"
@@ -223,7 +223,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         className={inputClass}
-        style={{ fontFamily: "'DM Sans', sans-serif" }}
+        style={{ fontFamily: "'Outfit', sans-serif" }}
       />
       <input
         type="text"
@@ -231,7 +231,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         value={postalCode}
         onChange={(e) => setPostalCode(e.target.value)}
         className={inputClass}
-        style={{ fontFamily: "'DM Sans', sans-serif" }}
+        style={{ fontFamily: "'Outfit', sans-serif" }}
       />
       {/* GDPR consent checkbox */}
       <label className="flex items-start gap-3 cursor-pointer group text-left">
@@ -244,7 +244,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         />
         <span
           className="text-[0.65rem] leading-relaxed"
-          style={{ color: dark ? "rgba(255,255,255,0.35)" : "rgba(26,16,8,0.45)", fontFamily: "'DM Sans', sans-serif" }}
+          style={{ color: dark ? "rgba(255,255,255,0.35)" : "rgba(26,16,8,0.45)", fontFamily: "'Outfit', sans-serif" }}
         >
           {t("form.consent")}{" "}
           <a
@@ -258,7 +258,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
         </span>
       </label>
       {error && (
-        <p className="text-xs" style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}>{error}</p>
+        <p className="text-xs" style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}>{error}</p>
       )}
       <button
         type="submit"
@@ -388,12 +388,12 @@ export default function Home() {
             <motion.p
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6"
-              style={{ color: "rgba(255,255,255,0.60)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(255,255,255,0.60)", fontFamily: "'Outfit', sans-serif" }}
             >
               {t("home.hero.eyebrow")}
             </motion.p>
 
-            {/* Headline line 1 — DM Sans bold */}
+            {/* Headline line 1 — Fraunces serif */}
             {(() => {
               const line1 = t("home.hero.line1");
               // Split into preamble + last word (language-agnostic)
@@ -403,15 +403,15 @@ export default function Home() {
               return (
                 <motion.div variants={heroItem}>
                   <h1 className="mb-6">
-                    {/* Line 1 — DM Sans bold */}
+                    {/* Line 1 — Fraunces serif, weight 400, italic-amber on last word */}
                     <span
-                      className="block text-[42px] md:text-[72px] font-bold leading-[1.05]"
-                      style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "rgba(255,255,255,0.72)" }}
+                      className="block text-[42px] md:text-[72px] leading-[1.1]"
+                      style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em", color: "rgba(255,255,255,0.82)" }}
                     >
                       <span>{pre1}</span>
-                      <span style={{ color: "rgba(255,255,255,1)" }}>{last1}</span>
+                      <span style={{ fontStyle: "italic", color: "#FFB066" }}>{last1}</span>
                     </span>
-                    {/* Line 2 — Lora italic (only if non-empty) */}
+                    {/* Line 2 — Fraunces italic (only if non-empty) */}
                     {(() => {
                       const line2 = t("home.hero.line2");
                       if (!line2) return null;
@@ -421,7 +421,7 @@ export default function Home() {
                       return (
                         <span
                           className="block text-[42px] md:text-[72px] leading-[1.05]"
-                          style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
+                          style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
                         >
                           <span>{pre2}</span>
                           <span style={{ color: "rgba(255,255,255,1)" }}>{last2}</span>
@@ -437,7 +437,7 @@ export default function Home() {
             <motion.div variants={heroItem}>
               <p
                 className="text-sm md:text-base leading-relaxed mb-4"
-                style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'DM Sans', sans-serif", maxWidth: "420px" }}
+                style={{ color: "rgba(255,255,255,0.55)", fontFamily: "'Outfit', sans-serif", maxWidth: "420px" }}
               >
                 {t("home.hero.sub")}
               </p>
@@ -450,7 +450,7 @@ export default function Home() {
             <motion.div variants={heroItem}>
               <p
                 className="text-xs leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'DM Sans', sans-serif", fontStyle: "italic", maxWidth: "420px" }}
+                style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'Outfit', sans-serif", fontStyle: "italic", maxWidth: "420px" }}
               >
                 {t("home.hero.disclosure")}
               </p>
@@ -466,7 +466,7 @@ export default function Home() {
           >
             <path d="M3 6l6 6 6-6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span className="text-white/30 text-[0.55rem] tracking-[0.18em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <span className="text-white/30 text-[0.55rem] tracking-[0.18em] uppercase" style={{ fontFamily: "'Outfit', sans-serif" }}>
             {t("home.hero.scroll")}
           </span>
         </div>
@@ -484,11 +484,11 @@ export default function Home() {
             <div className="reveal mb-16">
               <span className="section-label block mb-6">{t("hiw.label")}</span>
               <h2
-                className="text-4xl md:text-6xl font-bold leading-[1.05]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em", color: "#1A1008" }}
+                className="text-4xl md:text-6xl leading-[1.1]"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em", color: "#1A1008" }}
               >
                 {t("hiw.sub").split(".")[0]}.<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {t("hiw.sub").split(". ")[1] ?? ""}
                 </em>
               </h2>
@@ -508,13 +508,13 @@ export default function Home() {
                 >
                   <span
                     className="shrink-0 text-[0.6rem] font-semibold tracking-[0.2em] uppercase mt-[3px]"
-                    style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif", minWidth: "28px" }}
+                    style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif", minWidth: "28px" }}
                   >
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <p
                     className="text-base md:text-lg leading-snug"
-                    style={{ color: "#1A1008", fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
+                    style={{ color: "#1A1008", fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.01em" }}
                   >
                     <span className="font-semibold">{beat.title}</span>{" "}
                     <span style={{ color: "rgba(26,16,8,0.55)" }}>{beat.body}</span>
@@ -557,19 +557,19 @@ export default function Home() {
             <div className="flex-1 reveal">
               <span
                 className="section-label block mb-5"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
+                style={{ fontFamily: "'Outfit', sans-serif" }}
               >
                 the app
               </span>
               <h2
-                className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold leading-[1.05] mb-6"
-                style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, color: "#1c1a19", letterSpacing: "-0.03em" }}
+                className="text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] mb-6"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, color: "#1c1a19", letterSpacing: "-0.01em" }}
               >
-                the whole ritual. one app.
+                the whole ritual. <em style={{ fontStyle: "italic", color: "#B0342A" }}>one app.</em>
               </h2>
               <p
                 className="text-base md:text-lg leading-relaxed mb-10 max-w-md"
-                style={{ color: "#6f6763", fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}
+                style={{ color: "#6f6763", fontFamily: "'Outfit', sans-serif", fontWeight: 400 }}
               >
                 your studio, in your pocket. book and manage every session in seconds — affordable red-light therapy, open 24/7.
               </p>
@@ -609,14 +609,14 @@ export default function Home() {
           <div className="reveal text-center mb-6">
             <div className="flex items-baseline justify-center gap-3 md:gap-5 flex-wrap">
               <span
-                className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] font-bold leading-none"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FFF9F9" }}
+                className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] leading-none"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.02em", color: "#FFF9F9" }}
               >
                 €29
               </span>
               <span
                 className="text-xl sm:text-2xl md:text-3xl font-normal self-end pb-3 md:pb-6"
-                style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,249,249,0.5)" }}
+                style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,249,249,0.5)" }}
               >
                 / month.
               </span>
@@ -627,7 +627,7 @@ export default function Home() {
           <div className="reveal text-center mb-6">
             <p
               className="text-2xl sm:text-3xl md:text-4xl"
-              style={{ fontFamily: "'Lora', serif", fontWeight: 400, color: "#FFF9F9" }}
+              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, color: "#FFF9F9" }}
             >
               {t("pricing.locked")}
             </p>
@@ -637,7 +637,7 @@ export default function Home() {
           <div className="reveal text-center mb-16">
             <p
               className="text-sm md:text-base leading-relaxed max-w-lg mx-auto"
-              style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,249,249,0.55)" }}
+              style={{ fontFamily: "'Outfit', sans-serif", color: "rgba(255,249,249,0.55)" }}
             >
               {t("pricing.body")}
             </p>
@@ -661,15 +661,15 @@ export default function Home() {
                 style={{ backgroundColor: "#1A1008", transitionDelay: `${i * 100}ms`, minHeight: "180px" }}
               >
                 <p
-                  className="text-4xl md:text-5xl font-bold mb-3"
-                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                  className="text-4xl md:text-5xl mb-3"
+                  style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.02em", color: "#D53E0F" }}
                 >
                   {item.stat}
                 </p>
                 {item.label && (
                   <p
                     className="text-xs font-semibold tracking-[0.14em] uppercase flex-1"
-                    style={{ color: "rgba(255,249,249,0.40)", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "rgba(255,249,249,0.40)", fontFamily: "'Outfit', sans-serif" }}
                   >
                     {item.label}
                   </p>
@@ -681,7 +681,7 @@ export default function Home() {
 
           {/* Footnote */}
           <div className="reveal text-center mt-8">
-            <p className="text-xs" style={{ color: "rgba(255,249,249,0.25)", fontFamily: "'DM Sans', sans-serif" }}>
+            <p className="text-xs" style={{ color: "rgba(255,249,249,0.25)", fontFamily: "'Outfit', sans-serif" }}>
               {t("pricing.footnote")}
             </p>
           </div>
@@ -721,19 +721,19 @@ export default function Home() {
                 <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
                   <p
                     className="font-bold leading-none"
-                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                    style={{ fontFamily: "'Outfit', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
                   >
                     {item.stat}
                   </p>
                 </div>
                 <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
-                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>
+                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'Outfit', sans-serif" }}>
                     {item.label}
                   </p>
                 </div>
                 <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
                 <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'Outfit', sans-serif", maxWidth: "200px" }}>
                     {item.body}
                   </p>
                 </div>
@@ -761,16 +761,16 @@ export default function Home() {
             <div className="reveal mb-16 text-center">
               <span
                 className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
-                style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
               >
                 {t("who.label")}
               </span>
               <h2
-                className="text-4xl md:text-6xl font-bold leading-[1.05] text-white"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+                className="text-4xl md:text-6xl leading-[1.1] text-white"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
               >
-                {(() => { const s = t("who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                {(() => { const s = t("who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {(() => { const s = t("who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
                 </em>
               </h2>
@@ -788,7 +788,7 @@ export default function Home() {
                 >
                   <p
                     className="text-base md:text-xl font-semibold text-white leading-snug mx-auto"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em", maxWidth: "600px" }}
+                    style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.02em", maxWidth: "600px" }}
                   >
                     {line}
                   </p>
@@ -814,15 +814,15 @@ export default function Home() {
                 {t("home.hero.eyebrow")}
               </span>
               <h2
-                className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+                className="text-4xl md:text-6xl text-white mb-4 leading-[1.1]"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
               >
                 {t("cta.headline1")}<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {t("cta.headline2")}
                 </em>
               </h2>
-              <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("cta.body")}
               </p>
               <WaitlistForm dark={true} />

@@ -62,7 +62,7 @@ export default function Navbar() {
         />
         <span
           style={{
-            fontFamily: "'DM Sans', sans-serif",
+            fontFamily: "'Outfit', sans-serif",
             fontSize: "0.65rem",
             fontWeight: 600,
             letterSpacing: "0.16em",
@@ -109,7 +109,7 @@ export default function Navbar() {
                 <span
                   className="text-[0.72rem] font-semibold tracking-[0.14em] uppercase cursor-pointer"
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     color:
                       location === href
                         ? "#D53E0F"
@@ -178,7 +178,7 @@ export default function Navbar() {
                 <span
                   className="block text-xs font-semibold tracking-[0.14em] uppercase py-1.5"
                   style={{
-                    fontFamily: "'DM Sans', sans-serif",
+                    fontFamily: "'Outfit', sans-serif",
                     color: location === href ? "#D53E0F" : "rgba(255,255,255,0.80)",
                   }}
                 >

@@ -134,23 +134,16 @@ export default function Experience() {
             <motion.span
               variants={heroItem}
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase mb-6 block"
-              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "rgba(213,62,15,0.85)", fontFamily: "'Outfit', sans-serif" }}
             >
               {t("exp.eyebrow")}
             </motion.span>
             <motion.div variants={heroItem}>
-              <h1 className="text-5xl md:text-7xl leading-[0.95]" style={{ letterSpacing: "-0.03em" }}>
-                <span className="block font-bold text-white" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  {t("exp.hero1")}
-                </span>
-                {t("exp.hero2") && (
-                  <span
-                    className="block mt-2"
-                    style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.75)" }}
-                  >
-                    {t("exp.hero2")}
-                  </span>
-                )}
+              <h1
+                className="text-5xl md:text-7xl leading-[1.05] text-white"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+              >
+                {t("exp.hero1")}{t("exp.hero2") ? <>{" "}<em style={{ fontStyle: "italic", color: "#FFB066" }}>{t("exp.hero2")}</em></> : null}
               </h1>
             </motion.div>
           </div>
@@ -166,7 +159,7 @@ export default function Experience() {
           <div className="max-w-3xl mx-auto reveal text-center">
             <p
               className="text-2xl md:text-3xl leading-relaxed font-light text-[#1A1008]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.01em" }}
+              style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.01em" }}
             >
               {t("exp.intro")}
             </p>
@@ -179,21 +172,21 @@ export default function Experience() {
         <div className="container">
           <div className="max-w-3xl reveal">
             <span className="section-label block mb-6">{t("exp.philosophy.eyebrow")}</span>
-            <h2
-              className="text-3xl md:text-5xl font-bold text-[#1A1008] mb-12"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
-            >
-              {(() => {
-                const title = t("exp.philosophy.title");
-                const lastSpace = title.lastIndexOf(" ");
-                return (
-                  <>
-                    <span>{title.slice(0, lastSpace + 1)}</span>
-                    <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "italic", color: "#7A4A42" }}>{title.slice(lastSpace + 1)}</em>
-                  </>
-                );
-              })()}
-            </h2>
+              <h2
+                className="text-3xl md:text-5xl text-[#1A1008] mb-12 leading-[1.1]"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+              >
+                {(() => {
+                  const title = t("exp.philosophy.title");
+                  const lastSpace = title.lastIndexOf(" ");
+                  return (
+                    <>
+                      <span>{title.slice(0, lastSpace + 1)}</span>
+                      <em style={{ fontStyle: "italic", color: "#FFB066" }}>{title.slice(lastSpace + 1)}</em>
+                    </>
+                  );
+                })()}
+              </h2>
             <div className="flex flex-col">
               {(["exp.philosophy.line1", "exp.philosophy.line2", "exp.philosophy.line3"] as const).map((key, i) => (
                 <div
@@ -203,7 +196,7 @@ export default function Experience() {
                 >
                   <p
                     className="text-lg md:text-xl font-light text-[#3D1A14]"
-                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ fontFamily: "'Outfit', sans-serif" }}
                   >
                     {t(key)}
                   </p>
@@ -224,11 +217,11 @@ export default function Experience() {
             <div className="reveal mb-16">
               <span className="section-label block mb-4">{t("hiw.label")}</span>
               <h2
-                className="text-3xl md:text-5xl font-bold text-[#1A1008]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+                className="text-3xl md:text-5xl text-[#1A1008] leading-[1.1]"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
               >
-                {t("hiw.sub").split(".")[0]}.<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+                {t("hiw.sub").split(".")[0]}.{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {t("hiw.sub").split(". ")[1] ?? ""}
                 </em>
               </h2>
@@ -250,20 +243,20 @@ export default function Experience() {
                     <div>
                       <p
                         className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
-                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                        style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
                       >
                         {step.num}
                       </p>
                       <p
                         className="text-lg font-bold leading-snug text-[#1A1008] mb-3"
-                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                        style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.02em" }}
                       >
                         {step.headline}
                       </p>
                     </div>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ color: "#7A5A54", fontFamily: "'Outfit', sans-serif" }}
                     >
                       {step.body.split(/(660 nm|850 nm)/g).map((part, idx) =>
                         part === "660 nm" || part === "850 nm"
@@ -290,21 +283,21 @@ export default function Experience() {
             <div className="reveal mb-12">
               <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("exp.studio.label")}</span>
               <h2
-                className="text-3xl md:text-5xl font-bold leading-[1.1] mb-6 text-white"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+                className="text-3xl md:text-5xl leading-[1.1] mb-6 text-white"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
               >
-                {t("exp.studio.title").split(". ")[0]}.<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
+                {t("exp.studio.title").split(". ")[0]}.{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {t("exp.studio.title").split(". ").slice(1).join(". ")}
                 </em>
               </h2>
               <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
             </div>
             <div className="reveal grid md:grid-cols-2 gap-12 mb-16">
-              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("exp.studio.body1")}
               </p>
-              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              <p className="text-white/60 text-sm leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("exp.studio.body2")}
               </p>
             </div>
@@ -314,13 +307,13 @@ export default function Experience() {
                 <div key={i} className="flex flex-col items-center justify-center text-center py-8 px-4" style={{ backgroundColor: "#1A1008" }}>
                   <p
                     className="text-2xl font-bold mb-1"
-                    style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em", color: "#D53E0F" }}
+                    style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.03em", color: "#D53E0F" }}
                   >
                     {spec.value}
                   </p>
                   <p
                     className="text-[0.6rem] font-semibold tracking-[0.15em] uppercase"
-                    style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
+                    style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'Outfit', sans-serif" }}
                   >
                     {spec.label}
                   </p>
@@ -341,11 +334,11 @@ export default function Experience() {
             <div className="reveal mb-16">
               <span className="section-label block mb-4">{t("who.label")}</span>
               <h2
-                className="text-3xl md:text-5xl font-bold text-[#1A1008]"
-                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+                className="text-3xl md:text-5xl text-[#1A1008] leading-[1.1]"
+                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
               >
-                {(() => { const s = t("exp.who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}<br />
-                <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal", color: "#D53E0F" }}>
+                {(() => { const s = t("exp.who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
+                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                   {(() => { const s = t("exp.who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
                 </em>
               </h2>
@@ -367,20 +360,20 @@ export default function Experience() {
                     <div>
                       <p
                         className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-3"
-                        style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+                        style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
                       >
                         {row.num}
                       </p>
                       <p
                         className="text-lg font-bold leading-snug text-[#1A1008]"
-                        style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.02em" }}
+                        style={{ fontFamily: "'Outfit', sans-serif", letterSpacing: "-0.02em" }}
                       >
                         {row.headline}
                       </p>
                     </div>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ color: "#7A5A54", fontFamily: "'DM Sans', sans-serif" }}
+                      style={{ color: "#7A5A54", fontFamily: "'Outfit', sans-serif" }}
                     >
                       {row.body}
                     </p>
@@ -406,22 +399,22 @@ export default function Experience() {
           <div className="reveal max-w-lg mx-auto text-center">
             <span
               className="text-[0.65rem] font-semibold tracking-[0.22em] uppercase block mb-6"
-              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
+              style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
             >
               {t("home.hero.eyebrow")}
             </span>
             <h2
-              className="text-4xl md:text-6xl font-bold text-white mb-4 leading-[1.05]"
-              style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.03em" }}
+              className="text-4xl md:text-6xl text-white mb-4 leading-[1.1]"
+              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
             >
-              {t("cta.headline1")}<br />
-              <em style={{ fontFamily: "'Lora', serif", fontWeight: 400, fontStyle: "normal" }}>
+              {t("cta.headline1")}{" "}
+              <em style={{ fontStyle: "italic", color: "#FFB066" }}>
                 {t("cta.headline2")}
               </em>
             </h2>
             <p
               className="text-white/50 text-sm mb-10 leading-relaxed"
-              style={{ fontFamily: "'DM Sans', sans-serif" }}
+              style={{ fontFamily: "'Outfit', sans-serif" }}
             >
               {t("exp.cta.body")}
             </p>
