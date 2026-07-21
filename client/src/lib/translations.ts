@@ -28,10 +28,10 @@ export const translations: Record<string, Record<string, string>> = {
     "footer.copyright": "© 2026 redvive. born in Helsinki.",
 
     // ── HOME — Hero v8 ──
-    "home.hero.eyebrow": "full-body red light therapy studios — opening in Helsinki fall 2026.",
-    "home.hero.line1": "your body knows how to recover",
-    "home.hero.line2": "we just give it light.",
-    "home.hero.sub": "lock your 29€/month founding member rate today. get early access.",
+    "home.hero.eyebrow": "helsinki · opening soon",
+    "home.hero.line1": "Finland's first automated red light studio.",
+    "home.hero.line2": "",
+    "home.hero.sub": "private red light therapy — open 24/7. founding membership: 29€/month, locked for life. only 99 spots.",
     "home.hero.disclosure": "the studios are being built in Helsinki. join today for the unveiling.",
     "home.hero.scroll": "continue.",
 
@@ -99,7 +99,7 @@ export const translations: Record<string, Record<string, string>> = {
     "form.consent_link": "privacy policy",
     "form.submit": "join the waitlist",
     "form.sending": "sending…",
-    "form.no_payment": "*you don't pay anything yet, you lock in your founding member price.",
+    "form.no_payment": "no payment now — just reserve your founding price.",
     "form.success_title": "you're on the list.",
     "form.founding_member": "founding member #{n}.",
     "form.general_waitlist": "you're on the waitlist.",

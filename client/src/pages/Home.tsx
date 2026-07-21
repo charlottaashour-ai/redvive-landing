@@ -411,9 +411,10 @@ export default function Home() {
                       <span>{pre1}</span>
                       <span style={{ color: "rgba(255,255,255,1)" }}>{last1}</span>
                     </span>
-                    {/* Line 2 — Lora italic */}
+                    {/* Line 2 — Lora italic (only if non-empty) */}
                     {(() => {
                       const line2 = t("home.hero.line2");
+                      if (!line2) return null;
                       const lastSpace2 = line2.lastIndexOf(" ");
                       const pre2 = lastSpace2 >= 0 ? line2.slice(0, lastSpace2 + 1) : "";
                       const last2 = lastSpace2 >= 0 ? line2.slice(lastSpace2 + 1) : line2;
