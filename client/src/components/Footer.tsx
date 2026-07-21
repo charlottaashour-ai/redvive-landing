@@ -42,7 +42,7 @@ export default function Footer() {
             </Link>
             <p
               className="text-xs leading-relaxed"
-              style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'Outfit', sans-serif" }}
+              style={{ color: "rgba(255,249,249,0.35)", fontFamily: "'DM Sans', sans-serif" }}
             >
               {taglineLines.map((line, i) => (
                 <span key={i}>{line}{i < taglineLines.length - 1 && <br />}</span>
@@ -54,7 +54,7 @@ export default function Footer() {
           <div>
             <p
               className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
-              style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
+              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
               {t("nav.navigate")}
             </p>
@@ -63,7 +63,7 @@ export default function Footer() {
                 <Link key={href} href={href}>
                   <span
                     className="text-sm transition-colors duration-200 hover:text-white cursor-pointer"
-                    style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'Outfit', sans-serif" }}
+                    style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif" }}
                   >
                     {label}
                   </span>
@@ -76,13 +76,13 @@ export default function Footer() {
           <div>
             <p
               className="text-[0.65rem] font-semibold tracking-[0.18em] uppercase mb-5"
-              style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
+              style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
             >
               {t("nav.opening")}
             </p>
             <p
               className="text-sm mb-6"
-              style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'Outfit', sans-serif", lineHeight: 1.6 }}
+              style={{ color: "rgba(255,249,249,0.45)", fontFamily: "'DM Sans', sans-serif", lineHeight: 1.6 }}
             >
               {footerCtaLines.map((line, i) => (
                 <span key={i}>{line}{i < footerCtaLines.length - 1 && <br />}</span>
@@ -101,7 +101,7 @@ export default function Footer() {
         >
           <p
             className="text-xs"
-            style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'Outfit', sans-serif" }}
+            style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
           >
             {t("footer.copyright")}
           </p>
@@ -109,7 +109,7 @@ export default function Footer() {
             <Link href={t("footer.privacy_path")}>
               <span
                 className="text-xs cursor-pointer transition-colors hover:text-white/50"
-                style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'Outfit', sans-serif" }}
+                style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
               >
                 {t("footer.privacy")}
               </span>
@@ -119,7 +119,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs transition-colors hover:text-white/50"
-              style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'Outfit', sans-serif" }}
+              style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
             >
               Instagram
             </a>
@@ -128,7 +128,7 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs transition-colors hover:text-white/50"
-              style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'Outfit', sans-serif" }}
+              style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
             >
               TikTok
             </a>

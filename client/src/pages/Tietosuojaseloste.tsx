@@ -1,6 +1,6 @@
 // Tietosuojaseloste — Redvive (/tietosuoja)
 // Design: warm cream #FAF6F4 background, charcoal #1A0A08 text
-// Max-width 720px centred, Outfit body, generous spacing
+// Max-width 720px centred, DM Sans body, generous spacing
 // Quiet, neutral, trustworthy — Finnish language version
 
 import Navbar from "@/components/Navbar";
@@ -13,7 +13,7 @@ function H2({ children }: { children: React.ReactNode }) {
   return (
     <h2
       className="text-xl font-bold mt-12 mb-4"
-      style={{ fontFamily: "'Outfit', sans-serif", color: "#1A0A08", letterSpacing: "-0.02em" }}
+      style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A0A08", letterSpacing: "-0.02em" }}
     >
       {children}
     </h2>
@@ -24,7 +24,7 @@ function H3({ children }: { children: React.ReactNode }) {
   return (
     <h3
       className="text-base font-semibold mt-6 mb-2"
-      style={{ fontFamily: "'Outfit', sans-serif", color: "#1A0A08" }}
+      style={{ fontFamily: "'DM Sans', sans-serif", color: "#1A0A08" }}
     >
       {children}
     </h3>
@@ -35,7 +35,7 @@ function P({ children }: { children: React.ReactNode }) {
   return (
     <p
       className="text-base leading-relaxed mb-3"
-      style={{ fontFamily: "'Outfit', sans-serif", color: "#3D1A14", lineHeight: 1.7 }}
+      style={{ fontFamily: "'DM Sans', sans-serif", color: "#3D1A14", lineHeight: 1.7 }}
     >
       {children}
     </p>
@@ -50,7 +50,7 @@ function UL({ items }: { items: React.ReactNode[] }) {
           key={i}
           className="text-base"
           style={{
-            fontFamily: "'Outfit', sans-serif",
+            fontFamily: "'DM Sans', sans-serif",
             color: "#3D1A14",
             lineHeight: 1.7,
             marginBottom: "8px",
@@ -118,7 +118,7 @@ function Table({ headers, rows }: { headers: string[]; rows: string[][] }) {
         style={{
           width: "100%",
           borderCollapse: "collapse",
-          fontFamily: "'Outfit', sans-serif",
+          fontFamily: "'DM Sans', sans-serif",
           fontSize: "0.875rem",
           color: "#3D1A14",
         }}
@@ -179,14 +179,14 @@ export default function Tietosuojaseloste() {
           {/* Header */}
           <p
             className="text-[0.6rem] font-semibold tracking-[0.2em] uppercase mb-4"
-            style={{ color: "#D53E0F", fontFamily: "'Outfit', sans-serif" }}
+            style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}
           >
             Oikeudellinen
           </p>
           <h1
             className="font-bold mb-2"
             style={{
-              fontFamily: "'Outfit', sans-serif",
+              fontFamily: "'DM Sans', sans-serif",
               color: "#1A0A08",
               fontSize: "clamp(2rem, 5vw, 3rem)",
               letterSpacing: "-0.03em",
@@ -197,7 +197,7 @@ export default function Tietosuojaseloste() {
           </h1>
           <p
             className="text-sm mb-10"
-            style={{ color: "#7A4A42", fontFamily: "'Outfit', sans-serif" }}
+            style={{ color: "#7A4A42", fontFamily: "'DM Sans', sans-serif" }}
           >
             Päivitetty viimeksi: 27.5.2026
           </p>
@@ -451,7 +451,7 @@ export default function Tietosuojaseloste() {
             <Link href="/privacy">
               <span
                 className="text-xs tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity"
-                style={{ color: "#7A4A42", fontFamily: "'Outfit', sans-serif" }}
+                style={{ color: "#7A4A42", fontFamily: "'DM Sans', sans-serif" }}
               >
                 Read in English →
               </span>
@@ -460,7 +460,7 @@ export default function Tietosuojaseloste() {
             <Link href="/">
               <span
                 className="text-xs tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity"
-                style={{ color: "#7A4A42", fontFamily: "'Outfit', sans-serif" }}
+                style={{ color: "#7A4A42", fontFamily: "'DM Sans', sans-serif" }}
               >
                 ← Takaisin etusivulle
               </span>
