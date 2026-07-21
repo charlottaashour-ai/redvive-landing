@@ -393,41 +393,22 @@ export default function Home() {
               {t("home.hero.eyebrow")}
             </motion.p>
 
-            {/* Headline line 1 — Fraunces serif */}
+            {/* Hero headline — Outfit 700, brand red on last word */}
             {(() => {
               const line1 = t("home.hero.line1");
-              // Split into preamble + last word (language-agnostic)
               const lastSpace1 = line1.lastIndexOf(" ");
               const pre1 = lastSpace1 >= 0 ? line1.slice(0, lastSpace1 + 1) : "";
               const last1 = lastSpace1 >= 0 ? line1.slice(lastSpace1 + 1) : line1;
               return (
                 <motion.div variants={heroItem}>
                   <h1 className="mb-6">
-                    {/* Line 1 — Fraunces serif, weight 400, italic-amber on last word */}
                     <span
-                      className="block text-[42px] md:text-[72px] leading-[1.1]"
-                      style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em", color: "rgba(255,255,255,0.82)" }}
+                      className="block text-[42px] md:text-[72px] leading-[1.05]"
+                      style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: "#F6ECE7" }}
                     >
                       <span>{pre1}</span>
-                      <span style={{ fontStyle: "italic", color: "#FFB066" }}>{last1}</span>
+                      <span style={{ color: "#E0231A" }}>{last1}</span>
                     </span>
-                    {/* Line 2 — Fraunces italic (only if non-empty) */}
-                    {(() => {
-                      const line2 = t("home.hero.line2");
-                      if (!line2) return null;
-                      const lastSpace2 = line2.lastIndexOf(" ");
-                      const pre2 = lastSpace2 >= 0 ? line2.slice(0, lastSpace2 + 1) : "";
-                      const last2 = lastSpace2 >= 0 ? line2.slice(lastSpace2 + 1) : line2;
-                      return (
-                        <span
-                          className="block text-[42px] md:text-[72px] leading-[1.05]"
-                          style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, fontStyle: "italic", letterSpacing: "-0.01em", color: "rgba(255,255,255,0.65)" }}
-                        >
-                          <span>{pre2}</span>
-                          <span style={{ color: "rgba(255,255,255,1)" }}>{last2}</span>
-                        </span>
-                      );
-                    })()}
                   </h1>
                 </motion.div>
               );
@@ -485,12 +466,12 @@ export default function Home() {
               <span className="section-label block mb-6">{t("hiw.label")}</span>
               <h2
                 className="text-4xl md:text-6xl leading-[1.1]"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em", color: "#1A1008" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: "#1A1008" }}
               >
                 {t("hiw.sub").split(".")[0]}.<br />
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {t("hiw.sub").split(". ")[1] ?? ""}
-                </em>
+                </span>
               </h2>
             </div>
 
@@ -563,9 +544,9 @@ export default function Home() {
               </span>
               <h2
                 className="text-4xl md:text-5xl lg:text-[3.25rem] leading-[1.1] mb-6"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, color: "#1c1a19", letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: "#1c1a19" }}
               >
-                the whole ritual. <em style={{ fontStyle: "italic", color: "#B0342A" }}>one app.</em>
+                the whole ritual. <span style={{ color: "#E0231A" }}>one app.</span>
               </h2>
               <p
                 className="text-base md:text-lg leading-relaxed mb-10 max-w-md"
@@ -610,7 +591,7 @@ export default function Home() {
             <div className="flex items-baseline justify-center gap-3 md:gap-5 flex-wrap">
               <span
                 className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] leading-none"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.02em", color: "#FFF9F9" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: "#F6ECE7" }}
               >
                 €29
               </span>
@@ -627,7 +608,7 @@ export default function Home() {
           <div className="reveal text-center mb-6">
             <p
               className="text-2xl sm:text-3xl md:text-4xl"
-              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, color: "#FFF9F9" }}
+              style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: "#F6ECE7" }}
             >
               {t("pricing.locked")}
             </p>
@@ -662,7 +643,7 @@ export default function Home() {
               >
                 <p
                   className="text-4xl md:text-5xl mb-3"
-                  style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.02em", color: "#D53E0F" }}
+                  style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em", color: "#E0231A" }}
                 >
                   {item.stat}
                 </p>
@@ -767,12 +748,12 @@ export default function Home() {
               </span>
               <h2
                 className="text-4xl md:text-6xl leading-[1.1] text-white"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {(() => { const s = t("who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {(() => { const s = t("who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
-                </em>
+                </span>
               </h2>
             </div>
 
@@ -815,12 +796,12 @@ export default function Home() {
               </span>
               <h2
                 className="text-4xl md:text-6xl text-white mb-4 leading-[1.1]"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {t("cta.headline1")}<br />
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {t("cta.headline2")}
-                </em>
+                </span>
               </h2>
               <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'Outfit', sans-serif" }}>
                 {t("cta.body")}

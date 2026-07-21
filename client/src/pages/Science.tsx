@@ -141,10 +141,10 @@ export default function Science() {
             <motion.div variants={heroItem}>
               <h1
                 className="text-5xl md:text-7xl leading-[1.05] text-white"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {t("science.hero1")}{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>{t("science.hero2")}</em>
+                <span style={{ color: "#E0231A" }}>{t("science.hero2")}</span>
               </h1>
             </motion.div>
           </div>
@@ -181,12 +181,12 @@ export default function Science() {
               <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("science.mech.label")}</span>
               <h2
                 className="text-3xl md:text-5xl leading-[1.1] mb-6 text-white"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {t("science.mech.title").split("\n")[0]}{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {t("science.mech.title").split("\n")[1] ?? ""}
-                </em>
+                </span>
               </h2>
               <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
             </div>
@@ -261,12 +261,12 @@ export default function Science() {
               <span className="section-label block mb-4">{t("carousel.label")}</span>
               <h2
                 className="text-3xl md:text-5xl text-[#1A1008] leading-[1.1]"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {t("science.result.eyebrow").split(". ")[0]}.{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {t("science.result.eyebrow").split(". ")[1] ?? ""}
-                </em>
+                </span>
               </h2>
             </div>
 
@@ -295,7 +295,7 @@ export default function Science() {
                       </p>
                       <p
                         className="text-lg leading-snug text-[#1A1008]"
-                        style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                        style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
                       >
                         {group.headline}
                       </p>
@@ -346,12 +346,12 @@ export default function Science() {
             <span className="section-label block mb-6">{t("science.theresult.label")}</span>
             <h2
               className="text-3xl md:text-5xl leading-[1.1] mb-6 text-[#1A1008]"
-              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+              style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
             >
               {(() => { const s = t("science.theresult.title"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
-              <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+              <span style={{ color: "#E0231A" }}>
                 {(() => { const s = t("science.theresult.title"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
-              </em>
+              </span>
             </h2>
             <span className="brand-rule mb-8" />
             <div className="grid md:grid-cols-2 gap-12">
@@ -372,12 +372,12 @@ export default function Science() {
           <div className="reveal max-w-xl mx-auto text-center">
             <h2
               className="text-3xl md:text-5xl leading-[1.1] mb-8 text-[#1A1008]"
-              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+              style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
             >
               {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
-              <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+              <span style={{ color: "#E0231A" }}>
                 {(() => { const s = t("science.cta.question"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
-              </em>
+              </span>
             </h2>
             <div className="flex flex-col items-center sm:flex-row gap-4 justify-center">
               <button className="btn-primary" onClick={scrollToWaitlist}>{t("nav.reserve")}</button>

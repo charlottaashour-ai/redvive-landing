@@ -141,9 +141,9 @@ export default function Experience() {
             <motion.div variants={heroItem}>
               <h1
                 className="text-5xl md:text-7xl leading-[1.05] text-white"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
-                {t("exp.hero1")}{t("exp.hero2") ? <>{" "}<em style={{ fontStyle: "italic", color: "#FFB066" }}>{t("exp.hero2")}</em></> : null}
+                {t("exp.hero1")}{t("exp.hero2") ? <>{" "}<span style={{ color: "#E0231A" }}>{t("exp.hero2")}</span></> : null}
               </h1>
             </motion.div>
           </div>
@@ -174,7 +174,7 @@ export default function Experience() {
             <span className="section-label block mb-6">{t("exp.philosophy.eyebrow")}</span>
               <h2
                 className="text-3xl md:text-5xl text-[#1A1008] mb-12 leading-[1.1]"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {(() => {
                   const title = t("exp.philosophy.title");
@@ -182,7 +182,7 @@ export default function Experience() {
                   return (
                     <>
                       <span>{title.slice(0, lastSpace + 1)}</span>
-                      <em style={{ fontStyle: "italic", color: "#FFB066" }}>{title.slice(lastSpace + 1)}</em>
+                      <span style={{ color: "#E0231A" }}>{title.slice(lastSpace + 1)}</span>
                     </>
                   );
                 })()}
@@ -218,12 +218,12 @@ export default function Experience() {
               <span className="section-label block mb-4">{t("hiw.label")}</span>
               <h2
                 className="text-3xl md:text-5xl text-[#1A1008] leading-[1.1]"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {t("hiw.sub").split(".")[0]}.{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {t("hiw.sub").split(". ")[1] ?? ""}
-                </em>
+                </span>
               </h2>
             </div>
 
@@ -284,12 +284,12 @@ export default function Experience() {
               <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("exp.studio.label")}</span>
               <h2
                 className="text-3xl md:text-5xl leading-[1.1] mb-6 text-white"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {t("exp.studio.title").split(". ")[0]}.{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {t("exp.studio.title").split(". ").slice(1).join(". ")}
-                </em>
+                </span>
               </h2>
               <span className="brand-rule mb-8" style={{ backgroundColor: "#D53E0F" }} />
             </div>
@@ -335,12 +335,12 @@ export default function Experience() {
               <span className="section-label block mb-4">{t("who.label")}</span>
               <h2
                 className="text-3xl md:text-5xl text-[#1A1008] leading-[1.1]"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {(() => { const s = t("exp.who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? s : s.slice(0, i); })()}{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+                <span style={{ color: "#E0231A" }}>
                   {(() => { const s = t("exp.who.sub"); const i = s.lastIndexOf(" "); return i === -1 ? "" : s.slice(i + 1); })()}
-                </em>
+                </span>
               </h2>
             </div>
 
@@ -405,12 +405,12 @@ export default function Experience() {
             </span>
             <h2
               className="text-4xl md:text-6xl text-white mb-4 leading-[1.1]"
-              style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+              style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
             >
               {t("cta.headline1")}{" "}
-              <em style={{ fontStyle: "italic", color: "#FFB066" }}>
+              <span style={{ color: "#E0231A" }}>
                 {t("cta.headline2")}
-              </em>
+              </span>
             </h2>
             <p
               className="text-white/50 text-sm mb-10 leading-relaxed"

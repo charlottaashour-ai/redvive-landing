@@ -3,7 +3,7 @@
  * Philosophy: Finnish minimalism meets scientific precision.
  * Base: Soft rose white (#FFF9F9). Gradient as hero accent only.
  * Red (crimson) reserved for CTAs and key actions ONLY.
- * Typography: Outfit (body/UI) + Fraunces (display/headlines)
+ * Typography: Outfit 700 (headlines) + Outfit 300 (body/UI)
  */
 
 @import "tailwindcss";
@@ -109,10 +109,11 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: 'Fraunces', serif;
-    font-weight: 400;
-    letter-spacing: -0.01em;
-    line-height: 1.12;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-transform: lowercase;
   }
 }
 
@@ -205,11 +206,10 @@
     color: #D53E0F;
   }
 
-  /* Tagline — italic serif */
+  /* Tagline */
   .tagline {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 400;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
   }
 
   /* Divider line — crimson */

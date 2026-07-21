@@ -184,10 +184,10 @@ export default function FAQ() {
             <motion.div variants={heroItem}>
               <h1
                 className="text-5xl md:text-7xl leading-[1.05] text-white"
-                style={{ fontFamily: "'Fraunces', serif", fontWeight: 400, letterSpacing: "-0.01em" }}
+                style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, letterSpacing: "-0.02em" }}
               >
                 {t("faq.hero1")}{" "}
-                <em style={{ fontStyle: "italic", color: "#FFB066" }}>{t("faq.hero2")}</em>
+                <span style={{ color: "#E0231A" }}>{t("faq.hero2")}</span>
               </h1>
             </motion.div>
           </div>
