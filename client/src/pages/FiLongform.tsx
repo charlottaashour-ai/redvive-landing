@@ -145,10 +145,28 @@ export default function FiLongform() {
 
   useEffect(() => {
     document.documentElement.lang = "fi";
-    document.title = "Punavaloterapia Helsingissä — mitä se on ja kenelle | Redvive";
+    document.title = "Punavalohoito Helsingissä — mitä se on ja kenelle | Redvive";
     let desc = document.querySelector('meta[name="description"]');
     if (!desc) { desc = document.createElement("meta"); desc.setAttribute("name", "description"); document.head.appendChild(desc); }
     desc.setAttribute("content", "Mitä punavaloterapia on, miten se toimii ja kenelle se sopii. Redvive avaa Helsingin keskustaan syksyllä 2026 studion, joka on auki ympäri vuorokauden.");
+    // OG tags
+    const setMeta = (prop: string, val: string, attr = "property") => {
+      let el = document.querySelector(`meta[${attr}="${prop}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, prop); document.head.appendChild(el); }
+      el.setAttribute("content", val);
+    };
+    setMeta("og:type", "website");
+    setMeta("og:url", "https://redvivestudios.com/fi/punavaloterapia-helsinki");
+    setMeta("og:locale", "fi_FI");
+    setMeta("og:site_name", "Redvive");
+    setMeta("og:title", "Punavalohoito Helsingissä — mitä se on ja kenelle | Redvive");
+    setMeta("og:description", "Mitä punavaloterapia on, miten se toimii ja kenelle se sopii. Redvive avaa Helsingin keskustaan syksyllä 2026 studion, joka on auki ympäri vuorokauden.");
+    setMeta("og:image", "https://redvivestudios.com/redvive-og-fi.png");
+    setMeta("og:image:width", "1200");
+    setMeta("og:image:height", "630");
+    setMeta("og:image:alt", "Redvive — punavaloterapiastudio Helsingin keskustassa");
+    setMeta("twitter:card", "summary_large_image", "name");
+    setMeta("twitter:image", "https://redvivestudios.com/redvive-og-fi.png", "name");
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
     canonical.setAttribute("href", "https://redvivestudios.com/fi/punavaloterapia-helsinki");

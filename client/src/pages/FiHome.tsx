@@ -139,11 +139,29 @@ export default function FiHome() {
   // Set document lang and meta
   useEffect(() => {
     document.documentElement.lang = "fi";
-    document.title = "Punavaloterapia Helsingissä 24/7 | Redvive Studios";
+    document.title = "Punavaloterapia Helsinki — auki 24/7 | Redvive";
     // Meta description
     let desc = document.querySelector('meta[name="description"]');
     if (!desc) { desc = document.createElement("meta"); desc.setAttribute("name", "description"); document.head.appendChild(desc); }
     desc.setAttribute("content", "Redvive avaa Helsingin keskustaan syksyllä 2026 — Suomen ainoan pelkälle punavalolle rakennetun studion. Yksityiset huoneet, koko kehon paneelit, auki ympäri vuorokauden. Liity jonotuslistalle.");
+    // OG tags
+    const setMeta = (prop: string, val: string, attr = "property") => {
+      let el = document.querySelector(`meta[${attr}="${prop}"]`) as HTMLMetaElement | null;
+      if (!el) { el = document.createElement("meta"); el.setAttribute(attr, prop); document.head.appendChild(el); }
+      el.setAttribute("content", val);
+    };
+    setMeta("og:type", "website");
+    setMeta("og:url", "https://redvivestudios.com/fi/");
+    setMeta("og:locale", "fi_FI");
+    setMeta("og:site_name", "Redvive");
+    setMeta("og:title", "Punavaloterapia Helsinki — auki 24/7 | Redvive");
+    setMeta("og:description", "Suomen ainoa studio, joka on rakennettu vain punavaloa varten. Oma huone, oma sovellus, auki ympäri vuorokauden. Avaamme Helsingin keskustaan syksyllä 2026.");
+    setMeta("og:image", "https://redvivestudios.com/redvive-og-fi.png");
+    setMeta("og:image:width", "1200");
+    setMeta("og:image:height", "630");
+    setMeta("og:image:alt", "Redvive — punavaloterapiastudio Helsingin keskustassa");
+    setMeta("twitter:card", "summary_large_image", "name");
+    setMeta("twitter:image", "https://redvivestudios.com/redvive-og-fi.png", "name");
     // Canonical
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement("link"); canonical.setAttribute("rel", "canonical"); document.head.appendChild(canonical); }
