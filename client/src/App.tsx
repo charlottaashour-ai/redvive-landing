@@ -12,6 +12,8 @@ import Experience from "./pages/Experience";
 import FAQ from "./pages/FAQ";
 import Privacy from "./pages/Privacy";
 import Tietosuojaseloste from "./pages/Tietosuojaseloste";
+import FiHome from "./pages/FiHome";
+import FiLongform from "./pages/FiLongform";
 
 function Router() {
   return (
@@ -24,6 +26,9 @@ function Router() {
         <Route path="/faq" component={FAQ} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/tietosuoja" component={Tietosuojaseloste} />
+        <Route path="/fi" component={FiHome} />
+        <Route path="/fi/" component={FiHome} />
+        <Route path="/fi/punavaloterapia-helsinki" component={FiLongform} />
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

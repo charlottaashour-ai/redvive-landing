@@ -1,6 +1,6 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 
-type Language = "en";
+export type Language = "en" | "fi";
 
 interface LanguageContextValue {
   language: Language;
@@ -12,9 +12,27 @@ const LanguageContext = createContext<LanguageContextValue>({
   setLanguage: () => {},
 });
 
+function detectLanguage(): Language {
+  if (typeof window !== "undefined" && window.location.pathname.startsWith("/fi")) {
+    return "fi";
+  }
+  return "en";
+}
+
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguageState] = useState<Language>(detectLanguage);
+
+  useEffect(() => {
+    const detected = detectLanguage();
+    setLanguageState(detected);
+  }, []);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+  };
+
   return (
-    <LanguageContext.Provider value={{ language: "en", setLanguage: () => {} }}>
+    <LanguageContext.Provider value={{ language, setLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
