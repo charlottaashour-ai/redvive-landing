@@ -1,0 +1,36 @@
+{
+  "build_command": "pnpm run build",
+  "capabilities": [],
+  "dev_command": "pnpm run dev",
+  "env_vars": {},
+  "experiments": null,
+  "git_remote": {
+    "repo_url": "s3://vida-prod-gitrepo/webdev-git/96599177/JqwAwUnbRJPvfQwDrcMJaa",
+    "access_key_id": "ASIAZV3A2ECZA4YLACFF",
+    "secret_access_key": "5IRVChcYStK83OXaC1GfzA1KVdTbQi3QyOrvlVrF",
+    "session_token": "IQoJb3JpZ2luX2VjEM7//////////wEaCXVzLWVhc3QtMSJIMEYCIQCYC7vd/hb+mRekkLz8I64OraUVanfBJBc2dN05WDT/VQIhANWJQ3IeID6WdCOs95Fy8nJd/9Jkq7i3tP+8OLPoW22IKusDCJf//////////wEQBBoMNjY1Mzg2MDk4ODY2IgyAE218U1uOmloIWmMqvwMU4yrQyfAX1qOXe2lYgbzA7Rn7Zxk4QkaZif63OJ1vlQ+j8ctUFgVXSs9CTMwo+N2VOslhzQX18yJyKgacOQ3FVVGS4czEa52IPMX1xxTzjbKuU2euN8Ra8sDCvObhlwPywhfzyHcvZNFcvTxn7xrjJaklGuaJ9y6CQFALwZSQhG2peEw9dX4cCHbuK1fSN2IgMZgAWrMkHdB0loPFTnd13MoU4sdlGHjRSlotuQROxfc6619qJvqbHaPORbquPlJauMItn0+OcackUDW3uBHAHPAATLTua9TGTeo4d9PQ+cZulAyNE/5dh3xq8qzc6JJSZgfDswLfrCe8A8sCYhpZnzDrGyWsIlh9IoNvkuLWnd197TMNFwCliXzDaFPScGCGJVmrBgmfNz7zqCuicfvk7dXuBbEk730MQ4+dssRLf2KMbKNDpZ0AXD0D9p8jVYNFCY3m8RH4hIzR0SDR1cfZpyIjYLuHur5Um2NZOpD0YMAOblke6fAayD7VscRdcl3GzEA0uTvPnPJbU+c1I6EfI+rMh3krknMqhs/dXugHyzFKUneVr8wDTeaO08D9EeWOwURJvfzuF+wGs0lR7PMw3ait0wY6nAE7fGRTjNFe1uaNig/4mi4IUlbwVdYXeDBM/EIQkETbqKaaBA1AxS76iU7UxTw6aZye4b7XSFkLGiOgctsG1J2VRx2WUEo3g1sqRe2IunD79QpY9pi/NzWevUJ033ttEQZZW/prz0MjoA3NU9CYge8fxD4v2caerWIS/7ZSGCZBNsvBavEPVvFLA+Jm5oQzUgznWwOvuD8UB5bBplk=",
+    "expiration": "2026-07-31T01:40:45.000Z",
+    "backend": "GIT_BACKEND_S3"
+  },
+  "name": "redvive",
+  "path": "/home/ubuntu/redvive",
+  "port": 3000,
+  "secrets": {
+    "BUILT_IN_FORGE_API_KEY": "JU4VDV2ASuodZEHbaeeEQu",
+    "BUILT_IN_FORGE_API_URL": "https://forge.manus.ai",
+    "JWT_SECRET": "oGKRkAtM58mrHEuXh3fph4",
+    "OAUTH_SERVER_URL": "https://api.manus.im",
+    "OWNER_NAME": "Redvive",
+    "OWNER_OPEN_ID": "GPsPmSZrmDt486iqqMbWng",
+    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
+    "VITE_ANALYTICS_WEBSITE_ID": "1ddfc610-1a2c-449c-98b8-e59e758801eb",
+    "VITE_APP_ID": "JqwAwUnbRJPvfQwDrcMJaa",
+    "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/96599177/uxPAkKVdMjaBbufT.png",
+    "VITE_APP_TITLE": "Redvive — Intimate Wellness",
+    "VITE_FRONTEND_FORGE_API_KEY": "QCHwQFGpWqcW4yhvFtCsU7",
+    "VITE_FRONTEND_FORGE_API_URL": "https://forge.manus.ai",
+    "VITE_OAUTH_PORTAL_URL": "https://manus.im"
+  },
+  "template_id": "web-static",
+  "test_command": "pnpm test"
+}
