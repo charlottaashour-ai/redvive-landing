@@ -34,7 +34,7 @@ export default function Navbar() {
     setMenuOpen(false);
   }, [location]);
 
-  const isHeroPage = location === "/";
+  const isHeroPage = location === "/" || location === "/fi/" || location === "/fi";
   const isTransparent = isHeroPage && !scrolled && !menuOpen;
 
   const navLinks = [
@@ -70,7 +70,7 @@ export default function Navbar() {
             textTransform: "uppercase",
           }}
         >
-          only 99 founding member spots.
+          {t("urgency.text")}
         </span>
       </div>
     </div>

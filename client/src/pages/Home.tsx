@@ -71,6 +71,8 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
   const [email, setEmail] = useState("");
   const [postalCode, setPostalCode] = useState("");
   const [consent, setConsent] = useState(false);
+  const [interest, setInterest] = useState<string | null>(null);
+  const [segExpanded, setSegExpanded] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [foundingNumber, setFoundingNumber] = useState<string | null>(null);
   const [isFounding, setIsFounding] = useState<boolean | null>(null);
@@ -110,6 +112,7 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
           language,
           consent: true,
           postalCode: postalCode.trim() || undefined,
+          interest: interest || undefined,
           eventId,
           marketingConsent,
         }),
@@ -257,6 +260,65 @@ function WaitlistForm({ dark = true }: { dark?: boolean }) {
           .
         </span>
       </label>
+      {/* ── SEGMENTATION: "what brought you here?" ── */}
+      <div className="w-full">
+        <button
+          type="button"
+          onClick={() => setSegExpanded(!segExpanded)}
+          className="text-left w-full flex items-center justify-between"
+          style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.7rem", color: dark ? "rgba(255,255,255,0.45)" : "rgba(26,16,8,0.5)", cursor: "pointer", background: "none", border: "none", padding: "4px 0" }}
+          aria-expanded={segExpanded}
+        >
+          <span>{t("seg.question")}</span>
+          <span style={{ fontSize: "0.6rem", opacity: 0.6, transition: "transform 0.2s", transform: segExpanded ? "rotate(180deg)" : "rotate(0deg)" }}>▼</span>
+        </button>
+        <div
+          style={{
+            maxHeight: segExpanded ? "120px" : "0px",
+            opacity: segExpanded ? 1 : 0,
+            overflow: "hidden",
+            transition: "max-height 0.2s ease, opacity 0.2s ease",
+          }}
+        >
+          <p className="text-[0.6rem] mb-2" style={{ color: dark ? "rgba(255,255,255,0.3)" : "rgba(26,16,8,0.4)", fontFamily: "'DM Sans', sans-serif" }}>
+            {t("seg.helper")}
+          </p>
+          <div className="flex flex-wrap gap-1.5 mb-1" role="radiogroup" aria-label={t("seg.question")}>
+            {(["skin", "recovery", "sleep", "energy", "curious"] as const).map((key) => {
+              const selected = interest === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  role="radio"
+                  aria-checked={selected}
+                  onClick={() => setInterest(selected ? null : key)}
+                  style={{
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: "0.6rem",
+                    fontWeight: 500,
+                    padding: "4px 10px",
+                    borderRadius: "999px",
+                    border: selected ? "1px solid #D53E0F" : `1px solid ${dark ? "rgba(255,255,255,0.15)" : "rgba(26,16,8,0.15)"}`,
+                    backgroundColor: selected ? "rgba(213,62,15,0.15)" : "transparent",
+                    color: selected ? "#D53E0F" : dark ? "rgba(255,255,255,0.5)" : "rgba(26,16,8,0.5)",
+                    cursor: "pointer",
+                    transition: "all 0.15s ease",
+                  }}
+                >
+                  {t(`seg.${key}`)}
+                </button>
+              );
+            })}
+          </div>
+          <button
+            type="button"
+            style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "0.55rem", color: dark ? "rgba(255,255,255,0.3)" : "rgba(26,16,8,0.35)", background: "none", border: "none", cursor: "pointer", padding: "2px 0" }}
+          >
+            {t("seg.skip")}
+          </button>
+        </div>
+      </div>
       {error && (
         <p className="text-xs" style={{ color: "#D53E0F", fontFamily: "'DM Sans', sans-serif" }}>{error}</p>
       )}
@@ -307,6 +369,34 @@ export default function Home() {
       }
     }
   }, []);
+  // ── SEO: dynamic title, meta description, hreflang ──
+  const { language } = useLanguage();
+  useEffect(() => {
+    if (language === "fi") {
+      document.title = "redvive — suomen ensimmäinen automatisoitu punavalostudio | helsinki";
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute("content", "yksityistä punavaloa helsingissä, auki 24/7. liity jonotuslistalle ja lukitse perustajahinta 29 €/kk elinikäisesti — vain 99 paikkaa.");
+    } else {
+      document.title = "Redvive — Punavalohoito Helsinki | Red Light Therapy";
+      const metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) metaDesc.setAttribute("content", "Private red light therapy studio in Helsinki, open 24/7. Join the waitlist and lock in the founding member rate of 29€/month for life — only 99 spots.");
+    }
+    // hreflang tags
+    const existing = document.querySelectorAll('link[rel="alternate"][hreflang]');
+    existing.forEach(el => el.remove());
+    const hreflangs = [
+      { hreflang: "en", href: "https://redvivestudios.com/" },
+      { hreflang: "fi", href: "https://redvivestudios.com/fi/" },
+      { hreflang: "x-default", href: "https://redvivestudios.com/" },
+    ];
+    hreflangs.forEach(({ hreflang, href }) => {
+      const link = document.createElement("link");
+      link.rel = "alternate";
+      link.hreflang = hreflang;
+      link.href = href;
+      document.head.appendChild(link);
+    });
+  }, [language]);
 
   const howBeats = [
     { title: t("hiw.step1.title"), body: t("hiw.step1.body") },
@@ -441,6 +531,14 @@ export default function Home() {
               >
                 {t("home.hero.sub")}
               </p>
+              {t("home.hero.offer") && (
+                <p
+                  className="text-sm md:text-base leading-relaxed mt-2"
+                  style={{ color: "rgba(255,255,255,0.75)", fontFamily: "'DM Sans', sans-serif", fontWeight: 600, maxWidth: "420px" }}
+                >
+                  {t("home.hero.offer")}
+                </p>
+              )}
             </motion.div>
             {/* Waitlist form */}
             <motion.div variants={heroItem} className="max-w-md mb-4">
@@ -559,19 +657,19 @@ export default function Home() {
                 className="section-label block mb-5"
                 style={{ fontFamily: "'DM Sans', sans-serif" }}
               >
-                the app
+{t("app.label")}
               </span>
               <h2
                 className="text-4xl md:text-5xl lg:text-[3.25rem] font-bold leading-[1.05] mb-6"
                 style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 700, color: "#1c1a19", letterSpacing: "-0.03em" }}
               >
-                the whole ritual. one app.
+{t("app.headline")}
               </h2>
               <p
                 className="text-base md:text-lg leading-relaxed mb-10 max-w-md"
                 style={{ color: "#6f6763", fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}
               >
-                your studio, in your pocket. book and manage every session in seconds — affordable red-light therapy, open 24/7.
+{t("app.body")}
               </p>
 
             </div>
@@ -612,13 +710,13 @@ export default function Home() {
                 className="text-[5rem] sm:text-[7rem] md:text-[10rem] lg:text-[13rem] font-bold leading-none"
                 style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.04em", color: "#FFF9F9" }}
               >
-                €29
+                {t("pricing.amount")}
               </span>
               <span
                 className="text-xl sm:text-2xl md:text-3xl font-normal self-end pb-3 md:pb-6"
                 style={{ fontFamily: "'DM Sans', sans-serif", color: "rgba(255,249,249,0.5)" }}
               >
-                / month.
+                {t("pricing.period")}
               </span>
             </div>
           </div>

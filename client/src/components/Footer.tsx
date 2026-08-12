@@ -7,6 +7,7 @@
 
 import { Link } from "wouter";
 import { useTranslation } from "@/lib/translations";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
 
 const LOGO_WHITE =
@@ -14,6 +15,7 @@ const LOGO_WHITE =
 
 export default function Footer() {
   const t = useTranslation();
+  const { language } = useLanguage();
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -103,6 +105,11 @@ export default function Footer() {
             className="text-xs"
             style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
           >
+          {language === "fi" && (
+            <p className="text-[0.6rem] leading-relaxed mb-3 max-w-lg" style={{ color: "rgba(255,249,249,0.25)", fontFamily: "'DM Sans', sans-serif" }}>
+              {t("compliance.footer")}
+            </p>
+          )}
             {t("footer.copyright")}
           </p>
           <div className="flex gap-6 flex-wrap">
