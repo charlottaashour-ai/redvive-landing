@@ -13,6 +13,7 @@ import { Link, useLocation } from "wouter";
 import { useTranslation } from "@/lib/translations";
 import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
 import LanguageToggle from "./LanguageToggle";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const LOGO_WHITE =
   "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-logo-white_320ba7bd.png";
@@ -22,6 +23,8 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
   const t = useTranslation();
+  const { language } = useLanguage();
+  const prefix = language === "fi" ? "/fi" : "";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -38,9 +41,9 @@ export default function Navbar() {
   const isTransparent = isHeroPage && !scrolled && !menuOpen;
 
   const navLinks = [
-    { href: "/science", label: t("nav.science") },
-    { href: "/experience", label: t("nav.experience") },
-    { href: "/faq", label: t("nav.faq") },
+    { href: `${prefix}/science`, label: t("nav.science") },
+    { href: `${prefix}/experience`, label: t("nav.experience") },
+    { href: `${prefix}/faq`, label: t("nav.faq") },
   ];
 
   return (
@@ -88,7 +91,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 lg:h-20">
 
           {/* Logo — always white */}
-          <Link href="/">
+          <Link href={language === "fi" ? "/fi/" : "/"}>
             <span className="block cursor-pointer">
               <img
                 src={LOGO_WHITE}

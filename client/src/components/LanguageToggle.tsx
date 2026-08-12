@@ -1,18 +1,7 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useLocation } from "wouter";
 
 export function LanguageToggle({ className = "" }: { className?: string }) {
-  const { language } = useLanguage();
-  const [, navigate] = useLocation();
-
-  const switchTo = (lang: "en" | "fi") => {
-    if (lang === language) return;
-    if (lang === "fi") {
-      navigate("/fi/");
-    } else {
-      navigate("/");
-    }
-  };
+  const { language, setLanguage } = useLanguage();
 
   return (
     <div
@@ -21,8 +10,8 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
       aria-label="Change language / Vaihda kieli"
     >
       <button
-        onClick={() => switchTo("en")}
-        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); switchTo("en"); } }}
+        onClick={() => setLanguage("en")}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setLanguage("en"); } }}
         aria-checked={language === "en"}
         role="radio"
         style={{
@@ -44,8 +33,8 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
       </button>
       <span style={{ color: "rgba(255,255,255,0.25)", fontSize: "10px" }}>·</span>
       <button
-        onClick={() => switchTo("fi")}
-        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); switchTo("fi"); } }}
+        onClick={() => setLanguage("fi")}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setLanguage("fi"); } }}
         aria-checked={language === "fi"}
         role="radio"
         style={{

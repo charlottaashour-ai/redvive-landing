@@ -1,5 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { useLocation } from "wouter";
 
 type Language = "en" | "fi";
 
@@ -13,9 +12,9 @@ const LanguageContext = createContext<LanguageContextValue>({
   setLanguage: () => {},
 });
 
-function detectInitialLanguage(pathname: string): Language {
-  // URL takes priority
-  if (pathname.startsWith("/fi")) return "fi";
+function detectInitialLanguage(): Language {
+  // URL takes priority on first load
+  if (typeof window !== "undefined" && window.location.pathname.startsWith("/fi")) return "fi";
   // Then localStorage
   try {
     const stored = localStorage.getItem("redvive_lang");
@@ -27,16 +26,7 @@ function detectInitialLanguage(pathname: string): Language {
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [location] = useLocation();
-  const [language, setLanguageState] = useState<Language>(() => detectInitialLanguage(location));
-
-  // Sync language from URL changes
-  useEffect(() => {
-    const urlLang: Language = location.startsWith("/fi") ? "fi" : "en";
-    if (urlLang !== language) {
-      setLanguageState(urlLang);
-    }
-  }, [location]);
+  const [language, setLanguageState] = useState<Language>(detectInitialLanguage);
 
   // Persist to localStorage
   useEffect(() => {

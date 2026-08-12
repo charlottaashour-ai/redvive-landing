@@ -15,6 +15,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { useTranslation } from "@/lib/translations";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
 
 const heroContainer = {
@@ -54,6 +55,12 @@ function useReveal() {
 export default function Science() {
   useReveal();
   const t = useTranslation();
+  const { language } = useLanguage();
+  useEffect(() => {
+    document.title = language === "fi"
+      ? "punavalon tiede — 660 nm & 850 nm | redvive helsinki"
+      : "The Science — Red Light Therapy | Redvive Helsinki";
+  }, [language]);
 
   const BENEFITS = [
     {

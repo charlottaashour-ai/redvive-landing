@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/lib/translations";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const heroContainer = {
   hidden: {},
@@ -91,6 +92,12 @@ function AccordionItem({ q, a }: { q: string; a: string }) {
 export default function FAQ() {
   useReveal();
   const t = useTranslation();
+  const { language } = useLanguage();
+  useEffect(() => {
+    document.title = language === "fi"
+      ? "usein kysyttyä punavalosta | redvive helsinki"
+      : "Frequently Asked — Red Light Therapy FAQ | Redvive Helsinki";
+  }, [language]);
 
   const faqs = [
     {

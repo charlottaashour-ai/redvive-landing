@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { useTranslation } from "@/lib/translations";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
 
 const heroContainer = {
@@ -52,6 +53,12 @@ function useReveal() {
 export default function Experience() {
   useReveal();
   const t = useTranslation();
+  const { language } = useLanguage();
+  useEffect(() => {
+    document.title = language === "fi"
+      ? "kokemus — yksityinen punavalostudio helsingissä | redvive"
+      : "The Experience — Private Red Light Studio | Redvive Helsinki";
+  }, [language]);
 
   const steps = [
     {

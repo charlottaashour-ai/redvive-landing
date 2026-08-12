@@ -22,8 +22,11 @@ function Router() {
         <Route path="/fi/" component={Home} />
         <Route path="/fi" component={Home} />
         <Route path="/science" component={Science} />
+        <Route path="/fi/science" component={Science} />
         <Route path="/experience" component={Experience} />
+        <Route path="/fi/experience" component={Experience} />
         <Route path="/faq" component={FAQ} />
+        <Route path="/fi/faq" component={FAQ} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/tietosuoja" component={Tietosuojaseloste} />
         <Route path="/404" component={NotFound} />

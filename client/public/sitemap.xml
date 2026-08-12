@@ -13,8 +13,35 @@
     <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://redvivestudios.com/"/>
   </url>
-  <url><loc>https://redvivestudios.com/science</loc></url>
-  <url><loc>https://redvivestudios.com/experience</loc></url>
-  <url><loc>https://redvivestudios.com/faq</loc></url>
+  <url>
+    <loc>https://redvivestudios.com/science</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://redvivestudios.com/science"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/science"/>
+  </url>
+  <url>
+    <loc>https://redvivestudios.com/fi/science</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://redvivestudios.com/science"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/science"/>
+  </url>
+  <url>
+    <loc>https://redvivestudios.com/experience</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://redvivestudios.com/experience"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/experience"/>
+  </url>
+  <url>
+    <loc>https://redvivestudios.com/fi/experience</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://redvivestudios.com/experience"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/experience"/>
+  </url>
+  <url>
+    <loc>https://redvivestudios.com/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://redvivestudios.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/faq"/>
+  </url>
+  <url>
+    <loc>https://redvivestudios.com/fi/faq</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://redvivestudios.com/faq"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/faq"/>
+  </url>
   <url><loc>https://redvivestudios.com/privacy</loc></url>
 </urlset>
