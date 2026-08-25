@@ -2,3 +2,6 @@
 - [x] Add the approved Finnish philosophy lines verbatim.
 - [x] Verify the Finnish Experience route renders the translated stack.
 - [ ] Save a checkpoint and report the correction.
+- [ ] Save the approved Finnish benefits and Science update checkpoint.
+- [ ] Push the approved checkpoint to GitHub.
+- [ ] Verify the Vercel-served /fi/, /fi/experience, and /fi/tiede pages.

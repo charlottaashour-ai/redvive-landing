@@ -254,6 +254,31 @@ export default function Science() {
               </div>
             </div>
 
+            {language === "fi" && (
+              <section className="reveal pt-20 md:pt-28" aria-labelledby="solutasolla-heading">
+                <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("science.cell.label")}</span>
+                <h2
+                  id="solutasolla-heading"
+                  className="text-3xl md:text-5xl font-bold leading-[1.1] mb-10 text-white"
+                  style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+                >
+                  {t("science.cell.title")}
+                </h2>
+                <div className="max-w-3xl space-y-6 text-white/60 text-sm md:text-base leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  <p>{t("science.cell.p1")}</p>
+                  <p>{t("science.cell.p2")}</p>
+                  <p>{t("science.cell.p3")}</p>
+                  <p><strong className="font-semibold text-white/75">{t("science.cell.p4.lead")}</strong>{t("science.cell.p4.rest")}</p>
+                </div>
+                <p className="mt-10 text-[0.65rem] leading-relaxed" style={{ color: "rgba(255,249,249,0.38)", fontFamily: "'DM Sans', sans-serif" }}>
+                  <span>{t("science.cell.sources.prefix")}</span>
+                  <a href="https://doi.org/10.3934/biophy.2017.3.337" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white/70 transition-colors">{t("science.cell.sources.hamblin")}</a>
+                  <span> · </span>
+                  <a href="https://doi.org/10.2203/dose-response.11-009.Hamblin" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white/70 transition-colors">{t("science.cell.sources.huang")}</a>
+                </p>
+              </section>
+            )}
+
           </div>
         </div>
       </section>

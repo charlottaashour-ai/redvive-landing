@@ -91,7 +91,7 @@ export default function Experience() {
   const specs = [
     { value: "660nm", label: t("exp.spec.red") },
     { value: "850nm", label: t("exp.spec.nir") },
-    { value: "10 min", label: t("exp.spec.session") },
+    { value: "10 min", label: t("exp.spec.visit") },
     { value: "24/7", label: t("exp.spec.open") },
   ];
 

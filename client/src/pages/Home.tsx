@@ -410,6 +410,13 @@ export default function Home() {
     { stat: t("carousel.sleep"), label: t("carousel.sleep_sub"), body: t("carousel.sleep_body") },
   ];
 
+  const FI_BENEFITS = [
+    { heading: t("fi.home.benefit1.heading"), subheading: t("fi.home.benefit1.subheading"), body: t("fi.home.benefit1.body") },
+    { heading: t("fi.home.benefit2.heading"), subheading: t("fi.home.benefit2.subheading"), body: t("fi.home.benefit2.body") },
+    { heading: t("fi.home.benefit3.heading"), subheading: t("fi.home.benefit3.subheading"), body: t("fi.home.benefit3.body") },
+    { heading: t("fi.home.benefit4.heading"), subheading: t("fi.home.benefit4.subheading"), body: t("fi.home.benefit4.body") },
+  ];
+
   const whoLines = [
     t("who.1"),
     t("who.2"),
@@ -799,50 +806,81 @@ export default function Home() {
         </div>
       </div>
       <div style={{ backgroundColor: "#FFF9F9", overflow: "hidden" }}>
-        <div className="relative py-10 md:py-14" style={{ overflow: "hidden" }}>
-          <div
-            className="flex"
-            style={{
-              animation: "statsScroll 22s linear infinite",
-              width: "max-content",
-            }}
-          >
-            {[...STATS, ...STATS, ...STATS].map((item, i) => (
-              <div
-                key={i}
-                className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
-                style={{
-                  width: "280px",
-                  borderRight: "1px solid rgba(26,16,8,0.07)",
-                }}
-              >
-                <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
+        {language === "fi" ? (
+          <div className="container py-10 md:py-14">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ backgroundColor: "rgba(26,16,8,0.07)" }}>
+              {FI_BENEFITS.map((item, i) => (
+                <article
+                  key={item.heading}
+                  className="reveal flex flex-col px-8 py-10 md:px-12 md:py-12"
+                  style={{ backgroundColor: "#FFF9F9", transitionDelay: `${i * 80}ms`, minHeight: "300px" }}
+                >
                   <p
-                    className="font-bold leading-none"
-                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                    className="font-bold leading-none mb-4"
+                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2.25rem, 4vw, 3rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}
                   >
-                    {item.stat}
+                    {item.heading}
                   </p>
-                </div>
-                <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
-                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>
-                    {item.label}
+                  <p
+                    className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-5"
+                    style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}
+                  >
+                    {item.subheading}
                   </p>
-                </div>
-                <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
-                <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
+                  <div className="w-6 h-px mb-5" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+                  <p className="text-sm leading-relaxed max-w-md" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif" }}>
                     {item.body}
                   </p>
-                </div>
-              </div>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
-          <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #FFF9F9 0%, transparent 100%)" }} />
-          <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #FFF9F9 0%, transparent 100%)" }} />
-        </div>
+        ) : (
+          <div className="relative py-10 md:py-14" style={{ overflow: "hidden" }}>
+            <div
+              className="flex"
+              style={{
+                animation: "statsScroll 22s linear infinite",
+                width: "max-content",
+              }}
+            >
+              {[...STATS, ...STATS, ...STATS].map((item, i) => (
+                <div
+                  key={i}
+                  className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
+                  style={{
+                    width: "280px",
+                    borderRight: "1px solid rgba(26,16,8,0.07)",
+                  }}
+                >
+                  <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                    <p
+                      className="font-bold leading-none"
+                      style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
+                    >
+                      {item.stat}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
+                    <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>
+                      {item.label}
+                    </p>
+                  </div>
+                  <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+                  <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
+                      {item.body}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #FFF9F9 0%, transparent 100%)" }} />
+            <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #FFF9F9 0%, transparent 100%)" }} />
+          </div>
+        )}
         <div className="flex justify-center py-8 px-8" style={{ borderTop: "1px solid rgba(26,16,8,0.07)" }}>
-          <Link href="/science">
+          <Link href={language === "fi" ? "/fi/tiede" : "/science"}>
             <button className="btn-ghost">{t("carousel.cta")}</button>
           </Link>
         </div>
