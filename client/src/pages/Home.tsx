@@ -18,6 +18,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useTranslation } from "@/lib/translations";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { openWaitlistModal } from "@/lib/scrollToWaitlist";
 
 const HERO_IMG_DESKTOP = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-desktop_07a3adf7.webp";
 const HERO_IMG_MOBILE = "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/hero-mobile_16619120.webp";
@@ -356,19 +357,6 @@ export default function Home() {
   useReveal();
   const t = useTranslation();
 
-  // Smooth-scroll to #waitlist when arriving via /#waitlist hash link
-  useEffect(() => {
-    if (window.location.hash === "#waitlist") {
-      const el = document.getElementById("waitlist");
-      if (el) {
-        // Small delay to let the page paint before scrolling
-        const timer = setTimeout(() => {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 120);
-        return () => clearTimeout(timer);
-      }
-    }
-  }, []);
   // ── SEO: dynamic title, meta description, hreflang ──
   const { language } = useLanguage();
   useEffect(() => {
@@ -547,18 +535,9 @@ export default function Home() {
                 </p>
               )}
             </motion.div>
-            {/* Waitlist form */}
-            <motion.div variants={heroItem} className="max-w-md mb-4">
-              <WaitlistForm dark={true} />
-            </motion.div>
-            {/* Disclosure line */}
-            <motion.div variants={heroItem}>
-              <p
-                className="text-xs leading-relaxed"
-                style={{ color: "rgba(255,255,255,0.35)", fontFamily: "'DM Sans', sans-serif", fontStyle: "italic", maxWidth: "420px" }}
-              >
-                {t("home.hero.disclosure")}
-              </p>
+            {/* Waitlist CTA — opens the shared centered form banner */}
+            <motion.div variants={heroItem} className="mt-8">
+              <button className="btn-primary" onClick={openWaitlistModal}>{t("form.submit")}</button>
             </motion.div>
           </div>
         </motion.div>
@@ -961,7 +940,7 @@ export default function Home() {
               <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 {t("cta.body")}
               </p>
-              <WaitlistForm dark={true} />
+              <button className="btn-primary" onClick={openWaitlistModal}>{t("form.submit")}</button>
             </div>
           </div>
         </div>

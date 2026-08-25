@@ -8,7 +8,7 @@
 import { Link } from "wouter";
 import { useTranslation } from "@/lib/translations";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
+import { openWaitlistModal } from "@/lib/scrollToWaitlist";
 
 const LOGO_WHITE =
   "https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/redvive-logo-white_320ba7bd.png";
@@ -90,7 +90,7 @@ export default function Footer() {
                 <span key={i}>{line}{i < footerCtaLines.length - 1 && <br />}</span>
               ))}
             </p>
-            <button className="btn-primary text-xs" onClick={scrollToWaitlist}>
+            <button className="btn-primary text-xs" onClick={openWaitlistModal}>
               {t("nav.reserve")}
             </button>
           </div>

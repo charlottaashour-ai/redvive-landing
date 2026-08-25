@@ -1,25 +1,15 @@
 /**
- * scrollToWaitlist
+ * openWaitlistModal
  * ─────────────────
- * If the user is already on the Home page, smoothly scrolls to #waitlist.
- * If they are on any other page, navigates to /#waitlist — the browser will
- * land at the anchor, and a one-shot scroll listener then smooth-scrolls into
- * view once the DOM is ready.
+ * Opens the one shared centered waitlist-modal banner from any page.
  *
  * Usage:
- *   import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
- *   <button onClick={scrollToWaitlist}>join the waitlist</button>
+ *   import { openWaitlistModal } from "@/lib/scrollToWaitlist";
+ *   <button onClick={openWaitlistModal}>join the waitlist</button>
  */
-export function scrollToWaitlist(e?: React.MouseEvent | MouseEvent): void {
+export const WAITLIST_MODAL_OPEN_EVENT = "redvive:open-waitlist-modal";
+
+export function openWaitlistModal(e?: React.MouseEvent | MouseEvent): void {
   if (e) e.preventDefault();
-
-  const el = document.getElementById("waitlist");
-
-  if (el) {
-    // Already on Home — smooth scroll in place
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-  } else {
-    // Navigate to home, then scroll after paint
-    window.location.href = "/#waitlist";
-  }
+  window.dispatchEvent(new Event(WAITLIST_MODAL_OPEN_EVENT));
 }

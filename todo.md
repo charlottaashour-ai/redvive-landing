@@ -2,6 +2,11 @@
 - [x] Add the approved Finnish philosophy lines verbatim.
 - [x] Verify the Finnish Experience route renders the translated stack.
 - [ ] Save a checkpoint and report the correction.
-- [ ] Save the approved Finnish benefits and Science update checkpoint.
-- [ ] Push the approved checkpoint to GitHub.
-- [ ] Verify the Vercel-served /fi/, /fi/experience, and /fi/tiede pages.
+- [x] Save the approved Finnish benefits and Science update checkpoint.
+- [x] Push the approved checkpoint to GitHub.
+- [x] Verify the Vercel-served /fi/, /fi/experience, and /fi/tiede pages.
+- [x] Audit the current waitlist form and every CTA that opens it.
+- [x] Build a centered, accessible waitlist-modal banner using the existing localized form.
+- [x] Route all English and Finnish waitlist CTAs to the modal and remove duplicate embedded forms.
+- [x] Verify consent, keyboard close behavior, success state, and mobile layout.
+- [ ] Save the approved modal update and sync it to GitHub.

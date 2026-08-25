@@ -12,6 +12,7 @@ import Experience from "./pages/Experience";
 import FAQ from "./pages/FAQ";
 import Privacy from "./pages/Privacy";
 import Tietosuojaseloste from "./pages/Tietosuojaseloste";
+import WaitlistModal from "./components/WaitlistModal";
 
 function Router() {
   return (
@@ -45,6 +46,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <WaitlistModal />
         </TooltipProvider>
       </ThemeProvider>
       </LanguageProvider>

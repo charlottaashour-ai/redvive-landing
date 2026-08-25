@@ -11,7 +11,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { useTranslation } from "@/lib/translations";
-import { scrollToWaitlist } from "@/lib/scrollToWaitlist";
+import { openWaitlistModal } from "@/lib/scrollToWaitlist";
 import LanguageToggle from "./LanguageToggle";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -143,7 +143,7 @@ export default function Navbar() {
           {/* Desktop right: Language toggle + CTA */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageToggle />
-            <button className="btn-primary text-xs" onClick={scrollToWaitlist}>
+            <button className="btn-primary text-xs" onClick={openWaitlistModal}>
               {t("nav.reserve")}
             </button>
           </div>
@@ -194,7 +194,7 @@ export default function Navbar() {
             </div>
             <button
               className="btn-primary w-full mt-2 justify-center"
-              onClick={() => { setMenuOpen(false); scrollToWaitlist(); }}
+              onClick={() => { setMenuOpen(false); openWaitlistModal(); }}
             >
               {t("nav.reserve")}
             </button>
