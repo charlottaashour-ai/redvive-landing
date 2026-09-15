@@ -24,8 +24,41 @@
     <meta name="twitter:title" content="Redvive — Punavalohoito Helsinki | Red Light Therapy" />
     <meta name="twitter:description" content="Full-body red light recovery in Helsinki. Step into the light — the future of wellness." />
     <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/og-image_d69151a5.png" />
-    <!-- Cookiebot CMP — MUST be first script; auto-blocks tracking scripts before consent -->
+    <!-- Google Consent Mode v2 — must run before gtag and before Cookiebot -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'granted',
+        security_storage: 'granted',
+        wait_for_update: 2000
+      });
+      gtag('js', new Date());
+    </script>
+    <!-- Cookiebot CMP — maintains consent choices used by GA4 and Meta Pixel -->
     <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="a53795c3-e46f-4f11-84a1-e539b8d42f10" data-blockingmode="auto" type="text/javascript"></script>
+    <!-- GA4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1E0W5FBGC"></script>
+    <script>
+      gtag('config', 'G-S1E0W5FBGC', { anonymize_ip: true });
+
+      function redviveSyncConsent() {
+        var c = (window.Cookiebot && window.Cookiebot.consent) || {};
+        gtag('consent', 'update', {
+          analytics_storage:  c.statistics ? 'granted' : 'denied',
+          ad_storage:         c.marketing  ? 'granted' : 'denied',
+          ad_user_data:       c.marketing  ? 'granted' : 'denied',
+          ad_personalization: c.marketing  ? 'granted' : 'denied'
+        });
+      }
+      window.addEventListener('CookiebotOnConsentReady', redviveSyncConsent);
+      window.addEventListener('CookiebotOnAccept', redviveSyncConsent);
+      window.addEventListener('CookiebotOnDecline', redviveSyncConsent);
+    </script>
     <!-- Font preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,12 +72,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script
-      defer
-      type="text/plain"
-      data-cookieconsent="statistics"
-      src="%VITE_ANALYTICS_ENDPOINT%/umami"
-      data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
     <!-- Meta Pixel — gated by Cookiebot marketing consent; never fires without it -->
     <script>
       (function() {

@@ -6,8 +6,15 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTranslation } from "@/lib/translations";
+import type { WaitlistFormLocation } from "@/lib/scrollToWaitlist";
 
-export default function WaitlistForm() {
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
+export default function WaitlistForm({ formLocation }: { formLocation: WaitlistFormLocation }) {
   const t = useTranslation();
   const { language } = useLanguage();
   const [firstName, setFirstName] = useState("");
@@ -58,6 +65,13 @@ export default function WaitlistForm() {
           setSubmitted(true);
           if (marketingConsent && typeof (window as any).fbq === "function") {
             (window as any).fbq("track", "Lead", { content_name: "Redvive waitlist", currency: "EUR", value: 0 }, { eventID: eventId });
+          }
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "waitlist_signup", {
+              language: language,
+              form_location: formLocation,
+              interest: interest || "skip",
+            });
           }
           return;
         }

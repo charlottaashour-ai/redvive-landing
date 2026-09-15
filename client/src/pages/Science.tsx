@@ -415,7 +415,7 @@ export default function Science() {
               </em>
             </h2>
             <div className="flex flex-col items-center sm:flex-row gap-4 justify-center">
-              <button className="btn-primary" onClick={openWaitlistModal}>{t("nav.reserve")}</button>
+              <button className="btn-primary" onClick={openWaitlistModal("footer")}>{t("nav.reserve")}</button>
             </div>
           </div>
         </div>

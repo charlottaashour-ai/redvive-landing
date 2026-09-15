@@ -13,6 +13,7 @@ import FAQ from "./pages/FAQ";
 import Privacy from "./pages/Privacy";
 import Tietosuojaseloste from "./pages/Tietosuojaseloste";
 import WaitlistModal from "./components/WaitlistModal";
+import CanonicalManager from "./components/CanonicalManager";
 
 function Router() {
   return (
@@ -23,7 +24,6 @@ function Router() {
         <Route path="/fi/" component={Home} />
         <Route path="/fi" component={Home} />
         <Route path="/science" component={Science} />
-        <Route path="/fi/science" component={Science} />
         <Route path="/fi/tiede" component={Science} />
         <Route path="/experience" component={Experience} />
         <Route path="/fi/experience" component={Experience} />
@@ -45,6 +45,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
+          <CanonicalManager />
           <Router />
           <WaitlistModal />
         </TooltipProvider>

@@ -8,8 +8,11 @@
  *   <button onClick={openWaitlistModal}>join the waitlist</button>
  */
 export const WAITLIST_MODAL_OPEN_EVENT = "redvive:open-waitlist-modal";
+export type WaitlistFormLocation = "hero" | "footer";
 
-export function openWaitlistModal(e?: React.MouseEvent | MouseEvent): void {
-  if (e) e.preventDefault();
-  window.dispatchEvent(new Event(WAITLIST_MODAL_OPEN_EVENT));
+export function openWaitlistModal(formLocation: WaitlistFormLocation) {
+  return (event?: React.MouseEvent | MouseEvent): void => {
+    if (event) event.preventDefault();
+    window.dispatchEvent(new CustomEvent(WAITLIST_MODAL_OPEN_EVENT, { detail: { formLocation } }));
+  };
 }

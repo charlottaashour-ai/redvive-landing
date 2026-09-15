@@ -90,7 +90,7 @@ export default function Footer() {
                 <span key={i}>{line}{i < footerCtaLines.length - 1 && <br />}</span>
               ))}
             </p>
-            <button className="btn-primary text-xs" onClick={openWaitlistModal}>
+            <button className="btn-primary text-xs" onClick={openWaitlistModal("footer")}>
               {t("nav.reserve")}
             </button>
           </div>

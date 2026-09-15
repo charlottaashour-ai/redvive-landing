@@ -41,7 +41,7 @@ export default function Navbar() {
   const isTransparent = isHeroPage && !scrolled && !menuOpen;
 
   const navLinks = [
-    { href: `${prefix}/science`, label: t("nav.science") },
+    { href: language === "fi" ? "/fi/tiede" : "/science", label: t("nav.science") },
     { href: `${prefix}/experience`, label: t("nav.experience") },
     { href: `${prefix}/faq`, label: t("nav.faq") },
   ];
@@ -143,7 +143,7 @@ export default function Navbar() {
           {/* Desktop right: Language toggle + CTA */}
           <div className="hidden md:flex items-center gap-4">
             <LanguageToggle />
-            <button className="btn-primary text-xs" onClick={openWaitlistModal}>
+            <button className="btn-primary text-xs" onClick={openWaitlistModal("hero")}>
               {t("nav.reserve")}
             </button>
           </div>
@@ -194,7 +194,7 @@ export default function Navbar() {
             </div>
             <button
               className="btn-primary w-full mt-2 justify-center"
-              onClick={() => { setMenuOpen(false); openWaitlistModal(); }}
+              onClick={() => { setMenuOpen(false); openWaitlistModal("hero")(); }}
             >
               {t("nav.reserve")}
             </button>

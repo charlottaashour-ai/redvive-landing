@@ -22,8 +22,6 @@
     "OAUTH_SERVER_URL": "https://api.manus.im",
     "OWNER_NAME": "Redvive",
     "OWNER_OPEN_ID": "GPsPmSZrmDt486iqqMbWng",
-    "VITE_ANALYTICS_ENDPOINT": "https://manus-analytics.com",
-    "VITE_ANALYTICS_WEBSITE_ID": "1ddfc610-1a2c-449c-98b8-e59e758801eb",
     "VITE_APP_ID": "JqwAwUnbRJPvfQwDrcMJaa",
     "VITE_APP_LOGO": "https://files.manuscdn.com/user_upload_by_module/web_dev_logo/96599177/uxPAkKVdMjaBbufT.png",
     "VITE_APP_TITLE": "Redvive — Intimate Wellness",

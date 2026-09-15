@@ -9,7 +9,7 @@ import { X } from "lucide-react";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { useTranslation } from "@/lib/translations";
 import WaitlistForm from "@/components/WaitlistForm";
-import { WAITLIST_MODAL_OPEN_EVENT } from "@/lib/scrollToWaitlist";
+import { WAITLIST_MODAL_OPEN_EVENT, type WaitlistFormLocation } from "@/lib/scrollToWaitlist";
 
 const container = {
   hidden: { opacity: 0, y: 18 },
@@ -22,9 +22,12 @@ export default function WaitlistModal() {
   const t = useTranslation();
   const [open, setOpen] = useState(false);
   const [formKey, setFormKey] = useState(0);
+  const [formLocation, setFormLocation] = useState<WaitlistFormLocation>("hero");
 
   useEffect(() => {
-    const openModal = () => {
+    const openModal = (event?: Event) => {
+      const detail = event instanceof CustomEvent ? event.detail as { formLocation?: WaitlistFormLocation } : undefined;
+      setFormLocation(detail?.formLocation === "footer" ? "footer" : "hero");
       setFormKey((value) => value + 1);
       setOpen(true);
     };
@@ -65,7 +68,7 @@ export default function WaitlistModal() {
             </DialogDescription>
           </motion.div>
           <motion.div variants={item}>
-            <WaitlistForm key={formKey} />
+            <WaitlistForm key={formKey} formLocation={formLocation} />
           </motion.div>
         </motion.div>
       </DialogContent>

@@ -19,9 +19,9 @@
     <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/science"/>
   </url>
   <url>
-    <loc>https://redvivestudios.com/fi/science</loc>
+    <loc>https://redvivestudios.com/fi/tiede</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://redvivestudios.com/science"/>
-    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/science"/>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/tiede"/>
   </url>
   <url>
     <loc>https://redvivestudios.com/experience</loc>
@@ -44,4 +44,5 @@
     <xhtml:link rel="alternate" hreflang="fi" href="https://redvivestudios.com/fi/faq"/>
   </url>
   <url><loc>https://redvivestudios.com/privacy</loc></url>
+  <url><loc>https://redvivestudios.com/tietosuoja</loc></url>
 </urlset>

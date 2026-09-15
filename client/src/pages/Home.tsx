@@ -563,7 +563,7 @@ export default function Home() {
             </motion.div>
             {/* Waitlist CTA — opens the shared centered form banner */}
             <motion.div variants={heroItem} className="mt-8">
-              <button className="btn-primary" onClick={openWaitlistModal}>{t("form.submit")}</button>
+              <button className="btn-primary" onClick={openWaitlistModal("hero")}>{t("form.submit")}</button>
             </motion.div>
           </div>
         </motion.div>
@@ -989,7 +989,7 @@ export default function Home() {
               <p className="text-white/50 text-sm mb-10 leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 {t("cta.body")}
               </p>
-              <button className="btn-primary" onClick={openWaitlistModal}>{t("form.submit")}</button>
+              <button className="btn-primary" onClick={openWaitlistModal("footer")}>{t("form.submit")}</button>
             </div>
           </div>
         </div>
