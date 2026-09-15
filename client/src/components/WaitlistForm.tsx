@@ -131,7 +131,7 @@ export default function WaitlistForm({ formLocation }: { formLocation: WaitlistF
         <div className={segExpanded ? "mt-2 max-h-36 overflow-hidden opacity-100 transition-all" : "max-h-0 overflow-hidden opacity-0 transition-all"}>
           <p className="mb-2 text-[0.6rem] text-white/30">{t("seg.helper")}</p>
           <div className="mb-1 flex flex-wrap gap-1.5" role="radiogroup" aria-label={t("seg.question")}>
-            {(["skin", "recovery", "sleep", "energy", "curious"] as const).map((key) => {
+            {(["skin-hair", "recovery", "sleep", "stiffness", "energy", "curious"] as const).map((key) => {
               const selected = interest === key;
               return <button key={key} type="button" role="radio" aria-checked={selected} onClick={() => setInterest(selected ? null : key)} className={selected ? "rounded-full border border-[#D53E0F] bg-[#D53E0F]/15 px-2.5 py-1 text-[0.6rem] font-medium text-[#D53E0F]" : "rounded-full border border-white/15 px-2.5 py-1 text-[0.6rem] font-medium text-white/50"}>{t(`seg.${key}`)}</button>;
             })}

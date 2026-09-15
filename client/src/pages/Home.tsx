@@ -395,16 +395,19 @@ export default function Home() {
   ];
 
   const STATS = [
-    { stat: t("carousel.skin"), label: t("carousel.skin_sub"), body: t("carousel.skin_body") },
-    { stat: t("carousel.recovery"), label: t("carousel.recovery_sub"), body: t("carousel.recovery_body") },
-    { stat: t("carousel.sleep"), label: t("carousel.sleep_sub"), body: t("carousel.sleep_body") },
+    { label: t("carousel.skin"), headline: t("carousel.skin_sub"), body: t("carousel.skin_body") },
+    { label: t("carousel.recovery"), headline: t("carousel.recovery_sub"), body: t("carousel.recovery_body") },
+    { label: t("carousel.sleep"), headline: t("carousel.sleep_sub"), body: t("carousel.sleep_body") },
+    { label: t("carousel.stiffness"), headline: t("carousel.stiffness_sub"), body: t("carousel.stiffness_body") },
+    { label: t("carousel.energy"), headline: t("carousel.energy_sub"), body: t("carousel.energy_body") },
   ];
 
   const FI_BENEFITS = [
-    { heading: t("fi.home.benefit1.heading"), subheading: t("fi.home.benefit1.subheading"), body: t("fi.home.benefit1.body") },
-    { heading: t("fi.home.benefit2.heading"), subheading: t("fi.home.benefit2.subheading"), body: t("fi.home.benefit2.body") },
-    { heading: t("fi.home.benefit3.heading"), subheading: t("fi.home.benefit3.subheading"), body: t("fi.home.benefit3.body") },
-    { heading: t("fi.home.benefit4.heading"), subheading: t("fi.home.benefit4.subheading"), body: t("fi.home.benefit4.body") },
+    { label: t("fi.home.benefit1.label"), headline: t("fi.home.benefit1.headline"), body: t("fi.home.benefit1.body") },
+    { label: t("fi.home.benefit2.label"), headline: t("fi.home.benefit2.headline"), body: t("fi.home.benefit2.body") },
+    { label: t("fi.home.benefit3.label"), headline: t("fi.home.benefit3.headline"), body: t("fi.home.benefit3.body") },
+    { label: t("fi.home.benefit4.label"), headline: t("fi.home.benefit4.headline"), body: t("fi.home.benefit4.body") },
+    { label: t("fi.home.benefit5.label"), headline: t("fi.home.benefit5.headline"), body: t("fi.home.benefit5.body") },
   ];
 
   useEffect(() => {
@@ -817,14 +820,14 @@ export default function Home() {
               <aside className="hidden lg:block" aria-label="benefit navigation">
                 <div className="sticky top-36 border-l" style={{ borderColor: "rgba(26,16,8,0.14)" }}>
                   <p className="mb-5 pl-4 text-[0.55rem] font-semibold uppercase tracking-[0.18em]" style={{ color: "rgba(26,16,8,0.35)", fontFamily: "'DM Sans', sans-serif" }}>
-                    01—04
+                    01—05
                   </p>
                   <div className="flex flex-col" role="list">
                     {FI_BENEFITS.map((item, i) => {
                       const active = activeFiBenefit === i;
                       return (
                         <button
-                          key={item.heading}
+                          key={item.label}
                           type="button"
                           role="listitem"
                           aria-current={active ? "true" : undefined}
@@ -837,7 +840,7 @@ export default function Home() {
                         >
                           <span className="absolute left-[-1px] top-0 h-full w-px motion-reduce:transition-none" style={{ backgroundColor: "#D53E0F", opacity: active ? 1 : 0, transition: "opacity 280ms ease" }} />
                           <span className="text-[0.6rem] font-semibold" style={{ color: active ? "#D53E0F" : "rgba(26,16,8,0.28)", fontFamily: "'DM Sans', sans-serif", transition: "color 280ms ease" }}>0{i + 1}</span>
-                          <span className="text-xs font-semibold leading-tight" style={{ color: active ? "#1A1008" : "rgba(26,16,8,0.36)", fontFamily: "'DM Sans', sans-serif", transition: "color 280ms ease" }}>{item.heading}</span>
+                          <span className="text-xs font-semibold leading-tight" style={{ color: active ? "#1A1008" : "rgba(26,16,8,0.36)", fontFamily: "'DM Sans', sans-serif", transition: "color 280ms ease" }}>{item.label}</span>
                         </button>
                       );
                     })}
@@ -845,17 +848,31 @@ export default function Home() {
                 </div>
               </aside>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ backgroundColor: "rgba(26,16,8,0.07)" }}>
+              <div className="flex gap-px overflow-x-auto pb-3 md:hidden snap-x snap-mandatory" style={{ backgroundColor: "rgba(26,16,8,0.07)" }}>
+                {FI_BENEFITS.map((item, i) => (
+                  <article
+                    key={item.label}
+                    className="reveal flex w-[min(82vw,20rem)] flex-none snap-start flex-col px-8 py-10"
+                    style={{ backgroundColor: "#FFF9F9", transitionDelay: `${i * 80}ms`, minHeight: "300px" }}
+                  >
+                    <p className="text-[0.7rem] font-medium mb-4" style={{ color: "rgba(26,16,8,0.48)", fontFamily: "'DM Sans', sans-serif" }}>{item.label}</p>
+                    <p className="font-bold leading-none mb-5" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 8vw, 2.75rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}>{item.headline}</p>
+                    <div className="w-6 h-px mb-5" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+                    <p className="text-sm leading-relaxed max-w-md" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif" }}>{item.body}</p>
+                  </article>
+                ))}
+              </div>
+              <div className="hidden md:grid md:grid-cols-6 gap-px">
                 {FI_BENEFITS.map((item, i) => (
                   <article
                     ref={(element) => { fiBenefitRefs.current[i] = element; }}
                     onMouseEnter={() => setActiveFiBenefit(i)}
-                    key={item.heading}
-                    className="reveal flex flex-col px-8 py-10 md:px-12 md:py-12"
+                    key={item.label}
+                    className={`reveal flex flex-col px-8 py-10 md:px-10 md:py-11 md:col-span-2 ${i === 3 ? "md:col-start-2" : ""}`}
                     style={{ backgroundColor: "#FFF9F9", transitionDelay: `${i * 80}ms`, minHeight: "300px" }}
                   >
-                    <p className="font-bold leading-none mb-4" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2.25rem, 4vw, 3rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}>{item.heading}</p>
-                    <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-5" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>{item.subheading}</p>
+                    <p className="text-[0.7rem] font-medium mb-4" style={{ color: "rgba(26,16,8,0.48)", fontFamily: "'DM Sans', sans-serif" }}>{item.label}</p>
+                    <p className="font-bold leading-none mb-5" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 3vw, 2.75rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}>{item.headline}</p>
                     <div className="w-6 h-px mb-5" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
                     <p className="text-sm leading-relaxed max-w-md" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif" }}>{item.body}</p>
                   </article>
@@ -886,11 +903,11 @@ export default function Home() {
                       className="font-bold leading-none"
                       style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
                     >
-                      {item.stat}
+                      {item.headline}
                     </p>
                   </div>
                   <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
-                    <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>
+                    <p className="text-[0.7rem] font-medium" style={{ color: "rgba(26,16,8,0.48)", fontFamily: "'DM Sans', sans-serif" }}>
                       {item.label}
                     </p>
                   </div>

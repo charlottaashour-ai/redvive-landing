@@ -64,34 +64,29 @@ export default function Science() {
 
   const BENEFITS = [
     {
-      category: t("carousel.skin"),
-      headline: t("science.result.title"),
-      items: [
-        t("science.skin.b1"),
-        t("science.skin.b2"),
-        t("science.skin.b3"),
-        t("science.skin.b4"),
-      ],
+      category: t("science.skin.label"),
+      headline: t("science.skin.title"),
+      items: [t("science.skin.b1")],
     },
     {
-      category: t("carousel.recovery"),
+      category: t("science.recovery.label"),
       headline: t("science.recovery.title"),
-      items: [
-        t("science.recovery.b1"),
-        t("science.recovery.b2"),
-        t("science.recovery.b3"),
-        t("science.recovery.b4"),
-      ],
+      items: [t("science.recovery.b1")],
     },
     {
-      category: t("science.energy.title"),
-      headline: t("science.energy.sub"),
-      items: [
-        t("science.energy.b1"),
-        t("science.energy.b2"),
-        t("science.energy.b3"),
-        t("science.energy.b4"),
-      ],
+      category: t("science.sleep.label"),
+      headline: t("science.sleep.title"),
+      items: [t("science.sleep.b1")],
+    },
+    {
+      category: t("science.stiffness.label"),
+      headline: t("science.stiffness.title"),
+      items: [t("science.stiffness.b1")],
+    },
+    {
+      category: t("science.energy.label"),
+      headline: t("science.energy.title"),
+      items: [t("science.energy.b1")],
     },
   ];
 
@@ -278,6 +273,20 @@ export default function Science() {
                 </p>
               </section>
             )}
+
+            <section className="reveal pt-20 md:pt-28" aria-labelledby="scalp-heading">
+              <span className="section-label block mb-6" style={{ color: "#D53E0F" }}>{t("science.scalp.label")}</span>
+              <h2
+                id="scalp-heading"
+                className="text-3xl md:text-5xl font-bold leading-[1.1] mb-10 text-white"
+                style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "-0.025em" }}
+              >
+                {t("science.scalp.title")}
+              </h2>
+              <p className="max-w-3xl text-white/60 text-sm md:text-base leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                {t("science.scalp.body")}
+              </p>
+            </section>
 
           </div>
         </div>

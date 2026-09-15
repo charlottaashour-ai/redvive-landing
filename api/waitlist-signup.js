@@ -3,6 +3,7 @@
 
 import crypto from 'crypto';
 import { kv } from '@vercel/kv';
+import { INTEREST_SEGMENT_IDS } from './interest-segments.js';
 
 // ----- helpers -----
 
@@ -51,7 +52,7 @@ async function addToSegment(subscriberId, segmentId) {
   return true;
 }
 
-async function processSignup({ email, firstName, language, postalCode }) {
+async function processSignup({ email, firstName, language, postalCode, interest }) {
   if (!process.env.FLODESK_API_KEY || !process.env.FLODESK_SEGMENT_ID) {
     throw new Error('Flodesk credentials missing');
   }
@@ -102,6 +103,17 @@ async function processSignup({ email, firstName, language, postalCode }) {
   }
   await addToSegment(subscriberId, segmentId);
 
+  const interestSegmentId = typeof interest === 'string' ? INTEREST_SEGMENT_IDS[interest] : undefined;
+  let interestSegmentAdded = false;
+  if (interestSegmentId) {
+    try {
+      await addToSegment(subscriberId, interestSegmentId);
+      interestSegmentAdded = true;
+    } catch (error) {
+      console.error('Flodesk interest segment add failed (non-fatal):', error.message);
+    }
+  }
+
   if (isNew) {
     try {
       await kv.rpush('redvive:signups', JSON.stringify({
@@ -116,7 +128,7 @@ async function processSignup({ email, firstName, language, postalCode }) {
     }
   }
 
-  return { foundingNumber, founding };
+  return { foundingNumber, founding, interest: interestSegmentId ? interest : null, interestSegmentAdded };
 }
 
 // ----- Meta Conversions API -----
@@ -192,7 +204,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const { email, firstName, language, postalCode, consent, eventId, marketingConsent } = req.body || {};
+  const { email, firstName, language, postalCode, interest, consent, eventId, marketingConsent } = req.body || {};
 
   if (!email || !isValidEmail(email)) {
     return res.status(400).json({ error: 'Invalid email' });
@@ -202,8 +214,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { foundingNumber, founding } = await processSignup({
-      email, firstName, language: language || 'en', postalCode
+    const { foundingNumber, founding, interest: recordedInterest, interestSegmentAdded } = await processSignup({
+      email, firstName, language: language || 'en', postalCode, interest
     });
 
     if (marketingConsent) {
@@ -215,6 +227,8 @@ export default async function handler(req, res) {
       success: true,
       founding,
       foundingNumber,
+      interest: recordedInterest,
+      interestSegmentAdded,
       message: founding ? 'Welcome to the waitlist' : 'Added to the waitlist'
     });
   } catch (err) {

@@ -457,7 +457,7 @@ export default function Tietosuojaseloste() {
               </span>
             </Link>
             <span style={{ color: "#E5DDD5" }}>|</span>
-            <Link href="/">
+            <Link href="/fi/">
               <span
                 className="text-xs tracking-widest uppercase cursor-pointer hover:opacity-60 transition-opacity"
                 style={{ color: "#7A4A42", fontFamily: "'DM Sans', sans-serif" }}

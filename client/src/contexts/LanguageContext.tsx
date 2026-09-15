@@ -13,15 +13,8 @@ const LanguageContext = createContext<LanguageContextValue>({
 });
 
 function detectInitialLanguage(): Language {
-  // URL takes priority on first load
-  if (typeof window !== "undefined" && window.location.pathname.startsWith("/fi")) return "fi";
-  // Then localStorage
-  try {
-    const stored = localStorage.getItem("redvive_lang");
-    if (stored === "fi" || stored === "en") return stored;
-  } catch {}
-  // Then browser language
-  if (typeof navigator !== "undefined" && navigator.language?.startsWith("fi")) return "fi";
+  // Public URLs define the language; stored browser state must never override a URL.
+  if (typeof window !== "undefined") return window.location.pathname.startsWith("/fi") ? "fi" : "en";
   return "en";
 }
 

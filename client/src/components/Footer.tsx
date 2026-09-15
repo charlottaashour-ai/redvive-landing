@@ -17,12 +17,19 @@ export default function Footer() {
   const t = useTranslation();
   const { language } = useLanguage();
 
-  const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/science", label: t("nav.science") },
-    { href: "/experience", label: t("nav.experience") },
-    { href: "/faq", label: t("nav.faq") },
-  ];
+  const navLinks = language === "fi"
+    ? [
+        { href: "/fi/", label: "etusivu" },
+        { href: "/fi/tiede", label: t("nav.science") },
+        { href: "/fi/experience", label: t("nav.experience") },
+        { href: "/fi/faq", label: t("nav.faq") },
+      ]
+    : [
+        { href: "/", label: "Home" },
+        { href: "/science", label: t("nav.science") },
+        { href: "/experience", label: t("nav.experience") },
+        { href: "/faq", label: t("nav.faq") },
+      ];
 
   const taglineLines = t("footer.tagline").split("\n");
   const footerCtaLines = t("nav.footer_tagline").split("\n");
@@ -33,7 +40,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <Link href="/">
+            <Link href={language === "fi" ? "/fi/" : "/"}>
               <span className="block mb-4 cursor-pointer">
                 <img
                   src={LOGO_WHITE}
@@ -101,17 +108,14 @@ export default function Footer() {
           className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4"
           style={{ borderTop: "1px solid rgba(255,249,249,0.06)" }}
         >
-          <p
-            className="text-xs"
-            style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}
-          >
-          {language === "fi" && (
+          <div>
             <p className="text-[0.6rem] leading-relaxed mb-3 max-w-lg" style={{ color: "rgba(255,249,249,0.25)", fontFamily: "'DM Sans', sans-serif" }}>
               {t("compliance.footer")}
             </p>
-          )}
-            {t("footer.copyright")}
-          </p>
+            <p className="text-xs" style={{ color: "rgba(255,249,249,0.2)", fontFamily: "'DM Sans', sans-serif" }}>
+              {t("footer.copyright")}
+            </p>
+          </div>
           <div className="flex gap-6 flex-wrap">
             <Link href={t("footer.privacy_path")}>
               <span

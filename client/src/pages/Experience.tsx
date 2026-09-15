@@ -434,7 +434,7 @@ export default function Experience() {
             </p>
             <div className="flex flex-col items-center sm:flex-row gap-4 justify-center">
               <button className="btn-primary" onClick={openWaitlistModal("footer")}>{t("nav.reserve")}</button>
-              <Link href="/science">
+              <Link href={language === "fi" ? "/fi/tiede" : "/science"}>
                 <button className="btn-ghost" style={{ color: "rgba(255,249,249,0.7)", borderColor: "rgba(255,255,255,0.15)" }}>{t("exp.cta.link")}</button>
               </Link>
             </div>
