@@ -9,4 +9,10 @@
 - [x] Build a centered, accessible waitlist-modal banner using the existing localized form.
 - [x] Route all English and Finnish waitlist CTAs to the modal and remove duplicate embedded forms.
 - [x] Verify consent, keyboard close behavior, success state, and mobile layout.
+- [x] Review the current features section and identify interaction constraints.
+- [x] Evaluate Kokonut UI components for brand fit, performance, and accessibility.
+- [x] Recommend a focused set of feature-section integrations without changing the site.
+- [x] Add a desktop-only active-benefit rail beside the Finnish 2×2 benefit grid.
+- [x] Preserve the existing mobile stacked cards, content, and reduced-motion fallback.
+- [x] Verify the active state, scroll behavior, and responsive layouts before delivery.
 - [ ] Save the approved modal update and sync it to GitHub.

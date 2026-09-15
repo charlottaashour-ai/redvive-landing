@@ -11,7 +11,7 @@
  * i18n: useTranslation() + useLanguage() for all copy and form language routing
  */
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
@@ -359,6 +359,8 @@ export default function Home() {
 
   // ── SEO: dynamic title, meta description, hreflang ──
   const { language } = useLanguage();
+  const [activeFiBenefit, setActiveFiBenefit] = useState(0);
+  const fiBenefitRefs = useRef<Array<HTMLElement | null>>([]);
   useEffect(() => {
     if (language === "fi") {
       document.title = "redvive — suomen ensimmäinen automatisoitu punavalostudio | helsinki";
@@ -404,6 +406,30 @@ export default function Home() {
     { heading: t("fi.home.benefit3.heading"), subheading: t("fi.home.benefit3.subheading"), body: t("fi.home.benefit3.body") },
     { heading: t("fi.home.benefit4.heading"), subheading: t("fi.home.benefit4.subheading"), body: t("fi.home.benefit4.body") },
   ];
+
+  useEffect(() => {
+    if (language !== "fi") return;
+
+    const cards = fiBenefitRefs.current.filter((card): card is HTMLElement => card !== null);
+    if (!cards.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const mostVisible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (mostVisible) {
+          const index = cards.indexOf(mostVisible.target as HTMLElement);
+          if (index >= 0) setActiveFiBenefit(index);
+        }
+      },
+      { threshold: [0.2, 0.45, 0.7], rootMargin: "-18% 0px -28% 0px" }
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [language]);
 
   const whoLines = [
     t("who.1"),
@@ -787,31 +813,54 @@ export default function Home() {
       <div style={{ backgroundColor: "#FFF9F9", overflow: "hidden" }}>
         {language === "fi" ? (
           <div className="container py-10 md:py-14">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ backgroundColor: "rgba(26,16,8,0.07)" }}>
-              {FI_BENEFITS.map((item, i) => (
-                <article
-                  key={item.heading}
-                  className="reveal flex flex-col px-8 py-10 md:px-12 md:py-12"
-                  style={{ backgroundColor: "#FFF9F9", transitionDelay: `${i * 80}ms`, minHeight: "300px" }}
-                >
-                  <p
-                    className="font-bold leading-none mb-4"
-                    style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2.25rem, 4vw, 3rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}
+            <div className="lg:grid lg:grid-cols-[10.5rem_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[12rem_minmax(0,1fr)]">
+              <aside className="hidden lg:block" aria-label="benefit navigation">
+                <div className="sticky top-36 border-l" style={{ borderColor: "rgba(26,16,8,0.14)" }}>
+                  <p className="mb-5 pl-4 text-[0.55rem] font-semibold uppercase tracking-[0.18em]" style={{ color: "rgba(26,16,8,0.35)", fontFamily: "'DM Sans', sans-serif" }}>
+                    01—04
+                  </p>
+                  <div className="flex flex-col" role="list">
+                    {FI_BENEFITS.map((item, i) => {
+                      const active = activeFiBenefit === i;
+                      return (
+                        <button
+                          key={item.heading}
+                          type="button"
+                          role="listitem"
+                          aria-current={active ? "true" : undefined}
+                          onClick={() => fiBenefitRefs.current[i]?.scrollIntoView({
+                            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+                            block: "center",
+                          })}
+                          className="group relative flex items-center gap-3 py-2.5 pl-4 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#D53E0F] focus-visible:ring-offset-2 motion-reduce:transition-none"
+                          style={{ background: "transparent", border: "none", cursor: "pointer" }}
+                        >
+                          <span className="absolute left-[-1px] top-0 h-full w-px motion-reduce:transition-none" style={{ backgroundColor: "#D53E0F", opacity: active ? 1 : 0, transition: "opacity 280ms ease" }} />
+                          <span className="text-[0.6rem] font-semibold" style={{ color: active ? "#D53E0F" : "rgba(26,16,8,0.28)", fontFamily: "'DM Sans', sans-serif", transition: "color 280ms ease" }}>0{i + 1}</span>
+                          <span className="text-xs font-semibold leading-tight" style={{ color: active ? "#1A1008" : "rgba(26,16,8,0.36)", fontFamily: "'DM Sans', sans-serif", transition: "color 280ms ease" }}>{item.heading}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </aside>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-px" style={{ backgroundColor: "rgba(26,16,8,0.07)" }}>
+                {FI_BENEFITS.map((item, i) => (
+                  <article
+                    ref={(element) => { fiBenefitRefs.current[i] = element; }}
+                    onMouseEnter={() => setActiveFiBenefit(i)}
+                    key={item.heading}
+                    className="reveal flex flex-col px-8 py-10 md:px-12 md:py-12"
+                    style={{ backgroundColor: "#FFF9F9", transitionDelay: `${i * 80}ms`, minHeight: "300px" }}
                   >
-                    {item.heading}
-                  </p>
-                  <p
-                    className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-5"
-                    style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}
-                  >
-                    {item.subheading}
-                  </p>
-                  <div className="w-6 h-px mb-5" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
-                  <p className="text-sm leading-relaxed max-w-md" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif" }}>
-                    {item.body}
-                  </p>
-                </article>
-              ))}
+                    <p className="font-bold leading-none mb-4" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2.25rem, 4vw, 3rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}>{item.heading}</p>
+                    <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase mb-5" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>{item.subheading}</p>
+                    <div className="w-6 h-px mb-5" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+                    <p className="text-sm leading-relaxed max-w-md" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif" }}>{item.body}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         ) : (
