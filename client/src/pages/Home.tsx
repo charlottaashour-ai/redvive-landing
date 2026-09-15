@@ -639,7 +639,7 @@ export default function Home() {
 
             {/* Experience CTA */}
             <div className="reveal mt-14">
-              <Link href="/experience">
+              <Link href={language === "fi" ? "/fi/experience" : "/experience"}>
                 <button className="btn-ghost">{t("hiw.cta")}</button>
               </Link>
             </div>
