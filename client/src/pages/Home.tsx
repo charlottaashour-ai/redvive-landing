@@ -11,7 +11,7 @@
  * i18n: useTranslation() + useLanguage() for all copy and form language routing
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
@@ -359,8 +359,6 @@ export default function Home() {
 
   // ── SEO: dynamic title, meta description, hreflang ──
   const { language } = useLanguage();
-  const [activeFiBenefit, setActiveFiBenefit] = useState(0);
-  const fiBenefitRefs = useRef<Array<HTMLElement | null>>([]);
   useEffect(() => {
     if (language === "fi") {
       document.title = "redvive — suomen ensimmäinen automatisoitu punavalostudio | helsinki";
@@ -395,44 +393,10 @@ export default function Home() {
   ];
 
   const STATS = [
-    { label: t("carousel.skin"), headline: t("carousel.skin_sub"), body: t("carousel.skin_body") },
-    { label: t("carousel.recovery"), headline: t("carousel.recovery_sub"), body: t("carousel.recovery_body") },
-    { label: t("carousel.sleep"), headline: t("carousel.sleep_sub"), body: t("carousel.sleep_body") },
-    { label: t("carousel.stiffness"), headline: t("carousel.stiffness_sub"), body: t("carousel.stiffness_body") },
-    { label: t("carousel.energy"), headline: t("carousel.energy_sub"), body: t("carousel.energy_body") },
+    { stat: t("carousel.skin"), label: t("carousel.skin_sub"), body: t("carousel.skin_body") },
+    { stat: t("carousel.recovery"), label: t("carousel.recovery_sub"), body: t("carousel.recovery_body") },
+    { stat: t("carousel.sleep"), label: t("carousel.sleep_sub"), body: t("carousel.sleep_body") },
   ];
-
-  const FI_BENEFITS = [
-    { label: t("fi.home.benefit1.label"), headline: t("fi.home.benefit1.headline"), body: t("fi.home.benefit1.body") },
-    { label: t("fi.home.benefit2.label"), headline: t("fi.home.benefit2.headline"), body: t("fi.home.benefit2.body") },
-    { label: t("fi.home.benefit3.label"), headline: t("fi.home.benefit3.headline"), body: t("fi.home.benefit3.body") },
-    { label: t("fi.home.benefit4.label"), headline: t("fi.home.benefit4.headline"), body: t("fi.home.benefit4.body") },
-    { label: t("fi.home.benefit5.label"), headline: t("fi.home.benefit5.headline"), body: t("fi.home.benefit5.body") },
-  ];
-
-  useEffect(() => {
-    if (language !== "fi") return;
-
-    const cards = fiBenefitRefs.current.filter((card): card is HTMLElement => card !== null);
-    if (!cards.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const mostVisible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-        if (mostVisible) {
-          const index = cards.indexOf(mostVisible.target as HTMLElement);
-          if (index >= 0) setActiveFiBenefit(index);
-        }
-      },
-      { threshold: [0.2, 0.45, 0.7], rootMargin: "-18% 0px -28% 0px" }
-    );
-
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, [language]);
 
   const whoLines = [
     t("who.1"),
@@ -814,116 +778,45 @@ export default function Home() {
         </div>
       </div>
       <div style={{ backgroundColor: "#FFF9F9", overflow: "hidden" }}>
-        {language === "fi" ? (
-          <div className="container py-10 md:py-14">
-            <div className="lg:grid lg:grid-cols-[10.5rem_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[12rem_minmax(0,1fr)]">
-              <aside className="hidden lg:block" aria-label="benefit navigation">
-                <div className="sticky top-36 border-l" style={{ borderColor: "rgba(26,16,8,0.14)" }}>
-                  <p className="mb-5 pl-4 text-[0.55rem] font-semibold uppercase tracking-[0.18em]" style={{ color: "rgba(26,16,8,0.35)", fontFamily: "'DM Sans', sans-serif" }}>
-                    01—05
+        <div className="relative py-10 md:py-14" style={{ overflow: "hidden" }}>
+          <div
+            className="flex motion-reduce:overflow-x-auto"
+            style={{
+              animation: "statsScroll 22s linear infinite",
+              width: "max-content",
+            }}
+          >
+            {[...STATS, ...STATS, ...STATS].map((item, i) => (
+              <div
+                key={i}
+                className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
+                style={{
+                  width: "280px",
+                  borderRight: "1px solid rgba(26,16,8,0.07)",
+                }}
+              >
+                <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                  <p className="font-bold leading-none" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}>
+                    {item.stat}
                   </p>
-                  <div className="flex flex-col" role="list">
-                    {FI_BENEFITS.map((item, i) => {
-                      const active = activeFiBenefit === i;
-                      return (
-                        <button
-                          key={item.label}
-                          type="button"
-                          role="listitem"
-                          aria-current={active ? "true" : undefined}
-                          onClick={() => fiBenefitRefs.current[i]?.scrollIntoView({
-                            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-                            block: "center",
-                          })}
-                          className="group relative flex items-center gap-3 py-2.5 pl-4 text-left outline-none focus-visible:ring-2 focus-visible:ring-[#D53E0F] focus-visible:ring-offset-2 motion-reduce:transition-none"
-                          style={{ background: "transparent", border: "none", cursor: "pointer" }}
-                        >
-                          <span className="absolute left-[-1px] top-0 h-full w-px motion-reduce:transition-none" style={{ backgroundColor: "#D53E0F", opacity: active ? 1 : 0, transition: "opacity 280ms ease" }} />
-                          <span className="text-[0.6rem] font-semibold" style={{ color: active ? "#D53E0F" : "rgba(26,16,8,0.28)", fontFamily: "'DM Sans', sans-serif", transition: "color 280ms ease" }}>0{i + 1}</span>
-                          <span className="text-xs font-semibold leading-tight" style={{ color: active ? "#1A1008" : "rgba(26,16,8,0.36)", fontFamily: "'DM Sans', sans-serif", transition: "color 280ms ease" }}>{item.label}</span>
-                        </button>
-                      );
-                    })}
-                  </div>
                 </div>
-              </aside>
-
-              <div className="flex gap-px overflow-x-auto pb-3 md:hidden snap-x snap-mandatory" style={{ backgroundColor: "rgba(26,16,8,0.07)" }}>
-                {FI_BENEFITS.map((item, i) => (
-                  <article
-                    key={item.label}
-                    className="reveal flex w-[min(82vw,20rem)] flex-none snap-start flex-col px-8 py-10"
-                    style={{ backgroundColor: "#FFF9F9", transitionDelay: `${i * 80}ms`, minHeight: "300px" }}
-                  >
-                    <p className="text-[0.7rem] font-medium mb-4" style={{ color: "rgba(26,16,8,0.48)", fontFamily: "'DM Sans', sans-serif" }}>{item.label}</p>
-                    <p className="font-bold leading-none mb-5" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 8vw, 2.75rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}>{item.headline}</p>
-                    <div className="w-6 h-px mb-5" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
-                    <p className="text-sm leading-relaxed max-w-md" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif" }}>{item.body}</p>
-                  </article>
-                ))}
-              </div>
-              <div className="hidden md:grid md:grid-cols-6 gap-px">
-                {FI_BENEFITS.map((item, i) => (
-                  <article
-                    ref={(element) => { fiBenefitRefs.current[i] = element; }}
-                    onMouseEnter={() => setActiveFiBenefit(i)}
-                    key={item.label}
-                    className={`reveal flex flex-col px-8 py-10 md:px-10 md:py-11 md:col-span-2 ${i === 3 ? "md:col-start-2" : ""}`}
-                    style={{ backgroundColor: "#FFF9F9", transitionDelay: `${i * 80}ms`, minHeight: "300px" }}
-                  >
-                    <p className="text-[0.7rem] font-medium mb-4" style={{ color: "rgba(26,16,8,0.48)", fontFamily: "'DM Sans', sans-serif" }}>{item.label}</p>
-                    <p className="font-bold leading-none mb-5" style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "clamp(2rem, 3vw, 2.75rem)", letterSpacing: "-0.04em", color: "#D53E0F" }}>{item.headline}</p>
-                    <div className="w-6 h-px mb-5" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
-                    <p className="text-sm leading-relaxed max-w-md" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif" }}>{item.body}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="relative py-10 md:py-14" style={{ overflow: "hidden" }}>
-            <div
-              className="flex"
-              style={{
-                animation: "statsScroll 22s linear infinite",
-                width: "max-content",
-              }}
-            >
-              {[...STATS, ...STATS, ...STATS].map((item, i) => (
-                <div
-                  key={i}
-                  className="flex-shrink-0 flex flex-col items-center text-center px-10 md:px-14"
-                  style={{
-                    width: "280px",
-                    borderRight: "1px solid rgba(26,16,8,0.07)",
-                  }}
-                >
-                  <div className="flex items-end justify-center" style={{ height: "80px", flexShrink: 0 }}>
-                    <p
-                      className="font-bold leading-none"
-                      style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "3rem", letterSpacing: "-0.04em", color: "#D53E0F" }}
-                    >
-                      {item.headline}
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
-                    <p className="text-[0.7rem] font-medium" style={{ color: "rgba(26,16,8,0.48)", fontFamily: "'DM Sans', sans-serif" }}>
-                      {item.label}
-                    </p>
-                  </div>
-                  <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
-                  <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
-                    <p className="text-sm leading-relaxed" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
-                      {item.body}
-                    </p>
-                  </div>
+                <div className="flex items-center justify-center" style={{ height: "32px", flexShrink: 0 }}>
+                  <p className="text-[0.6rem] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(26,16,8,0.40)", fontFamily: "'DM Sans', sans-serif" }}>
+                    {item.label}
+                  </p>
                 </div>
-              ))}
-            </div>
-            <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #FFF9F9 0%, transparent 100%)" }} />
-            <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #FFF9F9 0%, transparent 100%)" }} />
+                <div className="w-6 h-px mb-5 mt-1" style={{ backgroundColor: "#D53E0F", flexShrink: 0 }} />
+                <div className="flex items-start justify-center" style={{ height: "80px", flexShrink: 0 }}>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(26,16,8,0.50)", fontFamily: "'DM Sans', sans-serif", maxWidth: "200px" }}>
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        )}
+          <div className="absolute inset-y-0 left-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to right, #FFF9F9 0%, transparent 100%)" }} />
+          <div className="absolute inset-y-0 right-0 w-16 pointer-events-none" style={{ background: "linear-gradient(to left, #FFF9F9 0%, transparent 100%)" }} />
+        </div>
         <div className="flex justify-center py-8 px-8" style={{ borderTop: "1px solid rgba(26,16,8,0.07)" }}>
           <Link href={language === "fi" ? "/fi/tiede" : "/science"}>
             <button className="btn-ghost">{t("carousel.cta")}</button>

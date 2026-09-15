@@ -75,21 +75,15 @@ export const translations: Record<string, Record<string, string>> = {
 
     // ── HOME — Carousel (3 cards) ──
     "carousel.label": "what light does.",
-    "carousel.skin": "skin & hair",
-    "carousel.skin_sub": "VISIBLE GLOW.",
-    "carousel.skin_body": "at 660 nanometres, red light stimulates collagen production, supports cellular turnover and calms the surface of the skin. the same light reaches the scalp, where it increases circulation around the hair roots and supports fullness. fresher, more even, more rested-looking skin — and your scalp gets the same light.",
+    "carousel.skin": "skin",
+    "carousel.skin_sub": "visible glow.",
+    "carousel.skin_body": "660 nm light reaches the skin's surface — supporting collagen, tone, and renewal. clearer, firmer skin in 10 minutes.",
     "carousel.recovery": "recovery",
-    "carousel.recovery_sub": "FEELS LIGHTER.",
-    "carousel.recovery_body": "at 850 nanometres, near-infrared light reaches deep into muscle and connective tissue. it eases post-training soreness and speeds up recovery. lighter, looser after training, travel, or a heavy week.",
+    "carousel.recovery_sub": "feels lighter.",
+    "carousel.recovery_body": "850 nm light reaches deep into muscle and joint tissue. faster recovery from training, travel, or a heavy week.",
     "carousel.sleep": "sleep",
-    "carousel.sleep_sub": "LIGHT THAT DOESN'T WAKE YOU.",
-    "carousel.sleep_body": "in the evening your body starts releasing melatonin, the hormone that prepares you for sleep. red light doesn't interrupt that rise, so you can take a session late in the evening. a calmer evening, a better charge in the morning.",
-    "carousel.stiffness": "stiffness",
-    "carousel.stiffness_sub": "LESS STIFFNESS.",
-    "carousel.stiffness_body": "most people aren't stiff from training — they're stiff from sitting. near-infrared at 850 nanometres reaches where stiffness sits, into muscle and connective tissue, calming what's been under load all day and keeping you moving freely. less stiffness, easier movement.",
-    "carousel.energy": "energy",
-    "carousel.energy_sub": "A STEADIER BASELINE.",
-    "carousel.energy_body": "muscle, skin and overnight repair all run on the same energy your cells produce. red light acts at exactly the point where a cell produces it. that's why one ten-minute session does all of it at once.",
+    "carousel.sleep_sub": "a calmer baseline.",
+    "carousel.sleep_body": "light supports mitochondria, regulates the nervous system, and eases everyday stress. deeper sleep, more energy when you need it.",
     "carousel.cta": "understand the science →",
 
     // ── HOME — Who It's For ──
@@ -286,6 +280,7 @@ export const translations: Record<string, Record<string, string>> = {
     "seg.energy": "energy",
     "seg.curious": "just curious",
     "seg.skip": "skip",
+    "seg.optional": "optional",
   },
   fi: {
     // ── NAV ──
@@ -409,6 +404,7 @@ export const translations: Record<string, Record<string, string>> = {
     "seg.energy": "energia",
     "seg.curious": "vain uteliaisuus",
     "seg.skip": "ohita",
+    "seg.optional": "valinnainen",
     // ── COMPLIANCE ──
     // ── SCIENCE PAGE (FI) ──
     "science.eyebrow": "tiede",

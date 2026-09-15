@@ -22,7 +22,6 @@ export default function WaitlistForm({ formLocation }: { formLocation: WaitlistF
   const [postalCode, setPostalCode] = useState("");
   const [consent, setConsent] = useState(false);
   const [interest, setInterest] = useState<string | null>(null);
-  const [segExpanded, setSegExpanded] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [foundingNumber, setFoundingNumber] = useState<string | null>(null);
   const [isFounding, setIsFounding] = useState<boolean | null>(null);
@@ -112,6 +111,22 @@ export default function WaitlistForm({ formLocation }: { formLocation: WaitlistF
       <input id="waitlist-first-name" type="text" autoFocus placeholder={t("form.firstname_placeholder")} value={firstName} onChange={(event) => setFirstName(event.target.value)} className={inputClass} />
       <label className="sr-only" htmlFor="waitlist-email">{t("form.email")}</label>
       <input id="waitlist-email" type="email" placeholder={t("form.email")} value={email} onChange={(event) => setEmail(event.target.value)} className={inputClass} />
+
+      <fieldset className="mt-1 border border-white/15 bg-white/[0.045] px-4 py-4 text-left">
+        <legend className="sr-only">{t("seg.question")}</legend>
+        <div className="mb-3 flex items-baseline justify-between gap-3">
+          <p className="text-sm font-semibold text-white">{t("seg.question")}</p>
+          <span className="text-[0.55rem] font-semibold uppercase tracking-[0.16em] text-white/40">{t("seg.optional")}</span>
+        </div>
+        <p className="mb-3 text-xs leading-relaxed text-white/50">{t("seg.helper")}</p>
+        <div className="flex flex-wrap gap-2" role="radiogroup" aria-label={t("seg.question")}>
+          {(["skin-hair", "recovery", "sleep", "stiffness", "energy", "curious"] as const).map((key) => {
+            const selected = interest === key;
+            return <button key={key} type="button" role="radio" aria-checked={selected} onClick={() => setInterest(selected ? null : key)} className={selected ? "border border-[#D53E0F] bg-[#D53E0F]/15 px-3 py-1.5 text-[0.68rem] font-medium text-[#D53E0F]" : "border border-white/20 bg-transparent px-3 py-1.5 text-[0.68rem] font-medium text-white/65 transition-colors hover:border-white/40 hover:text-white"}>{t(`seg.${key}`)}</button>;
+          })}
+        </div>
+      </fieldset>
+
       <label className="sr-only" htmlFor="waitlist-postal-code">{t("form.postal_placeholder")}</label>
       <input id="waitlist-postal-code" type="text" placeholder={t("form.postal_placeholder")} value={postalCode} onChange={(event) => setPostalCode(event.target.value)} className={inputClass} />
 
@@ -122,23 +137,6 @@ export default function WaitlistForm({ formLocation }: { formLocation: WaitlistF
           <a href={t("footer.privacy_path")} className="underline underline-offset-2 transition-opacity hover:opacity-80">{t("form.consent_link")}</a>.
         </span>
       </label>
-
-      <div className="w-full pt-1">
-        <button type="button" onClick={() => setSegExpanded((value) => !value)} className="flex w-full items-center justify-between bg-transparent py-1 text-left text-[0.7rem] text-white/45" aria-expanded={segExpanded}>
-          <span>{t("seg.question")}</span>
-          <span className="text-[0.6rem] opacity-60 transition-transform" style={{ transform: segExpanded ? "rotate(180deg)" : "rotate(0deg)" }}>▼</span>
-        </button>
-        <div className={segExpanded ? "mt-2 max-h-36 overflow-hidden opacity-100 transition-all" : "max-h-0 overflow-hidden opacity-0 transition-all"}>
-          <p className="mb-2 text-[0.6rem] text-white/30">{t("seg.helper")}</p>
-          <div className="mb-1 flex flex-wrap gap-1.5" role="radiogroup" aria-label={t("seg.question")}>
-            {(["skin-hair", "recovery", "sleep", "stiffness", "energy", "curious"] as const).map((key) => {
-              const selected = interest === key;
-              return <button key={key} type="button" role="radio" aria-checked={selected} onClick={() => setInterest(selected ? null : key)} className={selected ? "rounded-full border border-[#D53E0F] bg-[#D53E0F]/15 px-2.5 py-1 text-[0.6rem] font-medium text-[#D53E0F]" : "rounded-full border border-white/15 px-2.5 py-1 text-[0.6rem] font-medium text-white/50"}>{t(`seg.${key}`)}</button>;
-            })}
-          </div>
-          <button type="button" className="bg-transparent py-0.5 text-[0.55rem] text-white/30">{t("seg.skip")}</button>
-        </div>
-      </div>
 
       {error && <p className="text-xs text-[#D53E0F]" role="alert">{error}</p>}
       <button type="submit" className="btn-primary mt-1 w-full justify-center" disabled={loading || !consent} style={{ opacity: loading || !consent ? 0.5 : 1 }}>
