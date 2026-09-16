@@ -74,7 +74,9 @@
         }
       })(40);
       (function redviveWatchStatisticsConsent(retries) {
-        redviveHandleConsent();
+        if (window.Cookiebot && window.Cookiebot.hasResponse) {
+          redviveHandleConsent();
+        }
         if (!window.__redviveGa4Loaded && retries > 0) {
           setTimeout(function () { redviveWatchStatisticsConsent(retries - 1); }, 250);
         }
