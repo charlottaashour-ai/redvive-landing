@@ -56,10 +56,8 @@
         var gaScript = document.createElement('script');
         gaScript.async = true;
         gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-S1E0W5FBGC';
-        gaScript.onload = function () {
-          gtag('config', 'G-S1E0W5FBGC', { anonymize_ip: true });
-        };
         document.head.appendChild(gaScript);
+        gtag('config', 'G-S1E0W5FBGC', { anonymize_ip: true });
       }
       function redviveHandleConsent() {
         redviveSyncConsent();
