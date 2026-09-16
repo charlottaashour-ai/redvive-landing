@@ -25,7 +25,7 @@
     <meta name="twitter:description" content="Full-body red light recovery in Helsinki. Step into the light — the future of wellness." />
     <meta name="twitter:image" content="https://d2xsxph8kpxj0f.cloudfront.net/96599177/JqwAwUnbRJPvfQwDrcMJaa/og-image_d69151a5.png" />
     <!-- Google Consent Mode v2 — must run before gtag and before Cookiebot -->
-    <script>
+    <script data-cookieconsent="ignore">
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('consent', 'default', {
@@ -38,13 +38,6 @@
         wait_for_update: 2000
       });
       gtag('js', new Date());
-    </script>
-    <!-- Cookiebot CMP — maintains consent choices used by GA4 and Meta Pixel -->
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="a53795c3-e46f-4f11-84a1-e539b8d42f10" data-blockingmode="auto" type="text/javascript"></script>
-    <!-- GA4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S1E0W5FBGC"></script>
-    <script>
-      gtag('config', 'G-S1E0W5FBGC', { anonymize_ip: true });
 
       function redviveSyncConsent() {
         var c = (window.Cookiebot && window.Cookiebot.consent) || {};
@@ -58,6 +51,16 @@
       window.addEventListener('CookiebotOnConsentReady', redviveSyncConsent);
       window.addEventListener('CookiebotOnAccept', redviveSyncConsent);
       window.addEventListener('CookiebotOnDecline', redviveSyncConsent);
+    </script>
+    <!-- Cookiebot CMP — maintains consent choices used by GA4 and Meta Pixel -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="a53795c3-e46f-4f11-84a1-e539b8d42f10" data-blockingmode="auto" type="text/javascript"></script>
+    <!-- GA4 -->
+    <script async data-cookieconsent="ignore" src="https://www.googletagmanager.com/gtag/js?id=G-S1E0W5FBGC"></script>
+    <script data-cookieconsent="ignore">
+      gtag('config', 'G-S1E0W5FBGC', { anonymize_ip: true });
+      if (window.Cookiebot && window.Cookiebot.hasResponse) {
+        redviveSyncConsent();
+      }
     </script>
     <!-- Font preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
