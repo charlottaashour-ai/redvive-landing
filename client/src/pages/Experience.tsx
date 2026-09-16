@@ -92,7 +92,7 @@ export default function Experience() {
     { value: "660nm", label: t("exp.spec.red") },
     { value: "850nm", label: t("exp.spec.nir") },
     { value: "10 min", label: t("exp.spec.visit") },
-    { value: "24/7", label: t("exp.spec.open") },
+    { value: language === "fi" ? "klo 5–24" : "5am–midnight", label: t("exp.spec.open") },
   ];
 
   return (

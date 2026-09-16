@@ -363,11 +363,11 @@ export default function Home() {
     if (language === "fi") {
       document.title = "redvive — suomen ensimmäinen automatisoitu punavalostudio | helsinki";
       const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute("content", "yksityistä punavaloa helsingissä, auki 24/7. liity jonotuslistalle ja lukitse perustajahinta 29 €/kk elinikäisesti — vain 99 paikkaa.");
+      if (metaDesc) metaDesc.setAttribute("content", "yksityistä punavaloa helsingissä, auki klo 5–24. liity jonotuslistalle ja lukitse perustajahinta 29 €/kk elinikäisesti — vain 99 paikkaa.");
     } else {
       document.title = "Redvive — Punavalohoito Helsinki | Red Light Therapy";
       const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute("content", "Private red light therapy studio in Helsinki, open 24/7. Join the waitlist and lock in the founding member rate of 29€/month for life — only 99 spots.");
+      if (metaDesc) metaDesc.setAttribute("content", "Private red light therapy studio in Helsinki, open 5am–midnight. Join the waitlist and lock in the founding member rate of 29€/month for life — only 99 spots.");
     }
     // hreflang tags
     const existing = document.querySelectorAll('link[rel="alternate"][hreflang]');

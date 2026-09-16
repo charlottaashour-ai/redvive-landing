@@ -1,7 +1,29 @@
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useLocation } from "wouter";
+
+const pairedRoutes: Record<string, { en: string; fi: string }> = {
+  "/": { en: "/", fi: "/fi/" },
+  "/fi": { en: "/", fi: "/fi/" },
+  "/fi/": { en: "/", fi: "/fi/" },
+  "/science": { en: "/science", fi: "/fi/tiede" },
+  "/fi/tiede": { en: "/science", fi: "/fi/tiede" },
+  "/experience": { en: "/experience", fi: "/fi/experience" },
+  "/fi/experience": { en: "/experience", fi: "/fi/experience" },
+  "/faq": { en: "/faq", fi: "/fi/faq" },
+  "/fi/faq": { en: "/faq", fi: "/fi/faq" },
+  "/privacy": { en: "/privacy", fi: "/tietosuoja" },
+  "/tietosuoja": { en: "/privacy", fi: "/tietosuoja" },
+};
 
 export function LanguageToggle({ className = "" }: { className?: string }) {
   const { language, setLanguage } = useLanguage();
+  const [location, navigate] = useLocation();
+
+  const switchLanguage = (target: "en" | "fi") => {
+    const pair = pairedRoutes[location] ?? pairedRoutes["/"];
+    setLanguage(target);
+    navigate(pair[target]);
+  };
 
   return (
     <div
@@ -10,8 +32,8 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
       aria-label="Change language / Vaihda kieli"
     >
       <button
-        onClick={() => setLanguage("en")}
-        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setLanguage("en"); } }}
+        onClick={() => switchLanguage("en")}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); switchLanguage("en"); } }}
         aria-checked={language === "en"}
         role="radio"
         style={{
@@ -33,8 +55,8 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
       </button>
       <span style={{ color: "rgba(255,255,255,0.25)", fontSize: "10px" }}>·</span>
       <button
-        onClick={() => setLanguage("fi")}
-        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setLanguage("fi"); } }}
+        onClick={() => switchLanguage("fi")}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); switchLanguage("fi"); } }}
         aria-checked={language === "fi"}
         role="radio"
         style={{
