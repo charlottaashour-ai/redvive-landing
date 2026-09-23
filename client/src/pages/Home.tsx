@@ -530,7 +530,7 @@ export default function Home() {
             </motion.div>
             {/* Waitlist CTA — opens the shared centered form banner */}
             <motion.div variants={heroItem} className="mt-8">
-              <button className="btn-primary" onClick={openWaitlistModal("hero")}>{t("form.submit")}</button>
+              <button className="btn-primary" onClick={openWaitlistModal("hero")}>{language === "fi" ? t("home.hero.cta") : t("form.submit")}</button>
             </motion.div>
           </div>
         </motion.div>

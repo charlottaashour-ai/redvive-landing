@@ -300,12 +300,13 @@ export const translations: Record<string, Record<string, string>> = {
     "footer.copyright": "© 2026 redvive. syntynyt helsingissä.",
     // ── HOME — Hero ──
     "home.hero.eyebrow": "helsinki · avataan pian",
-    "home.hero.line1": "koko keholle punavaloa — klo 5–24",
-    "home.hero.line2": "",
-    "home.hero.sub": "testaamme parhaillaan helsingissä.",
-    "home.hero.offer": "perustajajäsenyys 29 €/kk, lukittu elinikäisesti — vain 99 paikkaa.",
+    "home.hero.line1": "kymmenen minuuttia punavaloa.",
+    "home.hero.line2": "keskellä arkeasi.",
+    "home.hero.sub": "Pohjoismaiden ensimmäinen itsepalveluna toimiva punavalostudio. Oma huone, koko keholle, avoinna joka päivä klo 05-23.",
+    "home.hero.offer": "Perustajajäsenyys 29 €/kk, lukittu elinikäisesti — vain 99 paikkaa. Sijoita itseesi, kymmenen minuuttia päivässä.",
     "home.hero.disclosure": "studioita rakennetaan parhaillaan helsinkiin. liity mukaan, niin kuulet avajaisista ensimmäisenä.",
     "home.hero.scroll": "jatka.",
+    "home.hero.cta": "liity perustajajäseneksi",
     // ── HOME — How It Works ──
     "hiw.label": "miten se toimii.",
     "hiw.sub": "kolme askelta. siinä kaikki.",
